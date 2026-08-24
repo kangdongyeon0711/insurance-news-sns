@@ -1,0 +1,15 @@
+[Unit]
+Description=insurance-news-sns hourly summarize scheduler (APScheduler)
+After=network.target
+
+[Service]
+Type=simple
+User=news-alert
+WorkingDirectory=/opt/insurance-news-sns
+EnvironmentFile=/opt/insurance-news-sns/.env
+ExecStart=/opt/insurance-news-sns/.venv/bin/python scripts/scheduler.py
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

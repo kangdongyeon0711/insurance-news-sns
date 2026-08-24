@@ -27,6 +27,12 @@ insurance-news-sns/
 ├── README.md
 ├── pyproject.toml
 ├── .env.example
+├── .github/workflows/
+│   ├── test.yml              # push/PR마다 pytest 자동 실행
+│   └── summarize.yml         # 1시간마다 summarize_job 자동 실행 (actions/cache로 data/ 유지)
+├── deploy/systemd/            # 서버(AWS/개인서버) 배포용 systemd 유닛 예시
+│   ├── news-alert-scheduler.service
+│   └── news-alert-web.service
 ├── config/
 │   ├── settings.yaml       # 전역 설정 (실행 주기, 요약 길이, 로그 레벨 등)
 │   ├── sources.yaml         # 수집 대상 (RSS URL, API 엔드포인트 등)

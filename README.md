@@ -14,6 +14,41 @@ cp .env.example .env  # 값 채워넣기
 python -m news_alert.main
 ```
 
+## 테스트
+
+```bash
+pip install -e ".[dev]"
+pytest tests/ -v
+```
+
+모듈별 테스트는 외부 의존성(네트워크 요청, Claude API, 파일시스템)을 mock/tmp_path로
+대체해 각 모듈이 독립적으로 정상 동작하는지 검증한다.
+
+| 모듈 | 테스트 파일 | 확인 내용 |
+|---|---|---|
+| `collectors/naver_news_collector.py` | `test_naver_collector.py` | RSS 파싱, HTML 태그 제거, 키워드 간 중복 제거, 피드 실패 시 스킵 |
+| `collectors/press_rss_collector.py` | `test_press_rss_collector.py` | CSV 로딩, 언론사명 태깅, 피드 하나 실패해도 나머지 계속 처리 |
+| `filters/dedup_filter.py`, `storage/sqlite_store.py` | `test_dedup_filter_storage.py` | URL 기준 중복 제거, SQLite 저장/조회 |
+| `filters/insurer_filter.py` | `test_insurer_filter.py` | 20개 보험사 매칭, 공백 표기 차이(`삼성생명`/`삼성 생명`) 흡수 |
+| `summarizers/llm_summarizer.py` | `test_summarizers.py` | 시스템 프롬프트 전달, API 키 미설정 시 실패, 3줄 초과 요약 자르기 |
+| `storage/article_store.py` | `test_article_store.py` | 요약 결과 저장, 최신순 정렬, 보험사 필터, upsert |
+| `web/app.py` | `test_web_app.py` | `/`, `/api/articles`(정렬·필터), `/api/insurers` |
+| `pipeline.py` | `test_pipeline.py` | 4단계 순서대로 실행, 개별 기사 요약 실패 시에도 파이프라인 계속 진행 |
+| `jobs/collect_job.py` | `test_collect_job.py` | 여러 수집기 결합, 중복 제거, "본 기사" 마킹 |
+| `jobs/summarize_job.py` | `test_summarize_job.py` | 수집→중복제거→보험사필터→요약→저장 전체 흐름 |
+| `utils/config_loader.py` | `test_config_loader.py` | YAML 로딩 |
+| `utils/logger.py` | `test_logger.py` | 로거 이름/레벨, 핸들러 중복 방지 |
+| `utils/feed.py` | `test_feed_utils.py` | HTML 제거, 발행시각 파싱 |
+| `models/article.py` | `test_models.py` | `SummarizedArticle` 기본값(mutable default 공유 버그 가드) |
+
+`collectors/rss_collector.py`, `collectors/api_collector.py`, `filters/keyword_filter.py`,
+`notifiers/*`는 아직 인터페이스만 정의된 미구현 스텁이라(실제 로직이 없어 검증할
+동작이 없음) 테스트 대상에서 제외했다. 실제 구현을 채울 때 위 표와 같은 방식으로
+테스트를 추가한다.
+
+GitHub Actions(`.github/workflows/test.yml`)가 push/PR마다 `pytest tests/ -v`를
+자동 실행해 회귀를 잡는다.
+
 ## 뉴스 수집 (네이버 뉴스 검색 RSS + 언론사 RSS)
 
 - `config/settings.yaml`의 `naver_news.keywords`에 검색 키워드를 등록하면
@@ -111,18 +146,59 @@ REST API만 필요하면 `GET /api/articles?insurer=삼성생명&limit=50`,
 python -m news_alert.jobs.summarize_job
 ```
 
-## 스케줄러 (1시간마다 자동 실행)
+## 배포 (1시간마다 자동 실행)
 
-`summarize_job`을 1시간마다 실행해 조회 웹페이지의 데이터를 최신 상태로 유지한다.
+`summarize_job`을 1시간마다 자동 실행해 조회 웹페이지의 데이터를 최신 상태로
+유지하는 방법은 두 가지다. **둘 다 "수집·요약 job을 자동 실행"하는 것이지,
+웹페이지 자체를 호스팅해 주지는 않는다** — 웹페이지(`web/app.py`)를 다른 사람도
+접속 가능하게 하려면 결국 상시 실행되는 서버가 필요하다.
 
-**APScheduler로 실행 (프로세스를 계속 띄워두는 방식):**
+### 옵션 A: 서버(AWS EC2 등 / 개인서버) + cron 또는 systemd
+
+가장 단순한 구성: 서버 하나에서 (1) job을 주기 실행하고 (2) 웹페이지를 계속
+띄워둔다. 둘 다 같은 `data/news_alert.db`를 보므로 별도 동기화가 필요 없다.
 
 ```bash
-python scripts/scheduler.py
+# 서버에서 최초 1회
+git clone <repo-url> /opt/insurance-news-sns && cd /opt/insurance-news-sns
+python -m venv .venv && .venv/bin/pip install -e ".[prod]"
+cp .env.example .env   # ANTHROPIC_API_KEY 등 채우기
 ```
 
-**cron으로 실행 (매시 정각):**
+**job 실행 — cron 또는 systemd 중 택1:**
 
+- cron: `crontab -e`에 아래 한 줄 추가 (매시 정각)
+  ```
+  0 * * * * /opt/insurance-news-sns/scripts/cron_run.sh >> /opt/insurance-news-sns/data/cron.log 2>&1
+  ```
+- systemd: `deploy/systemd/news-alert-scheduler.service`를
+  `/etc/systemd/system/`에 복사(경로/`User=` 수정 후) →
+  `systemctl enable --now news-alert-scheduler`
+  (내부적으로 `scripts/scheduler.py`의 APScheduler가 1시간 간격을 관리한다)
+
+**웹페이지 실행 — 프로덕션 WSGI 서버(gunicorn)로:**
+
+```bash
+pip install -e ".[prod]"
+gunicorn --bind 0.0.0.0:8000 "news_alert.web.app:create_app()"
 ```
-0 * * * * /path/to/insurance-news-sns/scripts/cron_run.sh >> /path/to/insurance-news-sns/data/cron.log 2>&1
-```
+
+또는 `deploy/systemd/news-alert-web.service`를 등록해 상시 실행하고, 앞단에
+nginx 등 리버스 프록시를 붙여 도메인/HTTPS를 연결한다.
+
+### 옵션 B: GitHub Actions 스케줄
+
+`.github/workflows/summarize.yml`이 **매시 정각(UTC)** `summarize_job`을 자동
+실행한다. 웹페이지를 굳이 상시 호스팅할 필요 없이 "요약 결과가 계속 쌓이게만"
+하고 싶을 때 적합하다.
+
+- 저장소 Settings → Secrets and variables → Actions에 `ANTHROPIC_API_KEY`를 등록해야 한다.
+- GitHub Actions 러너는 매 실행마다 새로 초기화되므로, 중복 방지 DB와 요약
+  결과(`data/news_alert.db`)가 사라지지 않도록 `actions/cache`로 실행 간에
+  이어받는다 (워크플로 안에 이미 구성되어 있다).
+- 수동 실행은 GitHub 저장소 Actions 탭 → "Summarize Insurance News" →
+  "Run workflow"(`workflow_dispatch`)로 가능하다.
+- **주의**: Actions 캐시는 웹페이지가 직접 읽을 수 있는 위치가 아니다. 이
+  방식만으로는 웹페이지를 서비스할 수 없고, 요약 데이터를 계속 쌓아두는
+  용도(추후 다른 곳에서 조회)로만 쓴다. 실제로 웹페이지까지 띄우려면
+  옵션 A(서버)를 병행해야 한다.

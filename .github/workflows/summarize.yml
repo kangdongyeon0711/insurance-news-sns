@@ -1,0 +1,35 @@
+name: Summarize Insurance News
+
+# 1시간마다(매시 정각, UTC 기준) 수집 -> 필터 -> 요약 -> 저장을 자동 실행한다.
+# GitHub Actions 러너는 매 실행마다 새로 초기화되므로, 중복 방지 DB와
+# 요약 결과(data/news_alert.db)를 actions/cache로 실행 간에 이어받는다.
+on:
+  schedule:
+    - cron: "0 * * * *"
+  workflow_dispatch: {}
+
+jobs:
+  summarize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Restore data/ (dedup DB + 요약 결과)
+        uses: actions/cache@v4
+        with:
+          path: data
+          key: news-alert-data-${{ github.run_id }}
+          restore-keys: |
+            news-alert-data-
+
+      - name: Install dependencies
+        run: pip install -e .
+
+      - name: Run summarize job
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python -m news_alert.jobs.summarize_job

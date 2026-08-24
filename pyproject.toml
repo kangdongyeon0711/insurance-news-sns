@@ -18,6 +18,9 @@ dev = [
     "pytest>=8.0",
     "pytest-mock>=3.14",
 ]
+prod = [
+    "gunicorn>=22.0",
+]
 
 [build-system]
 requires = ["setuptools>=68"]
