@@ -14,17 +14,39 @@ cp .env.example .env  # 값 채워넣기
 python -m news_alert.main
 ```
 
-## Mock 모드 (API 키·네트워크 없이 전체 파이프라인 시연)
+### 환경변수 설정 방법: `.env` 파일 (권장)
 
-`.env`의 `USE_MOCK=true`로 설정하면 수집기(`NaverNewsRssCollector`,
-`PressRssCollector`)와 요약기(`LlmSummarizer`)가 실제 네트워크·Claude API를
-전혀 호출하지 않고 미리 만들어둔 샘플 데이터를 반환한다. `ANTHROPIC_API_KEY`도
-필요 없다 — 로컬 개발, 데모, 오프라인 환경에서 파이프라인 전체를 그대로
-실행해볼 수 있다.
+`jobs/*.py`, `web/app.py`, `main.py` 등 모든 실행 진입점은 시작할 때
+`utils/env.py`의 `load_env()`(`python-dotenv`)로 저장소 루트의 `.env` 파일을
+자동으로 읽어 환경변수로 설정한다. 즉 **`.env` 파일에 값을 적어두기만 하면
+되고, 매번 셸에서 `export`(bash)나 `$env:`(PowerShell)로 직접 설정할 필요가
+없다.** 이미 셸에 설정된 값이 있으면 그게 우선한다(`.env`는 덮어쓰지 않음).
 
 ```bash
-USE_MOCK=true python -m news_alert.jobs.summarize_job   # 수집→필터→요약→저장 전부 mock
-USE_MOCK=true python scripts/run_web.py                 # 조회 웹페이지도 그대로 동작
+cp .env.example .env
+# .env 파일을 열어 USE_MOCK, ANTHROPIC_API_KEY 등 값을 채운다
+python -m news_alert.jobs.summarize_job   # 셸 환경변수 없이도 .env 값 그대로 사용됨
+```
+
+## Mock 모드 (API 키·네트워크 없이 전체 파이프라인 시연)
+
+`.env`(또는 셸 환경변수)에서 `USE_MOCK=true`로 설정하면 수집기
+(`NaverNewsRssCollector`, `PressRssCollector`)와 요약기(`LlmSummarizer`)가
+실제 네트워크·Claude API를 전혀 호출하지 않고 미리 만들어둔 샘플 데이터를
+반환한다. `ANTHROPIC_API_KEY`도 필요 없다 — 로컬 개발, 데모, 오프라인 환경에서
+파이프라인 전체를 그대로 실행해볼 수 있다.
+
+```bash
+# .env에 USE_MOCK=true를 넣어뒀다면 그냥:
+python -m news_alert.jobs.summarize_job   # 수집→필터→요약→저장 전부 mock
+python scripts/run_web.py                 # 조회 웹페이지도 그대로 동작
+
+# .env 대신 그 실행 1회에만 켜고 싶다면 (bash/macOS/Linux):
+USE_MOCK=true python -m news_alert.jobs.summarize_job
+
+# Windows PowerShell에서 셸 변수로 그 세션에만 켜고 싶다면:
+$env:USE_MOCK = "true"
+python -m news_alert.jobs.summarize_job
 ```
 
 - 수집기는 `mocks/sample_data.py`에 정의된 6개 샘플 기사(추적 대상 보험사명 포함)를 반환한다.
@@ -34,6 +56,9 @@ USE_MOCK=true python scripts/run_web.py                 # 조회 웹페이지도
 - 각 모듈은 mock 모드 진입 시 로그로 남긴다(`USE_MOCK=true — ... 샘플 데이터를 반환합니다`).
   운영 환경에서 실수로 켜져 있으면 로그에서 바로 드러난다.
 - `USE_MOCK`이 없거나 `false`/`0`/`no`/`off`(대소문자 무관)이면 기존과 동일하게 실제 API/네트워크를 호출한다.
+- **실전 전환**: `.env`에서 `USE_MOCK=false`로 바꾸고(또는 그 줄을 지우고)
+  `ANTHROPIC_API_KEY=sk-ant-...`에 실제 키를 채우면 된다. 다음 실행부터
+  실제 네이버/언론사 RSS와 Claude API를 호출한다 — 코드 수정은 필요 없다.
 
 ## 테스트
 
@@ -61,6 +86,7 @@ pytest tests/ -v
 | `utils/logger.py` | `test_logger.py` | 로거 이름/레벨, 핸들러 중복 방지 |
 | `utils/feed.py` | `test_feed_utils.py` | HTML 제거, 발행시각 파싱 |
 | `utils/mock.py` | `test_mock_util.py` | `USE_MOCK` 값 파싱(true/1/yes/on 등, 대소문자·공백 무관) |
+| `utils/env.py` | `test_env_loader.py` | `.env` 파일 자동 로드, 기존 셸 환경변수 미덮어쓰기, 파일 없을 때 무시 |
 | `models/article.py` | `test_models.py` | `SummarizedArticle` 기본값(mutable default 공유 버그 가드) |
 
 mock 모드(`USE_MOCK=true`) 동작은 `test_naver_collector.py`,

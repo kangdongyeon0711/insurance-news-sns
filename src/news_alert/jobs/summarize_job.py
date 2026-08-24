@@ -9,7 +9,10 @@ from news_alert.storage.article_store import ArticleStore
 from news_alert.storage.sqlite_store import SqliteStore
 from news_alert.summarizers.llm_summarizer import LlmSummarizer
 from news_alert.utils.config_loader import load_yaml
+from news_alert.utils.env import load_env
 from news_alert.utils.logger import get_logger
+
+load_env()
 
 logger = get_logger(__name__)
 

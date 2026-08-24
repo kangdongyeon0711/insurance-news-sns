@@ -5,6 +5,9 @@ from flask import Flask, jsonify, render_template, request
 from news_alert.filters.insurer_filter import load_insurer_names
 from news_alert.models.article import SummarizedArticle
 from news_alert.storage.article_store import ArticleStore
+from news_alert.utils.env import load_env
+
+load_env()
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 CONFIG_DIR = REPO_ROOT / "config"

@@ -2,7 +2,10 @@ from pathlib import Path
 
 from news_alert.pipeline import Pipeline
 from news_alert.utils.config_loader import load_yaml
+from news_alert.utils.env import load_env
 from news_alert.utils.logger import get_logger
+
+load_env()
 
 logger = get_logger(__name__)
 
