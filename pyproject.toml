@@ -1,0 +1,24 @@
+[project]
+name = "news-alert"
+version = "0.1.0"
+description = "보험사 관련 뉴스 자동 요약·알림 서비스"
+requires-python = ">=3.11"
+dependencies = [
+    "pyyaml>=6.0",
+    "feedparser>=6.0",
+    "requests>=2.31",
+    "anthropic>=0.40",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-mock>=3.14",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]

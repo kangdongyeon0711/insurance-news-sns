@@ -1,0 +1,8 @@
+# 수집 대상 뉴스 소스
+rss_feeds:
+  - name: "보험신문"
+    url: "https://example.com/insurance-news/rss"
+  - name: "금융위원회 보도자료"
+    url: "https://example.com/fsc/rss"
+
+api_sources: []
