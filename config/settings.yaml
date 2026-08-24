@@ -3,6 +3,15 @@ pipeline:
   run_interval_minutes: 60
   log_level: INFO
 
+naver_news:
+  keywords:
+    - 삼성화재
+    - DB손해보험
+    - 현대해상
+    - KB손해보험
+    - 메리츠화재
+    - 보험사
+
 summarizer:
   model: claude-sonnet-5
   max_summary_chars: 200
