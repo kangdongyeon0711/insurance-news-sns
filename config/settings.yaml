@@ -13,8 +13,8 @@ naver_news:
     - 보험사
 
 summarizer:
-  model: claude-sonnet-5
-  max_summary_chars: 200
+  model: claude-opus-5
+  max_summary_lines: 3
 
 notifiers:
   - slack

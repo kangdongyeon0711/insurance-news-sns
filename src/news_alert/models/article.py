@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import datetime
 
 
@@ -15,3 +15,5 @@ class Article:
 class SummarizedArticle:
     article: Article
     summary: str
+    insurers: list[str] = field(default_factory=list)
+    keywords: list[str] = field(default_factory=list)

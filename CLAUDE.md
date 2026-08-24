@@ -71,7 +71,7 @@ insurance-news-sns/
 
 - `Article` (`models/article.py`): 수집 직후의 원본 표현. `source`, `title`, `url`, `published_at`, `content` 필수.
 - `Article` 리스트가 필터를 통과하며 걸러지고, 통과한 것만 다음 단계로 전달된다.
-- 요약 단계는 `Article` → `SummarizedArticle`(원본 + `summary` 필드) 변환을 수행한다.
+- 요약 단계는 `Article` → `SummarizedArticle`(원본 + `summary`/`insurers`/`keywords` 필드) 변환을 수행한다.
 - 발송 단계는 `SummarizedArticle` 리스트를 받아 채널별 포맷으로 변환 후 전송하고, 성공한 기사의 URL을 `storage`에 기록한다.
 - 각 단계 간 데이터는 파이썬 객체(dataclass/pydantic)로만 주고받는다. 단계 사이에 직접 파일 I/O나 전역 상태를 두지 않는다.
 

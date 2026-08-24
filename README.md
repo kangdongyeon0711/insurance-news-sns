@@ -50,6 +50,36 @@ matched = f.apply(articles)
 다른 표기도 동일하게 인식한다. 단일 문자열에 대해 직접 검사하려면
 `mentions_insurer(text, insurer_names)` 함수를 사용한다.
 
+## 뉴스 요약 (Claude API)
+
+`LlmSummarizer`(`summarizers/llm_summarizer.py`)는 Claude API(`messages.parse` +
+Pydantic 구조화 출력)로 기사 본문을 3줄 이내로 요약하고, 언급된 보험사명과 핵심
+키워드를 함께 추출한다.
+
+```python
+from news_alert.summarizers.llm_summarizer import LlmSummarizer
+
+summarizer = LlmSummarizer()  # 기본 모델: claude-opus-5
+result = summarizer.summarize(article)
+
+print(result.summary)    # 3줄 이내 요약 (줄바꿈으로 구분)
+print(result.insurers)   # 예: ["삼성생명"]
+print(result.keywords)   # 예: ["3분기 실적", "배당"]
+```
+
+**API 키는 반드시 `.env`의 `ANTHROPIC_API_KEY` 환경변수로 관리한다. 코드에
+하드코딩하지 않는다.** `LlmSummarizer`는 이 환경변수가 비어 있으면 즉시
+`RuntimeError`를 던져 하드코딩 없이도 설정 누락을 바로 알 수 있게 한다.
+
+```bash
+cp .env.example .env
+# .env 파일을 열어 ANTHROPIC_API_KEY=sk-ant-... 값을 채운다
+```
+
+시스템 프롬프트는 "너는 보험업계 뉴스 요약 전문가야. 핵심 사실만 간결하게 3줄
+이내로 요약해. ... 보험사명과 핵심 키워드를 함께 추출해" 형태로
+`llm_summarizer.py`의 `SYSTEM_PROMPT`에 정의되어 있다.
+
 ## 스케줄러 (1시간마다 자동 실행)
 
 **APScheduler로 실행 (프로세스를 계속 띄워두는 방식):**
