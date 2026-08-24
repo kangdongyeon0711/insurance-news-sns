@@ -1,2 +1,33 @@
 name,url
-예시언론사,https://example.com/rss
+한국경제 전체뉴스,https://www.hankyung.com/feed/all-news
+한국경제 증권,https://www.hankyung.com/feed/finance
+한국경제 경제,https://www.hankyung.com/feed/economy
+한국경제 부동산,https://www.hankyung.com/feed/realestate
+한국경제 IT,https://www.hankyung.com/feed/it
+한국경제 정치,https://www.hankyung.com/feed/politics
+한국경제 국제,https://www.hankyung.com/feed/international
+한국경제 사회,https://www.hankyung.com/feed/society
+한국경제 생활,https://www.hankyung.com/feed/life
+한국경제 오피니언,https://www.hankyung.com/feed/opinion
+한국경제 스포츠,https://www.hankyung.com/feed/sports
+한국경제 연예,https://www.hankyung.com/feed/entertainment
+한국경제 VIDEO,https://www.hankyung.com/feed/video
+연합인포맥스 전체기사,https://news.einfomax.co.kr/rss/allArticle.xml
+연합인포맥스 인기기사,https://news.einfomax.co.kr/rss/clickTop.xml
+연합인포맥스 증권,https://news.einfomax.co.kr/rss/S1N2.xml
+연합인포맥스 IB/기업,https://news.einfomax.co.kr/rss/S1N7.xml
+연합인포맥스 칼럼/이슈,https://news.einfomax.co.kr/rss/S1N9.xml
+연합인포맥스 시사용어,https://news.einfomax.co.kr/rss/S1N10.xml
+연합인포맥스 인물/동정,https://news.einfomax.co.kr/rss/S1N11.xml
+연합인포맥스 외부기고,https://news.einfomax.co.kr/rss/S1N12.xml
+연합인포맥스 기획기사,https://news.einfomax.co.kr/rss/S1N13.xml
+연합인포맥스 임시메인(2013),https://news.einfomax.co.kr/rss/S1N14.xml
+연합인포맥스 정책/금융,https://news.einfomax.co.kr/rss/S1N15.xml
+연합인포맥스 채권/외환,https://news.einfomax.co.kr/rss/S1N16.xml
+연합인포맥스 부동산,https://news.einfomax.co.kr/rss/S1N17.xml
+연합인포맥스 기고,https://news.einfomax.co.kr/rss/S1N19.xml
+연합인포맥스 해외주식,https://news.einfomax.co.kr/rss/S1N21.xml
+연합인포맥스 ad,https://news.einfomax.co.kr/rss/S1N22.xml
+연합인포맥스 국제뉴스,https://news.einfomax.co.kr/rss/S1N23.xml
+연합인포맥스 영상,https://news.einfomax.co.kr/rss/S1N24.xml
+연합인포맥스 인포X 보도자료,https://news.einfomax.co.kr/rss/S1N25.xml
