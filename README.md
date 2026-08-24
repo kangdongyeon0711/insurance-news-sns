@@ -80,7 +80,40 @@ cp .env.example .env
 이내로 요약해. ... 보험사명과 핵심 키워드를 함께 추출해" 형태로
 `llm_summarizer.py`의 `SYSTEM_PROMPT`에 정의되어 있다.
 
+## 조회 웹페이지 (요약된 기사 최신순 + 보험사 필터)
+
+`jobs/summarize_job.py`가 저장한 요약 결과를 최신순으로 보여주고 보험사별로
+필터링하는 Flask 웹페이지다. 파이프라인의 5번째 단계가 아니라 저장된 결과를
+읽기만 하는 별도 뷰어이며, 자세한 설명은 [CLAUDE.md](./CLAUDE.md#조회-웹페이지-파이프라인-외부)를 참고한다.
+
+```bash
+python scripts/run_web.py
+# 또는
+flask --app news_alert.web.app run
+```
+
+`http://127.0.0.1:5000`에 접속하면:
+- 기사 목록이 `published_at` 최신순으로 정렬되어 카드 형태로 표시된다.
+- 상단 드롭다운으로 `config/insurers.json`에 등록된 20개 보험사 중 하나를
+  선택해 필터링할 수 있다 ("전체" 선택 시 전체 표시).
+- 각 카드는 제목(원문 링크), 언론사·발행시각, 3줄 요약, 보험사/키워드 태그를 보여준다.
+
+REST API만 필요하면 `GET /api/articles?insurer=삼성생명&limit=50`,
+`GET /api/insurers`를 직접 호출해도 된다.
+
+## 전체 파이프라인 실행 (수집 → 필터 → 요약 → 저장)
+
+`jobs/summarize_job.py`는 수집(네이버 뉴스 검색 RSS + 언론사 RSS) → 중복 제거 →
+보험사명 필터링(`insurers.json`) → Claude 3줄 요약 → `ArticleStore` 저장까지
+한 번에 수행한다. `ANTHROPIC_API_KEY`가 `.env`에 설정되어 있어야 한다.
+
+```bash
+python -m news_alert.jobs.summarize_job
+```
+
 ## 스케줄러 (1시간마다 자동 실행)
+
+`summarize_job`을 1시간마다 실행해 조회 웹페이지의 데이터를 최신 상태로 유지한다.
 
 **APScheduler로 실행 (프로세스를 계속 띄워두는 방식):**
 

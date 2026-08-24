@@ -53,17 +53,30 @@ insurance-news-sns/
 │   ├── models/
 │   │   └── article.py        # Article, SummarizedArticle 등 공용 데이터 모델
 │   ├── storage/
-│   │   └── sqlite_store.py   # 발송 이력 저장 (중복 발송 방지용)
+│   │   ├── sqlite_store.py   # 수집 중복 방지용 (seen_articles)
+│   │   └── article_store.py  # 요약 결과 저장/조회용 (summarized_articles)
+│   ├── jobs/                  # 여러 단계를 이어붙인 실행 단위
+│   │   ├── collect_job.py    #    수집 -> 중복 제거
+│   │   └── summarize_job.py  #    수집 -> 중복 제거 -> 보험사 필터 -> 요약 -> 저장
+│   ├── web/                   # 요약된 기사 조회 웹페이지 (Flask, 파이프라인 밖의 뷰어)
+│   │   ├── app.py            #    create_app(), /api/articles, /api/insurers
+│   │   ├── templates/
+│   │   └── static/
 │   └── utils/
 │       ├── config_loader.py  # YAML 설정 로더
 │       └── logger.py
 ├── scripts/
-│   └── run_pipeline.py       # 크론/스케줄러에서 호출하는 실행 스크립트
+│   ├── scheduler.py           # APScheduler로 summarize_job을 1시간마다 실행
+│   ├── cron_run.sh            # cron으로 summarize_job을 실행하는 래퍼
+│   └── run_web.py             # 조회 웹페이지 로컬 실행
 ├── tests/
 │   ├── test_collectors.py
 │   ├── test_filters.py
 │   ├── test_summarizers.py
-│   └── test_notifiers.py
+│   ├── test_notifiers.py
+│   ├── test_article_store.py
+│   ├── test_summarize_job.py
+│   └── test_web_app.py
 └── data/                      # 런타임 산출물 (sqlite db 등, git 추적 안 함)
 ```
 
@@ -74,6 +87,14 @@ insurance-news-sns/
 - 요약 단계는 `Article` → `SummarizedArticle`(원본 + `summary`/`insurers`/`keywords` 필드) 변환을 수행한다.
 - 발송 단계는 `SummarizedArticle` 리스트를 받아 채널별 포맷으로 변환 후 전송하고, 성공한 기사의 URL을 `storage`에 기록한다.
 - 각 단계 간 데이터는 파이썬 객체(dataclass/pydantic)로만 주고받는다. 단계 사이에 직접 파일 I/O나 전역 상태를 두지 않는다.
+
+## 조회 웹페이지 (파이프라인 외부)
+
+`web/app.py`(Flask)는 파이프라인의 5번째 단계가 아니라, `jobs/summarize_job.py`가
+`storage/article_store.py`에 저장해 둔 요약 결과를 최신순으로 보여주고 보험사별로
+필터링하는 **읽기 전용 뷰어**다. 파이프라인은 여전히 4단계(수집→필터링→요약→발송)로
+고정이며, 이 웹페이지는 그 산출물을 조회하는 별도 소비자일 뿐이다. `python
+scripts/run_web.py`로 로컬에서 띄운다.
 
 ## 설계 원칙
 

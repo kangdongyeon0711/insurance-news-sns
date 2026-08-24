@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>보험 뉴스 요약</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>보험 뉴스 요약</h1>
+    <div class="controls">
+      <label for="insurer-filter">보험사</label>
+      <select id="insurer-filter">
+        <option value="">전체</option>
+      </select>
+      <span id="article-count" class="count"></span>
+    </div>
+  </header>
+  <main id="article-list" class="article-list">
+    <p class="status">불러오는 중...</p>
+  </main>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
