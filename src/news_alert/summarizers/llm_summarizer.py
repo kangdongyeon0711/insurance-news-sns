@@ -1,11 +1,14 @@
 import os
+from pathlib import Path
 
 import anthropic
 from pydantic import BaseModel
 
+from news_alert.filters.insurer_filter import load_insurer_names, normalize_for_match
 from news_alert.models.article import Article, SummarizedArticle
 from news_alert.summarizers.base import BaseSummarizer
 from news_alert.utils.logger import get_logger
+from news_alert.utils.mock import is_mock_mode
 
 logger = get_logger(__name__)
 
@@ -14,6 +17,8 @@ SYSTEM_PROMPT = (
     "3줄 이내로 요약해. 각 줄은 완결된 한 문장으로 쓰고, 본문에 없는 추측이나 "
     "의견은 덧붙이지 마. 이어서 기사에 언급된 보험사명과 핵심 키워드를 함께 추출해."
 )
+
+DEFAULT_INSURERS_PATH = Path(__file__).resolve().parents[3] / "config" / "insurers.json"
 
 
 class _ArticleAnalysis(BaseModel):
@@ -27,20 +32,34 @@ class LlmSummarizer(BaseSummarizer):
 
     API 키는 코드에 하드코딩하지 않는다. ANTHROPIC_API_KEY 환경변수(.env)에서
     anthropic.Anthropic()이 자동으로 읽어온다.
+
+    USE_MOCK 환경변수가 참이면(mock 모드) Claude API를 전혀 호출하지 않고
+    미리 만들어둔 규칙 기반 요약을 반환한다 — API 키 없이도 파이프라인을
+    끝까지 시연·테스트할 수 있다.
     """
 
     def __init__(self, model: str = "claude-opus-5", max_summary_lines: int = 3):
+        self.model = model
+        self.max_summary_lines = max_summary_lines
+        self.mock_mode = is_mock_mode()
+
+        if self.mock_mode:
+            logger.info("USE_MOCK=true — LlmSummarizer가 Claude API를 호출하지 않습니다.")
+            self.client = None
+            return
+
         if not os.environ.get("ANTHROPIC_API_KEY"):
             raise RuntimeError(
                 "ANTHROPIC_API_KEY 환경변수가 설정되지 않았습니다. "
                 ".env 파일에 값을 채운 뒤 다시 시도하세요. "
                 "API 키를 코드에 직접 입력하지 마세요."
             )
-        self.model = model
-        self.max_summary_lines = max_summary_lines
         self.client = anthropic.Anthropic()
 
     def summarize(self, article: Article) -> SummarizedArticle:
+        if self.mock_mode:
+            return self._mock_summarize(article)
+
         response = self.client.messages.parse(
             model=self.model,
             max_tokens=1024,
@@ -66,3 +85,25 @@ class LlmSummarizer(BaseSummarizer):
             insurers=analysis.insurers,
             keywords=analysis.keywords,
         )
+
+    def _mock_summarize(self, article: Article) -> SummarizedArticle:
+        summary_lines = [
+            f"[MOCK] {article.title}",
+            f"{article.source} 보도, {article.published_at.date().isoformat()} 기준.",
+            (f"{article.content[:60]}..." if article.content else "본문 요약 정보 없음 (mock)."),
+        ]
+        return SummarizedArticle(
+            article=article,
+            summary="\n".join(summary_lines[: self.max_summary_lines]),
+            insurers=self._detect_insurers(article),
+            keywords=["mock", "샘플데이터"],
+        )
+
+    @staticmethod
+    def _detect_insurers(article: Article) -> list[str]:
+        try:
+            insurer_names = load_insurer_names(DEFAULT_INSURERS_PATH)
+        except OSError:
+            return []
+        haystack = normalize_for_match(f"{article.title} {article.content}")
+        return [name for name in insurer_names if normalize_for_match(name) in haystack]

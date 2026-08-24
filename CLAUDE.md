@@ -68,21 +68,17 @@ insurance-news-sns/
 │   │   ├── app.py            #    create_app(), /api/articles, /api/insurers
 │   │   ├── templates/
 │   │   └── static/
+│   ├── mocks/
+│   │   └── sample_data.py    # USE_MOCK=true일 때 수집기가 반환하는 샘플 기사
 │   └── utils/
 │       ├── config_loader.py  # YAML 설정 로더
-│       └── logger.py
+│       ├── logger.py
+│       └── mock.py           # is_mock_mode() — USE_MOCK 환경변수 판정
 ├── scripts/
 │   ├── scheduler.py           # APScheduler로 summarize_job을 1시간마다 실행
 │   ├── cron_run.sh            # cron으로 summarize_job을 실행하는 래퍼
 │   └── run_web.py             # 조회 웹페이지 로컬 실행
-├── tests/
-│   ├── test_collectors.py
-│   ├── test_filters.py
-│   ├── test_summarizers.py
-│   ├── test_notifiers.py
-│   ├── test_article_store.py
-│   ├── test_summarize_job.py
-│   └── test_web_app.py
+├── tests/                      # 모듈별 테스트 (구성표는 README.md의 "테스트" 절 참고)
 └── data/                      # 런타임 산출물 (sqlite db 등, git 추적 안 함)
 ```
 
@@ -109,6 +105,7 @@ scripts/run_web.py`로 로컬에서 띄운다.
 - **설정과 코드 분리**: 보험사명, 키워드, RSS 소스 목록은 코드에 하드코딩하지 않고 `config/*.yaml`에 둔다.
 - **비밀값은 `.env`로 관리**: Slack Webhook, 이메일 SMTP 자격, LLM API 키 등은 `.env`에서 읽는다. `.env.example`을 최신 상태로 유지한다.
 - **각 단계는 실패해도 파이프라인 전체를 죽이지 않는다**: 개별 기사 처리 실패는 로깅 후 스킵, 파이프라인은 계속 진행한다.
+- **외부 API/네트워크를 호출하는 모듈은 mock 모드를 지원한다**: `utils/mock.py`의 `is_mock_mode()`(`USE_MOCK` 환경변수)로 판단하며, mock일 때는 `mocks/sample_data.py`의 샘플 데이터를 반환하고 실제 호출은 절대 하지 않는다. 새 Collector/Summarizer/Notifier를 추가할 때도 이 패턴을 따른다.
 
 ## 실행 방법
 

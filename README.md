@@ -14,6 +14,27 @@ cp .env.example .env  # 값 채워넣기
 python -m news_alert.main
 ```
 
+## Mock 모드 (API 키·네트워크 없이 전체 파이프라인 시연)
+
+`.env`의 `USE_MOCK=true`로 설정하면 수집기(`NaverNewsRssCollector`,
+`PressRssCollector`)와 요약기(`LlmSummarizer`)가 실제 네트워크·Claude API를
+전혀 호출하지 않고 미리 만들어둔 샘플 데이터를 반환한다. `ANTHROPIC_API_KEY`도
+필요 없다 — 로컬 개발, 데모, 오프라인 환경에서 파이프라인 전체를 그대로
+실행해볼 수 있다.
+
+```bash
+USE_MOCK=true python -m news_alert.jobs.summarize_job   # 수집→필터→요약→저장 전부 mock
+USE_MOCK=true python scripts/run_web.py                 # 조회 웹페이지도 그대로 동작
+```
+
+- 수집기는 `mocks/sample_data.py`에 정의된 6개 샘플 기사(추적 대상 보험사명 포함)를 반환한다.
+- `LlmSummarizer`는 Claude를 호출하는 대신 `[MOCK]` 접두사가 붙은 규칙 기반
+  요약을 생성하고, `config/insurers.json` 목록과 대조해 실제로 언급된
+  보험사명을 그대로 추출한다 (키워드는 `["mock", "샘플데이터"]` 고정값).
+- 각 모듈은 mock 모드 진입 시 로그로 남긴다(`USE_MOCK=true — ... 샘플 데이터를 반환합니다`).
+  운영 환경에서 실수로 켜져 있으면 로그에서 바로 드러난다.
+- `USE_MOCK`이 없거나 `false`/`0`/`no`/`off`(대소문자 무관)이면 기존과 동일하게 실제 API/네트워크를 호출한다.
+
 ## 테스트
 
 ```bash
@@ -39,7 +60,12 @@ pytest tests/ -v
 | `utils/config_loader.py` | `test_config_loader.py` | YAML 로딩 |
 | `utils/logger.py` | `test_logger.py` | 로거 이름/레벨, 핸들러 중복 방지 |
 | `utils/feed.py` | `test_feed_utils.py` | HTML 제거, 발행시각 파싱 |
+| `utils/mock.py` | `test_mock_util.py` | `USE_MOCK` 값 파싱(true/1/yes/on 등, 대소문자·공백 무관) |
 | `models/article.py` | `test_models.py` | `SummarizedArticle` 기본값(mutable default 공유 버그 가드) |
+
+mock 모드(`USE_MOCK=true`) 동작은 `test_naver_collector.py`,
+`test_press_rss_collector.py`, `test_summarizers.py`에 각각 "실제 API/네트워크를
+호출하지 않고 샘플 데이터를 반환하는지" 검증하는 테스트가 추가되어 있다.
 
 `collectors/rss_collector.py`, `collectors/api_collector.py`, `filters/keyword_filter.py`,
 `notifiers/*`는 아직 인터페이스만 정의된 미구현 스텁이라(실제 로직이 없어 검증할

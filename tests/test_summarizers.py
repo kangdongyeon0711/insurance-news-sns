@@ -20,11 +20,13 @@ def _article() -> Article:
 
 def test_init_raises_without_api_key(monkeypatch):
     monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    monkeypatch.delenv("USE_MOCK", raising=False)
     with pytest.raises(RuntimeError, match="ANTHROPIC_API_KEY"):
         LlmSummarizer()
 
 
 def test_summarize_calls_claude_with_system_prompt_and_parses_result(monkeypatch):
+    monkeypatch.delenv("USE_MOCK", raising=False)
     monkeypatch.setenv("ANTHROPIC_API_KEY", "test-key")
 
     analysis = _ArticleAnalysis(
@@ -57,6 +59,7 @@ def test_summarize_calls_claude_with_system_prompt_and_parses_result(monkeypatch
 
 
 def test_summarize_truncates_to_max_summary_lines(monkeypatch):
+    monkeypatch.delenv("USE_MOCK", raising=False)
     monkeypatch.setenv("ANTHROPIC_API_KEY", "test-key")
 
     analysis = _ArticleAnalysis(
@@ -75,3 +78,26 @@ def test_summarize_truncates_to_max_summary_lines(monkeypatch):
         result = summarizer.summarize(_article())
 
     assert result.summary == "한 줄\n두 줄\n세 줄"
+
+
+def test_init_does_not_require_api_key_in_mock_mode(monkeypatch):
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    monkeypatch.setenv("USE_MOCK", "true")
+
+    summarizer = LlmSummarizer()
+
+    assert summarizer.client is None
+
+
+def test_summarize_in_mock_mode_never_calls_claude_api(monkeypatch):
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    monkeypatch.setenv("USE_MOCK", "true")
+
+    with patch("news_alert.summarizers.llm_summarizer.anthropic.Anthropic") as mock_anthropic_cls:
+        summarizer = LlmSummarizer(max_summary_lines=2)
+        result = summarizer.summarize(_article())
+
+    mock_anthropic_cls.assert_not_called()
+    assert result.summary.count("\n") == 1  # max_summary_lines=2 -> 2줄
+    assert "삼성생명" in result.insurers
+    assert result.article.title == "삼성생명, 3분기 실적 발표"

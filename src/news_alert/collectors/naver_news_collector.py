@@ -1,9 +1,11 @@
 from urllib.parse import urlencode, urlparse
 
 from news_alert.collectors.base import BaseCollector
+from news_alert.mocks.sample_data import naver_sample_articles
 from news_alert.models.article import Article
 from news_alert.utils.feed import fetch_feed, parse_published_at, strip_html
 from news_alert.utils.logger import get_logger
+from news_alert.utils.mock import is_mock_mode
 
 logger = get_logger(__name__)
 
@@ -29,6 +31,10 @@ class NaverNewsRssCollector(BaseCollector):
         self.timeout = timeout
 
     def collect(self) -> list[Article]:
+        if is_mock_mode():
+            logger.info("USE_MOCK=true — 네이버 뉴스 검색 RSS 대신 샘플 데이터를 반환합니다.")
+            return naver_sample_articles()
+
         articles: dict[str, Article] = {}
         for keyword in self.keywords:
             query = urlencode({"where": "rss", "query": keyword})

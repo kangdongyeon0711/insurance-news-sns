@@ -2,9 +2,11 @@ import csv
 from pathlib import Path
 
 from news_alert.collectors.base import BaseCollector
+from news_alert.mocks.sample_data import press_sample_articles
 from news_alert.models.article import Article
 from news_alert.utils.feed import fetch_feed, parse_published_at, strip_html
 from news_alert.utils.logger import get_logger
+from news_alert.utils.mock import is_mock_mode
 
 logger = get_logger(__name__)
 
@@ -20,6 +22,10 @@ class PressRssCollector(BaseCollector):
         self.timeout = timeout
 
     def collect(self) -> list[Article]:
+        if is_mock_mode():
+            logger.info("USE_MOCK=true — 언론사 RSS 피드 대신 샘플 데이터를 반환합니다.")
+            return press_sample_articles()
+
         articles: list[Article] = []
         for press_name, feed_url in self._read_feed_list():
             try:
