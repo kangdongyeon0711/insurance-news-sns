@@ -32,6 +32,24 @@ python -m news_alert.main
 python -m news_alert.jobs.collect_job
 ```
 
+## 보험사명 필터링
+
+`config/insurers.json`에 생명보험사 10개, 손해보험사 10개(총 20개)의 정식 명칭이
+카테고리별로 등록되어 있다. `InsurerFilter`(`filters/insurer_filter.py`)는 이 목록에
+있는 보험사명이 기사 제목 또는 본문에 포함된 기사만 남긴다.
+
+```python
+from pathlib import Path
+from news_alert.filters.insurer_filter import InsurerFilter
+
+f = InsurerFilter(insurers_path=Path("config/insurers.json"))
+matched = f.apply(articles)
+```
+
+매칭 전 문자열의 공백을 모두 제거하므로 `삼성생명`과 `삼성 생명`처럼 띄어쓰기가
+다른 표기도 동일하게 인식한다. 단일 문자열에 대해 직접 검사하려면
+`mentions_insurer(text, insurer_names)` 함수를 사용한다.
+
 ## 스케줄러 (1시간마다 자동 실행)
 
 **APScheduler로 실행 (프로세스를 계속 띄워두는 방식):**
