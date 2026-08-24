@@ -28,9 +28,9 @@ USE_MOCK=true python scripts/run_web.py                 # 조회 웹페이지도
 ```
 
 - 수집기는 `mocks/sample_data.py`에 정의된 6개 샘플 기사(추적 대상 보험사명 포함)를 반환한다.
-- `LlmSummarizer`는 Claude를 호출하는 대신 `[MOCK]` 접두사가 붙은 규칙 기반
-  요약을 생성하고, `config/insurers.json` 목록과 대조해 실제로 언급된
-  보험사명을 그대로 추출한다 (키워드는 `["mock", "샘플데이터"]` 고정값).
+- `LlmSummarizer`는 Claude를 호출하는 대신 **본문 앞 100자 + `...(요약 테스트)`**를
+  요약으로 반환한다. `config/insurers.json` 목록과 대조해 실제로 언급된
+  보험사명은 그대로 추출한다 (키워드는 `["mock", "샘플데이터"]` 고정값).
 - 각 모듈은 mock 모드 진입 시 로그로 남긴다(`USE_MOCK=true — ... 샘플 데이터를 반환합니다`).
   운영 환경에서 실수로 켜져 있으면 로그에서 바로 드러난다.
 - `USE_MOCK`이 없거나 `false`/`0`/`no`/`off`(대소문자 무관)이면 기존과 동일하게 실제 API/네트워크를 호출한다.

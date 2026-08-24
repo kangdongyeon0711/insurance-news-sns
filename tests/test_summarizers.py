@@ -93,11 +93,31 @@ def test_summarize_in_mock_mode_never_calls_claude_api(monkeypatch):
     monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
     monkeypatch.setenv("USE_MOCK", "true")
 
+    article = _article()
     with patch("news_alert.summarizers.llm_summarizer.anthropic.Anthropic") as mock_anthropic_cls:
-        summarizer = LlmSummarizer(max_summary_lines=2)
-        result = summarizer.summarize(_article())
+        summarizer = LlmSummarizer()
+        result = summarizer.summarize(article)
 
     mock_anthropic_cls.assert_not_called()
-    assert result.summary.count("\n") == 1  # max_summary_lines=2 -> 2줄
+    assert result.summary == f"{article.content[:100]}...(요약 테스트)"
     assert "삼성생명" in result.insurers
     assert result.article.title == "삼성생명, 3분기 실적 발표"
+
+
+def test_summarize_in_mock_mode_truncates_content_to_100_chars(monkeypatch):
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    monkeypatch.setenv("USE_MOCK", "true")
+
+    article = Article(
+        source="예시언론사",
+        title="긴 본문 테스트",
+        url="https://example.com/long",
+        published_at=datetime.now(timezone.utc),
+        content="가" * 150,
+    )
+
+    with patch("news_alert.summarizers.llm_summarizer.anthropic.Anthropic"):
+        summarizer = LlmSummarizer()
+        result = summarizer.summarize(article)
+
+    assert result.summary == ("가" * 100) + "...(요약 테스트)"

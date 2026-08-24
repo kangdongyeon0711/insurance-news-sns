@@ -87,14 +87,10 @@ class LlmSummarizer(BaseSummarizer):
         )
 
     def _mock_summarize(self, article: Article) -> SummarizedArticle:
-        summary_lines = [
-            f"[MOCK] {article.title}",
-            f"{article.source} 보도, {article.published_at.date().isoformat()} 기준.",
-            (f"{article.content[:60]}..." if article.content else "본문 요약 정보 없음 (mock)."),
-        ]
+        summary = f"{article.content[:100]}...(요약 테스트)"
         return SummarizedArticle(
             article=article,
-            summary="\n".join(summary_lines[: self.max_summary_lines]),
+            summary=summary,
             insurers=self._detect_insurers(article),
             keywords=["mock", "샘플데이터"],
         )
