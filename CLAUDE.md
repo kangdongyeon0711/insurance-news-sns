@@ -77,7 +77,11 @@ insurance-news-sns/
 ├── scripts/
 │   ├── scheduler.py           # APScheduler로 summarize_job을 1시간마다 실행
 │   ├── cron_run.sh            # cron으로 summarize_job을 실행하는 래퍼
-│   └── run_web.py             # 조회 웹페이지 로컬 실행
+│   ├── run_web.py             # 조회 웹페이지 로컬 실행 (Flask 개발 서버)
+│   ├── serve_web_waitress.py  # 조회 웹페이지 무인 자동 실행용 (waitress, Windows 호환)
+│   └── windows/                # Windows 작업 스케줄러 등록/해제 스크립트
+│       ├── register_web_task.ps1
+│       └── unregister_web_task.ps1
 ├── tests/                      # 모듈별 테스트 (구성표는 README.md의 "테스트" 절 참고)
 └── data/                      # 런타임 산출물 (sqlite db 등, git 추적 안 함)
 ```

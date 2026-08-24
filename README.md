@@ -172,12 +172,17 @@ REST API만 필요하면 `GET /api/articles?insurer=삼성생명&limit=50`,
 python -m news_alert.jobs.summarize_job
 ```
 
-## 배포 (1시간마다 자동 실행)
+## 배포 (자동 실행)
 
-`summarize_job`을 1시간마다 자동 실행해 조회 웹페이지의 데이터를 최신 상태로
-유지하는 방법은 두 가지다. **둘 다 "수집·요약 job을 자동 실행"하는 것이지,
-웹페이지 자체를 호스팅해 주지는 않는다** — 웹페이지(`web/app.py`)를 다른 사람도
-접속 가능하게 하려면 결국 상시 실행되는 서버가 필요하다.
+"자동 실행"은 사실 두 가지로 나뉜다 — ① `summarize_job`을 주기적으로 돌려
+데이터를 계속 채우는 것, ② 조회 웹페이지(`web/app.py`)를 상시 띄워두는 것.
+아래 옵션들은 이 둘 중 무엇을 자동화하는지가 다르니 표로 정리한다.
+
+| 옵션 | ① summarize_job 자동 실행 | ② 웹페이지 상시 실행 |
+|---|---|---|
+| A. 서버(AWS/개인서버) + cron/systemd | ✅ | ✅ |
+| B. GitHub Actions 스케줄 | ✅ (매시 정각) | ❌ (Actions는 웹서버 호스팅용이 아님) |
+| C. 개인 Windows PC + 작업 스케줄러 | 별도 등록 필요(옵션 A의 scheduler.py 참고) | ✅ (로그온 시 자동) |
 
 ### 옵션 A: 서버(AWS EC2 등 / 개인서버) + cron 또는 systemd
 
@@ -228,3 +233,43 @@ nginx 등 리버스 프록시를 붙여 도메인/HTTPS를 연결한다.
   방식만으로는 웹페이지를 서비스할 수 없고, 요약 데이터를 계속 쌓아두는
   용도(추후 다른 곳에서 조회)로만 쓴다. 실제로 웹페이지까지 띄우려면
   옵션 A(서버)를 병행해야 한다.
+
+### 옵션 C: 개인 Windows PC + 작업 스케줄러 (컴퓨터 켤 때 웹페이지 자동 실행)
+
+서버 없이 내 Windows PC에서 로그온할 때마다 조회 웹페이지가 자동으로 뜨게
+하는 방법이다. `scripts/run_web.py`(Flask 개발 서버, `debug=True` + 리로더)는
+사람이 지켜보는 로컬 개발용이라 무인 자동 실행에는 적합하지 않으므로, 대신
+`scripts/serve_web_waitress.py`로 [waitress](https://github.com/Pylons/waitress)
+(Windows에서도 동작하는 프로덕션 WSGI 서버 — `gunicorn`은 Windows 미지원)를
+사용한다.
+
+PowerShell에서 저장소 루트로 이동한 뒤:
+
+```powershell
+pip install -e ".[windows]"
+
+# 작업 스케줄러에 등록 — 다음 로그온부터 자동 실행됨 (관리자 권한 보통 불필요)
+powershell -ExecutionPolicy Bypass -File scripts\windows\register_web_task.ps1
+
+# 지금 바로 실행해서 확인하고 싶다면
+Start-ScheduledTask -TaskName "InsuranceNewsWebViewer"
+```
+
+- 기본적으로 콘솔 창 없이(`pythonw`) 백그라운드에서 실행된다. 문제를
+  디버깅하려면 콘솔 창이 보이도록 `-PythonExe python` 옵션을 붙여 다시
+  등록한다.
+- 콘솔 창이 없어도 로그는 `data\web_server.log`에 남는다:
+  `Get-Content data\web_server.log -Tail 20`
+- 프로세스가 죽으면 1분 간격으로 최대 3회 자동 재시작하도록 설정되어 있다.
+- 데이터를 계속 채우려면(mock이 아닌 실제 운영이라면) 이 작업과 별개로
+  `summarize_job`도 주기 실행해야 한다 — 옵션 A의 스케줄러(`scripts/scheduler.py`)를
+  같은 PC에서 함께 등록하거나, 필요하면 요청 시 작업 스케줄러용으로 추가해줄 수 있다.
+- 제거하려면: `powershell -ExecutionPolicy Bypass -File scripts\windows\unregister_web_task.ps1`
+- PowerShell 스크립트 실행이 막히는 경우("실행할 수 없습니다" 등)는 시스템
+  전체 실행 정책을 바꾸는 대신, 위처럼 `-ExecutionPolicy Bypass`를 그 실행
+  1회에만 적용한다.
+
+**GUI로 직접 설정하고 싶다면** (스크립트 대신): 시작 메뉴에서 "작업 스케줄러" 실행 →
+"작업 만들기" → 트리거: "로그온할 때" → 동작: "프로그램 시작", 프로그램/스크립트에
+`pythonw`, 인수 추가에 `scripts\serve_web_waitress.py`의 전체 경로, 시작 위치에
+저장소 루트 경로를 입력한다.

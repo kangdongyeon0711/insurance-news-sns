@@ -8,4 +8,5 @@ venv/
 .env
 data/*.db
 data/*.sqlite3
+data/*.log
 !data/.gitkeep
