@@ -3,9 +3,14 @@ name: Summarize Insurance News
 # 1시간마다(매시 정각, UTC 기준) 수집 -> 필터 -> 요약 -> 저장을 자동 실행한다.
 # GitHub Actions 러너는 매 실행마다 새로 초기화되므로, 중복 방지 DB와
 # 요약 결과(data/news_alert.db)를 actions/cache로 실행 간에 이어받는다.
+#
+# 스케줄(cron) 트리거는 ANTHROPIC_API_KEY 크레딧 충전 전까지 잠시 꺼둔 상태다.
+# 크레딧 충전 후 아래 schedule 블록의 주석을 해제하면 다시 매시 자동 실행된다.
+# 그 전까지도 Actions 탭 -> "Summarize Insurance News" -> "Run workflow"로
+# 수동 실행은 계속 가능하다(workflow_dispatch는 남겨둠).
 on:
-  schedule:
-    - cron: "0 * * * *"
+  # schedule:
+  #   - cron: "0 * * * *"
   workflow_dispatch: {}
 
 jobs:
