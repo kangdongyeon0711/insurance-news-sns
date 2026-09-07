@@ -342,8 +342,7 @@ Start-ScheduledTask -TaskName "InsuranceNewsWebViewer"
   `Get-Content data\web_server.log -Tail 20`
 - 프로세스가 죽으면 1분 간격으로 최대 3회 자동 재시작하도록 설정되어 있다.
 - 데이터를 계속 채우려면(mock이 아닌 실제 운영이라면) 이 작업과 별개로
-  `summarize_job`도 주기 실행해야 한다 — 옵션 A의 스케줄러(`scripts/scheduler.py`)를
-  같은 PC에서 함께 등록하거나, 필요하면 요청 시 작업 스케줄러용으로 추가해줄 수 있다.
+  `summarize_job`도 주기 실행해야 한다 — 바로 아래 스케줄러 등록도 함께 한다.
 - 제거하려면: `powershell -ExecutionPolicy Bypass -File scripts\windows\unregister_web_task.ps1`
 - PowerShell 스크립트 실행이 막히는 경우("실행할 수 없습니다" 등)는 시스템
   전체 실행 정책을 바꾸는 대신, 위처럼 `-ExecutionPolicy Bypass`를 그 실행
@@ -353,3 +352,24 @@ Start-ScheduledTask -TaskName "InsuranceNewsWebViewer"
 "작업 만들기" → 트리거: "로그온할 때" → 동작: "프로그램 시작", 프로그램/스크립트에
 `pythonw`, 인수 추가에 `scripts\serve_web_waitress.py`의 전체 경로, 시작 위치에
 저장소 루트 경로를 입력한다.
+
+#### 1시간 요약 스케줄러도 로그온 시 자동 시작
+
+웹페이지와 별개로, `scripts/scheduler.py`(1시간마다 `summarize_job` 반복 실행)도
+같은 방식으로 로그온 시 자동 시작되게 등록할 수 있다:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts\windows\register_scheduler_task.ps1
+
+# 지금 바로 실행해서 확인하고 싶다면
+Start-ScheduledTask -TaskName "InsuranceNewsScheduler"
+```
+
+- 마찬가지로 기본은 콘솔 창 없이(`pythonw`) 실행되고, 로그는
+  `data\scheduler.log`에 남는다: `Get-Content data\scheduler.log -Tail 20`
+- 죽으면 1분 간격 최대 3회 자동 재시작.
+- 제거: `powershell -ExecutionPolicy Bypass -File scripts\windows\unregister_scheduler_task.ps1`
+
+이 둘(`register_web_task.ps1`, `register_scheduler_task.ps1`)을 모두 등록해두면,
+컴퓨터를 켜고 로그인하는 것만으로 웹페이지와 1시간 요약 자동화가 둘 다
+시작된다 — 매번 PowerShell 창을 직접 열어 실행할 필요가 없다.

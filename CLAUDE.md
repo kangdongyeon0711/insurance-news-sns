@@ -84,7 +84,9 @@ insurance-news-sns/
 │   ├── validate_press_rss.py  # config/press_rss.csv의 모든 피드 URL을 한 번에 검증
 │   └── windows/                # Windows 작업 스케줄러 등록/해제 스크립트
 │       ├── register_web_task.ps1
-│       └── unregister_web_task.ps1
+│       ├── unregister_web_task.ps1
+│       ├── register_scheduler_task.ps1
+│       └── unregister_scheduler_task.ps1
 ├── tests/                      # 모듈별 테스트 (구성표는 README.md의 "테스트" 절 참고)
 └── data/                      # 런타임 산출물 (sqlite db 등, git 추적 안 함)
 ```
