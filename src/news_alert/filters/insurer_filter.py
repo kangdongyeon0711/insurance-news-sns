@@ -13,11 +13,16 @@ def normalize_for_match(text: str) -> str:
     return _WHITESPACE_RE.sub("", text or "")
 
 
-def load_insurer_names(path: Path) -> list[str]:
-    """insurers.json(카테고리별 보험사명 목록)에서 전체 보험사명을 평탄화해 읽는다."""
+def load_insurer_categories(path: Path) -> dict[str, list[str]]:
+    """insurers.json을 카테고리(life/non_life/정유사 등)별 구조 그대로 읽는다."""
     with open(path, encoding="utf-8") as f:
-        data = json.load(f)
-    return [name for names in data.values() for name in names]
+        return json.load(f)
+
+
+def load_insurer_names(path: Path) -> list[str]:
+    """insurers.json(카테고리별 회사명 목록)에서 전체 이름을 평탄화해 읽는다."""
+    categories = load_insurer_categories(path)
+    return [name for names in categories.values() for name in names]
 
 
 def mentions_insurer(text: str, insurer_names: list[str]) -> bool:

@@ -46,6 +46,19 @@ body {
 .controls {
   display: flex;
   align-items: center;
+  gap: 1rem;
+}
+
+.filter-groups {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
   gap: 0.5rem;
 }
 

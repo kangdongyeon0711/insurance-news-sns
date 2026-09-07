@@ -78,7 +78,7 @@ pytest tests/ -v
 | `filters/insurer_filter.py` | `test_insurer_filter.py` | 24개 항목(보험사 20개 + 정유사 4개) 매칭, 공백 표기 차이(`삼성생명`/`삼성 생명`) 흡수 |
 | `summarizers/llm_summarizer.py` | `test_summarizers.py` | 시스템 프롬프트 전달, API 키 미설정 시 실패, 3줄 초과 요약 자르기 |
 | `storage/article_store.py` | `test_article_store.py` | 요약 결과 저장, 최신순 정렬, 보험사 필터, upsert |
-| `web/app.py` | `test_web_app.py` | `/`, `/api/articles`(정렬·필터), `/api/insurers` |
+| `web/app.py` | `test_web_app.py` | `/`, `/api/articles`(정렬·필터), `/api/insurers`(카테고리 그룹화) |
 | `pipeline.py` | `test_pipeline.py` | 4단계 순서대로 실행, 개별 기사 요약 실패 시에도 파이프라인 계속 진행 |
 | `jobs/collect_job.py` | `test_collect_job.py` | 여러 수집기 결합, 중복 제거, "본 기사" 마킹 |
 | `jobs/summarize_job.py` | `test_summarize_job.py` | 수집→중복제거→보험사필터→요약→저장 전체 흐름 |
@@ -200,9 +200,16 @@ flask --app news_alert.web.app run
 
 `http://127.0.0.1:5000`에 접속하면:
 - 기사 목록이 `published_at` 최신순으로 정렬되어 카드 형태로 표시된다.
-- 상단 드롭다운으로 `config/insurers.json`에 등록된 24개 항목(보험사 20개 +
-  정유사 4개) 중 하나를 선택해 필터링할 수 있다 ("전체" 선택 시 전체 표시).
+- 상단에 **"보험사"**(생명+손해 20개)와 **"정유사"**(4개) 드롭다운이 각각
+  따로 뜬다. 하나를 선택하면 다른 쪽은 자동으로 "전체"로 초기화된다(한 번에
+  하나만 필터링).
 - 각 카드는 제목(원문 링크), 언론사·발행시각, 3줄 요약, 보험사/키워드 태그를 보여준다.
+
+드롭다운 그룹은 `web/app.py`의 `FILTER_GROUPS`에서 `config/insurers.json`의
+카테고리를 어떻게 묶을지 정의한다(`life`+`non_life` → "보험사", `정유사` →
+"정유사"). `insurers.json`에 새 카테고리를 추가하면 `FILTER_GROUPS`에도
+등록해야 그 카테고리가 자기 드롭다운으로 나타난다(등록하지 않으면 어느
+드롭다운에도 나타나지 않는다).
 
 REST API만 필요하면 `GET /api/articles?insurer=삼성생명&limit=50`,
 `GET /api/insurers`를 직접 호출해도 된다.

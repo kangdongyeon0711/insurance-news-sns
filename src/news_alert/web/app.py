@@ -2,7 +2,7 @@ from pathlib import Path
 
 from flask import Flask, jsonify, render_template, request
 
-from news_alert.filters.insurer_filter import load_insurer_names
+from news_alert.filters.insurer_filter import load_insurer_categories
 from news_alert.models.article import SummarizedArticle
 from news_alert.storage.article_store import ArticleStore
 from news_alert.utils.env import load_env
@@ -12,6 +12,13 @@ load_env()
 REPO_ROOT = Path(__file__).resolve().parents[3]
 CONFIG_DIR = REPO_ROOT / "config"
 DATA_DIR = REPO_ROOT / "data"
+
+# insurers.json의 세부 카테고리를 웹 필터 드롭다운 그룹으로 묶는다.
+# life/non_life는 "보험사" 하나로 합치고, 정유사는 별도 드롭다운으로 둔다.
+FILTER_GROUPS = {
+    "보험사": ["life", "non_life"],
+    "정유사": ["정유사"],
+}
 
 
 def create_app(db_path: Path | None = None) -> Flask:
@@ -29,7 +36,12 @@ def create_app(db_path: Path | None = None) -> Flask:
 
     @app.get("/api/insurers")
     def api_insurers():
-        return jsonify(load_insurer_names(CONFIG_DIR / "insurers.json"))
+        categories = load_insurer_categories(CONFIG_DIR / "insurers.json")
+        grouped = {
+            label: [name for key in keys for name in categories.get(key, [])]
+            for label, keys in FILTER_GROUPS.items()
+        }
+        return jsonify(grouped)
 
     @app.get("/api/articles")
     def api_articles():

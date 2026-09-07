@@ -33,18 +33,60 @@ function renderArticleCard(article) {
   return card;
 }
 
-async function loadInsurers() {
-  const select = document.getElementById("insurer-filter");
-  try {
-    const res = await fetch("/api/insurers");
-    const insurers = await res.json();
-    insurers.sort((a, b) => a.localeCompare(b, "ko"));
-    for (const name of insurers) {
+let filterSelects = [];
+
+function buildFilterGroups(grouped) {
+  const container = document.getElementById("filter-groups");
+  container.innerHTML = "";
+  filterSelects = [];
+
+  for (const [label, names] of Object.entries(grouped)) {
+    const selectId = `filter-${label}`;
+
+    const labelEl = document.createElement("label");
+    labelEl.setAttribute("for", selectId);
+    labelEl.textContent = label;
+
+    const select = document.createElement("select");
+    select.id = selectId;
+
+    const allOption = document.createElement("option");
+    allOption.value = "";
+    allOption.textContent = "전체";
+    select.appendChild(allOption);
+
+    const sorted = [...names].sort((a, b) => a.localeCompare(b, "ko"));
+    for (const name of sorted) {
       const option = document.createElement("option");
       option.value = name;
       option.textContent = name;
       select.appendChild(option);
     }
+
+    select.addEventListener("change", (event) => {
+      state.insurer = event.target.value;
+      // 필터는 한 번에 하나만 적용 — 다른 드롭다운은 "전체"로 초기화
+      for (const other of filterSelects) {
+        if (other !== select) other.value = "";
+      }
+      loadArticles();
+    });
+
+    filterSelects.push(select);
+
+    const group = document.createElement("div");
+    group.className = "filter-group";
+    group.appendChild(labelEl);
+    group.appendChild(select);
+    container.appendChild(group);
+  }
+}
+
+async function loadInsurers() {
+  try {
+    const res = await fetch("/api/insurers");
+    const grouped = await res.json();
+    buildFilterGroups(grouped);
   } catch (err) {
     console.error("failed to load insurers", err);
   }
@@ -78,11 +120,6 @@ async function loadArticles() {
     console.error("failed to load articles", err);
   }
 }
-
-document.getElementById("insurer-filter").addEventListener("change", (event) => {
-  state.insurer = event.target.value;
-  loadArticles();
-});
 
 loadInsurers();
 loadArticles();

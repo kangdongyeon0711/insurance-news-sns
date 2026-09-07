@@ -67,14 +67,15 @@ def test_api_articles_filters_by_insurer(tmp_path):
     assert data[0]["summary"] == "요약 1줄\n요약 2줄\n요약 3줄"
 
 
-def test_api_insurers_returns_configured_list(tmp_path):
+def test_api_insurers_returns_grouped_categories(tmp_path):
     client = _seeded_client(tmp_path)
 
     response = client.get("/api/insurers")
     data = response.get_json()
 
     assert response.status_code == 200
-    assert "삼성생명" in data
-    assert "삼성화재" in data
-    assert "GS칼텍스" in data
-    assert len(data) == 24
+    assert set(data.keys()) == {"보험사", "정유사"}
+    assert "삼성생명" in data["보험사"]
+    assert "삼성화재" in data["보험사"]
+    assert len(data["보험사"]) == 20
+    assert set(data["정유사"]) == {"SK에너지", "GS칼텍스", "S-OIL", "HD현대오일뱅크"}

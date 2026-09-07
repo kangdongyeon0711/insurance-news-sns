@@ -2,6 +2,7 @@ from datetime import datetime, timezone
 
 from news_alert.filters.insurer_filter import (
     InsurerFilter,
+    load_insurer_categories,
     load_insurer_names,
     mentions_insurer,
     normalize_for_match,
@@ -38,6 +39,15 @@ def test_load_insurer_names_flattens_categories(tmp_path):
     )
     names = load_insurer_names(insurers_path)
     assert set(names) == {"삼성생명", "삼성화재"}
+
+
+def test_load_insurer_categories_keeps_structure(tmp_path):
+    insurers_path = tmp_path / "insurers.json"
+    insurers_path.write_text(
+        '{"life": ["삼성생명"], "정유사": ["GS칼텍스"]}', encoding="utf-8"
+    )
+    categories = load_insurer_categories(insurers_path)
+    assert categories == {"life": ["삼성생명"], "정유사": ["GS칼텍스"]}
 
 
 def test_insurer_filter_uses_real_config():
