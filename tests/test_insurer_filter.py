@@ -56,9 +56,10 @@ def test_insurer_filter_uses_real_config():
     assert [a.title for a in result] == ["한화생명, 신규 상품 출시", "한화 생명 보험료 인상 검토"]
 
 
-def test_insurer_filter_loads_all_20_insurers():
+def test_insurer_filter_loads_all_tracked_companies():
     config_path = (
         __import__("pathlib").Path(__file__).resolve().parents[1] / "config" / "insurers.json"
     )
     f = InsurerFilter(insurers_path=config_path)
-    assert len(f.insurer_names) == 20
+    assert len(f.insurer_names) == 21
+    assert "GS칼텍스" in f.insurer_names

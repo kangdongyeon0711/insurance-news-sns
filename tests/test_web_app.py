@@ -76,4 +76,5 @@ def test_api_insurers_returns_configured_list(tmp_path):
     assert response.status_code == 200
     assert "삼성생명" in data
     assert "삼성화재" in data
-    assert len(data) == 20
+    assert "GS칼텍스" in data
+    assert len(data) == 21
