@@ -75,7 +75,7 @@ pytest tests/ -v
 | `collectors/naver_news_collector.py` | `test_naver_collector.py` | RSS 파싱, HTML 태그 제거, 키워드 간 중복 제거, 피드 실패 시 스킵 |
 | `collectors/press_rss_collector.py` | `test_press_rss_collector.py` | CSV 로딩, 언론사명 태깅, 피드 하나 실패해도 나머지 계속 처리 |
 | `filters/dedup_filter.py`, `storage/sqlite_store.py` | `test_dedup_filter_storage.py` | URL 기준 중복 제거, SQLite 저장/조회 |
-| `filters/insurer_filter.py` | `test_insurer_filter.py` | 21개 항목(보험사 20개 + GS칼텍스) 매칭, 공백 표기 차이(`삼성생명`/`삼성 생명`) 흡수 |
+| `filters/insurer_filter.py` | `test_insurer_filter.py` | 24개 항목(보험사 20개 + 정유사 4개) 매칭, 공백 표기 차이(`삼성생명`/`삼성 생명`) 흡수 |
 | `summarizers/llm_summarizer.py` | `test_summarizers.py` | 시스템 프롬프트 전달, API 키 미설정 시 실패, 3줄 초과 요약 자르기 |
 | `storage/article_store.py` | `test_article_store.py` | 요약 결과 저장, 최신순 정렬, 보험사 필터, upsert |
 | `web/app.py` | `test_web_app.py` | `/`, `/api/articles`(정렬·필터), `/api/insurers` |
@@ -137,10 +137,11 @@ python -m news_alert.jobs.collect_job
 ## 보험사명 필터링
 
 `config/insurers.json`에 생명보험사 10개, 손해보험사 10개(`life`/`non_life`,
-총 20개)의 정식 명칭이 카테고리별로 등록되어 있고, `other` 카테고리에는
-보험사는 아니지만 추적하고 싶은 회사(현재 GS칼텍스)를 추가로 넣어둔다 —
-`InsurerFilter`는 카테고리 이름과 무관하게 등록된 모든 이름을 합쳐서 매칭하므로
-새 카테고리를 추가해도 그대로 동작한다. `InsurerFilter`(`filters/insurer_filter.py`)는
+총 20개)의 정식 명칭이 카테고리별로 등록되어 있고, `정유사` 카테고리에는
+보험사는 아니지만 추적하고 싶은 회사(SK에너지, GS칼텍스, S-OIL, HD현대오일뱅크)
+4개를 추가로 넣어둔다 — `InsurerFilter`는 카테고리 이름과 무관하게 등록된 모든
+이름을 합쳐서 매칭하므로 새 카테고리를 추가해도 그대로 동작한다.
+`InsurerFilter`(`filters/insurer_filter.py`)는
 이 목록에 있는 이름이 기사 제목 또는 본문에 포함된 기사만 남긴다.
 
 ```python
@@ -199,8 +200,8 @@ flask --app news_alert.web.app run
 
 `http://127.0.0.1:5000`에 접속하면:
 - 기사 목록이 `published_at` 최신순으로 정렬되어 카드 형태로 표시된다.
-- 상단 드롭다운으로 `config/insurers.json`에 등록된 21개 항목(보험사 20개 +
-  GS칼텍스) 중 하나를 선택해 필터링할 수 있다 ("전체" 선택 시 전체 표시).
+- 상단 드롭다운으로 `config/insurers.json`에 등록된 24개 항목(보험사 20개 +
+  정유사 4개) 중 하나를 선택해 필터링할 수 있다 ("전체" 선택 시 전체 표시).
 - 각 카드는 제목(원문 링크), 언론사·발행시각, 3줄 요약, 보험사/키워드 태그를 보여준다.
 
 REST API만 필요하면 `GET /api/articles?insurer=삼성생명&limit=50`,
