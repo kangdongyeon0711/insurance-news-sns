@@ -10,7 +10,11 @@ scripts/run_web.py(Flask 개발 서버, debug=True + 리로더)는 사람이 직
 data/web_server.log 파일에도 남긴다.
 
 환경변수:
-    WEB_HOST (기본 127.0.0.1), WEB_PORT (기본 5000)
+    WEB_HOST (기본 127.0.0.1), WEB_PORT (기본 5000), WEB_BACKLOG (기본 128)
+
+WEB_BACKLOG: 일부 Windows + 최신 Python 조합에서 waitress 기본 backlog(1024)로
+소켓을 listen()할 때 OSError([WinError 10014] 잘못된 포인터 주소)가 나는
+사례가 있다. 작은 값(기본 128)으로 낮춰 이를 우회한다.
 
 사용법:
     python scripts/serve_web_waitress.py
@@ -41,9 +45,12 @@ def main() -> None:
     _configure_file_logging()
     host = os.environ.get("WEB_HOST", "127.0.0.1")
     port = int(os.environ.get("WEB_PORT", "5000"))
+    backlog = int(os.environ.get("WEB_BACKLOG", "128"))
 
-    logging.getLogger(__name__).info("serving web viewer on http://%s:%s (waitress)", host, port)
-    serve(create_app(), host=host, port=port)
+    logging.getLogger(__name__).info(
+        "serving web viewer on http://%s:%s (waitress, backlog=%d)", host, port, backlog
+    )
+    serve(create_app(), host=host, port=port, backlog=backlog)
 
 
 if __name__ == "__main__":
