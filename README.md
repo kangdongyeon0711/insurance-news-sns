@@ -108,10 +108,29 @@ GitHub Actions(`.github/workflows/test.yml`)가 push/PR마다 `pytest tests/ -v`
   이 엔드포인트는 네이버가 공식 지원하지 않으므로 응답이 비정상이면
   `base_url`을 갱신해야 한다.
 - `config/press_rss.csv`에 `name,url` 형식으로 언론사 RSS 피드를 등록하면
-  `PressRssCollector`가 각 피드를 순회하며 기사를 가져온다. 예시 값을 실제
-  언론사 RSS 주소로 교체해야 한다.
+  `PressRssCollector`가 각 피드를 순회하며 기사를 가져온다.
 - 두 수집기 모두 이미 처리한 기사(URL 기준)는 `data/news_alert.db`(SQLite)에
   기록해 다음 실행부터 새 기사만 반환한다.
+
+### 언론사 RSS 추가하기
+
+`config/press_rss.csv`에 `이름,URL` 한 줄을 추가하면 된다. 한국 언론사 RSS
+주소는 사이트마다 다르고 자주 바뀌므로, 추가한 뒤에는 반드시 검증 스크립트로
+확인한다 (전체 파이프라인을 안 돌려도 URL만 빠르게 검사):
+
+```bash
+python scripts/validate_press_rss.py
+```
+
+각 줄마다 `OK [N건] 이름 — URL` 또는 `FAIL 이름 — URL`로 결과가 나오고,
+실패한 항목은 마지막에 목록으로 다시 정리해서 보여준다. 실패한 줄은
+`config/press_rss.csv`에서 지우거나 올바른 URL로 고친다 — `PressRssCollector`는
+피드 하나가 실패해도 나머지는 계속 수집하므로 당장 지우지 않아도 파이프라인
+자체는 죽지 않지만, 매 실행마다 불필요한 에러 로그만 쌓인다.
+
+현재 등록된 연합뉴스(경제/산업) 2개 피드는 URL 형식은 신뢰할 만하지만 실시간
+검증은 못 한 상태다(이 프로젝트가 개발되는 샌드박스 환경은 외부 뉴스 사이트로
+나가는 네트워크가 막혀 있음) — 처음 추가한 뒤 위 스크립트로 꼭 확인한다.
 
 1회 수집 실행:
 
