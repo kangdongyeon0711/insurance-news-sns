@@ -63,7 +63,8 @@ insurance-news-sns/
 │   │   └── article_store.py  # 요약 결과 저장/조회용 (summarized_articles)
 │   ├── jobs/                  # 여러 단계를 이어붙인 실행 단위
 │   │   ├── collect_job.py    #    수집 -> 중복 제거
-│   │   └── summarize_job.py  #    수집 -> 중복 제거 -> 보험사 필터 -> 요약 -> 저장
+│   │   ├── summarize_job.py  #    수집 -> 중복 제거 -> 보험사 필터 -> 요약 -> 저장
+│   │   └── backfill_job.py   #    요약 실패했던 기사만 재수집 (RSS에 남아있는 한도 내)
 │   ├── web/                   # 요약된 기사 조회 웹페이지 (Flask, 파이프라인 밖의 뷰어)
 │   │   ├── app.py            #    create_app(), /api/articles, /api/insurers
 │   │   ├── templates/

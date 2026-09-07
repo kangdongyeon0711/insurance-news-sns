@@ -82,6 +82,7 @@ pytest tests/ -v
 | `pipeline.py` | `test_pipeline.py` | 4단계 순서대로 실행, 개별 기사 요약 실패 시에도 파이프라인 계속 진행 |
 | `jobs/collect_job.py` | `test_collect_job.py` | 여러 수집기 결합, 중복 제거, "본 기사" 마킹 |
 | `jobs/summarize_job.py` | `test_summarize_job.py` | 수집→중복제거→보험사필터→요약→저장 전체 흐름 |
+| `jobs/backfill_job.py` | `test_backfill_job.py` | 요약 안 된 기사만 처리 기록 삭제, 이미 요약된 건 보존, DB 없을 때도 정상 처리 |
 | `utils/config_loader.py` | `test_config_loader.py` | YAML 로딩 |
 | `utils/logger.py` | `test_logger.py` | 로거 이름/레벨, 핸들러 중복 방지 |
 | `utils/feed.py` | `test_feed_utils.py` | HTML 제거, 발행시각 파싱 |
@@ -223,6 +224,33 @@ REST API만 필요하면 `GET /api/articles?insurer=삼성생명&limit=50`,
 ```bash
 python -m news_alert.jobs.summarize_job
 ```
+
+## 놓친 기사 백필 (`jobs/backfill_job.py`)
+
+**중요한 한계**: RSS는 "최신 N개 기사"만 보여주는 실시간 피드이고, 날짜
+범위를 지정해 과거 기사를 조회하는 기능이 없다. 그래서 "2주 전부터 지금까지"처럼
+특정 기간의 기사를 정확히 다 가져오는 건 이 프로젝트의 RSS 기반 수집기로는
+불가능하다 — 각 RSS 피드가 지금 이 순간 보여주는 만큼만 가져올 수 있다.
+
+다만 API 키가 없어서(또는 다른 이유로) 요약이 실패했던 기사들은 구제할 수
+있다. `summarize_job`은 수집한 기사를 일단 "이미 본 기록"(`seen_articles`)에
+남기고 나서 요약을 시도하므로, 요약이 실패해도 그 기사는 "이미 본 것"으로
+남아 다음 실행에서 다시 수집되지 않는다 — RSS 피드에서 그 기사가 아직
+사라지지 않았어도 마찬가지다. `backfill_job`은 이렇게 **"이미 본 기록은
+있지만 실제로 요약·저장되지 못한" 기사만 골라 처리 기록을 지우고 다시
+수집·요약한다** (이미 요약에 성공한 기사는 건드리지 않아 불필요한 API
+재호출이 없다):
+
+```bash
+python -m news_alert.jobs.backfill_job
+```
+
+로그에 `N개 기사의 처리 기록을 지웠습니다`가 뜬 뒤 평소 `summarize_job`과
+같은 수집→필터→요약→저장 과정이 이어진다. 얼마나 과거까지 커버되는지는
+각 RSS 피드에 지금 얼마나 남아있는지에 달려 있다 — 실행 후 웹페이지에서
+가장 오래된 기사의 발행일을 확인해 원하는 기간(예: 8/24)까지 커버되는지
+직접 확인해야 한다. 부족하면 이 방식(RSS)의 한계이니, 기간 지정 검색이
+되는 뉴스 API/서비스를 새로 연동하는 방안을 검토해야 한다.
 
 ## 배포 (자동 실행)
 
