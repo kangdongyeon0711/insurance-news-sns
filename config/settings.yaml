@@ -11,6 +11,9 @@ naver_news:
     - KB손해보험
     - 메리츠화재
     - 보험사
+    - 생명보험사
+    - 손해보험사
+    - 정유사
 
 summarizer:
   model: claude-opus-5

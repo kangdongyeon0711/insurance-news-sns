@@ -71,8 +71,11 @@ def test_insurer_filter_loads_all_tracked_companies():
         __import__("pathlib").Path(__file__).resolve().parents[1] / "config" / "insurers.json"
     )
     f = InsurerFilter(insurers_path=config_path)
-    assert len(f.insurer_names) == 24
+    assert len(f.insurer_names) == 27
     assert "GS칼텍스" in f.insurer_names
     assert "SK에너지" in f.insurer_names
     assert "S-OIL" in f.insurer_names
     assert "HD현대오일뱅크" in f.insurer_names
+    assert "생명보험사" in f.insurer_names
+    assert "손해보험사" in f.insurer_names
+    assert "정유사" in f.insurer_names

@@ -75,7 +75,7 @@ pytest tests/ -v
 | `collectors/naver_news_collector.py` | `test_naver_collector.py` | RSS 파싱, HTML 태그 제거, 키워드 간 중복 제거, 피드 실패 시 스킵 |
 | `collectors/press_rss_collector.py` | `test_press_rss_collector.py` | CSV 로딩, 언론사명 태깅, 피드 하나 실패해도 나머지 계속 처리 |
 | `filters/dedup_filter.py`, `storage/sqlite_store.py` | `test_dedup_filter_storage.py` | URL 기준 중복 제거, SQLite 저장/조회 |
-| `filters/insurer_filter.py` | `test_insurer_filter.py` | 24개 항목(보험사 20개 + 정유사 4개) 매칭, 공백 표기 차이(`삼성생명`/`삼성 생명`) 흡수 |
+| `filters/insurer_filter.py` | `test_insurer_filter.py` | 27개 항목(보험사 22개 + 정유사 5개) 매칭, 공백 표기 차이(`삼성생명`/`삼성 생명`) 흡수 |
 | `summarizers/llm_summarizer.py` | `test_summarizers.py` | 시스템 프롬프트 전달, API 키 미설정 시 실패, 3줄 초과 요약 자르기 |
 | `storage/article_store.py` | `test_article_store.py` | 요약 결과 저장, 최신순 정렬, 보험사 필터, upsert |
 | `web/app.py` | `test_web_app.py` | `/`, `/api/articles`(정렬·필터), `/api/insurers`(카테고리 그룹화) |
@@ -107,7 +107,9 @@ GitHub Actions(`.github/workflows/test.yml`)가 push/PR마다 `pytest tests/ -v`
 - `config/settings.yaml`의 `naver_news.keywords`에 검색 키워드를 등록하면
   `NaverNewsRssCollector`가 네이버 뉴스 검색 RSS에서 최신 기사를 가져온다.
   이 엔드포인트는 네이버가 공식 지원하지 않으므로 응답이 비정상이면
-  `base_url`을 갱신해야 한다.
+  `base_url`을 갱신해야 한다. 개별 보험사명 외에 `생명보험사`/`손해보험사`/`정유사`
+  같은 업종 통칭 키워드도 등록해두면, 특정 회사명이 기사에 없어도 업계 전반을
+  다루는 기사를 놓치지 않는다.
 - `config/press_rss.csv`에 `name,url` 형식으로 언론사 RSS 피드를 등록하면
   `PressRssCollector`가 각 피드를 순회하며 기사를 가져온다.
 - 두 수집기 모두 이미 처리한 기사(URL 기준)는 `data/news_alert.db`(SQLite)에
@@ -140,8 +142,12 @@ python -m news_alert.jobs.collect_job
 `config/insurers.json`에 생명보험사 10개, 손해보험사 10개(`life`/`non_life`,
 총 20개)의 정식 명칭이 카테고리별로 등록되어 있고, `정유사` 카테고리에는
 보험사는 아니지만 추적하고 싶은 회사(SK에너지, GS칼텍스, S-OIL, HD현대오일뱅크)
-4개를 추가로 넣어둔다 — `InsurerFilter`는 카테고리 이름과 무관하게 등록된 모든
-이름을 합쳐서 매칭하므로 새 카테고리를 추가해도 그대로 동작한다.
+4개를 추가로 넣어둔다. 각 카테고리에는 특정 회사명이 아니라 업종을 통칭하는
+문자열도 함께 등록해둔다 — `life`에 `생명보험사`, `non_life`에 `손해보험사`,
+`정유사`에 `정유사`를 추가해, 특정 회사명 없이 "생명보험사들 실적 발표"처럼
+업종 전체를 다루는 기사도 해당 카테고리로 걸러지도록 한다. `InsurerFilter`는
+카테고리 이름과 무관하게 등록된 모든 이름을 합쳐서 매칭하므로 새 카테고리를
+추가해도 그대로 동작한다.
 `InsurerFilter`(`filters/insurer_filter.py`)는
 이 목록에 있는 이름이 기사 제목 또는 본문에 포함된 기사만 남긴다.
 
@@ -201,7 +207,7 @@ flask --app news_alert.web.app run
 
 `http://127.0.0.1:5000`에 접속하면:
 - 기사 목록이 `published_at` 최신순으로 정렬되어 카드 형태로 표시된다.
-- 상단에 **"보험사"**(생명+손해 20개)와 **"정유사"**(4개) 드롭다운이 각각
+- 상단에 **"보험사"**(생명+손해 22개, 업종 통칭 포함)와 **"정유사"**(5개, 업종 통칭 포함) 드롭다운이 각각
   따로 뜬다. 하나를 선택하면 다른 쪽은 자동으로 "전체"로 초기화된다(한 번에
   하나만 필터링).
 - 각 카드는 제목(원문 링크), 언론사·발행시각, 3줄 요약, 보험사/키워드 태그를 보여준다.
