@@ -14,10 +14,11 @@ CONFIG_DIR = REPO_ROOT / "config"
 DATA_DIR = REPO_ROOT / "data"
 
 # insurers.json의 세부 카테고리를 웹 필터 드롭다운 그룹으로 묶는다.
-# life/non_life는 "보험사" 하나로 합치고, 정유사는 별도 드롭다운으로 둔다.
+# life/non_life는 "보험사" 하나로 합치고, 정유사/증권사는 각각 별도 드롭다운으로 둔다.
 FILTER_GROUPS = {
     "보험사": ["life", "non_life"],
     "정유사": ["정유사"],
+    "증권사": ["증권사"],
 }
 
 

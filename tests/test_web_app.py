@@ -74,7 +74,7 @@ def test_api_insurers_returns_grouped_categories(tmp_path):
     data = response.get_json()
 
     assert response.status_code == 200
-    assert set(data.keys()) == {"보험사", "정유사"}
+    assert set(data.keys()) == {"보험사", "정유사", "증권사"}
     assert "삼성생명" in data["보험사"]
     assert "삼성화재" in data["보험사"]
     assert len(data["보험사"]) == 22
@@ -85,3 +85,4 @@ def test_api_insurers_returns_grouped_categories(tmp_path):
         "HD현대오일뱅크",
         "정유사",
     }
+    assert set(data["증권사"]) == {"키움증권"}

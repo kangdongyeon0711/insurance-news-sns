@@ -75,7 +75,7 @@ pytest tests/ -v
 | `collectors/naver_news_collector.py` | `test_naver_collector.py` | RSS 파싱, HTML 태그 제거, 키워드 간 중복 제거, 피드 실패 시 스킵 |
 | `collectors/press_rss_collector.py` | `test_press_rss_collector.py` | CSV 로딩, 언론사명 태깅, 피드 하나 실패해도 나머지 계속 처리 |
 | `filters/dedup_filter.py`, `storage/sqlite_store.py` | `test_dedup_filter_storage.py` | URL 기준 중복 제거, SQLite 저장/조회 |
-| `filters/insurer_filter.py` | `test_insurer_filter.py` | 27개 항목(보험사 22개 + 정유사 5개) 매칭, 공백 표기 차이(`삼성생명`/`삼성 생명`) 흡수 |
+| `filters/insurer_filter.py` | `test_insurer_filter.py` | 28개 항목(보험사 22개 + 정유사 5개 + 증권사 1개) 매칭, 공백 표기 차이(`삼성생명`/`삼성 생명`) 흡수 |
 | `summarizers/llm_summarizer.py` | `test_summarizers.py` | 시스템 프롬프트 전달, API 키 미설정 시 실패, 3줄 초과 요약 자르기 |
 | `storage/article_store.py` | `test_article_store.py` | 요약 결과 저장, 최신순 정렬, 보험사 필터, upsert |
 | `web/app.py` | `test_web_app.py` | `/`, `/api/articles`(정렬·필터), `/api/insurers`(카테고리 그룹화) |
@@ -145,7 +145,8 @@ python -m news_alert.jobs.collect_job
 4개를 추가로 넣어둔다. 각 카테고리에는 특정 회사명이 아니라 업종을 통칭하는
 문자열도 함께 등록해둔다 — `life`에 `생명보험사`, `non_life`에 `손해보험사`,
 `정유사`에 `정유사`를 추가해, 특정 회사명 없이 "생명보험사들 실적 발표"처럼
-업종 전체를 다루는 기사도 해당 카테고리로 걸러지도록 한다. `InsurerFilter`는
+업종 전체를 다루는 기사도 해당 카테고리로 걸러지도록 한다. `증권사` 카테고리에는
+`키움증권`을 등록해둔다. `InsurerFilter`는
 카테고리 이름과 무관하게 등록된 모든 이름을 합쳐서 매칭하므로 새 카테고리를
 추가해도 그대로 동작한다.
 `InsurerFilter`(`filters/insurer_filter.py`)는
@@ -207,14 +208,14 @@ flask --app news_alert.web.app run
 
 `http://127.0.0.1:5000`에 접속하면:
 - 기사 목록이 `published_at` 최신순으로 정렬되어 카드 형태로 표시된다.
-- 상단에 **"보험사"**(생명+손해 22개, 업종 통칭 포함)와 **"정유사"**(5개, 업종 통칭 포함) 드롭다운이 각각
-  따로 뜬다. 하나를 선택하면 다른 쪽은 자동으로 "전체"로 초기화된다(한 번에
-  하나만 필터링).
+- 상단에 **"보험사"**(생명+손해 22개, 업종 통칭 포함), **"정유사"**(5개, 업종 통칭 포함),
+  **"증권사"**(1개) 드롭다운이 각각 따로 뜬다. 하나를 선택하면 다른 쪽은 자동으로
+  "전체"로 초기화된다(한 번에 하나만 필터링).
 - 각 카드는 제목(원문 링크), 언론사·발행시각, 3줄 요약, 보험사/키워드 태그를 보여준다.
 
 드롭다운 그룹은 `web/app.py`의 `FILTER_GROUPS`에서 `config/insurers.json`의
 카테고리를 어떻게 묶을지 정의한다(`life`+`non_life` → "보험사", `정유사` →
-"정유사"). `insurers.json`에 새 카테고리를 추가하면 `FILTER_GROUPS`에도
+"정유사", `증권사` → "증권사"). `insurers.json`에 새 카테고리를 추가하면 `FILTER_GROUPS`에도
 등록해야 그 카테고리가 자기 드롭다운으로 나타난다(등록하지 않으면 어느
 드롭다운에도 나타나지 않는다).
 
