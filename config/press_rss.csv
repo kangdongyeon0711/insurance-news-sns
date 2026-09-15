@@ -177,4 +177,8 @@ SBS 스브스뉴스,https://news.sbs.co.kr/news/Subusu_RssFeed.do?plink=RSSREADE
 에너지신문 인기기사,https://www.energy-news.co.kr/rss/clickTop.xml
 에너지신문 가스,https://www.energy-news.co.kr/rss/S2N3.xml
 에너지경제신문,https://www.ekn.kr/web/viewus/rss.xml
-투데이에너지,https://www.todayenergy.kr/rss/gns_S1N1.xml
+투데이에너지 뉴스,https://www.todayenergy.kr/rss/gns_S1N1.xml
+이투데이 산업,https://rss.etoday.co.kr/eto/industry_news.xml
+전자신문 경제,http://rss.etnews.com/02.xml
+전자신문 모빌리티,http://rss.etnews.com/17.xml
+
