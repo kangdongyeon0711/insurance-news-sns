@@ -30,6 +30,20 @@ name,url
 연합인포맥스 국제뉴스,https://news.einfomax.co.kr/rss/S1N23.xml
 연합인포맥스 영상,https://news.einfomax.co.kr/rss/S1N24.xml
 연합인포맥스 인포X 보도자료,https://news.einfomax.co.kr/rss/S1N25.xml
+매일경제 헤드라인,https://www.mk.co.kr/rss/30000001/
+매일경제 전체뉴스,https://www.mk.co.kr/rss/40300001/
+매일경제 경제,https://www.mk.co.kr/rss/30100041/
+매일경제 정치,https://www.mk.co.kr/rss/30200030/
+매일경제 사회,https://www.mk.co.kr/rss/50400012/
+매일경제 국제,https://www.mk.co.kr/rss/30300018/
+매일경제 기업경영,https://www.mk.co.kr/rss/50100032/
+매일경제 증권,https://www.mk.co.kr/rss/50200011/
+매일경제 부동산,https://www.mk.co.kr/rss/50300009/
+매일경제 MBA,https://www.mk.co.kr/rss/40200124/
+매일경제 머니 앤 리치스,https://www.mk.co.kr/rss/40200003/
+매일경제 top stories,https://www.mk.co.kr/rss/30800011/
+매일경제 이코노미 전체기사,https://www.mk.co.kr/rss/50000001/
+매일경제 시티라이프 전체기사,https://www.mk.co.kr/rss/60000007/
 JTBC 속보,https://news-ex.jtbc.co.kr/v1/get/rss/newsflesh
 JTBC 이슈 Top10,https://news-ex.jtbc.co.kr/v1/get/rss/issue 
 JTBC 정치,https://news-ex.jtbc.co.kr/v1/get/rss/section/politics
@@ -78,3 +92,89 @@ JTBC 뉴스룸,https://news-ex.jtbc.co.kr/v1/get/rss/program/NG10000002
 연합뉴스 연예,https://www.yna.co.kr/rss/entertainment.xml
 연합뉴스 스포츠,https://www.yna.co.kr/rss/sports.xml
 연합뉴스 오피니언,https://www.yna.co.kr/rss/opinion.xml
+경향신문 전체뉴스,https://www.khan.co.kr/rss/rssdata/total_news.xml
+경향신문 경제,https://www.khan.co.kr/rss/rssdata/economy_news.xml
+경향신문 사회,https://www.khan.co.kr/rss/rssdata/society_news.xml
+경향신문 국제,https://www.khan.co.kr/rss/rssdata/kh_world.xml
+경향신문 과학환경,https://www.khan.co.kr/rss/rssdata/science_news.xml
+한겨례 전체기사,https://www.hani.co.kr/rss/
+한겨례 경제,https://www.hani.co.kr/rss/economy/
+한겨례 사회,https://www.hani.co.kr/rss/society/
+SBS 이 시각 이슈,https://news.sbs.co.kr/news/headlineRssFeed.do?plink=RSSREADER
+SBS 이 시각 인기,https://news.sbs.co.kr/news/TopicRssFeed.do?plink=RSSREADER
+SBS 최신,https://news.sbs.co.kr/news/newsflashRssFeed.do?plink=RSSREADER
+SBS 정치,https://news.sbs.co.kr/news/SectionRssFeed.do?sectionId=01&plink=RSSREADER
+SBS 경제,https://news.sbs.co.kr/news/SectionRssFeed.do?sectionId=02&plink=RSSREADER
+SBS 사회,https://news.sbs.co.kr/news/SectionRssFeed.do?sectionId=03&plink=RSSREADER
+SBS 국제,https://news.sbs.co.kr/news/SectionRssFeed.do?sectionId=07&plink=RSSREADER
+SBS 취재파일,https://news.sbs.co.kr/news/Special_RssFeed.do?plink=RSSREADER
+SBS 비디오머그,https://news.sbs.co.kr/news/VideoMug_RssFeed.do?plink=RSSREADER
+SBS 스브스뉴스,https://news.sbs.co.kr/news/Subusu_RssFeed.do?plink=RSSREADER
+오마이뉴스 경제,https://rss.ohmynews.com/rss/economy.xml
+오마이뉴스 민족 국제,https://rss.ohmynews.com/rss/international.xml
+오마이뉴스 사회,https://rss.ohmynews.com/rss/society.xml
+파이낸셜신문 전체기사,http://www.efnews.co.kr/rss/allArticle.xml
+파이낸셜신문 인기기사,http://www.efnews.co.kr/rss/clickTop.xml
+파이낸셜신문 정치,http://www.efnews.co.kr/rss/S1N1.xml
+파이낸셜신문 경제,http://www.efnews.co.kr/rss/S1N2.xml
+파이낸셜신문 산업,http://www.efnews.co.kr/rss/S1N3.xml
+파이낸셜신문 금융,http://www.efnews.co.kr/rss/S1N4.xml
+파이낸셜신문 오피니언,http://www.efnews.co.kr/rss/S1N5.xml
+파이낸셜신문 국제,http://www.efnews.co.kr/rss/S1N6.xml
+파이낸셜신문 기획이슈,http://www.efnews.co.kr/rss/S1N7.xml
+서울경제 전체기사,https://www.sedaily.com/rss/newsall
+서울경제 마켓시그널,https://www.sedaily.com/rss/market
+서울경제 집슐랭,https://www.sedaily.com/rss/realestate
+서울경제 경제,https://www.sedaily.com/rss/economy
+서울경제 금융,https://www.sedaily.com/rss/finance
+서울경제 기업,https://www.sedaily.com/rss/business
+서울경제 정치,https://www.sedaily.com/rss/politics
+서울경제 사회,https://www.sedaily.com/rss/society
+서울경제 국제,https://www.sedaily.com/rss/international
+서울경제 오피니언,https://www.sedaily.com/rss/opinion
+아시아경제 전체기사,https://view.asiae.co.kr/rss/all.htm
+아시아경제 증권,https://view.asiae.co.kr/rss/stock.htm
+아시아경제 경제,https://view.asiae.co.kr/rss/economy.htm
+아시아경제 부동산,https://view.asiae.co.kr/rss/realestate.htm
+아시아경제 산업IT,https://view.asiae.co.kr/rss/industry-IT.htm
+아시아경제 정치,https://view.asiae.co.kr/rss/politics.htm
+아시아경제 사회,https://view.asiae.co.kr/rss/society.htm
+아시아경제 국제,https://view.asiae.co.kr/rss/world.htm
+아시아경제 오피니언,https://view.asiae.co.kr/rss/opinion.htm
+아시아경제 전국,https://view.asiae.co.kr/rss/nationwide.htm
+헤럴드경제 all stories,https://www.koreaherald.com/rss/newsAll
+헤럴드경제 national,https://www.koreaherald.com/rss/kh_National
+헤럴드경제 business,https://www.koreaherald.com/rss/kh_Business
+헤럴드경제 world,https://www.koreaherald.com/rss/kh_Business
+헤럴드경제 opinion,https://www.koreaherald.com/rss/kh_Business
+비즈워치 산업,https://news.bizwatch.co.kr/rss/service/industry
+비즈워치 증권,https://news.bizwatch.co.kr/rss/service/market
+비즈워치 경제,https://news.bizwatch.co.kr/rss/service/finance
+비즈워치 부동산,https://news.bizwatch.co.kr/rss/service/real_estate
+비즈워치 생활경제,https://news.bizwatch.co.kr/rss/service/consumer
+비즈워치 거버넌스,https://news.bizwatch.co.kr/rss/service/governance
+비즈워치 IT바이오,https://news.bizwatch.co.kr/rss/service/mobile
+비즈워치 데이터통계,https://news.bizwatch.co.kr/rss/service/policy
+한국보험신문 전체기사,https://cdn.insnews.co.kr/rss/gn_rss_allArticle.xml
+보험저널 전체기사,https://www.insjournal.co.kr/rss/allArticle.xml
+보험저널 인기기사,https://www.insjournal.co.kr/rss/clickTop.xml
+보험저널 종합뉴스,https://www.insjournal.co.kr/rss/S1N1.xml
+보험저널 오피니언,https://www.insjournal.co.kr/rss/S1N2.xml
+보험저널 보험저널TV,https://www.insjournal.co.kr/rss/S1N5.xml
+보험저널 인사동정,https://www.insjournal.co.kr/rss/S1N6.xml
+머니투데이 최신기사,https://rss.mt.co.kr/mt_news.xml
+딜사이트TV 금융,https://news.dealsitetv.com/rss/005000.xml
+딜사이트TV 증권,https://news.dealsitetv.com/rss/011000.xml
+딜사이트TV 전체,https://news.dealsitetv.com/rss/allArticle.xml
+딜사이트TV 경제일반,https://news.dealsitetv.com/rss/021000.xml
+딜사이트TV 산업,https://news.dealsitetv.com/rss/001000.xml
+딜사이트TV IT블록체인,https://news.dealsitetv.com/rss/016000.xml
+딜사이트TV 국제,https://news.dealsitetv.com/rss/026000.xml
+딜사이트TV 건설부동산,https://news.dealsitetv.com/rss/020000.xml
+딜사이트TV 칼럼,https://news.dealsitetv.com/rss/034039.xml
+딜사이트TV 오피니언,https://news.dealsitetv.com/rss/034000.xml
+에너지신문 전체기사,https://www.energy-news.co.kr/rss/allArticle.xml
+에너지신문 인기기사,https://www.energy-news.co.kr/rss/clickTop.xml
+에너지신문 가스,https://www.energy-news.co.kr/rss/S2N3.xml
+에너지경제신문,https://www.ekn.kr/web/viewus/rss.xml
+투데이에너지,https://www.todayenergy.kr/rss/gns_S1N1.xml
