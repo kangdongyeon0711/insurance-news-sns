@@ -82,6 +82,7 @@ insurance-news-sns/
 │   ├── run_web.py             # 조회 웹페이지 로컬 실행 (Flask 개발 서버)
 │   ├── serve_web_waitress.py  # 조회 웹페이지 무인 자동 실행용 (waitress, Windows 호환)
 │   ├── validate_press_rss.py  # config/press_rss.csv의 모든 피드 URL을 한 번에 검증
+│   ├── repair_insurer_tags.py # 저장된 기사의 기업 태그를 insurers.json 정식 명칭으로 복구
 │   └── windows/                # Windows 작업 스케줄러 등록/해제 스크립트
 │       ├── register_web_task.ps1
 │       ├── unregister_web_task.ps1

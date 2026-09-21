@@ -15,7 +15,7 @@ logger = get_logger(__name__)
 SYSTEM_PROMPT = (
     "너는 보험업계 뉴스 요약 전문가야. 기사 본문을 읽고 핵심 사실만 간결하게 "
     "3줄 이내로 요약해. 각 줄은 완결된 한 문장으로 쓰고, 본문에 없는 추측이나 "
-    "의견은 덧붙이지 마. 이어서 기사에 언급된 보험사명과 핵심 키워드를 함께 추출해."
+    "의견은 덧붙이지 마. 이어서 기사의 핵심 키워드를 함께 추출해."
 )
 
 DEFAULT_INSURERS_PATH = Path(__file__).resolve().parents[3] / "config" / "insurers.json"
@@ -23,7 +23,6 @@ DEFAULT_INSURERS_PATH = Path(__file__).resolve().parents[3] / "config" / "insure
 
 class _ArticleAnalysis(BaseModel):
     summary_lines: list[str]
-    insurers: list[str]
     keywords: list[str]
 
 
@@ -82,7 +81,7 @@ class LlmSummarizer(BaseSummarizer):
         return SummarizedArticle(
             article=article,
             summary=summary,
-            insurers=analysis.insurers,
+            insurers=self._detect_insurers(article),
             keywords=analysis.keywords,
         )
 
@@ -97,6 +96,13 @@ class LlmSummarizer(BaseSummarizer):
 
     @staticmethod
     def _detect_insurers(article: Article) -> list[str]:
+        """기업 태그는 LLM 응답이 아니라 insurers.json의 정식 명칭에서만 뽑는다.
+
+        웹 조회 페이지의 카테고리 드롭다운은 insurers.json 값과 문자열이 정확히
+        일치하는 기사만 찾는다. LLM에 맡기면 표기가 제각각이거나(S-Oil/에쓰오일),
+        정유사·증권사처럼 보험사가 아닌 기업은 아예 비워서 돌려주기 때문에
+        필터에서 통째로 누락된다.
+        """
         try:
             insurer_names = load_insurer_names(DEFAULT_INSURERS_PATH)
         except OSError:

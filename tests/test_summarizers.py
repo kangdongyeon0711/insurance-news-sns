@@ -31,7 +31,6 @@ def test_summarize_calls_claude_with_system_prompt_and_parses_result(monkeypatch
 
     analysis = _ArticleAnalysis(
         summary_lines=["삼성생명 3분기 순이익 증가.", "배당 확대 검토 중.", "실적 발표는 오늘 있었다."],
-        insurers=["삼성생명"],
         keywords=["3분기 실적", "배당"],
     )
     mock_response = SimpleNamespace(parsed_output=analysis)
@@ -58,13 +57,40 @@ def test_summarize_calls_claude_with_system_prompt_and_parses_result(monkeypatch
     assert result.article.title == "삼성생명, 3분기 실적 발표"
 
 
+def test_summarize_tags_non_insurance_company_with_canonical_name(monkeypatch):
+    """정유사/증권사도 insurers.json의 정식 명칭으로 태깅돼야 웹 필터에서 조회된다."""
+    monkeypatch.delenv("USE_MOCK", raising=False)
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "test-key")
+
+    article = Article(
+        source="에너지신문",
+        title="S-OIL, 마포사옥 글판 새 단장",
+        url="https://example.com/s-oil",
+        published_at=datetime.now(timezone.utc),
+        content="S-OIL이 서울 마포 본사 사옥 글판을 새로 단장해 시민들에게 메시지를 전했다.",
+    )
+    analysis = _ArticleAnalysis(
+        summary_lines=["S-OIL이 사옥 글판을 새로 단장했다."],
+        keywords=["마포 사옥 글판", "창립 50주년"],
+    )
+    mock_response = SimpleNamespace(parsed_output=analysis)
+
+    with patch("news_alert.summarizers.llm_summarizer.anthropic.Anthropic") as mock_anthropic_cls:
+        mock_client = MagicMock()
+        mock_client.messages.parse.return_value = mock_response
+        mock_anthropic_cls.return_value = mock_client
+
+        result = LlmSummarizer().summarize(article)
+
+    assert result.insurers == ["S-OIL"]
+
+
 def test_summarize_truncates_to_max_summary_lines(monkeypatch):
     monkeypatch.delenv("USE_MOCK", raising=False)
     monkeypatch.setenv("ANTHROPIC_API_KEY", "test-key")
 
     analysis = _ArticleAnalysis(
         summary_lines=["한 줄", "두 줄", "세 줄", "네 줄"],
-        insurers=[],
         keywords=[],
     )
     mock_response = SimpleNamespace(parsed_output=analysis)

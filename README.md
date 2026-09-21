@@ -76,7 +76,8 @@ pytest tests/ -v
 | `collectors/press_rss_collector.py` | `test_press_rss_collector.py` | CSV 로딩, 언론사명 태깅, 피드 하나 실패해도 나머지 계속 처리 |
 | `filters/dedup_filter.py`, `storage/sqlite_store.py` | `test_dedup_filter_storage.py` | URL 기준 중복 제거, SQLite 저장/조회 |
 | `filters/insurer_filter.py` | `test_insurer_filter.py` | 28개 항목(보험사 22개 + 정유사 5개 + 증권사 1개) 매칭, 공백 표기 차이(`삼성생명`/`삼성 생명`) 흡수 |
-| `summarizers/llm_summarizer.py` | `test_summarizers.py` | 시스템 프롬프트 전달, API 키 미설정 시 실패, 3줄 초과 요약 자르기 |
+| `summarizers/llm_summarizer.py` | `test_summarizers.py` | 시스템 프롬프트 전달, API 키 미설정 시 실패, 3줄 초과 요약 자르기, 기업 태그를 정식 명칭으로 부여 |
+| `scripts/repair_insurer_tags.py` | `test_repair_insurer_tags.py` | 빈 태그/키워드로 밀려난 회사명 복구, 올바른 태그는 그대로 두기 |
 | `storage/article_store.py` | `test_article_store.py` | 요약 결과 저장, 최신순 정렬, 보험사 필터, upsert |
 | `web/app.py` | `test_web_app.py` | `/`, `/api/articles`(정렬·필터), `/api/insurers`(카테고리 그룹화) |
 | `pipeline.py` | `test_pipeline.py` | 4단계 순서대로 실행, 개별 기사 요약 실패 시에도 파이프라인 계속 진행 |
@@ -167,8 +168,13 @@ matched = f.apply(articles)
 ## 뉴스 요약 (Claude API)
 
 `LlmSummarizer`(`summarizers/llm_summarizer.py`)는 Claude API(`messages.parse` +
-Pydantic 구조화 출력)로 기사 본문을 3줄 이내로 요약하고, 언급된 보험사명과 핵심
-키워드를 함께 추출한다.
+Pydantic 구조화 출력)로 기사 본문을 3줄 이내로 요약하고 핵심 키워드를 추출한다.
+
+기업 태그(`insurers`)는 **Claude 응답이 아니라 `config/insurers.json`의 정식
+명칭에서만** 뽑는다. 웹 조회 페이지의 카테고리 드롭다운이 이 값과 문자열이
+정확히 일치하는 기사만 찾기 때문이다. LLM에 맡기면 표기가 제각각이거나
+(`S-Oil`/`에쓰오일`), 정유사·증권사처럼 "보험사"가 아닌 기업은 아예 비워서
+돌려주기 때문에 드롭다운에서 그 회사를 골라도 0건으로 나온다.
 
 ```python
 from news_alert.summarizers.llm_summarizer import LlmSummarizer
@@ -191,8 +197,23 @@ cp .env.example .env
 ```
 
 시스템 프롬프트는 "너는 보험업계 뉴스 요약 전문가야. 핵심 사실만 간결하게 3줄
-이내로 요약해. ... 보험사명과 핵심 키워드를 함께 추출해" 형태로
+이내로 요약해. ... 핵심 키워드를 함께 추출해" 형태로
 `llm_summarizer.py`의 `SYSTEM_PROMPT`에 정의되어 있다.
+
+### 예전에 잘못 저장된 기업 태그 고치기
+
+기업 태그를 Claude 응답에서 그대로 가져오던 시절에 저장된 기사들은 태그가
+비어 있거나(회사명이 `keywords`로 밀려남) 표기가 달라서, 웹페이지에서 그
+회사를 선택하면 기사가 있는데도 0건으로 나온다. 아래 스크립트로 기존
+기사들의 태그를 정식 명칭으로 한 번에 다시 채운다:
+
+```bash
+python scripts/repair_insurer_tags.py
+```
+
+기사 본문은 DB에 보관하지 않으므로 제목 + 요약 + 기존 태그/키워드를 근거로
+정식 명칭을 찾는다. 정식 명칭이 하나도 발견되지 않는 기사는 기존 값을 그대로
+둔다(지우지 않는다). 이미 올바른 기사는 건드리지 않으므로 여러 번 돌려도 된다.
 
 ## 조회 웹페이지 (요약된 기사 최신순 + 보험사 필터)
 
