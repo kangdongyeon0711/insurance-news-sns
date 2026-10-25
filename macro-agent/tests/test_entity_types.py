@@ -83,3 +83,21 @@ def test_render_entity_sections():
         assert h in md
     assert "| 우발:대출-부동산PF |" in md
     assert cr.check_portfolio(md, r)[0] == []
+
+
+def test_disclosed_alm_and_calibrated_total():
+    """공시 +50bp 가용자본 −110십억 → Δy +10bp면 −22십억(−220억); 공시 보정 합계 = 금리요인 × 1/비율."""
+    pf = _pf("insurer", [{"class": "국공채", "mv_krw_bn": 10000, "mod_duration": 10}],
+             rate_sensitivity_disclosed=[
+                 {"shock_bp": 50, "asset_chg_krw_bn": -625, "liab_chg_krw_bn": -515, "capital_chg_krw_bn": -110,
+                  "ratio_name": "K-ICS", "ratio_chg_pp": 0.7, "value_flag": "공시", "page_ref": "p.10"},
+                 {"shock_bp": -50, "asset_chg_krw_bn": 625, "liab_chg_krw_bn": 515, "capital_chg_krw_bn": 80,
+                  "ratio_chg_pp": 0.3, "value_flag": "공시", "page_ref": "p.10"}])
+    pf["liabilities"] = {"duration": 10.0, "pv_krw_bn": 10300, "value_flag": "공시", "page_ref": "p.10"}
+    r = ci.run(pf, _sc({"ktb_3y_bp": 10, "ktb_10y_bp": 10, "ktb_30y_bp": 10}))
+    s = r["scenarios"][0]
+    assert s["alm"]["disclosed_capital_100m"] == pytest.approx(-220.0)
+    assert s["alm"]["disclosed_ratio_pp"] == pytest.approx(0.14)
+    # 엔진 +50bp = −500십억, 공시 −625 → 비율 0.8 → 보정 계수 1.25; 시나리오 금리요인 −100십억(−1,000억) → 보정 −1,250억
+    assert r["calibration"][0]["ratio_model_kr_fx_to_disclosed"] == pytest.approx(0.8)
+    assert s["calibrated"]["total_100m"] == pytest.approx(-1250.0)

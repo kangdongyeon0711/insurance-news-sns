@@ -241,13 +241,53 @@ class Engine:
         dl_l = float(liab["duration"]) * float(liab["pv_krw_bn"])
         asset_side, liab_side = -da_a * dy, -dl_l * dy
         total = float(portfolio["total_invested_assets_krw_bn"])
-        return {"rate_factor": factor, "dy_bp": dy / BP, "D_A": round(da_a / total, 3) if total else None,
+        disc = disclosed_capital_effect(portfolio, dy / BP)
+        return {**disc,"rate_factor": factor, "dy_bp": dy / BP, "D_A": round(da_a / total, 3) if total else None,
                 "D_L": liab["duration"], "L_krw_bn": liab["pv_krw_bn"],
                 "duration_gap_years": round((da_a - dl_l) / total, 3) if total else None,
                 "asset_100m": round(asset_side * 10, 1), "liability_100m": round(liab_side * 10, 1),
                 "net_100m": round((asset_side - liab_side) * 10, 1),
                 "net_bp": round((asset_side - liab_side) / total * 1e4, 1) if total else None,
                 "estimated": est}
+
+
+def disclosed_capital_effect(portfolio: dict, dy_bp: float) -> dict:
+    """회사 공시 금리 민감도(±bp별 가용자본·자본비율 변화)를 시나리오 금리 변동에 선형 비례 적용.
+    상승(dy>0)은 양(+)의 충격 공시값, 하락은 음(−)의 충격 공시값을 쓴다. 공시가 없으면 빈 dict."""
+    rows = [d for d in portfolio.get("rate_sensitivity_disclosed") or [] if d.get("capital_chg_krw_bn") is not None]
+    if not rows or dy_bp == 0:
+        return {}
+    same = [d for d in rows if (d["shock_bp"] > 0) == (dy_bp > 0)] or rows
+    d = min(same, key=lambda x: abs(abs(x["shock_bp"]) - abs(dy_bp)))
+    k = dy_bp / d["shock_bp"]
+    out = {"disclosed_capital_100m": round(d["capital_chg_krw_bn"] * k * 10, 1),
+           "disclosed_basis": f"공시 {d['shock_bp']:+g}bp 시 가용자본 {d['capital_chg_krw_bn']:+g}십억원 × {k:.2f} (선형 근사, {d.get('page_ref') or ''})"}
+    if d.get("ratio_chg_pp") is not None:
+        out["disclosed_ratio_pp"] = round(d["ratio_chg_pp"] * k, 2)
+        out["disclosed_ratio_name"] = d.get("ratio_name") or "자본비율"
+    return out
+
+
+def apply_calibration(result: dict, portfolio: dict, engine: "Engine") -> None:
+    """공시 민감도 대비 엔진 비율(국내+해외 커브)로 채권·대출 금리 요인을 보정한 합계를 시나리오별로 추가."""
+    cal = result.get("calibration") or []
+    up = next((c["ratio_model_kr_fx_to_disclosed"] for c in cal if c["shock_bp"] > 0 and c["ratio_model_kr_fx_to_disclosed"]), None)
+    dn = next((c["ratio_model_kr_fx_to_disclosed"] for c in cal if c["shock_bp"] < 0 and c["ratio_model_kr_fx_to_disclosed"]), None)
+    if not up and not dn:
+        return
+    up, dn = up or dn, dn or up
+    total = result["total_invested_assets_krw_bn"]
+    methods = ("bond_kr", "bond_foreign")
+    for s in result["scenarios"]:
+        adj = 0.0
+        for r in s["rows"]:
+            if engine.a["class_rules"].get(r["class"], {}).get("method") in methods:
+                rate = r["components_100m"].get("rate", 0.0)
+                ratio = up if rate < 0 else dn
+                adj += rate * (1 / ratio - 1)
+        s["calibrated"] = {"total_100m": round(s["total_100m"] + adj, 1), "adjustment_100m": round(adj, 1),
+                           "total_bp": round((s["total_100m"] + adj) / 10 / total * 1e4, 1) if total else None,
+                           "factor_up": round(1 / up, 3), "factor_dn": round(1 / dn, 3)}
 
 
 def row_key(asset: dict, idx: int, counts: dict) -> str:
@@ -367,7 +407,7 @@ def run(portfolio: dict, shocks_doc: dict, engine: Engine | None = None) -> dict
               "rows": [{"key": k, "impact_100m": round(v, 2), "impact_bp": round(v / 10 / total * 1e4, 2)}
                        for k, v in by_key.items()],
               "total_100m": round(tot, 1), "total_bp": round(tot / 10 / total * 1e4, 1)}
-    return {
+    result = {
         "company": portfolio["company"], "period": portfolio["period"], "is_sample": portfolio.get("is_sample", False),
         "entity_type": portfolio.get("entity_type", "insurer"),
         "calibration": calibration(portfolio, engine),
@@ -377,6 +417,8 @@ def run(portfolio: dict, shocks_doc: dict, engine: Engine | None = None) -> dict
         "valuation_basis": engine.a.get("valuation_basis"), "units": {"impact": "억원", "bp": "운용자산 대비 bp"},
         "scenarios": scenarios_out, "prob_weighted": pw,
     }
+    apply_calibration(result, portfolio, engine)
+    return result
 
 
 def check_constraints(portfolio: dict, constraints: dict, alm: dict | None = None,

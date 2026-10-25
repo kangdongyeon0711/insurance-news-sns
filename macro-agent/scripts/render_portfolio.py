@@ -13,7 +13,9 @@ from collections import defaultdict
 from pathlib import Path
 
 from common import CONFIG_DIR, REPORTS_DIR, class_order, load_json, load_yaml, today
-from render_brief import DISCLAIMER
+PF_DISCLAIMER = ("본 자료는 개인의 의사결정 보조를 위한 분석 자료이며 투자 권유가 아닙니다. 포트폴리오 수치는 회사 공시(IR·정기공시·사업보고서)를 "
+                 "기준으로 하되 일부는 공시 비중으로 나눈 값이거나 추정값(* 표시)이며, 영향 금액은 가정 기반 근사 계산입니다. "
+                 "매크로 시나리오·확률은 하우스 뷰와 에이전트 판단에 기반한 추정으로 실제 결과와 다를 수 있습니다.")
 from validate_exposures import class_weights, ifrs_break, period_key
 
 
@@ -47,13 +49,18 @@ def render(impact: dict, portfolios: list[dict], date: str) -> str:
     pw = impact.get("prob_weighted")
 
     a("## 요약\n")
-    a("| 시나리오 | 확률 | 운용자산 평가손익 (억원) | 운용자산 대비 (bp) | 추정 포함 |")
-    a("|---|---|---|---|---|")
+    has_cal = any(s.get("calibrated") for s in scen)
+    a("| 시나리오 | 확률 | 운용자산 평가손익 (억원) | 운용자산 대비 (bp) | 추정 포함 |" + (" 공시 민감도 보정 (억원) |" if has_cal else ""))
+    a("|---|---|---|---|---|" + ("---|" if has_cal else ""))
     for s in scen:
         p = "—" if s["prob"] is None else f"{s['prob']:g}"
-        a(f"| {s['name']} | {p} | {f0(s['total_100m'])} | {s['total_bp']:+.1f} | {'예' if s['any_estimated'] else '아니오'} |")
+        cal_cell = f" {f0(s['calibrated']['total_100m'])} ({s['calibrated']['total_bp']:+.1f}bp) |" if s.get("calibrated") else (" — |" if has_cal else "")
+        a(f"| {s['name']} | {p} | {f0(s['total_100m'])} | {s['total_bp']:+.1f} | {'예' if s['any_estimated'] else '아니오'} |" + cal_cell)
     if pw:
-        a(f"| 확률가중 기대값 ({'/'.join(pw['scenarios'])}) | — | {f0(pw['total_100m'])} | {pw['total_bp']:+.1f} | 예 |")
+        a(f"| 확률가중 기대값 ({'/'.join(pw['scenarios'])}) | — | {f0(pw['total_100m'])} | {pw['total_bp']:+.1f} | 예 |" + (" — |" if has_cal else ""))
+    if has_cal:
+        c0 = next(s["calibrated"] for s in scen if s.get("calibrated"))
+        a(f"\n공시 민감도 보정: 채권·대출의 금리 요인을 회사 공시 금리 민감도에 맞춰 금리 상승 ×{c0['factor_up']}, 하락 ×{c0['factor_dn']} 조정한 합계(아래 '공시 금리 민감도 vs 엔진' 참고).")
     # 취약 자산군: 확률 있는 시나리오 중 최악, 없으면 전체 시나리오 중 최악 손실(억원) 기준
     pool = [s for s in scen if s["prob"] is not None] or scen
     worst: dict[str, float] = defaultdict(float)
@@ -173,11 +180,21 @@ def render(impact: dict, portfolios: list[dict], date: str) -> str:
     a("## ALM 관점\n" if ent in ("insurer", "bank") else "## 금리 민감 부채 (참고)\n")
     alms = [(s["name"], s["alm"]) for s in scen if s.get("alm")]
     if alms:
-        a("| 시나리오 | 금리 팩터 | Δy (bp) | 자산 (억원) | 부채 (억원) | 순자산 (억원) | 순자산 (bp) | 듀레이션 갭 (년) | 추정 |")
-        a("|---|---|---|---|---|---|---|---|---|")
+        has_disc = any("disclosed_capital_100m" in x for _, x in alms)
+        a("| 시나리오 | 금리 팩터 | Δy (bp) | 엔진 자산 (억원) | 엔진 부채 (억원) | 엔진 순자산 (억원) | 엔진 순자산 (bp) | 듀레이션 갭 (년) | 추정 |"
+          + (" 공시 기반 가용자본 (억원) | 공시 기반 자본비율 (%p) |" if has_disc else ""))
+        a("|---|---|---|---|---|---|---|---|---|" + ("---|---|" if has_disc else ""))
         for n, x in alms:
+            extra = ""
+            if has_disc:
+                dc = x.get("disclosed_capital_100m")
+                dr = x.get("disclosed_ratio_pp")
+                extra = f" {f0(dc) if dc is not None else '—'} | {'—' if dr is None else f'{dr:+.2f}'} |"
             a(f"| {n} | `{x['rate_factor']}` | {x['dy_bp']:+g} | {f0(x['asset_100m'])} | {f0(x['liability_100m'])} | "
-              f"{f0(x['net_100m'])} | {x['net_bp']:+.1f} | {x['duration_gap_years']} | {'예' if x['estimated'] else '아니오'} |")
+              f"{f0(x['net_100m'])} | {x['net_bp']:+.1f} | {x['duration_gap_years']} | {'예' if x['estimated'] else '아니오'} |" + extra)
+        if has_disc:
+            xb = next(x for _, x in alms if "disclosed_basis" in x)
+            a(f"\n공시 기반 열: {xb['disclosed_basis']}. 엔진 열과 부호가 다르면 공시 기반을 우선한다(엔진은 금리민감 자산 범위가 공시보다 좁을 수 있음).")
         x = alms[0][1]
         a(f"\nD_A {x['D_A']}년 (운용자산 대비, 금리민감 자산만), D_L {x['D_L']}년, L {x['L_krw_bn']:,.0f}십억원. "
           "단일 금리 팩터 근사이며 IFRS17 할인율(유동성 프리미엄·LTFR)과 CSM 흡수 효과는 반영하지 않음.\n")
@@ -221,7 +238,7 @@ def render(impact: dict, portfolios: list[dict], date: str) -> str:
     a("- 팩터 간 상관과 2차 효과(유가 → 물가 → 금리 등)는 시나리오 작성 단계에서만 반영되며 계산 엔진은 선형 합산.")
     a("- K-ICS 요구자본 영향은 위험계수 미입력(`assumptions.kics.verified: false`)으로 정성 서술만 가능.")
     a("\n---\n")
-    a(f"**면책**: {DISCLAIMER}\n")
+    a(f"**면책**: {PF_DISCLAIMER}\n")
     return "\n".join(L)
 
 
