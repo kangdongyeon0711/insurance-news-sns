@@ -23,7 +23,9 @@ LT = ["Base", "Bull", "Bear"]
 
 
 def latest_date(base: Path = KNOWLEDGE_DIR / "macro_topics") -> str | None:
-    dates = sorted(p.name for p in base.iterdir() if p.is_dir()) if base.exists() else []
+    import re
+
+    dates = sorted(p.name for p in base.iterdir() if p.is_dir() and re.fullmatch(r"\d{4}-\d{2}-\d{2}", p.name)) if base.exists() else []
     return dates[-1] if dates else None
 
 
