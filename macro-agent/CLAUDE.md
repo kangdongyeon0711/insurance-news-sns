@@ -1,7 +1,7 @@
 # CLAUDE.md — 매크로·포트폴리오 분석 에이전트
 
 자산운용 직무용 개인 에이전트. (A) 16개 매크로 항목의 현황/단기/장기 시나리오 주간 브리프,
-(B) 보험사 공시 PDF → 운용자산 익스포저 → 매크로 충격 영향 계산 → 리밸런싱 방향 제안.
+(B) 금융회사(보험사·증권사·자산운용사·은행) 공시 PDF·엑셀 → 업종별 익스포저 → 매크로 충격 영향 계산 → 리밸런싱 방향 제안. 업종 관점은 `config/entity_profiles.yaml`.
 상위 폴더의 CLAUDE.md(insurance-news-sns 뉴스 서비스)는 이 프로젝트에 적용되지 않는다. 이 폴더에서 `claude`를 실행한다.
 
 ## 반드시 지킬 원칙
@@ -37,7 +37,7 @@
 ## 명령
 - `/ingest` — inbox PDF 처리 → report-reader로 view_card 생성
 - `/macro-brief` — 수집 → ingest → 매크로 서브에이전트 5개 병렬 → 검증 → 브리프 → fact-checker
-- `/portfolio-impact [회사]` — 공시 처리 → 익스포저 추출 → 충격 결합 → calc_impact → 제안 → fact-checker
+- `/portfolio-impact [회사]` — 업종 확인 → 공시 처리 → 익스포저 추출 → 공시 민감도 캘리브레이션 → 충격 결합 → calc_impact → 제안 → fact-checker
 
 자주 쓰는 스크립트
 ```bash
