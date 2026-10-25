@@ -70,23 +70,23 @@
     "scenarios": [
       {
         "name": "Base",
-        "prob": 0.55,
+        "prob": 0.45,
         "narrative": "[판단] 기준금리 3.50% 정점 이후 금리 안정과 높은 절대금리에 대한 캐리 수요로 AA- 스프레드는 60bp대 초중반으로 소폭 축소, BBB-는 고금리 장기화로 소폭 확대.",
         "factor_shocks": {
           "kr_aa_spread_bp": -5,
           "kr_bbb_spread_bp": 10
         },
-        "shock_rationale": "AA-는 정책금리 정점 통과 후 캐리 수요로 -5bp, BBB-는 고금리 장기화에 따른 이자부담으로 +10bp"
+        "shock_rationale": "AA-는 정책금리 정점 통과 후 캐리 수요로 -5bp, BBB-는 고금리 장기화에 따른 이자부담으로 +10bp [확률 동기화 2026-10-25] kr_rate 시나리오 확률 변경(미래에셋 3.25% 최종금리 전망 반영, Base 0.55→0.45·Bull 0.20→0.30)에 맞춰 0.55→0.45. 충격값은 동일 금리 경로 전제라 유지."
       },
       {
         "name": "Bull",
-        "prob": 0.2,
+        "prob": 0.3,
         "narrative": "[판단] 인하 전환과 경기 연착륙으로 크레딧 전반 축소, PF 구조조정 마무리로 저등급 리스크 프리미엄 하락.",
         "factor_shocks": {
           "kr_aa_spread_bp": -15,
           "kr_bbb_spread_bp": -40
         },
-        "shock_rationale": "금리 하락기 크레딧 수요 증가로 AA- -15bp, BBB-는 베타가 커 -40bp"
+        "shock_rationale": "금리 하락기 크레딧 수요 증가로 AA- -15bp, BBB-는 베타가 커 -40bp [확률 동기화 2026-10-25] kr_rate 시나리오 확률 변경(미래에셋 3.25% 최종금리 전망 반영, Base 0.55→0.45·Bull 0.20→0.30)에 맞춰 0.2→0.3. 충격값은 동일 금리 경로 전제라 유지."
       },
       {
         "name": "Bear",
