@@ -238,3 +238,12 @@ def set_verified(series_id: str, verified: bool, path: Path | None = None) -> bo
             path.write_text("".join(lines), encoding="utf-8")
             return True
     return False
+
+
+ASSET_CLASSES = ["국공채", "특수채", "금융채", "회사채", "해외채", "주식", "수익증권", "해외주식", "대출-부동산PF",
+                 "대출-부동산담보", "대출-기업", "대출-신용/약관", "부동산", "대체-인프라", "대체-PE", "대체-사모대출",
+                 "현금예금", "기타"]
+
+
+def class_order(c: str) -> int:
+    return ASSET_CLASSES.index(c) if c in ASSET_CLASSES else len(ASSET_CLASSES)

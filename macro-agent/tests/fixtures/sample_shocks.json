@@ -1,0 +1,19 @@
+{
+  "_disclaimer": "가상 충격 세트 — 테스트·데모 전용, 실제 전망 아님.",
+  "as_of": "2026-10-25",
+  "source": "tests/fixtures (가상)",
+  "scenarios": [
+    {"name": "스트레스", "prob": null, "horizon": "즉시",
+     "shocks": {"ktb_3y_bp": 50, "ktb_10y_bp": 50, "ktb_30y_bp": 50, "kr_aa_spread_bp": 30, "kr_bbb_spread_bp": 30,
+                "ust_2y_bp": 50, "ust_10y_bp": 50, "ust_30y_bp": 50, "us_ig_oas_bp": 30, "us_hy_oas_bp": 30,
+                "krw_usd_pct": 5, "fx_hedge_cost_bp": 20, "kr_cre_cap_rate_bp": 25, "us_cre_cap_rate_bp": 25,
+                "kr_pf_loss_rate_pp": 2, "infra_discount_rate_bp": 30, "kr_pe_value_pct": -10, "us_pe_value_pct": -10,
+                "kr_pd_default_pp": 1, "us_pd_default_pp": 1, "equity_kospi_pct": -15, "equity_spx_pct": -15}},
+    {"name": "장기-Base", "prob": 0.5, "horizon": "1-3Y",
+     "shocks": {"ktb_3y_bp": -25, "ktb_10y_bp": -15, "ktb_30y_bp": -10, "kr_aa_spread_bp": 0, "ust_2y_bp": -50, "ust_10y_bp": -20, "ust_30y_bp": 0, "us_ig_oas_bp": 10, "krw_usd_pct": -3, "fx_hedge_cost_bp": -30}},
+    {"name": "장기-Bull", "prob": 0.2, "horizon": "1-3Y",
+     "shocks": {"ktb_3y_bp": -50, "ktb_10y_bp": -40, "ktb_30y_bp": -30, "kr_aa_spread_bp": -15, "ust_2y_bp": -100, "ust_10y_bp": -60, "ust_30y_bp": -40, "us_ig_oas_bp": -10, "krw_usd_pct": -6, "fx_hedge_cost_bp": -60, "equity_kospi_pct": 10}},
+    {"name": "장기-Bear", "prob": 0.3, "horizon": "1-3Y",
+     "shocks": {"ktb_3y_bp": 30, "ktb_10y_bp": 50, "ktb_30y_bp": 60, "kr_aa_spread_bp": 40, "ust_2y_bp": 25, "ust_10y_bp": 60, "ust_30y_bp": 70, "us_ig_oas_bp": 60, "krw_usd_pct": 7, "fx_hedge_cost_bp": 20, "kr_pf_loss_rate_pp": 3, "equity_kospi_pct": -20}}
+  ]
+}

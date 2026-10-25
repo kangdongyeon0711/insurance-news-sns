@@ -1,0 +1,116 @@
+# 영향 계산 가정값 — 이 파일의 모든 값은 "가정"이다 (공시·API 값 아님).
+# calc_impact.py는 이 파일의 값을 쓴 셀에 estimated: true를 붙인다.
+# 값은 일반적인 시장 관행·문헌 범위를 참고한 출발점이며, 회사 공시로 확인되면 exposures JSON에 직접 넣어 덮어쓴다.
+label: 가정
+
+valuation_basis: 경제적 가치(공정가치) 기준 — 회계상 손익(AC 분류, 원가모형 부동산 등)과 다를 수 있음
+
+# 공시에 듀레이션이 없을 때 쓰는 기본 수정듀레이션(년)
+duration:
+  국공채: 12.0        # 보험사 장기채 비중 감안(가정)
+  특수채: 7.0
+  금융채: 3.0
+  회사채: 4.0
+  해외채: 8.0
+  대출-기업: 2.0
+  대출-부동산담보: 2.0
+  대출-부동산PF: 1.0
+  대출-신용/약관: 0.0
+  대체-인프라: 10.0
+  대체-사모대출: 0.5    # 변동금리 위주
+spread_duration_equals_duration: true   # 스프레드 듀레이션 미공시 시 SD = D_mod
+
+# 컨벡시티: none = 2차항 제외(기본), approx = C ≈ D_mod² (불릿 채권 근사)
+convexity_mode: none
+
+# 원화 크레딧 스프레드 적용 배수 (kr_aa_spread_bp × 배수). 회사채는 credit_grade로 AA/BBB 선택.
+spread_beta:
+  국공채: 0.0
+  특수채: 0.3
+  금융채: 0.8
+  회사채: 1.0
+  대출-기업: 0.5
+
+# 외화자산 기본 환헤지 비율 (fx_hedge_ratio 미공시 시)
+fx_hedge_ratio:
+  해외채: 0.9
+  해외주식: 0.3
+  수익증권: 0.5
+  부동산: 0.5
+  대체-인프라: 0.5
+  대체-PE: 0.3
+  대체-사모대출: 0.7
+  default: 0.5
+hedge_holding_years: 1.0   # 헤지비용 변화(연환산)를 몇 년치 손익으로 볼지
+
+# 주식 베타 (beta 미공시 시)
+beta:
+  주식: 1.0
+  해외주식: 1.0
+  수익증권: 1.0
+beneficiary_equity_share: 0.3   # 국내 수익증권 중 주식 노출로 볼 비율 (구성 미공시 시)
+
+# 부동산 기준 캡레이트 (ΔV/V ≈ −Δcap/cap)
+cap_rate:
+  KR: 0.045
+  US: 0.055
+  default: 0.05
+
+# PF·담보대출 손실률 팩터(kr_pf_loss_rate_pp) 적용 배수
+pf_loss_beta:
+  대출-부동산PF: 1.0
+  대출-부동산담보: 0.3
+
+# 사모대출 부도 시 손실률
+lgd:
+  KR: 0.45
+  US: 0.40
+  default: 0.45
+
+# 변동금리 이자효과(--floating-income) 기준 금리 팩터
+floating_rate_factor:
+  KR: kr_base_rate_bp
+  US: us_ffr_bp
+
+# ALM 순자산 영향 계산 시 쓰는 금리 팩터
+alm_rate_factor: ktb_10y_bp
+
+# 금리 커브 보간 포인트 (듀레이션 년 → 팩터)
+curve:
+  KR: [[3, ktb_3y_bp], [10, ktb_10y_bp], [30, ktb_30y_bp]]
+  US: [[2, ust_2y_bp], [10, ust_10y_bp], [30, ust_30y_bp]]
+
+# 자산군 → 계산 규칙 (calc_impact.py가 읽음; 하드코딩 최소화)
+#   bond_kr: 원화 금리(커브 보간) + 원화 스프레드
+#   bond_foreign: UST 커브 + IG/HY OAS + FX/헤지
+#   equity: 지수 팩터 × 베타 (+ 외화면 FX)
+#   cap_rate: −Δcap/cap
+#   loss_rate: −MV × Δloss × beta
+#   discount_rate: −D × Δr
+#   pe: MV × Δvalue (region KR → kr_pe_value_pct, 그 외 → us_pe_value_pct)
+#   private_debt: −MV × Δdefault × LGD (+ 선택: 변동금리 이자)
+#   none: 계산하지 않음 (정성)
+class_rules:
+  국공채:         {method: bond_kr}
+  특수채:         {method: bond_kr}
+  금융채:         {method: bond_kr}
+  회사채:         {method: bond_kr}
+  해외채:         {method: bond_foreign}
+  주식:           {method: equity, factor: equity_kospi_pct}
+  수익증권:       {method: equity, factor: equity_kospi_pct, share: beneficiary_equity_share}
+  해외주식:       {method: equity, factor: equity_spx_pct}
+  대출-부동산PF:  {method: loss_rate, factor: kr_pf_loss_rate_pp}
+  대출-부동산담보: {method: loss_rate, factor: kr_pf_loss_rate_pp}
+  대출-기업:      {method: bond_kr}
+  대출-신용/약관: {method: none, note: 약관대출은 해약환급금 담보로 시장위험 미미}
+  부동산:         {method: cap_rate}
+  대체-인프라:    {method: discount_rate, factor: infra_discount_rate_bp}
+  대체-PE:        {method: pe}
+  대체-사모대출:  {method: private_debt}
+  현금예금:       {method: none}
+  기타:           {method: none}
+
+# K-ICS 위험계수: 실제 감독기준을 확인해 입력하기 전까지 비워 둔다 (정성 서술만).
+kics:
+  verified: false
+  risk_factors: null

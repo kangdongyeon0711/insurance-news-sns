@@ -1,0 +1,31 @@
+{
+  "_disclaimer": "가상의 보험사 포트폴리오 — 실제 회사 데이터가 아님. 테스트·데모 전용.",
+  "company": "샘플보험(가상)",
+  "period": "2026Q2",
+  "is_sample": true,
+  "source_files": ["tests/fixtures/sample_exposures.json (가상)"],
+  "accounting_basis": "IFRS17/IFRS9",
+  "total_invested_assets_krw_bn": 50000,
+  "total_flag": "추정",
+  "total_page_ref": null,
+  "assets": [
+    {"class": "국공채", "region": "KR", "currency": "KRW", "mv_krw_bn": 20000, "weight": 0.40, "mod_duration": 12.0, "spread_duration": null, "rating_dist": null, "fx_hedge_ratio": null, "value_flag": "추정", "page_ref": null},
+    {"class": "회사채", "region": "KR", "currency": "KRW", "mv_krw_bn": 7500, "weight": 0.15, "mod_duration": 4.0, "spread_duration": 4.0, "credit_grade": "AA", "rating_dist": {"AA이상": 0.9, "A": 0.1}, "fx_hedge_ratio": null, "value_flag": "추정", "page_ref": null},
+    {"class": "해외채", "region": "US", "currency": "USD", "mv_krw_bn": 7500, "weight": 0.15, "mod_duration": 8.0, "spread_duration": 7.0, "credit_grade": "IG", "rating_dist": null, "fx_hedge_ratio": 0.9, "value_flag": "추정", "page_ref": null},
+    {"class": "대출-부동산PF", "region": "KR", "currency": "KRW", "mv_krw_bn": 1000, "weight": 0.02, "mod_duration": null, "spread_duration": null, "rating_dist": null, "fx_hedge_ratio": null, "value_flag": "추정", "page_ref": null},
+    {"class": "대출-부동산담보", "region": "KR", "currency": "KRW", "mv_krw_bn": 2500, "weight": 0.05, "mod_duration": null, "spread_duration": null, "rating_dist": null, "fx_hedge_ratio": null, "value_flag": "추정", "page_ref": null},
+    {"class": "대출-기업", "region": "KR", "currency": "KRW", "mv_krw_bn": 2500, "weight": 0.05, "mod_duration": 2.0, "spread_duration": null, "rating_dist": null, "fx_hedge_ratio": null, "value_flag": "추정", "page_ref": null},
+    {"class": "대출-신용/약관", "region": "KR", "currency": "KRW", "mv_krw_bn": 1500, "weight": 0.03, "mod_duration": null, "spread_duration": null, "rating_dist": null, "fx_hedge_ratio": null, "value_flag": "추정", "page_ref": null},
+    {"class": "부동산", "region": "KR", "currency": "KRW", "mv_krw_bn": 1500, "weight": 0.03, "mod_duration": null, "spread_duration": null, "rating_dist": null, "fx_hedge_ratio": null, "value_flag": "추정", "page_ref": null},
+    {"class": "대체-인프라", "region": "혼합", "currency": "USD", "mv_krw_bn": 1500, "weight": 0.03, "mod_duration": null, "spread_duration": null, "rating_dist": null, "fx_hedge_ratio": 0.5, "value_flag": "추정", "page_ref": null},
+    {"class": "대체-PE", "region": "US", "currency": "USD", "mv_krw_bn": 1000, "weight": 0.02, "mod_duration": null, "spread_duration": null, "rating_dist": null, "fx_hedge_ratio": 0.3, "value_flag": "추정", "page_ref": null},
+    {"class": "대체-사모대출", "region": "US", "currency": "USD", "mv_krw_bn": 1000, "weight": 0.02, "mod_duration": null, "spread_duration": null, "rating_dist": null, "fx_hedge_ratio": 0.7, "floating_rate": true, "value_flag": "추정", "page_ref": null},
+    {"class": "주식", "region": "KR", "currency": "KRW", "mv_krw_bn": 1000, "weight": 0.02, "mod_duration": null, "spread_duration": null, "rating_dist": null, "fx_hedge_ratio": null, "value_flag": "추정", "page_ref": null},
+    {"class": "현금예금", "region": "KR", "currency": "KRW", "mv_krw_bn": 500, "weight": 0.01, "mod_duration": null, "spread_duration": null, "rating_dist": null, "fx_hedge_ratio": null, "value_flag": "추정", "page_ref": null},
+    {"class": "기타", "region": "KR", "currency": "KRW", "mv_krw_bn": 1000, "weight": 0.02, "mod_duration": null, "spread_duration": null, "rating_dist": null, "fx_hedge_ratio": null, "value_flag": "추정", "page_ref": null}
+  ],
+  "liabilities": {"duration": 11.0, "pv_krw_bn": 45000, "value_flag": "추정", "page_ref": null},
+  "kics_ratio": null,
+  "investment_yield": null,
+  "notes": "가상 데이터. 비중: 국공채 40%, 회사채 15%, 해외채 15%, 대출 15%, 부동산 3%, 대체 7%, 기타(주식·현금·기타) 5%."
+}

@@ -1,0 +1,23 @@
+# 리밸런싱 제약 — 사용자 편집용. calc_impact.py --check-constraints 와 /portfolio-impact가 읽는다.
+# 아래 값은 예시(가정)이며 회사 내부 한도·감독 규정을 확인해 수정할 것.
+
+# 자산·부채 듀레이션 갭: |D_A − D_L × L/A| (년)
+duration_gap:
+  max_abs_years: 1.0
+
+# 비중 한도 (운용자산 대비, 0~1). classes 또는 regions로 묶는다.
+limits:
+  - {name: 대체투자 합계, classes: [부동산, 대체-인프라, 대체-PE, 대체-사모대출], max: 0.15}
+  - {name: 부동산PF 대출, classes: [대출-부동산PF], max: 0.05}
+  - {name: 주식 합계, classes: [주식, 해외주식], max: 0.10}
+  - {name: 해외자산 합계, regions: [US, EU, 기타, 혼합], max: 0.30}
+  - {name: 현금성 최소, classes: [현금예금], min: 0.01}
+  - {name: 회사채 BBB 이하, classes: [회사채], grades: [BBB, BB, B, HY], max: 0.02}
+
+# 1회 리밸런싱 제안의 자산군별 최대 조정 폭 (%p)
+max_step_pp: 3.0
+
+# 리밸런싱 방향 판단 시 참고 (자유 서술)
+notes: >
+  K-ICS 비율 하한, 유동성 버퍼, 기존 대체투자 미집행 약정을 고려한다.
+  제안은 방향과 대략적 폭(%p 범위)만 제시하며 실행 판단은 사용자 몫이다.
