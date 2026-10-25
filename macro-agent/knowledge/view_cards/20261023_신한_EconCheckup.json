@@ -1,0 +1,51 @@
+{
+  "card_id": "20261023_신한_EconCheckup",
+  "house": "신한투자증권",
+  "report_title": "Shinhan Econ Check-up: 주요국 통화정책회의 매파적 동결에 무게",
+  "published": "2026-10-23",
+  "published_estimated": false,
+  "source_file": "processed/reports/20261023_신한_EconCheckup.pdf",
+  "topics": [
+    "us_rate",
+    "kr_rate",
+    "oil"
+  ],
+  "views": [
+    {
+      "topic_id": "us_rate",
+      "variable": "us_ffr",
+      "direction": "횡보",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "10월 FOMC는 동결하되 에너지발 비용 압력에 대한 경계로 추가 인상 여지를 남기는 매파적 동결을 예상. 3Q GDP 양호와 9월 핵심 PCE 오름세 확대가 긴축 장기화 우려를 뒷받침할 것으로 봄.",
+      "page_ref": "p.1",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "kr_rate",
+      "variable": "kr_base_rate",
+      "direction": "상승",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "한은 10월 동결을 추가 인상 방향을 유지한 매파적 동결로 평가하고, 3Q GDP가 양호하게 확인되면 추가 인상 판단이 지지될 것으로 봄.",
+      "page_ref": "p.1",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "oil",
+      "variable": "brent",
+      "direction": "상승",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "명시적 유가 전망치는 없으나, 미국의 대이란 공격 재개 검토 보도 등 중동 지정학 불확실성을 유가 상승 및 물가 상방 요인으로 제시. 부수적 언급이며 유종 미특정으로 brent에 매핑, 시계 불명확.",
+      "page_ref": "p.1",
+      "conviction": "낮음"
+    }
+  ],
+  "key_risks": [
+    "중동 지정학 리스크에 따른 에너지 가격 상승과 비용 전이",
+    "AI 인프라 기업 회사채 금리 상승 등 AI 투자 자금조달 우려와 금융여건 악화",
+    "미국 물가 경직성에 따른 긴축 장기화"
+  ],
+  "notes": "성격: 주간 경제 리뷰·프리뷰. 주요국(미국·유로존·일본) 통화정책회의 모두 매파적 동결 예상(ECB 동결·추가 인상 선택지 유지, BOJ 유보적). 중국 3Q GDP 내수·수출 차별화 언급. p.2는 주간 지표 캘린더(사실 데이터). 목표치 제시 없음. AI 기업 회사채 금리 상승은 리뷰 사실로만 언급돼 us_corp_bond view는 만들지 않음."
+}

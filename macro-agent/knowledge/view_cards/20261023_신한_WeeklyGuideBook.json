@@ -1,0 +1,137 @@
+{
+  "card_id": "20261023_신한_WeeklyGuideBook",
+  "house": "신한투자증권",
+  "report_title": "WeeklyGuideBook",
+  "published": "2026-10-23",
+  "published_estimated": false,
+  "source_file": "processed/reports/20261023_신한_WeeklyGuideBook.pdf",
+  "topics": ["us_rate", "us_treasury", "us_corp_bond", "kr_rate", "kr_govt_bond", "kr_corp_bond", "fx_krwusd", "oil", "us_alt_re"],
+  "views": [
+    {
+      "topic_id": "us_rate",
+      "variable": "us_ffr",
+      "direction": "횡보",
+      "horizon": "단기",
+      "target": "10월 FOMC 동결",
+      "rationale": "에너지발 비용 압력 확산과 단기 실물경기 양호를 근거로 10월 FOMC는 매파적 기조 속 동결할 것으로 예상. 물가 제약으로 완화 여력은 제한적이라고 봄.",
+      "page_ref": "p.3",
+      "conviction": "높음"
+    },
+    {
+      "topic_id": "us_rate",
+      "variable": "us_ffr",
+      "direction": "상승",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "연준이 향후 추가 인상 옵션을 열어둘 것으로 판단. 선물시장의 12월 인상 프라이싱은 시장 기대로만 인용되며 하우스가 인상 시점을 확정하지는 않음. 시계 불명확.",
+      "page_ref": "p.3",
+      "conviction": "낮음"
+    },
+    {
+      "topic_id": "us_treasury",
+      "variable": "ust_10y",
+      "direction": "상승",
+      "horizon": "단기",
+      "target": "4.90~5.15%",
+      "rationale": "안전자산 수요로 금리가 내려왔으나 매파적 FOMC와 9월 PCE(항공료 상승 반영) 경계가 금리 하단을 받칠 것으로 보고 차주 미 국채 약보합(금리 소폭 상승 쪽) 전망. 주간 밴드 제시.",
+      "page_ref": "p.8",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "us_corp_bond",
+      "variable": "us_ig_oas",
+      "direction": "확대",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "네오클라우드 등 AI 인프라 기업의 크레딧 스프레드 상승과 자본조달 제약 의문이 당분간 이어질 것으로 보며, 국채금리 하락도 신용위험 재평가의 결과로 해석. 스프레드 방향에 대한 명시적 전망은 아닌 부수적 언급.",
+      "page_ref": "p.2",
+      "conviction": "낮음"
+    },
+    {
+      "topic_id": "kr_rate",
+      "variable": "kr_base_rate",
+      "direction": "상승",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "10월 금통위가 3.00% 동결했지만 추가 인상 방향을 유지한 매파적 동결로 평가. 성장 전망 상향과 수요측 물가 압력으로 3분기 GDP 양호 시 인상 기대가 커질 수 있다고 봄. 시계 불명확.",
+      "page_ref": "p.2",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "kr_govt_bond",
+      "variable": "ktb_3y",
+      "direction": "상승",
+      "horizon": "단기",
+      "target": "3.70~3.85%",
+      "rationale": "증시 부진에 따른 안전자산 선호는 강세 재료지만 FOMC·미 PCE·한국 3Q GDP 등 긴축 경계 이벤트가 금리 하단을 지지해 차주 국고채 약보합(금리 소폭 상승 쪽) 예상.",
+      "page_ref": "p.9",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "kr_govt_bond",
+      "variable": "ktb_10y",
+      "direction": "상승",
+      "horizon": "단기",
+      "target": "4.00~4.15%",
+      "rationale": "3년물과 같은 논리로 10년물도 추가 긴축 경계가 하단을 받쳐 약보합 흐름을 예상하며 주간 밴드 제시.",
+      "page_ref": "p.9",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "kr_corp_bond",
+      "variable": "kr_bank_bond_spread",
+      "direction": "축소",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "정부의 4분기 공적채권 발행 축소 계획과 시중은행의 선제적 자금조달로 최근 발행이 몰린 은행채의 수급 부담이 완화될 것으로 기대. 4분기 만기 부담은 남아 있어 조건부 성격.",
+      "page_ref": "p.10",
+      "conviction": "낮음"
+    },
+    {
+      "topic_id": "fx_krwusd",
+      "variable": "krw_usd",
+      "direction": "하락",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "수출 호조에 따른 업체 네고와 월말 달러 공급이 환율 하락 압력으로 작용하고, 3분기 GDP 양호 시 한은 인상 기대도 원화를 지지할 것으로 봄.",
+      "page_ref": "p.4",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "fx_krwusd",
+      "variable": "dxy",
+      "direction": "상승",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "매파적 FOMC와 양호한 미국 GDP·PCE 발표를 계기로 달러 강세 압력이 커질 것으로 예상. 유로는 프랑스 재정 불안으로 반등이 제한되고 엔화는 약세 우위로 판단.",
+      "page_ref": "p.4",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "oil",
+      "variable": "wti",
+      "direction": "횡보",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "중동 군사 긴장과 해상운송 차질 위험이 가격을 받치는 하방 경직 국면으로 보되, 협상이 진전되면 위험 프리미엄이 줄 수 있다는 양방향 시각.",
+      "page_ref": "p.12",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "us_alt_re",
+      "variable": "us_reit_sector",
+      "direction": "중립",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "상장 리츠 기준 시각: 고금리 환경에서 경기방어적이고 밸류 부담 낮은 리테일 리츠가 유리하고, 데이터센터는 성장 둔화 우려로 회복이 제한되며 금리 민감 오피스는 부진. 사모 부동산에 대한 직접 언급은 아님.",
+      "page_ref": "p.12",
+      "conviction": "낮음"
+    }
+  ],
+  "key_risks": [
+    "중동 지정학 긴장(대이란 공격 재개 우려)에 따른 유가 상승과 물가·긴축 장기화",
+    "AI 인프라 기업 자금조달 악화와 크레딧 위험 재평가에 따른 성장 기대 약화·위험회피",
+    "프랑스 재정·정치 불안에 따른 유럽 리스크 프리미엄 확대"
+  ],
+  "notes": "성격: 신한투자증권 크로스에셋 주간 전략(Weekly Guide Book, 28쪽). 매크로·FX·금리·크레딧·원자재·리츠 코멘트는 p.2-12, p.13 이후는 대부분 차트·밸류에이션·자금흐름 데이터, p.24 모델 포트폴리오. 목표치는 미 국채 10년·국고 3년/10년 주간 밴드만 제시. 매핑 외 뷰: 미국 주식은 기술주 단기 낙폭 과도로 위험회피 편승은 이르며 미국 중심 대응 유효(p.5), KOSPI는 주주환원 구체화 후 낙폭 둔화·횡보(p.6), 방산 업종 투심 악화(p.7), 금은 매파적 동결로 하방 우위이나 실물 수요가 하단 지지(p.12), 비트코인 8~8.1만달러 지지·8.4~8.5만달러 저항(p.11). 모델 포트폴리오(p.24) TAA상 미 국채·미 크레딧 소폭 언더웨이트, 리츠·원유 중립, 금 소폭 오버웨이트. us_ig_oas·us_reit_sector 뷰는 간접 언급 기반이라 확신도 낮음. kr_alt_*, us_alt_infra/pe/pd 관련 의견 없음."
+}

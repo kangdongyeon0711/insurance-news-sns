@@ -1,0 +1,77 @@
+{
+  "card_id": "20261020_신한_WeeklyCreditMonitor",
+  "house": "신한투자증권",
+  "report_title": "WeeklyCreditMonitor",
+  "published": "2026-10-20",
+  "published_estimated": false,
+  "source_file": "processed/reports/20261020_신한_WeeklyCreditMonitor.pdf",
+  "topics": ["kr_corp_bond", "kr_alt_pd", "kr_alt_re", "kr_rate"],
+  "views": [
+    {
+      "topic_id": "kr_corp_bond",
+      "variable": "kr_aa_minus_spread",
+      "direction": "횡보",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "직전 주에는 국고채 강세를 못 따라가 전 섹터 스프레드가 소폭 벌어졌으나, 발행 부담이 커도 캐리 목적 수요가 꾸준해 수급 불안은 크지 않을 것으로 봄. 추가 확대보다는 안정에 무게. 시계 불명확.",
+      "page_ref": "p.2-3",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "kr_corp_bond",
+      "variable": "kr_bank_bond_spread",
+      "direction": "축소",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "9월 가계대출 순감과 10월 증시 급락에 따른 대출 취급 위축으로 은행채 발행 부담이 줄어들 것으로 기대. 스프레드 방향을 직접 말하지는 않았고 수급 개선 기대에서 도출한 것이라 확신도는 낮음.",
+      "page_ref": "p.1",
+      "conviction": "낮음"
+    },
+    {
+      "topic_id": "kr_corp_bond",
+      "variable": "kr_corp_bond_primary_demand",
+      "direction": "횡보",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "지난주 수요예측 4건 모두 증액 발행하고 상위등급은 10배 넘는 주문이 들어옴. 이번 주 예정 4건(NH투자증권·롯데렌탈·하나금융지주 신종·삼양홀딩스)도 신용도가 양호해 무난한 모집을 예상, 우량물 중심 견조한 수요가 이어진다는 판단.",
+      "page_ref": "p.9-10",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "kr_alt_pd",
+      "variable": "kr_pf_delinquency_rate",
+      "direction": "하락",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "6월말 PF대출 연체율이 부실 정리 영향으로 전분기보다 내려가고 유의·부실우려 여신도 줄어, PF 시장이 안정 국면에 들어섰다고 평가. 향후 연체율 경로를 수치로 제시하지는 않음. 시계 불명확.",
+      "page_ref": "p.1",
+      "conviction": "낮음"
+    },
+    {
+      "topic_id": "kr_alt_re",
+      "variable": "kr_re_pf_lending",
+      "direction": "상승",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "PF대출 잔액이 2023년말 이후 처음 늘고 2분기 신규 취급도 활발했음. 캠코펀드 신규 조성, 신디케이트론 확대, 자기자본비율 규제 유예 등 정책 지원으로 신규 자금 공급과 시장 정상화가 이어질 것으로 봄.",
+      "page_ref": "p.1",
+      "conviction": "낮음"
+    },
+    {
+      "topic_id": "kr_rate",
+      "variable": "kr_base_rate",
+      "direction": "횡보",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "10월 금통위에서 동결 기대가 우세했고 이것이 국고채 강세 요인이었다고 서술. 하우스 자체 금리 전망이라기보다 시장 기대를 인용한 부수적 언급.",
+      "page_ref": "p.2-3",
+      "conviction": "낮음"
+    }
+  ],
+  "key_risks": [
+    "공사채·여전채·회사채 순발행 확대에 따른 크레딧 공급 부담 지속",
+    "주식시장 급락 등 위험회피 국면에서 국고채 대비 크레딧 강세 지연(스프레드 확대)",
+    "석유화학·건설 등 업종 중심 부정적 등급전망 누적 및 중동전쟁 장기화"
+  ],
+  "notes": "성격: 신한투자증권 국내크레딧 주간 모니터(10/12~10/16 기준 발행·유통·수요예측·등급 변동 데이터 중심). 목표치·전망치 제시 없음, 대부분 지난주 동향 서술이며 전망성 언급은 수급·수요예측·PF 안정화 정도. 국고채 금리 전망은 없어 kr_govt_bond view는 만들지 않음. 공급망안정화기금 확대(수출입은행 채권 발행 증가)는 매크로 위험이 정부 신용으로 흡수되는 효과로 언급(p.1). 등급: 롯데손해보험 전망 상향(신한금융지주 인수 계약, p.11), 부정적 전망은 석유화학·건설 업종에 집중, 현대해상화재보험(AAA)·푸본현대생명보험도 부정적 목록에 포함(p.12-13). kr_bank_bond_spread 축소는 수급 개선 기대에서 도출한 해석임."
+}

@@ -1,0 +1,39 @@
+{
+  "card_id": "20261023_신한_FXCheckup",
+  "house": "신한투자증권",
+  "report_title": "Shinhan FX Check-up: 수급 우위 속 원/달러 하락 압력 우세",
+  "published": "2026-10-23",
+  "published_estimated": false,
+  "source_file": "processed/reports/20261023_신한_FXCheckup.pdf",
+  "topics": [
+    "fx_krwusd"
+  ],
+  "views": [
+    {
+      "topic_id": "fx_krwusd",
+      "variable": "krw_usd",
+      "direction": "하락",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "달러 강세 압력에도 수출 호조에 따른 업체 네고와 월말 달러 공급 우위로 원/달러 하락(원화 강세) 흐름이 이어질 것으로 봄. 양호한 3Q GDP로 한은 추가 인상 기대가 커지면 원화 지지 요인. 예상 레인지 미제시.",
+      "page_ref": "p.1",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "fx_krwusd",
+      "variable": "dxy",
+      "direction": "상승",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "FOMC 매파적 동결과 양호한 미국 GDP·PCE 발표를 계기로 달러 강세 압력이 커질 것으로 예상. 원/달러 판단의 대외 배경 변수.",
+      "page_ref": "p.1",
+      "conviction": "중간"
+    }
+  ],
+  "key_risks": [
+    "FOMC 매파적 기조 및 미국 지표 호조에 따른 강달러 압력",
+    "중동 불안·국내 증시 변동성 등 글로벌 위험회피",
+    "프랑스 재정 불안에 따른 유로화 약세"
+  ],
+  "notes": "성격: 주간 외환 리뷰·프리뷰. 하우스 원/달러 예상 레인지·목표치는 제시되지 않음. 맥락: 달러/유로는 ECB 긴축 신호에 민감하나 프랑스 재정 불안으로 반등 제한, 엔/달러는 엔화 약세 우세하되 당국 개입 시사로 불안 억제 예상(p.1). p.2-4는 환율 차트북(주간 절상률, 포지션, 스왑레이트 등 사실 데이터)."
+}

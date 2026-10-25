@@ -1,0 +1,50 @@
+{
+  "card_id": "20261022_신한_10월금통위",
+  "house": "신한투자증권",
+  "report_title": "10월 금통위 리뷰: 기준금리 만장일치 동결",
+  "published": "2026-10-22",
+  "published_estimated": false,
+  "source_file": "processed/reports/20261022_신한_10월금통위.pdf",
+  "topics": [
+    "kr_rate",
+    "kr_govt_bond"
+  ],
+  "views": [
+    {
+      "topic_id": "kr_rate",
+      "variable": "kr_base_rate",
+      "direction": "상승",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "만장일치 동결은 7~8월 선제 인상 효과를 점검하는 성격으로 해석하며, 상향된 경기 판단을 근거로 11월 회의에서 추가 인상 가능성이 더 높다고 판단. 인상 폭은 명시하지 않음.",
+      "page_ref": "p.1",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "kr_rate",
+      "variable": "kr_base_rate",
+      "direction": "상승",
+      "horizon": "장기",
+      "target": "2027년 상반기까지 2회 추가 인상, 최종금리 3.50%",
+      "rationale": "경기 판단 상향과 대외 불확실성 확대를 이유로 내년 상반기까지 두 차례 추가 인상 경로를 기존대로 유지. 하우스의 핵심 콜.",
+      "page_ref": "p.1",
+      "conviction": "높음"
+    },
+    {
+      "topic_id": "kr_govt_bond",
+      "variable": "ktb_3y",
+      "direction": "횡보",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "9월 말 이후 국고채 강세(수급 개선 기대·안전자산 선호·대외 금리 하락)는 상당 부분 가격에 반영돼 금리가 바닥을 다지는 국면으로 봄. 3Q GDP·10월 CPI가 긴축 경계를 다시 키울 수 있어 상방 위험에 무게. 만기 특정 없음(시장금리 전반 언급)으로 3년물에 매핑.",
+      "page_ref": "p.1",
+      "conviction": "중간"
+    }
+  ],
+  "key_risks": [
+    "3Q GDP·10월 CPI 강세 시 긴축 경계 재부각에 따른 시장금리 반등",
+    "중동사태·공급망 차질 등 대외 불확실성과 미 연준 긴축 기조",
+    "수도권 주택가격·가계부채 등 금융불균형 위험"
+  ],
+  "notes": "성격: 한은 금통위 결과 리뷰(Fixed Income). 10월 기준금리 동결 결정과 통방문 비교(p.4), 총재 기자회견 Q&A 요약(p.5-7) 포함. 원/달러에 대해서는 총재 발언(실질실효환율 기준 원화가 예년 평균 대비 약세, 레벨보다 예측 가능성 중시, p.6)만 있고 하우스 환율 전망은 없어 view로 만들지 않음. 중립금리 상승 가능성(AI 투자 자금 경쟁) 언급은 장기 고금리 논거로 참고(p.6)."
+}
