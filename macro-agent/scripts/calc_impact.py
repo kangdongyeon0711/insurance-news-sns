@@ -193,7 +193,11 @@ class Engine:
 
         elif method == "discount_rate":
             d = self._duration(asset, cell)
-            cell.add("discount_rate", -mv * d * self._g(shocks, rule["factor"], cell, missing) * BP)
+            factor = rule.get("factor_foreign", rule["factor"]) if region != "KR" else rule["factor"]
+            if factor not in shocks and rule["factor"] in shocks:   # 해외 팩터가 없으면 국내 값으로 근사
+                cell.est(f"{factor} 없음 → {rule['factor']}로 근사")
+                factor = rule["factor"]
+            cell.add("discount_rate", -mv * d * self._g(shocks, factor, cell, missing) * BP)
             self._fx(asset, mv, shocks, cell, missing)
 
         elif method == "pe":

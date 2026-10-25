@@ -19,7 +19,8 @@ factors:
   kr_cre_cap_rate_bp:     {unit: bp,   topic_id: kr_alt_re,   desc: "한국 상업용부동산 캡레이트 변화"}
   us_cre_cap_rate_bp:     {unit: bp,   topic_id: us_alt_re,   desc: "미국 상업용부동산 캡레이트 변화"}
   kr_pf_loss_rate_pp:     {unit: "%p", topic_id: kr_alt_re,   desc: "국내 부동산 PF·담보대출 손실률 변화 (익스포저 대비)"}
-  infra_discount_rate_bp: {unit: bp,   topic_id: kr_alt_infra, desc: "인프라 자산 할인율 변화 (국내·해외 공통)"}
+  infra_discount_rate_bp: {unit: bp,   topic_id: kr_alt_infra, desc: "국내 인프라 자산 할인율 변화"}
+  us_infra_discount_rate_bp: {unit: bp, topic_id: us_alt_infra, desc: "해외(미국·글로벌) 인프라 자산 할인율 변화 — region ≠ KR 인프라 자산에 적용"}
   kr_pe_value_pct:        {unit: "%",  topic_id: kr_alt_pe,   desc: "국내 PE 지분 평가가치 변화율"}
   us_pe_value_pct:        {unit: "%",  topic_id: us_alt_pe,   desc: "해외(미국) PE 지분 평가가치 변화율"}
   kr_pd_default_pp:       {unit: "%p", topic_id: kr_alt_pd,   desc: "국내 사모대출 부도율 변화"}

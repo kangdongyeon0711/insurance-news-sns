@@ -121,3 +121,15 @@ def test_constraints():
     after = {c["name"]: c for c in ci.check_constraints(pf, cons, None, {"deltas_pp": {"대체-인프라": 6}})}
     assert after["대체투자 합계"]["value"] == pytest.approx(0.16) and after["대체투자 합계"]["ok"] is False
     assert after["조정폭 대체-인프라"]["ok"] is False
+
+
+def test_infra_discount_rate_by_region():
+    """국내 인프라는 infra_discount_rate_bp, 해외 인프라는 us_infra_discount_rate_bp (없으면 국내 값 근사 + 추정)."""
+    pf = _pf({"class": "대체-인프라", "mv_krw_bn": 100, "mod_duration": 10, "region": "KR"},
+             {"class": "대체-인프라", "mv_krw_bn": 100, "mod_duration": 10, "region": "US", "currency": "USD",
+              "fx_hedge_ratio": 1.0})
+    s = _one(pf, {"infra_discount_rate_bp": 10, "us_infra_discount_rate_bp": -20})
+    assert [r["components_100m"]["discount_rate"] for r in s["rows"]] == pytest.approx([-10.0, 20.0])
+    s2 = _one(pf, {"infra_discount_rate_bp": 10})
+    assert s2["rows"][1]["components_100m"]["discount_rate"] == pytest.approx(-10.0)
+    assert any("근사" in x for x in s2["rows"][1]["estimated_reasons"])

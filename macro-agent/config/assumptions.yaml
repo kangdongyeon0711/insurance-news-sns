@@ -104,7 +104,7 @@ class_rules:
   대출-기업:      {method: bond_kr}
   대출-신용/약관: {method: none, note: 약관대출은 해약환급금 담보로 시장위험 미미}
   부동산:         {method: cap_rate}
-  대체-인프라:    {method: discount_rate, factor: infra_discount_rate_bp}
+  대체-인프라:    {method: discount_rate, factor: infra_discount_rate_bp, factor_foreign: us_infra_discount_rate_bp}
   대체-PE:        {method: pe}
   대체-사모대출:  {method: private_debt}
   현금예금:       {method: none}

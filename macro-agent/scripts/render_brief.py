@@ -23,6 +23,19 @@ TOPIC_NAMES = {
     "us_alt_re": "미국 대체투자 - 부동산", "us_alt_infra": "미국 대체투자 - 인프라", "us_alt_pe": "미국 대체투자 - PE (Equity)",
     "us_alt_pd": "미국 대체투자 - PE (Debt) / Private Credit",
 }
+# 항목별 대표 지표 우선순위 (한 장 요약·워드 요약본 공용)
+PREF = {"fx_krwusd": ["krw_usd", "dxy_ice", "kr_us_policy_diff", "kr_current_account"],
+        "us_treasury": ["ust_10y", "ust_2y", "ust_30y", "ust_10y_2y"],
+        "kr_govt_bond": ["ktb_3y", "ktb_10y", "ktb_30y", "ktb_5y"],
+        "kr_alt_re": ["kr_office_vacancy_national", "kr_retail_vacancy_national", "kr_pf_delinquency_rate", "kr_pf_exposure"],
+        "us_corp_bond": ["us_ig_oas", "us_hy_oas"]}
+
+
+def ordered_indicators(topic_id: str, inds: list[dict]) -> list[dict]:
+    pref = PREF.get(topic_id, [])
+    return sorted(inds, key=lambda x: pref.index(x["series_id"]) if x["series_id"] in pref else len(pref))
+
+
 DISCLAIMER = ("본 자료는 개인의 의사결정 보조를 위한 분석 자료이며 투자 권유가 아닙니다. 현황 수치는 기준일 시점의 공개 API 데이터 "
               "또는 [웹확인] 표시된 웹 검색 값(공식 원문 대조 전)이고, "
               "전망·시나리오·확률은 하우스 뷰와 에이전트 판단에 기반한 추정으로 실제 결과와 다를 수 있습니다. "
@@ -30,9 +43,14 @@ DISCLAIMER = ("본 자료는 개인의 의사결정 보조를 위한 분석 자�
 
 
 def ind_stale(ind: dict, ref: str) -> bool:
-    """indicator 기준일이 오래되었는지. snapshot 값은 stale 필드, 웹확인 값은 기준일로 판정
-    (일자 = 7일, YYYY-MM 월 단위 = 월말 + 45일)."""
-    if ind.get("stale") is not None:
+    """indicator 기준일이 오래되었는지.
+    - API·수기 값: snapshot이 주기별 기준으로 계산한 stale 필드를 따른다.
+    - 웹확인·추정 값: 에이전트가 적은 stale 필드는 무시하고 기준일로 판정(일자 = 7일, YYYY-MM = 월말 + 45일).
+    - 정책금리(FFR 목표, 기준금리)는 결정일이 기준일이고 다음 결정 전까지 유효하므로 제외."""
+    sid = ind.get("series_id", "")
+    if any(k in sid for k in ("ffr_upper", "ffr_lower", "base_rate")):
+        return False
+    if ind.get("value_flag", "API") in ("API", "수기") and ind.get("stale") is not None:
         return bool(ind["stale"])
     d = ind.get("as_of")
     if not d or ind.get("value") is None:
@@ -50,6 +68,14 @@ def ind_stale(ind: dict, ref: str) -> bool:
         return False
 
 
+def fmt_unit(u: str | None) -> str:
+    """값 뒤에 붙일 단위. '2020=100' 같은 기준연도 표기는 괄호로 감싼다."""
+    u = (u or "").strip()
+    if not u:
+        return ""
+    return f" ({u})" if "=" in u else f" {u}"
+
+
 def fmt_num(v) -> str:
     if v is None:
         return "미확인"
@@ -63,7 +89,7 @@ def ind_cell(ind: dict, ref: str) -> str:
         return f"{ind.get('name') or ind['series_id']} 미확인"
     flag = "" if ind.get("value_flag", "API") == "API" else f" [{ind['value_flag']}]"
     flag += " ⚠stale" if ind_stale(ind, ref) else ""
-    return f"{ind.get('name') or ind['series_id']} {fmt_num(ind['value'])}{ind['unit']} ({ind.get('as_of')}){flag}"
+    return f"{ind.get('name') or ind['series_id']} {fmt_num(ind['value'])}{fmt_unit(ind['unit'])} ({ind.get('as_of')}){flag}"
 
 
 def shocks_str(sh: dict) -> str:
@@ -113,7 +139,7 @@ def render(date: str) -> str:
         if not d:
             a(f"| {i} | {TOPIC_NAMES[t]} | 미확인 | 미확인 | 미확인 | — |")
             continue
-        inds = [x for x in d["current"]["indicators"] if x.get("value") is not None][:2]
+        inds = [x for x in ordered_indicators(t, d["current"]["indicators"]) if x.get("value") is not None][:2]
         cur = "<br>".join(ind_cell(x, date) for x in inds) or "미확인"
         st = d["short_term"]
         base = next(s for s in d["long_term"]["scenarios"] if s["name"] == "Base")
@@ -149,7 +175,7 @@ def render(date: str) -> str:
         a("|---|---|---|---|---|---|")
         for x in d["current"]["indicators"]:
             chg = "—" if x.get("chg_1m") is None else f"{x['chg_1m']:+g}{x.get('chg_unit', '')}"
-            val = "미확인" if x.get("value") is None else f"{fmt_num(x['value'])} {x['unit']}"
+            val = "미확인" if x.get("value") is None else f"{fmt_num(x['value'])}{fmt_unit(x['unit'])}"
             flag = x.get("value_flag", "API") + (" ⚠stale" if ind_stale(x, date) else "")
             src = f" ({x['source']})" if x.get("source") else ""
             a(f"| {x.get('name', '')} | `{x['series_id']}` | {val} | {x.get('as_of') or '미확인'} | {chg} | {flag}{src} |")

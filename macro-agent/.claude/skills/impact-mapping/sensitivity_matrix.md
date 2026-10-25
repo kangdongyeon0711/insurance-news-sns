@@ -52,7 +52,7 @@
 
 | 팩터 | (1) 방향 | (2) 계산식 / 경로 | (3) 주의점 |
 |---|---|---|---|
-| infra_discount_rate_bp ✅ | 할인율↑ → 가치↓ | ΔV/V ≈ −D_infra × Δr (D_infra 기본 `assumptions.duration.대체-인프라`, 가정) | 장기·안정 현금흐름 → 장기 듀레이션 자산으로서 ALM 매칭 기여(K-ICS 금리위험 경감 가능) |
+| infra_discount_rate_bp(국내) / us_infra_discount_rate_bp(해외) ✅ | 할인율↑ → 가치↓ | ΔV/V ≈ −D_infra × Δr (D_infra 기본 `assumptions.duration.대체-인프라`, 가정) | 장기·안정 현금흐름 → 장기 듀레이션 자산으로서 ALM 매칭 기여(K-ICS 금리위험 경감 가능) |
 | 물가(유가 경로) 📝 | 물가↑ → 연동 수익↑ | 물가연동 통행료·요금 구조면 인플레 헤지 | 수요 리스크형 vs 가용성 지급형 구분 |
 | krw_usd_pct ✅ | 해외 인프라 비헤지분 FX | | |
 

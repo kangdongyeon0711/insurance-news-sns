@@ -6,7 +6,7 @@ import json, re, sys
 from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
-from render_brief import TOPIC_NAMES, fmt_num, ind_stale
+from render_brief import PREF, TOPIC_NAMES, fmt_num, fmt_unit, ind_stale
 from common import TOPIC_IDS
 DATE = sys.argv[1]
 tdir = ROOT / "knowledge/macro_topics" / DATE
@@ -19,12 +19,6 @@ def clip(t, n=170):
     m = max(cut.rfind(". "), cut.rfind("다. "), cut.rfind("음. "), cut.rfind("함. "))
     return (cut[:m + 1] if m > 60 else cut.rstrip() + "…")
 
-# 항목별 대표 지표 우선순위 (요약표는 첫 번째, 상세표는 앞 4개)
-PREF = {"fx_krwusd": ["krw_usd", "dxy_ice", "kr_us_policy_diff", "kr_current_account"],
-        "us_treasury": ["ust_10y", "ust_2y", "ust_30y", "ust_10y_2y"],
-        "kr_govt_bond": ["ktb_3y", "ktb_10y", "ktb_30y", "ktb_5y"],
-        "kr_alt_re": ["kr_office_vacancy_national", "kr_retail_vacancy_national", "kr_pf_delinquency_rate", "kr_pf_exposure"],
-        "us_corp_bond": ["us_ig_oas", "us_hy_oas"]}
 out = {"date": DATE, "topics": []}
 cards = set()
 for i, t in enumerate(TOPIC_IDS, 1):
@@ -38,14 +32,10 @@ for i, t in enumerate(TOPIC_IDS, 1):
     for x in ordered:
         if x.get("value") is None:
             continue
-        vf = x.get("value_flag", "API")
-        # 웹확인·추정 값은 에이전트가 적은 stale 필드 대신 기준일로 직접 판정
-        chk = x if vf in ("API", "수기") else {k: v for k, v in x.items() if k != "stale"}
-        policy = any(k in x["series_id"] for k in ("ffr_upper", "ffr_lower", "base_rate"))  # 결정일 기준 값은 다음 결정 전까지 유효
-        flag = vf + (" ⚠" if ind_stale(chk, DATE) and not policy else "")
+        flag = x.get("value_flag", "API") + (" ⚠" if ind_stale(x, DATE) else "")
         nm = x.get("name") or x["series_id"]
         short = re.sub(r"\s*\((?:[^()]*(?:ECOS|웹|FRED|STEO|PitchBook|Trepp|한국부동산원|TTM|분기|부실)[^()]*)\)", "", nm)
-        inds.append({"short": short[:22], "name": nm, "value": f"{fmt_num(x['value'])} {x['unit']}".strip(),
+        inds.append({"short": short[:22], "name": nm, "value": f"{fmt_num(x['value'])}{fmt_unit(x['unit'])}".strip(),
                      "as_of": x.get("as_of") or "미확인", "flag": flag})
     sc = {s["name"]: s for s in d["long_term"]["scenarios"]}
     hv = d["house_views"]
