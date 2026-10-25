@@ -212,9 +212,9 @@
         "factor_shocks": {
           "krw_usd_pct": -7.0,
           "dxy_pct": -5.0,
-          "fx_hedge_cost_bp": -100
+          "fx_hedge_cost_bp": -75
         },
-        "shock_rationale": "Δ한국 +25bp − Δ미국 −75bp = 금리차 +100bp 축소 → 헤지비용 ≈ −100bp. 원/달러 −7%(약 1,230원 추정), DXY −5%."
+        "shock_rationale": "[수정 2026-10-25, 시나리오 결합 정합] 결합 시 동일 이름 시나리오인 kr_rate Bull(Δ한국 −25bp)·us_rate Bull(Δ미국 −100bp)을 따름: Δ한국 −25bp − Δ미국 −100bp = 금리차 75bp 축소 → 헤지비용 ≈ −75bp (이전 −100bp는 Δ한국 +25bp·Δ미국 −75bp 자체 가정). 원/달러 −7%(약 1,230원 추정), DXY −5%."
       },
       {
         "name": "Bear",
@@ -223,9 +223,9 @@
         "factor_shocks": {
           "krw_usd_pct": 6.0,
           "dxy_pct": 4.0,
-          "fx_hedge_cost_bp": 25
+          "fx_hedge_cost_bp": 0
         },
-        "shock_rationale": "Δ한국 +25bp − Δ미국 +50bp = 금리차 −25bp 확대 → 헤지비용 ≈ +25bp. 원/달러 +6%(약 1,405원 추정), DXY +4%."
+        "shock_rationale": "[수정 2026-10-25, 시나리오 결합 정합] kr_rate Bear(Δ한국 +75bp)·us_rate Bear(Δ미국 +75bp)를 따름: 금리차 변화 0 → 헤지비용 ≈ 0bp (이전 +25bp는 Δ한국 +25bp·Δ미국 +50bp 자체 가정). 원/달러 +6%(약 1,405원 추정), DXY +4%."
       }
     ]
   },
