@@ -1,0 +1,38 @@
+{
+  "generated_at": "2026-10-25T01:51:41",
+  "ref_date": "2026-10-25",
+  "fetch_status": {
+    "ecos": "no_key",
+    "fred": "no_key",
+    "eia": "ok",
+    "dart": "no_key"
+  },
+  "warnings": [
+    "kr_base_rate(한국은행 기준금리): 데이터 없음 — 미확인",
+    "kr_call_1d(콜금리(1일, 전체거래)): 데이터 없음 — 미확인",
+    "kr_cd_91d(CD 91일): 데이터 없음 — 미확인",
+    "ktb_3y(국고채 3년): 데이터 없음 — 미확인",
+    "ktb_10y(국고채 10년): 데이터 없음 — 미확인",
+    "ktb_30y(국고채 30년): 데이터 없음 — 미확인",
+    "kr_corp_aa_3y(회사채 3년 AA-): 데이터 없음 — 미확인",
+    "kr_corp_bbb_3y(회사채 3년 BBB-): 데이터 없음 — 미확인",
+    "krw_usd(원/달러 환율(매매기준율)): 데이터 없음 — 미확인",
+    "kr_cpi(소비자물가지수(총지수)): 데이터 없음 — 미확인",
+    "us_ffr_upper(FFR 목표 상단): 데이터 없음 — 미확인",
+    "us_ffr_lower(FFR 목표 하단): 데이터 없음 — 미확인",
+    "us_eff_ffr(실효 연방기금금리(EFFR)): 데이터 없음 — 미확인",
+    "ust_2y(UST 2년): 데이터 없음 — 미확인",
+    "ust_10y(UST 10년): 데이터 없음 — 미확인",
+    "ust_30y(UST 30년): 데이터 없음 — 미확인",
+    "ust_10y_2y_fred(UST 10Y-2Y (FRED 공식)): 데이터 없음 — 미확인",
+    "us_bei_10y(10년 기대인플레이션(BEI)): 데이터 없음 — 미확인",
+    "us_ig_oas(ICE BofA US IG OAS): 데이터 없음 — 미확인",
+    "us_hy_oas(ICE BofA US HY OAS): 데이터 없음 — 미확인",
+    "wti(WTI 현물): 데이터 없음 — 미확인",
+    "brent(Brent 현물): 데이터 없음 — 미확인",
+    "usd_broad_index(달러 지수(Nominal Broad): 데이터 없음 — 미확인",
+    "krw_usd_fred(원/달러(FRED): 데이터 없음 — 미확인",
+    "us_crude_stocks(미국 상업용 원유 재고(SPR 제외)): 데이터 없음 — 미확인"
+  ],
+  "series": {}
+}

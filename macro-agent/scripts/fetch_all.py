@@ -1,0 +1,184 @@
+"""전체 수집 + data/latest_snapshot.json 생성.
+
+사용:
+  python scripts/fetch_all.py              # ECOS·FRED·EIA·DART 수집 후 스냅샷 생성
+  python scripts/fetch_all.py --no-fetch   # 이미 있는 data/series/*.csv로 스냅샷만 재생성
+  python scripts/fetch_all.py --print      # 주요 값 출력
+
+수집 실패/키 누락이어도 스냅샷은 기존 CSV로 생성하고 warnings에 기록한다.
+"""
+from __future__ import annotations
+
+import argparse
+import sys
+from datetime import date, datetime
+from pathlib import Path
+
+import pandas as pd
+
+from common import (CONFIG_DIR, SERIES_DIR, SNAPSHOT_PATH, get_logger, load_yaml, read_series_csv, save_json,
+                    stale_threshold_days, today, write_series_csv)
+
+log = get_logger("fetch_all")
+KEY_SERIES = ["krw_usd", "ktb_10y", "kr_aa_spread", "ust_10y", "us_ig_oas", "brent", "kr_base_rate"]
+
+
+def _value_at_or_before(s: pd.Series, d: pd.Timestamp) -> float | None:
+    sub = s[s.index <= d]
+    return None if sub.empty else float(sub.iloc[-1])
+
+
+def _chg(s: pd.Series, last_date: pd.Timestamp, last: float, offset: pd.DateOffset, chg_type: str) -> float | None:
+    prev = _value_at_or_before(s, last_date - offset)
+    if prev is None:
+        return None
+    if chg_type == "pct":
+        return None if prev == 0 else round((last / prev - 1) * 100, 2)
+    return round((last - prev) * 100, 1)  # %p → bp
+
+
+def series_stats(s: pd.Series, meta: dict, ref: date) -> dict:
+    s = s.dropna().sort_index()
+    last_date, last = s.index[-1], float(s.iloc[-1])
+    chg_type = meta.get("chg_type", "diff")
+    cycle = meta.get("cycle", "D")
+    s5 = s[s.index >= last_date - pd.DateOffset(years=5)]
+    age = (pd.Timestamp(ref) - last_date).days
+    return {
+        "series_id": meta["series_id"],
+        "name": meta["name"],
+        "topic_id": meta.get("topic_id"),
+        "source": meta.get("source", "derived"),
+        "unit": meta.get("unit", "%p"),
+        "chg_unit": "%" if chg_type == "pct" else "bp",
+        "last_value": round(last, 4),
+        "as_of": last_date.strftime("%Y-%m-%d"),
+        "chg_1w": _chg(s, last_date, last, pd.DateOffset(weeks=1), chg_type),
+        "chg_1m": _chg(s, last_date, last, pd.DateOffset(months=1), chg_type),
+        "chg_3m": _chg(s, last_date, last, pd.DateOffset(months=3), chg_type),
+        "chg_1y": _chg(s, last_date, last, pd.DateOffset(years=1), chg_type),
+        "pct_rank_5y": round(float((s5 <= last).mean()), 3) if len(s5) > 1 else None,
+        "age_days": age,
+        "stale": age > stale_threshold_days(cycle),
+        "verified": meta.get("verified", False),
+    }
+
+
+def build_derived(defs: list[dict], series_dir: Path) -> list[dict]:
+    """파생 스프레드 계산 → series_dir/{id}.csv 저장. 계산된 정의 목록 반환."""
+    built = []
+    for d in defs:
+        a, b = read_series_csv(d["a"], series_dir), read_series_csv(d["b"], series_dir)
+        if a is None or b is None:
+            log.warning("파생 %s 계산 불가: %s 또는 %s 없음", d["series_id"], d["a"], d["b"])
+            continue
+        if d.get("ffill"):  # 정책금리처럼 주기가 다른 계단형 시계열
+            idx = a.index.union(b.index)
+            a, b = a.reindex(idx).ffill(), b.reindex(idx).ffill()
+        df = pd.concat([a.rename("a"), b.rename("b")], axis=1, join="inner").dropna()
+        if df.empty:
+            continue
+        rows = [(i.strftime("%Y-%m-%d"), round(v, 4)) for i, v in (df["a"] - df["b"]).items()]
+        write_series_csv(d["series_id"], rows, series_dir)
+        built.append(d)
+    return built
+
+
+def build_snapshot(series_dir: Path = SERIES_DIR, ref: date | None = None, fetch_status: dict | None = None) -> dict:
+    ref = ref or today()
+    cfg = load_yaml(CONFIG_DIR / "series.yaml")
+    warnings: list[str] = []
+    out: dict[str, dict] = {}
+    by_id = {}
+    for meta in cfg["series"]:
+        s = read_series_csv(meta["series_id"], series_dir)
+        if s is None:
+            warnings.append(f"{meta['series_id']}({meta['name']}): 데이터 없음 — 미확인")
+            continue
+        by_id[meta["series_id"]] = meta
+        out[meta["series_id"]] = series_stats(s, meta, ref)
+    for d in build_derived(cfg.get("derived", []), series_dir):
+        s = read_series_csv(d["series_id"], series_dir)
+        comps = [by_id.get(d["a"], {}), by_id.get(d["b"], {})]
+        meta = {**d, "source": "derived", "unit": "%p", "chg_type": "diff",
+                "cycle": "M" if any(c.get("cycle") == "M" for c in comps) else "D",
+                "verified": all(c.get("verified", False) for c in comps)}
+        out[d["series_id"]] = {**series_stats(s, meta, ref), "last_value_bp": round(float(s.iloc[-1]) * 100, 1),
+                               "formula": f"{d['a']} - {d['b']}"}
+    for sid, st in out.items():
+        if st["stale"]:
+            warnings.append(f"{sid}: 기준일 {st['as_of']} ({st['age_days']}일 경과) — 오래된 데이터")
+        if not st["verified"]:
+            warnings.append(f"{sid}: 시리즈 코드 미검증(verified: false)")
+    # ECOS vs FRED 원/달러 교차검증
+    if "krw_usd" in out and "krw_usd_fred" in out:
+        e, f = read_series_csv("krw_usd", series_dir), read_series_csv("krw_usd_fred", series_dir)
+        common = e.index.intersection(f.index)
+        if len(common):
+            d0 = common[-1]
+            gap = abs(e[d0] / f[d0] - 1) * 100
+            out["krw_usd"]["cross_check"] = {"date": d0.strftime("%Y-%m-%d"), "ecos": float(e[d0]),
+                                             "fred": float(f[d0]), "gap_pct": round(gap, 3)}
+            if gap > 1.0:
+                warnings.append(f"원/달러 ECOS vs FRED 괴리 {gap:.2f}% ({d0.date()}) — 확인 필요")
+    return {
+        "generated_at": datetime.now().isoformat(timespec="seconds"),
+        "ref_date": ref.isoformat(),
+        "fetch_status": fetch_status or {},
+        "warnings": warnings,
+        "series": out,
+    }
+
+
+def run_fetchers() -> dict:
+    import fetch_dart
+    import fetch_ecos
+    import fetch_eia
+    import fetch_fred
+
+    status = {}
+    for name, fn in (("ecos", lambda: fetch_ecos.main([])), ("fred", lambda: fetch_fred.main([])),
+                     ("eia", fetch_eia.main), ("dart", fetch_dart.main)):
+        try:
+            rc = fn()
+            status[name] = {0: "ok", 2: "no_key"}.get(rc, "partial_failure")
+        except Exception as e:  # noqa: BLE001 — 한 소스 실패가 전체를 막지 않도록
+            log.error("%s 수집 중단: %s", name, e)
+            status[name] = f"failed: {type(e).__name__}"
+    return status
+
+
+def print_key_values(snap: dict) -> None:
+    from tabulate import tabulate
+
+    rows = []
+    for sid in KEY_SERIES:
+        st = snap["series"].get(sid)
+        if st:
+            rows.append([sid, st["name"], st["last_value"], st["unit"], st["as_of"], st["chg_1w"], st["chg_unit"],
+                         "⚠" if st["stale"] else ""])
+        else:
+            rows.append([sid, "-", "미확인", "", "", "", "", ""])
+    print(tabulate(rows, headers=["series_id", "이름", "값", "단위", "기준일", "1주 변화", "변화단위", "stale"]))
+    print(f"\n경고 {len(snap['warnings'])}건, 수집 상태: {snap['fetch_status']}")
+
+
+def main(argv: list[str] | None = None) -> int:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--no-fetch", action="store_true")
+    ap.add_argument("--print", action="store_true")
+    args = ap.parse_args(argv)
+    status = {} if args.no_fetch else run_fetchers()
+    snap = build_snapshot(fetch_status=status)
+    if not snap["series"] and SNAPSHOT_PATH.exists():
+        log.warning("수집된 시계열이 하나도 없어 기존 스냅샷을 유지합니다: %s", SNAPSHOT_PATH)
+        return 1
+    save_json(SNAPSHOT_PATH, snap)
+    log.info("스냅샷 저장: %s (시계열 %d개, 경고 %d건)", SNAPSHOT_PATH, len(snap["series"]), len(snap["warnings"]))
+    if args.print:
+        print_key_values(snap)
+    return 0 if snap["series"] else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())
