@@ -1,0 +1,126 @@
+{
+  "topic_id": "kr_govt_bond",
+  "as_of": "2026-10-25",
+  "current": {
+    "indicators": [
+      {
+        "series_id": "ktb_3y",
+        "name": "국고채 3년",
+        "value": 3.822,
+        "unit": "%",
+        "as_of": "2026-10-21",
+        "value_flag": "웹확인",
+        "source": "https://www.specialtimes.co.kr/news/articleView.html?idxno=476851"
+      },
+      {
+        "series_id": "ktb_10y",
+        "name": "국고채 10년",
+        "value": 4.16,
+        "unit": "%",
+        "as_of": "2026-10-21",
+        "value_flag": "웹확인",
+        "source": "https://www.specialtimes.co.kr/news/articleView.html?idxno=476851"
+      },
+      {
+        "series_id": "ktb_30y",
+        "name": "국고채 30년",
+        "value": 4.251,
+        "unit": "%",
+        "as_of": "2026-10-21",
+        "value_flag": "웹확인",
+        "source": "https://www.specialtimes.co.kr/news/articleView.html?idxno=476851"
+      },
+      {
+        "series_id": "ktb_10y_3y",
+        "name": "국고채 10Y-3Y (웹확인 값으로 계산)",
+        "value": 0.338,
+        "unit": "%p",
+        "as_of": "2026-10-21",
+        "value_flag": "웹확인",
+        "source": "https://www.specialtimes.co.kr/news/articleView.html?idxno=476851"
+      }
+    ],
+    "summary": "[사실] 2026-10-21(금통위 전일) 마감 기준 국고 3년 3.822%, 10년 4.160%, 30년 4.251%(웹확인). [사실] 10Y-3Y 33.8bp, 30Y-10Y +9.1bp로 30-10 역전은 아님(웹확인 값으로 계산). [사실] 10월 1일 30년물 4.538% 대비 약 29bp 하락해 장기물 중심 강세. [사실] 10/22 동결 이후(10/22~24) 마감값은 미확인 — 현황은 기준일 4일 전 값임. [판단] 동결이 예상(금투협 설문 93%)대로였으므로 결정 자체의 충격은 제한적이었을 것으로 추정."
+  },
+  "short_term": {
+    "horizon": "3-6M",
+    "direction": "단기물 상승·장기물 보합(베어 플래트닝)",
+    "view": "[판단] 11월 인상 기대가 이미 3년물(기준금리 대비 +82bp)에 상당 부분 반영돼 있으나, 실제 인상·추가 인상 시사 시 3년물 소폭 상승 여지. 장기물은 2027년 발행량 감소 기대(정부 예산안 확정 규모 미확인)와 보험사 ALM 수요로 상대적으로 견조, 커브는 플래트닝 편향. [하우스] 국고채 직접 견해 카드 없음(가상 샘플의 UST 10년 하락 견해는 미국 금리 연동 측면에서 장기물 강세 요인으로만 참고).",
+    "drivers": [
+      "[사실] 기준금리 3.00% 동결, 추가 인상 시기·속도 언급(2026-10-22)",
+      "[사실] 외국인: WGBI 편입(2026-03-30~) 후 7/10까지 국고채 순매수 38.6조원, 만기상환 감안 실질 증가는 적다는 지적(2026-07-17 보도). 10월 수급 미확인",
+      "[사실] 2027년 국고채 발행계획 확정 규모 미확인(검색 결과는 전망치뿐)",
+      "[판단] 30년물: 보험사 ALM 수요 지속 + 장기물 공급 둔화 시 30-10 스프레드 축소 압력",
+      "[판단] 미국 장기금리 하락 기대 시 동조화로 10·30년 하방 압력 — us-fixed-income과 일관성 확인 필요"
+    ],
+    "confidence": "중간"
+  },
+  "long_term": {
+    "horizon": "1-3Y",
+    "scenarios": [
+      {
+        "name": "Base",
+        "prob": 0.55,
+        "narrative": "[판단] 기준금리 3.50%에서 정점 후 장기 동결. 3년물은 정책금리 상향분 일부 추가 반영, 장기물은 수급 개선으로 소폭 상승에 그쳐 커브 플래트닝.",
+        "factor_shocks": {
+          "ktb_3y_bp": 20,
+          "ktb_10y_bp": 10,
+          "ktb_30y_bp": 5
+        },
+        "shock_rationale": "기준금리 +50bp 중 3년물엔 기반영분 제외 ~20bp, 장기물은 수급·미 금리 하락으로 10/5bp"
+      },
+      {
+        "name": "Bull",
+        "prob": 0.2,
+        "narrative": "[판단] 물가 둔화·소비 부진으로 인상 종료 및 인하 전환, 외국인 WGBI 자금 재유입. 전 구간 강세.",
+        "factor_shocks": {
+          "ktb_3y_bp": -50,
+          "ktb_10y_bp": -45,
+          "ktb_30y_bp": -40
+        },
+        "shock_rationale": "기준금리 -25bp + 기반영 인상 기대 소멸 → 3년 -50bp, 장기물 -40~45bp(불 스티프닝 약간)"
+      },
+      {
+        "name": "Bear",
+        "prob": 0.25,
+        "narrative": "[판단] 물가 3%대 고착, 최종금리 3.75%+, 추경·발행 확대와 외국인 순매수 둔화 겹치며 전 구간 약세.",
+        "factor_shocks": {
+          "ktb_3y_bp": 55,
+          "ktb_10y_bp": 50,
+          "ktb_30y_bp": 45
+        },
+        "shock_rationale": "기준금리 +75bp, 3년물 기반영분 제외 +55bp, 장기물은 공급 부담으로 +45~50bp"
+      }
+    ]
+  },
+  "house_views": {
+    "consensus": "[하우스] 국고채(kr_govt_bond) 직접 견해 카드 없음. 유일한 카드(20261023_샘플_가상MacroWeekly, 가상 샘플)는 UST 10년 단기 하락·미 커브 스티프닝(p.1)만 제시.",
+    "divergence": "비교 가능한 하우스 2곳 이상 없음 — 산출 불가",
+    "cards_used": [
+      "20261023_샘플_가상MacroWeekly"
+    ]
+  },
+  "short_term_factor_shocks": {
+    "ktb_3y_bp": 10,
+    "ktb_10y_bp": 5,
+    "ktb_30y_bp": 0
+  },
+  "short_term_shock_rationale": "11월 25bp 인상 기본 가정 중 3년물 기반영분 감안 +10bp, 장기물은 수급 견조로 10년 +5bp·30년 보합(베어 플래트닝)",
+  "data_gaps": [
+    "API 데이터 미수집: data/latest_snapshot.json 비어 있음(ECOS no_key) — 현황 수치는 전부 웹확인 또는 미확인",
+    "하우스 뷰 부족: 30일 이내 카드 1개(1곳)이며 그마저 가상 샘플 리포트(20261023_샘플_가상MacroWeekly) — 실제 하우스 뷰 아님",
+    "2026-10-22~24 국고채 마감 금리 미확인 — 현황은 2026-10-21 값(4일 경과)",
+    "1개월 변화(chg_1m) 미산출 — 9/21 전후 동일 출처 값 미확인",
+    "2027년 국고채 발행계획 확정 규모·30년물 비중 미확인",
+    "10월 외국인 국채 순매수/보유 잔액 미확인",
+    "WebSearch 결과 기준(원문 미열람, 검색 요약 의존) — 공식 자료로 재확인 필요"
+  ],
+  "sources": [
+    "https://www.specialtimes.co.kr/news/articleView.html?idxno=476851",
+    "https://biz.sbs.co.kr/amp/article/20000337916",
+    "https://www.mt.co.kr/economy/2026/10/22/2026102209323421102",
+    "https://v.daum.net/v/20260717060003759",
+    "https://www.heraldk.com/article/2026062922022082262",
+    "knowledge/view_cards/20261023_샘플_가상MacroWeekly.json (가상 샘플)"
+  ]
+}

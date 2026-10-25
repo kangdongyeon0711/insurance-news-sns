@@ -1,0 +1,141 @@
+{
+  "topic_id": "us_alt_re",
+  "as_of": "2026-10-25",
+  "current": {
+    "indicators": [
+      {
+        "series_id": "us_cmbs_delinquency_trepp",
+        "name": "미국 CMBS 연체율(Trepp, 전체)",
+        "value": 8.02,
+        "unit": "%",
+        "as_of": "2026-09-30",
+        "value_flag": "웹확인",
+        "source": "https://www.scotsmanguide.com/news/cmbs-delinquencies-reach-highest-level-since-2020/",
+        "stale": false,
+        "chg_1m": 0.17,
+        "chg_unit": "%p"
+      },
+      {
+        "series_id": "us_cmbs_office_delinquency",
+        "name": "미국 CMBS 오피스 연체율(Trepp)",
+        "value": 12.16,
+        "unit": "%",
+        "as_of": "2026-09-30",
+        "value_flag": "웹확인",
+        "source": "https://www.scotsmanguide.com/news/cmbs-delinquencies-reach-highest-level-since-2020/",
+        "stale": false,
+        "chg_1m": 0.16,
+        "chg_unit": "%p"
+      },
+      {
+        "series_id": "us_cre_cppi_greenstreet_yoy",
+        "name": "Green Street CPPI(전체) 전년비",
+        "value": 5.2,
+        "unit": "%",
+        "as_of": "2026-07-31",
+        "value_flag": "웹확인",
+        "source": "https://www.orionprop.com/?p=32393",
+        "stale": true
+      },
+      {
+        "series_id": "us_cre_cppi_greenstreet_level",
+        "name": "Green Street CPPI 지수 수준",
+        "value": null,
+        "unit": "index",
+        "as_of": null,
+        "value_flag": "미확인"
+      },
+      {
+        "series_id": "us_sloos_cre_net_tightening",
+        "name": "SLOOS CRE 대출기준 강화 응답 순비율",
+        "value": null,
+        "unit": "%",
+        "as_of": null,
+        "value_flag": "미확인",
+        "source": "https://www.federalreserve.gov/data/sloos/sloos-202607.htm"
+      },
+      {
+        "series_id": "us_cre_cap_rate",
+        "name": "미국 CRE 캡레이트(전체)",
+        "value": null,
+        "unit": "%",
+        "as_of": null,
+        "value_flag": "미확인"
+      }
+    ],
+    "summary": "[사실] Trepp 기준 CMBS 연체율 8.02%(2026-09, 2020년 말 이후 최고), 오피스 12.16%(2026-09, 1월 사상최고 12.34%보다 소폭 낮음). [사실] Green Street CPPI는 전년비 +5.2%(2026-07)이나 2022 고점 대비 약 -14%, 오피스는 약 -34% — 기준일 2026-07-31, 86일 경과(월별 45일 기준 초과, stale). [사실] 7월 SLOOS(2026-07)에서 은행은 2분기 CRE 대출기준을 소폭 완화, 다만 2005년 이후 범위의 '타이트한 쪽'. [판단] 가격은 바닥 통과 후 완만한 회복, 신용(연체·만기 미상환)은 오피스 중심으로 아직 악화 중인 '가격-신용 괴리' 국면. snapshot API 데이터 없음 — 모든 현황은 웹확인."
+  },
+  "short_term": {
+    "horizon": "3-6M",
+    "direction": "보합(섹터별 차별화)",
+    "view": "[판단] 캡레이트는 금리 수준이 높아 추가 하락 여지가 제한(Green Street도 '끈적한 캡레이트' 언급, 2026-07) → 전체 가격은 좁은 범위 보합~소폭 상승. [판단] 오피스는 만기 미상환발 연체 증가가 이어져 약세 지속, 산업·데이터센터 인접 자산은 상대 강세, 주거는 보합.",
+    "drivers": [
+      "[사실] CMBS 연체율 8.02%(2026-09) 상승 — 대형 단일차주 대출의 만기 미상환이 주도(Trepp)",
+      "[사실] SLOOS 2026-07: CRE 대출기준 소폭 완화, 수요 보합",
+      "[사실] Blackstone 2026 중간 전망: 데이터센터·물류 중심 재배분, 레거시 오피스와 차별화(2026-07)",
+      "[판단] 리파이낸싱 월(만기 집중) 수치는 미확인 — 만기 미상환 사례 증가로 압력은 지속 추정",
+      "[판단] UST 10Y 경로가 캡레이트의 핵심 변수(us-fixed-income과 정합 필요)"
+    ],
+    "confidence": "중간"
+  },
+  "long_term": {
+    "horizon": "1-3Y",
+    "scenarios": [
+      {
+        "name": "Base",
+        "prob": 0.55,
+        "narrative": "[판단] 금리 완만 하향 + 대출기준 점진 완화로 캡레이트 소폭 하락, 가격은 연 한 자릿수 초반 회복. 오피스는 손실 인식 장기화, 연체율은 2027년 중 정점 후 완만히 하락.",
+        "factor_shocks": {
+          "us_cre_cap_rate_bp": -15
+        },
+        "shock_rationale": "UST 10Y 소폭 하락(추정) 대비 스프레드 고정 가정, 캡레이트 -15bp(추정)."
+      },
+      {
+        "name": "Bull",
+        "prob": 0.2,
+        "narrative": "[판단] 금리 하락 폭 확대와 거래량 회복으로 캡레이트 압축, 오피스 외 섹터 가격 반등 가속.",
+        "factor_shocks": {
+          "us_cre_cap_rate_bp": -40
+        },
+        "shock_rationale": "UST 하락 + 위험프리미엄 축소 동반, -40bp(추정)."
+      },
+      {
+        "name": "Bear",
+        "prob": 0.25,
+        "narrative": "[판단] 장기금리 재상승 또는 경기 둔화로 리파이낸싱 실패 확산, 오피스 연체가 타 섹터·지역은행으로 전이, 가격 재하락.",
+        "factor_shocks": {
+          "us_cre_cap_rate_bp": 50
+        },
+        "shock_rationale": "UST 상승 + 신용 스프레드 확대, +50bp(추정)."
+      }
+    ]
+  },
+  "house_views": {
+    "consensus": "하우스 뷰 부족 — 기준일 30일 이내 담당 topic view_card 0개(샘플 포함 조회).",
+    "divergence": "해당 없음(카드 없음).",
+    "cards_used": []
+  },
+  "short_term_factor_shocks": {
+    "us_cre_cap_rate_bp": 0
+  },
+  "short_term_shock_rationale": "[판단] 금리 수준이 캡레이트 추가 하락을 제약(Green Street 2026-07)하나 대출기준 완화가 상승도 억제 → 3-6M 0bp(추정).",
+  "data_gaps": [
+    "API 데이터 미수집 — latest_snapshot.json에 담당 지표 없음(FRED 등 API 키 없음/호스트 차단). 현황은 웹확인 수치로 대체",
+    "하우스 뷰 부족 — 30일 이내 담당 topic view_card 0개",
+    "UST 경로(us-fixed-income) 미참조 상태에서 할인율·캡레이트 충격 설정 → 추정, 브리프 단계에서 정합성 재확인 필요",
+    "Green Street CPPI 기준일 2026-07-31, 86일 경과(stale) — 8~9월치 미확인",
+    "SLOOS CRE 순비율 수치, CRE 캡레이트 수준, 2026~27 CRE 만기 규모(maturity wall) 미확인",
+    "CMBS 2026-10 연체율 미발표(통상 익월 초 발표)",
+    "KBRA 기준 연체율 7.7%(2026-09)는 Trepp와 방법론 상이 — 비교 불가"
+  ],
+  "sources": [
+    "https://www.scotsmanguide.com/news/cmbs-delinquencies-reach-highest-level-since-2020/",
+    "https://www.credaily.com/?p=222275",
+    "https://www.kbra.com/publications/jXhmdtGY",
+    "https://www.orionprop.com/?p=32393",
+    "https://www.connectcre.com/stories/green-street-sticky-cap-rates-keep-pricing-gains-modest/",
+    "https://www.federalreserve.gov/data/sloos/sloos-202607.htm",
+    "https://bluevaultpartners.com/blackstone-sees-expanding-opportunities-across-private-markets-in-mid-year-outlook/",
+    "https://hlc.com/en/publications/june2026-fed-report-highlights-banking-resilience-and-emerging-private-credit-real-estate-risks"
+  ]
+}

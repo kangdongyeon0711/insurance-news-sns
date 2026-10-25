@@ -1,0 +1,104 @@
+{
+  "topic_id": "oil",
+  "as_of": "2026-10-25",
+  "current": {
+    "indicators": [
+      {
+        "series_id": "brent",
+        "name": "Brent 선물 종가(웹)",
+        "value": 116.72,
+        "unit": "USD/bbl",
+        "as_of": "2026-10-23",
+        "value_flag": "웹확인",
+        "source": "https://financefeeds.com/brent-crude-oil-price-116-72-saturday-week-ahead-houthi-saudi-fed-28-october-bull-120-bear-108/"
+      },
+      {
+        "series_id": "wti",
+        "name": "WTI 선물 종가(웹)",
+        "value": 103.27,
+        "unit": "USD/bbl",
+        "as_of": "2026-10-23",
+        "value_flag": "웹확인",
+        "source": "https://financefeeds.com/brent-crude-oil-price-116-72-saturday-week-ahead-houthi-saudi-fed-28-october-bull-120-bear-108/"
+      },
+      {
+        "series_id": "us_crude_stocks",
+        "name": "미국 상업용 원유 재고(SPR 제외, 웹)",
+        "value": 412500,
+        "unit": "천배럴",
+        "as_of": "2026-10-16",
+        "value_flag": "웹확인",
+        "source": "https://www.oilandgas360.com/?p=1051006"
+      }
+    ],
+    "summary": "[사실] Brent 116.72달러(2026-10-23 종가, +3.1% 일간·주간 약 +6%, 4/29 이후 최고), WTI 103.27달러(동일, Reuters 인용 기사). [사실] 호르무즈 해협 상업 통항이 사실상 마비 상태로 보도(10/18 통항 4척 vs 평시 일 85척), 후티의 사우디 공격 보도(독립 확인 안 됨). [사실] OPEC+ 핵심 7개국은 10/4 회의에서 11월 생산 동결, 다음 회의 11/1. [사실] 미국 상업 원유재고 4억1,250만배럴(10/16 주, 3주 연속 감소). 모두 웹확인 값이며 API 스냅샷은 미수집."
+  },
+  "short_term": {
+    "horizon": "3-6M",
+    "direction": "고점권 변동성 확대 후 완만한 하락(추정)",
+    "view": "[판단] 현재 가격은 공급량보다 지정학(확전) 프리미엄을 반영. 공급 차질의 핵심은 생산능력이 아니라 운송 경로라 OPEC+ 증산의 가격 억제력은 제한적. 3~6개월 내 부분적 통항 회복을 기본 가정으로 Brent는 현 수준 대비 약 10% 하락을 보나, 확전 시 120달러 이상 재상승 위험이 커서 확신도 낮음. [판단] 유가 상승은 국내 물가→금리 상방 경로로 kr-fixed-income과 일관되게 볼 필요.",
+    "drivers": [
+      "[사실] 호르무즈 해협 통항 차질 지속(2026-10-18 기준 4척/일)",
+      "[사실] OPEC+ 11월 생산 동결, 11/1 차기 회의 — UAE는 5월 OPEC 탈퇴",
+      "[사실] 미국 원유재고 10월 3주 연속 감소(412.5백만배럴, 10/16 주)",
+      "[사실] Fed 9월 인상·달러 반등은 수요·가격 하방 요인",
+      "[판단] 중국·미국 수요 동향, 미국 셰일 증산 반응은 미확인"
+    ],
+    "confidence": "낮음"
+  },
+  "long_term": {
+    "horizon": "1-3Y",
+    "scenarios": [
+      {
+        "name": "Base",
+        "prob": 0.5,
+        "narrative": "[판단] 중동 사태가 장기 교착 후 점진적 통항 회복, OPEC+ 생산 정상화와 미국 셰일 공급 반응으로 지정학 프리미엄 상당 부분 소멸. Brent 90달러대 중반(추정)으로 회귀.",
+        "factor_shocks": {
+          "brent_pct": -20.0
+        },
+        "shock_rationale": "추정: 116.72달러 → 약 93달러, 프리미엄 소멸 가정"
+      },
+      {
+        "name": "Bull",
+        "prob": 0.2,
+        "narrative": "[판단] (유가 하락=물가·금리 우호 시나리오) 미-이란 합의로 호르무즈 조기 정상화, OPEC+ 증산 재개, 글로벌 수요 둔화로 공급 과잉 전환.",
+        "factor_shocks": {
+          "brent_pct": -35.0
+        },
+        "shock_rationale": "추정: 116.72달러 → 약 76달러, 공급 정상화+과잉"
+      },
+      {
+        "name": "Bear",
+        "prob": 0.3,
+        "narrative": "[판단] (유가 상승 시나리오) 확전으로 해협 봉쇄 장기화·사우디 시설 피해, 운송·보험 비용 급등. 재고 소진으로 고유가 고착.",
+        "factor_shocks": {
+          "brent_pct": 15.0
+        },
+        "shock_rationale": "추정: 116.72달러 → 약 134달러, 장기 봉쇄 가정"
+      }
+    ]
+  },
+  "house_views": {
+    "consensus": "30일 내 oil topic 하우스 카드 없음 → 컨센서스 산출 불가.",
+    "divergence": "하우스 뷰 없음 — 이견 판단 불가.",
+    "cards_used": []
+  },
+  "short_term_factor_shocks": {
+    "brent_pct": -10.0
+  },
+  "short_term_shock_rationale": "추정: 부분적 통항 회복으로 지정학 프리미엄 일부 해소, 116.72달러 대비 약 -10%(≈105달러). 확전 리스크로 하방 고착은 아님.",
+  "data_gaps": [
+    "API 데이터 미수집: latest_snapshot.json 비어 있음 — brent, wti(FRED 키 없음), us_crude_stocks 미수집(fetch_status eia=ok이나 series 없음)",
+    "유가·재고는 웹 기사 값(웹확인)으로 공식 EIA/ICE 원본 미대조",
+    "OPEC+ 11/1 회의 결과, 중국·미국 수요 지표, 미국 셰일 리그 수 미확인",
+    "호르무즈 통항 관련 보도 간 상충(물동량 증가 주장 존재), IRGC·후티 관련 주장은 미검증",
+    "하우스 뷰 부족: 30일 내 oil 관련 카드 0개(유일한 카드는 가상 샘플이며 oil 뷰 없음)"
+  ],
+  "sources": [
+    "https://financefeeds.com/brent-crude-oil-price-116-72-saturday-week-ahead-houthi-saudi-fed-28-october-bull-120-bear-108/",
+    "https://straits.live/briefs/2026-10-25",
+    "https://opec.org/pr-detail/1891616-4-october-2026.html",
+    "https://nairametrics.com/2026/09/06/opec-pauses-oil-output-hikes-after-four-straight-monthly-increases/",
+    "https://www.oilandgas360.com/?p=1051006"
+  ]
+}

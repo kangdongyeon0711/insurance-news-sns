@@ -1,0 +1,143 @@
+{
+  "topic_id": "fx_krwusd",
+  "as_of": "2026-10-25",
+  "current": {
+    "indicators": [
+      {
+        "series_id": "krw_usd",
+        "name": "원/달러 환율(웹, Investing.com 종가)",
+        "value": 1325.02,
+        "unit": "KRW",
+        "as_of": "2026-10-21",
+        "value_flag": "웹확인",
+        "source": "https://kr.investing.com/currencies/usd-krw-historical-data"
+      },
+      {
+        "series_id": "krw_usd_fred",
+        "name": "원/달러(FRED, 교차검증용)",
+        "value": null,
+        "unit": "KRW",
+        "as_of": null,
+        "value_flag": "미확인"
+      },
+      {
+        "series_id": "usd_broad_index",
+        "name": "달러 지수(Nominal Broad)",
+        "value": null,
+        "unit": "index",
+        "as_of": null,
+        "value_flag": "미확인"
+      },
+      {
+        "series_id": "dxy_ice",
+        "name": "달러 지수(ICE DXY, 웹)",
+        "value": 101.0,
+        "unit": "index",
+        "as_of": "2026-09-25",
+        "value_flag": "웹확인",
+        "source": "https://capital.com/en-int/analysis/usd-forecast",
+        "stale": true
+      },
+      {
+        "series_id": "kr_us_policy_diff",
+        "name": "한미 기준금리차(한은−FFR 상단)",
+        "value": null,
+        "unit": "%p",
+        "as_of": null,
+        "value_flag": "미확인"
+      },
+      {
+        "series_id": "kr_us_10y_diff",
+        "name": "한미 10년 금리차(KTB−UST)",
+        "value": null,
+        "unit": "%p",
+        "as_of": null,
+        "value_flag": "미확인"
+      }
+    ],
+    "summary": "[사실] API 스냅샷이 비어 있어 현황은 웹확인 값만 사용: 원/달러 1,325.02원(2026-10-21, Investing.com), 9월 중순 이후 하락 추세로 10/20 1,325.5원 부근(나무위키 정리). [사실] 달러지수(ICE DXY)는 약 101.0(2026-09-25)으로 마지막 확인값이 기준일 대비 30일 경과(stale) — 10월 수준 미확인. [사실] Fed는 2026-09-16 25bp 인상(3.75~4.00%), 한은은 2026-08-27 2연속 25bp 인상(수준·10/22 결정 미확인). [사실] 8월 경상수지 461.1억달러(역대 2위), 반도체 수출 급증. [판단] 대규모 경상흑자가 원화 강세를 지지하나, Brent 116.72달러(10/23)의 유가 급등은 무역수지·원화에 역풍. 한미 금리차·FRED 교차검증은 미확인."
+  },
+  "short_term": {
+    "horizon": "3-6M",
+    "direction": "원/달러 소폭 하락(원화 강세) — 변동성 확대",
+    "view": "[하우스] 샘플(가상) 하우스는 달러 약세 전환으로 원/달러 단기 하락을 제시(20261023_샘플_가상MacroWeekly p.1, 확신 중간, 가상 샘플). [판단] 반도체 주도 경상흑자와 한은 인상 사이클이 원화 강세 요인으로 우세하나, Fed 9월 인상에 따른 달러 반등과 호르무즈 사태로 인한 유가 급등(원유 수입 부담)이 상방 리스크. 1,300원대 초중반 등락을 기본으로 보되 확신도는 낮음.",
+    "drivers": [
+      "[사실] 8월 경상수지 461.1억달러, 3개월 연속 400억달러 상회 — 반도체 수출 급증",
+      "[사실] Fed 2026-09-16 25bp 인상(3.75~4.00%) → 달러 지지 요인",
+      "[사실] 한은 2026-08-27 2연속 인상 — 한미 금리차 축소 방향(정확한 금리차 미확인)",
+      "[사실] Brent 116.72달러(2026-10-23) — 원유 수입액 증가로 무역수지·원화 약세 압력",
+      "[판단] 외국인 증권자금·WGBI 관련 자금, 국민연금 환헤지·외환스와프 동향은 미확인"
+    ],
+    "confidence": "낮음"
+  },
+  "long_term": {
+    "horizon": "1-3Y",
+    "scenarios": [
+      {
+        "name": "Base",
+        "prob": 0.5,
+        "narrative": "[판단] 반도체 사이클이 완만히 둔화되나 구조적 경상흑자 유지, 중동 리스크는 점진 완화. 한미 금리차 축소와 달러 완만 약세로 원/달러는 현 수준 대비 소폭 하락.",
+        "factor_shocks": {
+          "krw_usd_pct": -3.0,
+          "dxy_pct": -2.0,
+          "fx_hedge_cost_bp": -20
+        },
+        "shock_rationale": "추정: 경상흑자 지속+달러 완만 약세로 원/달러 -3%, 한은 인상 누적으로 한미 단기금리차 축소 → 헤지비용 -20bp"
+      },
+      {
+        "name": "Bull",
+        "prob": 0.25,
+        "narrative": "[판단] (원화 강세 시나리오) 호르무즈 정상화로 유가 급락, Fed 재인하로 달러 약세, 반도체 호황 연장 및 외국인 채권자금 유입 확대.",
+        "factor_shocks": {
+          "krw_usd_pct": -8.0,
+          "dxy_pct": -5.0,
+          "fx_hedge_cost_bp": -45
+        },
+        "shock_rationale": "추정: 달러 약세+교역조건 개선으로 원화 큰 폭 강세, Fed 인하로 금리차 축소 폭 확대 → 헤지비용 -45bp"
+      },
+      {
+        "name": "Bear",
+        "prob": 0.25,
+        "narrative": "[판단] (원화 약세 시나리오) 중동 확전·유가 장기 고공행진, 반도체 사이클 하강, Fed 추가 인상으로 달러 강세 및 외국인 자금 이탈.",
+        "factor_shocks": {
+          "krw_usd_pct": 8.0,
+          "dxy_pct": 4.0,
+          "fx_hedge_cost_bp": 15
+        },
+        "shock_rationale": "추정: 유가 충격·위험회피로 원화 약세, Fed 추가 인상 시 한미 단기금리차 재확대 → 헤지비용 +15bp"
+      }
+    ]
+  },
+  "house_views": {
+    "consensus": "[하우스] 1곳(가상 샘플)만 존재: 원/달러 단기 하락(원화 강세), 확신 중간, 목표치 없음 (20261023_샘플_가상MacroWeekly p.1). 컨센서스 산출 불가.",
+    "divergence": "하우스 뷰 1곳뿐이라 이견 판단 불가. [판단] 샘플의 '달러 약세 전환' 전제는 Fed 9월 인상·DXY 반등(9월 말)과 상충 소지.",
+    "cards_used": [
+      "20261023_샘플_가상MacroWeekly"
+    ]
+  },
+  "short_term_factor_shocks": {
+    "krw_usd_pct": -1.5,
+    "dxy_pct": 0.5,
+    "fx_hedge_cost_bp": -10
+  },
+  "short_term_shock_rationale": "추정: 경상흑자·한은 인상으로 원화 소폭 강세(-1.5%), Fed 인상 여파로 달러지수는 소폭 상승(+0.5%), 한미 단기금리차 소폭 축소 가정으로 헤지비용 -10bp(금리차 실측 미확인).",
+  "data_gaps": [
+    "API 데이터 미수집: latest_snapshot.json 비어 있음(ECOS·FRED 키 없음) — krw_usd, krw_usd_fred, usd_broad_index, kr_us_policy_diff, kr_us_10y_diff 전부 미확인",
+    "ECOS vs FRED 원/달러 교차검증 불가",
+    "DXY 웹확인값 기준일 2026-09-25, 30일 경과(stale) — 10월 수준 미확인",
+    "원/달러 웹확인값 기준일 2026-10-21(10/22~23 종가 미확인)",
+    "한은 현재 기준금리 수준 및 2026-10-22 금통위 결과 미확인",
+    "9월 경상수지(11월 초 발표 예정), 외국인 증권자금·WGBI 관련 자금, 국민연금 환헤지/외환스와프 뉴스 미확인",
+    "하우스 뷰 부족: 30일 내 카드 1개(20261023_샘플_가상MacroWeekly)이며 이는 가상 샘플 리포트로 실제 하우스 뷰가 아님"
+  ],
+  "sources": [
+    "https://kr.investing.com/currencies/usd-krw-historical-data",
+    "https://namu.wiki/w/2025-2026%EB%85%84%20%EC%9B%90%ED%99%94%20%EA%B3%A0%ED%99%98%EC%9C%A8%20%EC%82%AC%ED%83%9C",
+    "https://capital.com/en-int/analysis/usd-forecast",
+    "https://en.fnnews.com/news/202608270824322215",
+    "https://biz.heraldcorp.com/article/10896326",
+    "https://koreatimes.co.kr/economy/20260906/korea-narrows-current-account-surplus-gap-with-taiwan-amid-chip-boom",
+    "https://financefeeds.com/brent-crude-oil-price-116-72-saturday-week-ahead-houthi-saudi-fed-28-october-bull-120-bear-108/",
+    "knowledge/view_cards/20261023_샘플_가상MacroWeekly.json"
+  ]
+}

@@ -1,0 +1,191 @@
+{
+  "topic_id": "kr_alt_re",
+  "as_of": "2026-10-25",
+  "current": {
+    "indicators": [
+      {
+        "series_id": "kr_office_vacancy_national",
+        "name": "오피스 공실률(전국, 한국부동산원)",
+        "value": 9.0,
+        "unit": "%",
+        "as_of": "2026-06-30",
+        "value_flag": "웹확인",
+        "source": "https://www.newsis.com/view/NISX20260729_0003728100?pc_view=1",
+        "chg_1m": null,
+        "note": "전분기 8.8% 대비 +0.2%p (분기 지표)"
+      },
+      {
+        "series_id": "kr_office_vacancy_seoul",
+        "name": "오피스 공실률(서울, 한국부동산원)",
+        "value": 5.4,
+        "unit": "%",
+        "as_of": "2026-06-30",
+        "value_flag": "웹확인",
+        "source": "https://www.newsis.com/view/NISX20260729_0003728100?pc_view=1"
+      },
+      {
+        "series_id": "kr_office_vacancy_seoul_cbd",
+        "name": "오피스 공실률(서울 CBD)",
+        "value": null,
+        "unit": "%",
+        "as_of": null,
+        "value_flag": "미확인"
+      },
+      {
+        "series_id": "kr_office_vacancy_seoul_gbd",
+        "name": "오피스 공실률(서울 GBD)",
+        "value": null,
+        "unit": "%",
+        "as_of": null,
+        "value_flag": "미확인"
+      },
+      {
+        "series_id": "kr_office_vacancy_seoul_ybd",
+        "name": "오피스 공실률(서울 YBD)",
+        "value": null,
+        "unit": "%",
+        "as_of": null,
+        "value_flag": "미확인"
+      },
+      {
+        "series_id": "kr_office_return_q",
+        "name": "오피스 투자수익률(전국, 분기)",
+        "value": 2.15,
+        "unit": "%",
+        "as_of": "2026-06-30",
+        "value_flag": "웹확인",
+        "source": "https://www.newsis.com/view/NISX20260729_0003728100?pc_view=1"
+      },
+      {
+        "series_id": "kr_retail_vacancy_national",
+        "name": "일반 상가(중대형) 공실률(전국)",
+        "value": 13.4,
+        "unit": "%",
+        "as_of": "2026-06-30",
+        "value_flag": "웹확인",
+        "source": "https://www.newsis.com/view/NISX20260729_0003728100?pc_view=1"
+      },
+      {
+        "series_id": "kr_logistics_vacancy",
+        "name": "물류센터 공실률",
+        "value": null,
+        "unit": "%",
+        "as_of": null,
+        "value_flag": "미확인"
+      },
+      {
+        "series_id": "kr_office_cap_rate_seoul",
+        "name": "서울 오피스 캡레이트",
+        "value": null,
+        "unit": "%",
+        "as_of": null,
+        "value_flag": "미확인"
+      },
+      {
+        "series_id": "kr_pf_exposure",
+        "name": "부동산 PF 익스포저(전 금융권)",
+        "value": 169.8,
+        "unit": "조원",
+        "as_of": "2026-03-31",
+        "value_flag": "웹확인",
+        "source": "https://biz.newdaily.co.kr/site/data/html/2026/07/03/2026070300142.amp.html"
+      },
+      {
+        "series_id": "kr_pf_cd_loans",
+        "name": "PF 사업성 평가 유의(C)·부실우려(D) 여신",
+        "value": 16.4,
+        "unit": "조원",
+        "as_of": "2026-03-31",
+        "value_flag": "웹확인",
+        "source": "https://biz.newdaily.co.kr/site/data/html/2026/07/03/2026070300142.amp.html",
+        "note": "익스포저 대비 9.6%, 2025말 14.7조(8.4%) 대비 +1.7조"
+      },
+      {
+        "series_id": "kr_pf_delinquency",
+        "name": "PF 대출 연체율",
+        "value": 4.65,
+        "unit": "%",
+        "as_of": "2026-03-31",
+        "value_flag": "웹확인",
+        "source": "https://biz.newdaily.co.kr/site/data/html/2026/07/03/2026070300142.amp.html",
+        "note": "전분기 대비 +0.77%p(계절 요인 포함)"
+      }
+    ],
+    "summary": "[사실] 한국부동산원 2026년 2분기(6/30 기준) 오피스 공실률 전국 9.0%(+0.2%p q/q), 서울 5.4%, 오피스 투자수익률 2.15%, 일반 상가 공실률 13.4%(통계 작성 이래 최고). [사실] 부동산 PF는 2026-03-31 기준 익스포저 169.8조원, C·D 여신 16.4조원(9.6%)으로 3분기 연속 축소 흐름이 반전, 연체율 4.65%. [사실] 2026년 2분기 PF 사업성 평가 결과는 미확인(기준일 2026-03-31, 208일 경과 — 분기 지표 45일 기준 초과 경고). [판단] 오피스는 서울 핵심권역 중심으로 견조하나 CBD 신규 공급과 지방·상가 약세로 양극화, PF는 정리 후반부지만 잔여 부실이 재증가하는 국면."
+  },
+  "short_term": {
+    "horizon": "3-6M",
+    "direction": "약보합(중립~소폭 악화)",
+    "view": "[판단] 서울 오피스 공실률은 신규 공급 영향으로 완만히 오르나 저공실 구간 유지, 캡레이트는 국고채 보합 가정* 하에 ±10bp 내 횡보. [판단] PF는 C·D 여신 재증가와 토지담보대출 부실로 손실률이 소폭 상승할 위험이 우세. [판단] 상가는 약세 지속.",
+    "drivers": [
+      "오피스 신규 공급(서울 CBD)과 임차 수요",
+      "국고채 금리 경로 → 캡레이트 스프레드",
+      "PF C·D 여신 재증가(2026-03말 16.4조) 및 2026년 2·3분기 평가 결과 발표",
+      "PF 자기자본비율 규제 단계적 상향(2027년~) 대비 자금 재편",
+      "한시적 금융규제 완화 조치 연장 여부"
+    ],
+    "confidence": "낮음"
+  },
+  "long_term": {
+    "horizon": "1-3Y",
+    "scenarios": [
+      {
+        "name": "Base",
+        "prob": 0.55,
+        "narrative": "[판단] 서울 핵심권역 오피스 견조·지방/상가 약세 지속, PF는 정리·재구조화로 점진적 정상화하되 C·D 여신 10% 내외 잔존.",
+        "factor_shocks": {
+          "kr_cre_cap_rate_bp": 0,
+          "kr_pf_loss_rate_pp": 0.5
+        },
+        "shock_rationale": "국고채 보합 가정*에서 캡레이트 불변, PF 잔여 부실 정리 과정의 추가 손실 0.5%p 추정"
+      },
+      {
+        "name": "Bull",
+        "prob": 0.2,
+        "narrative": "[판단] 금리 하락과 정책 지원으로 거래 회복, 캡레이트 압축·PF 연체율 하락.",
+        "factor_shocks": {
+          "kr_cre_cap_rate_bp": -30,
+          "kr_pf_loss_rate_pp": -0.5
+        },
+        "shock_rationale": "금리 하락·거래 회복 시 캡레이트 30bp 압축, PF 손실률 0.5%p 개선 추정"
+      },
+      {
+        "name": "Bear",
+        "prob": 0.25,
+        "narrative": "[판단] 경기 둔화·공급 과잉으로 공실 상승, 브릿지론·토지담보대출 부실이 확산돼 PF 손실 확대.",
+        "factor_shocks": {
+          "kr_cre_cap_rate_bp": 40,
+          "kr_pf_loss_rate_pp": 2.0
+        },
+        "shock_rationale": "공실 상승·유동성 위축으로 캡레이트 40bp 확장, PF 손실률 2%p 상승 추정"
+      }
+    ]
+  },
+  "house_views": {
+    "consensus": "[사실] 최근 30일(2026-09-25~2026-10-25) 담당 topic 카드 0개 — 하우스 컨센서스 미확인.",
+    "divergence": "[사실] 카드 0개로 하우스 간 이견 판단 불가(미확인).",
+    "cards_used": []
+  },
+  "short_term_factor_shocks": {
+    "kr_cre_cap_rate_bp": 5,
+    "kr_pf_loss_rate_pp": 0.3
+  },
+  "short_term_shock_rationale": "공실 소폭 상승으로 캡레이트 +5bp, C·D 여신 재증가 반영 PF 손실률 +0.3%p (모두 추정, 국고채 보합 가정*)",
+  "data_gaps": [
+    "API 데이터 미수집 (snapshot 수집 상태 ecos/fred/dart=no_key, 담당 topic 지표 없음)",
+    "하우스 뷰 부족 (recent_cards.py --include-samples 결과 30일 이내 카드 0개)",
+    "국고채 경로(kr-fixed-income) 미참조 — 병렬 실행으로 할인율·캡레이트 충격은 국고채 보합 가정*에서 산출, 브리프 단계에서 일관성 재확인 필요",
+    "WebFetch가 이 환경에서 언론사 도메인 DNS 실패 → 웹확인 수치는 검색 결과 발췌 기준, 원문 미대조",
+    "2026년 3분기 한국부동산원 임대동향 미발표/미확인(최신 2026-06-30, 117일 경과 — 분기 지표 45일 기준 초과)",
+    "서울 CBD/GBD/YBD 권역별·물류 공실률, 캡레이트 공식 통계 미확인(민간 중개법인 자료는 미사용)",
+    "2026년 2분기 이후 PF 사업성 평가·연체율 미확인",
+    "서울 오피스 공실률 5.4%는 검색 요약 인용으로 원문 대조 필요"
+  ],
+  "sources": [
+    "https://www.newsis.com/view/NISX20260729_0003728100?pc_view=1",
+    "https://biz.newdaily.co.kr/site/data/html/2026/07/03/2026070300142.amp.html",
+    "https://news.mtn.co.kr/news-detail/2026040316481672131",
+    "https://www.fsc.go.kr/no010101/85375",
+    "data/latest_snapshot.json (담당 지표 없음)"
+  ]
+}

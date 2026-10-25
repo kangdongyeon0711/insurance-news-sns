@@ -1,0 +1,125 @@
+{
+  "topic_id": "kr_rate",
+  "as_of": "2026-10-25",
+  "current": {
+    "indicators": [
+      {
+        "series_id": "kr_base_rate",
+        "name": "한국은행 기준금리",
+        "value": 3.0,
+        "unit": "%",
+        "as_of": "2026-10-22",
+        "value_flag": "웹확인",
+        "source": "https://www.mt.co.kr/economy/2026/10/22/2026102209323421102"
+      },
+      {
+        "series_id": "kr_call_1d",
+        "name": "콜금리(1일)",
+        "value": null,
+        "unit": "%",
+        "as_of": null,
+        "value_flag": "미확인"
+      },
+      {
+        "series_id": "kr_cd_91d",
+        "name": "CD 91일",
+        "value": null,
+        "unit": "%",
+        "as_of": null,
+        "value_flag": "미확인"
+      },
+      {
+        "series_id": "kr_cpi",
+        "name": "소비자물가지수(2020=100)",
+        "value": null,
+        "unit": "index",
+        "as_of": null,
+        "value_flag": "미확인"
+      },
+      {
+        "series_id": "kr_cpi_yoy",
+        "name": "소비자물가 전년동월비(9월)",
+        "value": 2.9,
+        "unit": "%",
+        "as_of": "2026-09",
+        "value_flag": "웹확인",
+        "source": "https://biz.sbs.co.kr/amp/article/20000338001"
+      }
+    ],
+    "summary": "[사실] 금통위는 2026-10-22 기준금리를 연 3.00%로 만장일치 동결했다(7·8월 연속 인상 후 숨고르기, 기준일 2026-10-22, 웹확인). [사실] 결정문은 물가·경기·금융안정을 점검하며 '추가 인상의 시기와 속도'를 결정하겠다고 밝혀 긴축 기조를 유지했다. [사실] 9월 CPI 전년비 2.9%(8월 3.1%), 근원(식료품·에너지 제외) 2.8%(기준월 2026-09, 웹확인). [판단] 동결이지만 인상 편향(hawkish hold)이 유지되는 국면이다. 콜·CD 금리는 미확인(API 미수집)."
+  },
+  "short_term": {
+    "horizon": "3-6M",
+    "direction": "상승(인상 1회)",
+    "view": "[사실] 언론 보도상 전문가 11명 중 8명이 11월 3.25% 인상을 예상했다(웹확인, 2026-10-22~23 보도). [사실] 총재는 성장세·물가 오름세가 8월보다 강하다며 긴축 기조 지속 필요성을 언급했다. [판단] 3~6개월 내 25bp 1회 추가 인상(3.25%)을 기본으로 보되, 9월 CPI 둔화·환율 1320원대 하락은 인상 속도를 늦출 수 있는 요인이다. [하우스] 담당 topic 직접 견해 없음(가상 샘플 카드 1개뿐).",
+    "drivers": [
+      "[사실] 10월 만장일치 동결 + '추가 인상 시기·속도' 문구 유지(2026-10-22)",
+      "[사실] 9월 CPI 2.9%, 근원 2.8% — 목표(2%) 상회 지속",
+      "[사실] 금통위는 7월에 수도권 주택가격·가계부채·환율 변동성 유의를 강조(2026-07-16 보도). 10월 결정문 해당 문구는 미확인",
+      "[사실] 원/달러 1320원대로 하락해 물가 부담 완화(보도, 수치 기준일 미확인)",
+      "[판단] 미 연준 인하 기대(가상 샘플 카드 기준)는 한미 금리차 측면에서 한은 인상 여지를 넓히는 방향 — us-fixed-income 결과와 대조 필요"
+    ],
+    "confidence": "중간"
+  },
+  "long_term": {
+    "horizon": "1-3Y",
+    "scenarios": [
+      {
+        "name": "Base",
+        "prob": 0.55,
+        "narrative": "[판단] 2027년 상반기까지 2회 추가 인상으로 3.50%에서 동결 후 장기간 유지. 물가가 2%대 중후반에서 서서히 둔화.",
+        "factor_shocks": {
+          "kr_base_rate_bp": 50
+        },
+        "shock_rationale": "현재 3.00% 대비 최종금리 3.50%(언론 보도 컨센서스 수준) 가정 → +50bp"
+      },
+      {
+        "name": "Bull",
+        "prob": 0.2,
+        "narrative": "[판단] 물가가 빠르게 2%대 초반으로 둔화하고 소비 부진이 심화해 추가 인상 없이 종료, 2028년 전후 인하 전환.",
+        "factor_shocks": {
+          "kr_base_rate_bp": -25
+        },
+        "shock_rationale": "인상 종료 후 1회 인하 가정 → -25bp (채권 강세 시나리오)"
+      },
+      {
+        "name": "Bear",
+        "prob": 0.25,
+        "narrative": "[판단] 유가(석유류 +14.8%)·수도권 집값·가계부채 재가속으로 물가 3%대 고착, 최종금리 3.75% 이상.",
+        "factor_shocks": {
+          "kr_base_rate_bp": 75
+        },
+        "shock_rationale": "언론 보도의 상단 전망(최종 3.75%) 반영 → +75bp"
+      }
+    ]
+  },
+  "house_views": {
+    "consensus": "[하우스] 담당 topic(kr_rate)에 대한 카드 견해 없음. 유일한 카드(20261023_샘플_가상MacroWeekly)는 가상 샘플이며 kr_rate 직접 언급 없음.",
+    "divergence": "비교 가능한 하우스 2곳 이상 없음 — 산출 불가",
+    "cards_used": [
+      "20261023_샘플_가상MacroWeekly"
+    ]
+  },
+  "short_term_factor_shocks": {
+    "kr_base_rate_bp": 25
+  },
+  "short_term_shock_rationale": "3~6개월 내 11월(또는 2027년 1월) 25bp 1회 인상 기본 가정 → +25bp",
+  "data_gaps": [
+    "API 데이터 미수집: data/latest_snapshot.json 비어 있음(ECOS no_key) — 현황 수치는 전부 웹확인 또는 미확인",
+    "하우스 뷰 부족: 30일 이내 카드 1개(1곳)이며 그마저 가상 샘플 리포트(20261023_샘플_가상MacroWeekly) — 실제 하우스 뷰 아님",
+    "콜금리·CD 91일 현재값 미확인",
+    "CPI 지수 레벨(index) 미확인 — 전년비 2.9%만 웹확인",
+    "10월 결정문의 가계부채·주택가격 문구 원문 미확인; 9월 금융안정보고서 내용 미확인",
+    "기대인플레이션(일반인) 최신값 미확인",
+    "WebSearch 결과 기준(원문 미열람, 검색 요약 의존) — 공식 자료로 재확인 필요"
+  ],
+  "sources": [
+    "https://www.mt.co.kr/economy/2026/10/22/2026102209323421102",
+    "https://www.mt.co.kr/economy/2026/10/23/2026102219560818337",
+    "https://news.bizwatch.co.kr/article/finance/2026/10/22/0005",
+    "https://inews24.com/view/1998889",
+    "https://biz.sbs.co.kr/amp/article/20000338001",
+    "https://www.segye.com/newsView/20260716509295",
+    "knowledge/view_cards/20261023_샘플_가상MacroWeekly.json (가상 샘플)"
+  ]
+}

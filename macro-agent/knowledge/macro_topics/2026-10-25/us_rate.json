@@ -1,0 +1,63 @@
+{
+  "topic_id": "us_rate",
+  "as_of": "2026-10-25",
+  "current": {
+    "indicators": [
+      {"series_id": "us_ffr_upper", "name": "FFR 목표 상단", "value": 4.00, "unit": "%", "as_of": "2026-09-16", "chg_1m": null, "source": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm", "value_flag": "웹확인", "stale": false},
+      {"series_id": "us_ffr_lower", "name": "FFR 목표 하단", "value": 3.75, "unit": "%", "as_of": "2026-09-16", "chg_1m": null, "source": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm", "value_flag": "웹확인", "stale": false},
+      {"series_id": "us_eff_ffr", "name": "실효 연방기금금리(EFFR)", "value": null, "unit": "%", "as_of": null, "value_flag": "미확인"},
+      {"series_id": "us_cpi_yoy", "name": "CPI 전년비 (2026년 9월)", "value": 3.7, "unit": "%", "as_of": "2026-09-30", "source": "https://www.cnbc.com/2026/10/14/cpi-inflation-report-september-2026.html", "value_flag": "웹확인", "stale": false},
+      {"series_id": "us_core_cpi_yoy", "name": "Core CPI 전년비 (2026년 9월)", "value": 2.6, "unit": "%", "as_of": "2026-09-30", "source": "https://www.cnbc.com/2026/10/14/cpi-inflation-report-september-2026.html", "value_flag": "웹확인", "stale": false},
+      {"series_id": "us_nfp_chg", "name": "비농업고용(NFP) 증감 (2026년 9월)", "value": 29, "unit": "천명", "as_of": "2026-09-30", "source": "https://www.bls.gov/news.release/archives/empsit_10022026.htm", "value_flag": "웹확인", "stale": false},
+      {"series_id": "us_unemployment", "name": "실업률 (2026년 9월)", "value": 4.2, "unit": "%", "as_of": "2026-09-30", "source": "https://www.bls.gov/news.release/archives/empsit_10022026.htm", "value_flag": "웹확인", "stale": false},
+      {"series_id": "us_core_pce_yoy", "name": "Core PCE 전년비", "value": null, "unit": "%", "as_of": null, "value_flag": "미확인"}
+    ],
+    "summary": "[사실] API 데이터 미수집으로 모든 수치는 웹확인 값이다. [사실] FOMC는 2026-09-16 FFR 목표범위를 25bp 인상해 3.75~4.00%로 올렸다(2023년 이후 첫 인상, IORB 3.90%). [사실] 9월 SEP 중간값은 2026년 말 FFR 4.1%로 연내 1회 추가 인상을 시사하며, 9월 의사록(10/7 공개)에서도 다수 위원이 연말까지 추가 인상이 적절할 것으로 봤다. [사실] 9월 CPI는 전년비 3.7%(Core 2.6%)로 예상을 웃돌았고 에너지(전년비 +20.4%)가 주도했다(기준 2026년 9월). [사실] 반면 9월 NFP는 +2.9만명, 실업률 4.2%로 고용은 둔화했다. [사실] CNBC(10/23)는 10/27~28 FOMC 동결, 12월 25bp 인상 확률 약 71%(CME FedWatch)를 보도했다. [판단] 에너지발 헤드라인 인플레이션과 고용 둔화가 충돌하는 스태그플레이션형 국면으로, 연준은 '인상 후 장기 동결' 쪽에 가깝다."
+  },
+  "short_term": {
+    "horizon": "3-6M",
+    "direction": "소폭 상승(인상 1회 후 동결)",
+    "view": "[판단] 10월 FOMC는 동결, 12월 또는 2027년 1분기에 25bp 추가 인상(상단 4.25%) 후 동결 가능성이 높다고 본다. [사실] SEP 중간값(2026년 말 4.1%)과 시장 가격(12월 인상 약 71%)이 같은 방향이다. [판단] 다만 NFP 급둔화가 이어지면 추가 인상이 보류될 수 있어 확신도는 중간. [하우스][20261023_샘플_가상MacroWeekly] 가상 샘플 카드는 연내 추가 '인하'를 전망해 공식 발표·시장 가격과 반대 방향이다(가상 데이터이므로 판단에 반영하지 않음).",
+    "drivers": [
+      "[사실] 9월 CPI 3.7%·Core 2.6%로 예상 상회, 에너지(중동/이란 분쟁) 주도",
+      "[사실] SEP 중간값 2026년 말 4.1%, 의사록상 다수 위원 연내 추가 인상 지지",
+      "[사실] 9월 NFP +2.9만명, 실업률 4.2%, 임금상승률 3.0%로 고용 둔화",
+      "[판단] 유가 안정 여부가 12월 인상의 핵심 변수",
+      "[사실] QT 속도·지급준비금 관련 최신 결정은 미확인"
+    ],
+    "confidence": "중간"
+  },
+  "long_term": {
+    "horizon": "1-3Y",
+    "scenarios": [
+      {"name": "Base", "prob": 0.5, "narrative": "[판단] 2026년 말~2027년 초 상단 4.25%에서 정점, 에너지 충격이 진정되며 2027년 하반기부터 점진 인하, 2028년 상단 3.50% 내외.", "factor_shocks": {"us_ffr_bp": -50}, "shock_rationale": "현재 상단 4.00% → 정점 4.25% 후 3.50% 내외로 인하: 기준일 대비 -50bp"},
+      {"name": "Bull", "prob": 0.25, "narrative": "[판단] 유가 급락과 고용 악화로 인플레이션이 빠르게 둔화, 2027년 중 본격 인하 사이클로 전환해 상단 3.00% 내외.", "factor_shocks": {"us_ffr_bp": -100}, "shock_rationale": "추가 인상 없이 4회 인하 가정: -100bp"},
+      {"name": "Bear", "prob": 0.25, "narrative": "[판단] 에너지 충격이 기대인플레이션과 Core로 전이되어 연준이 2~3회 추가 인상, 상단 4.75% 수준에서 장기 유지.", "factor_shocks": {"us_ffr_bp": 75}, "shock_rationale": "추가 인상 3회(75bp) 후 유지 가정: +75bp"}
+    ]
+  },
+  "house_views": {
+    "consensus": "[하우스] 실제 하우스 뷰 없음. 유일한 카드 20261023_샘플_가상MacroWeekly(가상 샘플)는 고용 둔화를 근거로 연내 추가 인하를 전망(확신도 높음, p.1)하나, 이는 2026-09 인상 및 시장의 12월 인상 가격과 상충한다.",
+    "divergence": "하우스 1곳(가상 샘플)뿐이라 하우스 간 이견 판단 불가. [판단] 가상 샘플(인하) vs 공식 SEP·시장 가격(인상) 간 방향 차이가 존재.",
+    "cards_used": ["20261023_샘플_가상MacroWeekly"]
+  },
+  "short_term_factor_shocks": {"us_ffr_bp": 25},
+  "short_term_shock_rationale": "12월 또는 2027년 1분기 25bp 추가 인상 1회 가정(SEP 중간값·FedWatch 약 71%와 일치): +25bp",
+  "data_gaps": [
+    "API 데이터 미수집 (latest_snapshot.json 비어 있음 — FRED no_key): 모든 현황 수치는 웹확인 값",
+    "하우스 뷰 부족 (30일 이내 카드 1개, 하우스 1곳)",
+    "유일한 카드 20261023_샘플_가상MacroWeekly는 가상 샘플 리포트로 실제 하우스 뷰가 아님",
+    "EFFR·Core PCE·QT 속도·지급준비금 최신값 미확인",
+    "10/28 FOMC 결과는 기준일 이후 발표 예정 — 미반영"
+  ],
+  "sources": [
+    "data/latest_snapshot.json (비어 있음)",
+    "knowledge/view_cards/20261023_샘플_가상MacroWeekly (가상 샘플)",
+    "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
+    "https://www.federalreserve.gov/monetarypolicy/fomcprojtabl20260916.htm",
+    "https://www.federalreserve.gov/monetarypolicy/fomcminutes20260916.htm",
+    "https://www.cnbc.com/2026/09/16/fed-rate-decision-september-2026.html",
+    "https://www.cnbc.com/2026/10/14/cpi-inflation-report-september-2026.html",
+    "https://www.bls.gov/news.release/archives/empsit_10022026.htm",
+    "https://www.cnbc.com/2026/10/23/bonds-yields-us-treasurys.html"
+  ]
+}

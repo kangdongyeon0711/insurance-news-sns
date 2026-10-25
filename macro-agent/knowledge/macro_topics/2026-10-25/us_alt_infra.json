@@ -1,0 +1,122 @@
+{
+  "topic_id": "us_alt_infra",
+  "as_of": "2026-10-25",
+  "current": {
+    "indicators": [
+      {
+        "series_id": "us_power_load_growth_2026_eia",
+        "name": "EIA STEO 2026년 미국 전력수요 증가율 전망",
+        "value": 1.9,
+        "unit": "%",
+        "as_of": "2026-02",
+        "value_flag": "웹확인",
+        "source": "https://environmentenergyleader.com/stories/eia-forecast-power-demand-to-climb-through-2027,114257",
+        "stale": true
+      },
+      {
+        "series_id": "us_power_load_growth_2027_eia",
+        "name": "EIA STEO 2027년 미국 전력수요 증가율 전망",
+        "value": 2.5,
+        "unit": "%",
+        "as_of": "2026-02",
+        "value_flag": "웹확인",
+        "source": "https://environmentenergyleader.com/stories/eia-forecast-power-demand-to-climb-through-2027,114257",
+        "stale": true
+      },
+      {
+        "series_id": "us_power_demand_2026_eia",
+        "name": "EIA STEO 2026년 미국 전력소비 전망",
+        "value": 4270,
+        "unit": "십억kWh",
+        "as_of": "2026-03",
+        "value_flag": "웹확인",
+        "source": "https://www.eia.gov/todayinenergy/detail.php?id=67344",
+        "stale": true
+      },
+      {
+        "series_id": "us_datacenter_power_share",
+        "name": "미국 전력 중 데이터센터 비중",
+        "value": null,
+        "unit": "%",
+        "as_of": null,
+        "value_flag": "미확인"
+      },
+      {
+        "series_id": "infra_discount_rate_us",
+        "name": "미국 인프라 자산 할인율",
+        "value": null,
+        "unit": "%",
+        "as_of": null,
+        "value_flag": "미확인"
+      }
+    ],
+    "summary": "[사실] EIA STEO(2026-02)는 미국 전력수요 증가율을 2026년 1.9%, 2027년 2.5%로 전망, ERCOT·PJM이 증가 주도; 2026년 소비 4,270십억kWh 전망(2026-03 STEO). 기준일 7~8개월 경과로 stale — 최신 STEO 수치 미확인. [사실] Blackstone은 2026년 2분기 데이터센터가 실적을 주도했다고 발표(2026-07). [판단] 데이터센터·전력망·발전 수요가 인프라 펀더멘털을 지지하나, 계통 연결 지연(텍사스 신규 연결 일시중단 등)과 정책 불확실성이 실행 리스크. 할인율 수준은 미확인. snapshot API 데이터 없음."
+  },
+  "short_term": {
+    "horizon": "3-6M",
+    "direction": "우호적(펀더멘털) / 할인율 보합",
+    "view": "[판단] AI 데이터센터發 전력·송배전·가스발전 수요가 견조해 계약형 인프라 현금흐름은 안정적. 할인율은 장기금리 경로에 연동돼 단기 보합, 데이터센터 밸류에이션은 이미 높아 추가 압축 여지 제한.",
+    "drivers": [
+      "[사실] EIA: 2026~27 전력수요 증가, 데이터센터 집중 지역(ERCOT·PJM) 주도(2026-02/03 STEO)",
+      "[사실] EIA 고수요 시나리오에서 2년 가스발전 증가 7.3%(기준 1.7%)",
+      "[사실] Blackstone 2026 중간 전망: 인프라·AI 투자 기회 강조(2026-07)",
+      "[판단] IRA 세액공제 축소 등 정책 변화가 재생에너지 프로젝트 수익성에 부담 — 구체 수치 미확인",
+      "[판단] 할인율은 UST 10Y와 동행(us-fixed-income과 정합 필요)"
+    ],
+    "confidence": "중간"
+  },
+  "long_term": {
+    "horizon": "1-3Y",
+    "scenarios": [
+      {
+        "name": "Base",
+        "prob": 0.6,
+        "narrative": "[판단] 전력 수요 구조적 증가 지속, 계통·발전 투자 확대. 금리 완만 하향으로 할인율 소폭 하락.",
+        "factor_shocks": {
+          "infra_discount_rate_bp": -10
+        },
+        "shock_rationale": "UST 소폭 하락(추정), 위험프리미엄 불변 → -10bp(추정)."
+      },
+      {
+        "name": "Bull",
+        "prob": 0.25,
+        "narrative": "[판단] AI capex 확장 지속 + 금리 하락으로 인프라 수요·밸류에이션 동반 상승.",
+        "factor_shocks": {
+          "infra_discount_rate_bp": -35
+        },
+        "shock_rationale": "금리 하락 + 프리미엄 축소, -35bp(추정)."
+      },
+      {
+        "name": "Bear",
+        "prob": 0.15,
+        "narrative": "[판단] AI capex 조정으로 데이터센터 과잉 우려, 정책 후퇴·장기금리 상승 겹쳐 할인율 상승.",
+        "factor_shocks": {
+          "infra_discount_rate_bp": 40
+        },
+        "shock_rationale": "UST 상승 + 수요 불확실성 프리미엄, +40bp(추정)."
+      }
+    ]
+  },
+  "house_views": {
+    "consensus": "하우스 뷰 부족 — 기준일 30일 이내 담당 topic view_card 0개(샘플 포함 조회).",
+    "divergence": "해당 없음(카드 없음).",
+    "cards_used": []
+  },
+  "short_term_factor_shocks": {
+    "infra_discount_rate_bp": 0
+  },
+  "short_term_shock_rationale": "[판단] 펀더멘털 우호적이나 할인율은 금리 연동 → 3-6M 0bp(추정).",
+  "data_gaps": [
+    "API 데이터 미수집 — latest_snapshot.json에 담당 지표 없음(FRED 등 API 키 없음/호스트 차단). 현황은 웹확인 수치로 대체",
+    "하우스 뷰 부족 — 30일 이내 담당 topic view_card 0개",
+    "UST 경로(us-fixed-income) 미참조 상태에서 할인율·캡레이트 충격 설정 → 추정, 브리프 단계에서 정합성 재확인 필요",
+    "EIA STEO 수치 기준일 2026-02/03 — 7개월 이상 경과(stale), 최신 STEO 미확인",
+    "인프라 할인율 수준, 데이터센터 전력 비중 최신치, IRA 등 정책 변경 세부 미확인"
+  ],
+  "sources": [
+    "https://www.eia.gov/todayinenergy/detail.php?id=67344",
+    "https://environmentenergyleader.com/stories/eia-forecast-power-demand-to-climb-through-2027,114257",
+    "https://bluevaultpartners.com/blackstone-sees-expanding-opportunities-across-private-markets-in-mid-year-outlook/",
+    "https://www.credaily.com/?p=217453"
+  ]
+}

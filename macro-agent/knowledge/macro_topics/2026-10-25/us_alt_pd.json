@@ -1,0 +1,114 @@
+{
+  "topic_id": "us_alt_pd",
+  "as_of": "2026-10-25",
+  "current": {
+    "indicators": [
+      {
+        "series_id": "us_pc_default_rate_fitch",
+        "name": "Fitch 미국 Private Credit 부도율(TTM)",
+        "value": 6.0,
+        "unit": "%",
+        "as_of": "2026-04-30",
+        "value_flag": "웹확인",
+        "source": "https://news.bloomberglaw.com/financial-accounting/us-private-credit-defaults-hit-new-record-of-6-in-april-fitch",
+        "stale": true
+      },
+      {
+        "series_id": "us_bdc_nonaccrual_lsta",
+        "name": "BDC 비발생대출 비율(가중평균, 공모+비상장)",
+        "value": 1.99,
+        "unit": "%",
+        "as_of": "2026-03-31",
+        "value_flag": "웹확인",
+        "source": "https://www.lsta.org/content/bdc-quarterly-wrap-1q26/",
+        "stale": true
+      },
+      {
+        "series_id": "us_bdc_pik_share",
+        "name": "BDC 대출 중 PIK 비중",
+        "value": null,
+        "unit": "%",
+        "as_of": null,
+        "value_flag": "미확인"
+      },
+      {
+        "series_id": "us_direct_lending_spread",
+        "name": "직접대출 스프레드",
+        "value": null,
+        "unit": "bp",
+        "as_of": null,
+        "value_flag": "미확인"
+      }
+    ],
+    "summary": "[사실] Fitch 미국 Private Credit 부도율(TTM) 6.0%로 사상 최고(2026-04, Bloomberg 보도) — 부도의 절반 이상이 이자 유예·PIK 전환. 기준일 178일 경과(stale); 7월 6.1%라는 2차 보도는 원자료 미확인. [사실] LSTA 집계 BDC 비발생대출 1.99%(2026-1Q, 상승). [사실] 보스턴 연준 추정 BDC PIK 비중 약 10%(2026년 초, 2022년 초 약 6%) — 근사치. [사실] 연준 감독보고서(2026-06 보도)는 사모신용·NDFI 익스포저 점검 강화 예고. [판단] 부도율은 고원 국면, PIK·만기연장으로 손실 인식이 이연되는 구조라 표면 지표보다 실질 신용위험이 큼."
+  },
+  "short_term": {
+    "horizon": "3-6M",
+    "direction": "약세(신용 악화 지속)",
+    "view": "[판단] 부도율은 6% 내외에서 고착 또는 소폭 상승, BDC 비발생대출은 2분기 이후 추가 상승 가능. 리테일 자금 유입 둔화(Blackstone 언급)와 은행권 경쟁으로 스프레드는 하방 경직, 신규 딜 조건은 대주 우위로 일부 회복.",
+    "drivers": [
+      "[사실] Fitch PC 부도율 6.0%(2026-04), 이자유예·PIK 주도",
+      "[사실] BDC 비발생대출 1.99%(2026-1Q, LSTA); PitchBook은 1Q26 주요 BDC 비발생·PIK·디스카운트 상승 경고",
+      "[사실] BDC 신규투자 중 PIK 포함 비중 4.33%(1Q26)로 4Q25 6.11%에서 하락(SOLVE, 2차 인용)",
+      "[사실] Blackstone: 사모신용 우려(AI 파괴 우려 포함)로 고액자산가 자금 유입 둔화(2026-07)",
+      "[판단] 금리 하향 시 변동금리 차주 이자부담 완화가 유일한 완충"
+    ],
+    "confidence": "중간"
+  },
+  "long_term": {
+    "horizon": "1-3Y",
+    "scenarios": [
+      {
+        "name": "Base",
+        "prob": 0.5,
+        "narrative": "[판단] 금리 완만 하락으로 이자보상 개선, 부도율은 2027년 중 정점 후 고원 유지. 손실은 감내 가능하나 수익률 하락.",
+        "factor_shocks": {
+          "us_pd_default_pp": 0
+        },
+        "shock_rationale": "현 6% 수준 유지(추정)."
+      },
+      {
+        "name": "Bull",
+        "prob": 0.15,
+        "narrative": "[판단] 금리 하락·경기 견조로 리파이낸싱 원활, 부도율 4%대로 하락.",
+        "factor_shocks": {
+          "us_pd_default_pp": -1.5
+        },
+        "shock_rationale": "부도율 6%→4.5% 내외(추정)."
+      },
+      {
+        "name": "Bear",
+        "prob": 0.35,
+        "narrative": "[판단] 경기 침체 + AI 대체 우려 업종(소프트웨어 등) 부실화, PIK 이연 손실이 현실화되며 부도율 급등, 환매 제한·BDC 디스카운트 확대.",
+        "factor_shocks": {
+          "us_pd_default_pp": 3
+        },
+        "shock_rationale": "과거 레버리지론 침체기 수준 상승 가정, +3%p(추정)."
+      }
+    ]
+  },
+  "house_views": {
+    "consensus": "하우스 뷰 부족 — 기준일 30일 이내 담당 topic view_card 0개(샘플 포함 조회).",
+    "divergence": "해당 없음(카드 없음).",
+    "cards_used": []
+  },
+  "short_term_factor_shocks": {
+    "us_pd_default_pp": 0.3
+  },
+  "short_term_shock_rationale": "[판단] 비발생·PIK 상승 추세 반영 3-6M +0.3%p(추정).",
+  "data_gaps": [
+    "API 데이터 미수집 — latest_snapshot.json에 담당 지표 없음(FRED 등 API 키 없음/호스트 차단). 현황은 웹확인 수치로 대체",
+    "하우스 뷰 부족 — 30일 이내 담당 topic view_card 0개",
+    "UST 경로(us-fixed-income) 미참조 상태에서 할인율·캡레이트 충격 설정 → 추정, 브리프 단계에서 정합성 재확인 필요",
+    "Fitch 부도율 기준일 2026-04-30(178일 경과, stale) — 이후 월별치(7월 6.1%)는 2차 보도로 미확인",
+    "BDC 비발생 2Q/3Q26 1차 집계 미확인(3.95%라는 2차 블로그 수치는 신뢰도 낮아 미사용)",
+    "PIK 비중 정확치, 직접대출 스프레드 수준, 연준 FSR 원문 미확인"
+  ],
+  "sources": [
+    "https://news.bloomberglaw.com/financial-accounting/us-private-credit-defaults-hit-new-record-of-6-in-april-fitch",
+    "https://www.lsta.org/content/bdc-quarterly-wrap-1q26/",
+    "https://pitchbook.com/news/reports/q1-2026-warning-signs-non-accruals-pik-discounts-and-distress-rise-across-top-bdcs",
+    "https://www.credaily.com/?p=217453",
+    "https://hlc.com/en/publications/june2026-fed-report-highlights-banking-resilience-and-emerging-private-credit-real-estate-risks"
+  ]
+}

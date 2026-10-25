@@ -1,0 +1,136 @@
+{
+  "topic_id": "kr_alt_pe",
+  "as_of": "2026-10-25",
+  "current": {
+    "indicators": [
+      {
+        "series_id": "kr_pef_commitment",
+        "name": "기관전용 PEF 출자약정액",
+        "value": 167.5,
+        "unit": "조원",
+        "as_of": "2025-12-31",
+        "value_flag": "웹확인",
+        "source": "https://www.fnnews.com/news/202606171133180568",
+        "note": "전년 대비 +13.9조(+9.0%), 금감원 2026-06-17 발표"
+      },
+      {
+        "series_id": "kr_pef_new_commitment",
+        "name": "신규 출자약정액(연간)",
+        "value": 27.8,
+        "unit": "조원",
+        "as_of": "2025-12-31",
+        "value_flag": "웹확인",
+        "source": "https://www.fnnews.com/news/202606171133180568",
+        "note": "전년 19.2조 대비 +44.8%"
+      },
+      {
+        "series_id": "kr_pef_dry_powder",
+        "name": "미집행약정액(드라이파우더)",
+        "value": 43.2,
+        "unit": "조원",
+        "as_of": "2025-12-31",
+        "value_flag": "웹확인",
+        "source": "https://www.fnnews.com/news/202606171133180568"
+      },
+      {
+        "series_id": "kr_pef_count",
+        "name": "기관전용 PEF 수",
+        "value": 1195,
+        "unit": "개",
+        "as_of": "2025-12-31",
+        "value_flag": "웹확인",
+        "source": "https://www.fnnews.com/news/202606171133180568"
+      },
+      {
+        "series_id": "kr_pef_exit_amount",
+        "name": "PEF 투자회수액(연간)",
+        "value": null,
+        "unit": "조원",
+        "as_of": null,
+        "value_flag": "미확인"
+      },
+      {
+        "series_id": "kospi",
+        "name": "KOSPI",
+        "value": null,
+        "unit": "pt",
+        "as_of": null,
+        "value_flag": "미확인"
+      }
+    ],
+    "summary": "[사실] 금감원(2026-06-17 발표)에 따르면 2025-12-31 기준 기관전용 PEF 1,195개, 출자약정액 167.5조원(+9.0%), 신규 약정 27.8조원(역대 최대), 드라이파우더 43.2조원(+19.7%). [사실] 경영참여형 투자는 23.7조원으로 소폭 감소, 비경영참여형(기업대출·메자닌) 4.4조원으로 증가. [판단] 자금은 대형 GP로 쏠리고 드라이파우더가 쌓였으나 엑시트 수치는 미확인 — 회수 환경이 핵심 변수. KOSPI 현재 수준은 API 미수집으로 미확인."
+  },
+  "short_term": {
+    "horizon": "3-6M",
+    "direction": "중립",
+    "view": "[판단] 하반기 연기금·공제회 출자사업으로 펀드레이징은 양호, 다만 대형 엑시트는 IPO 시장 여건에 의존. 평가가치는 상장 비교기업 멀티플에 연동되며 KOSPI 경로 미확인으로 중립 처리.",
+    "drivers": [
+      "연기금·공제회·정책금융 LP 출자",
+      "IPO·M&A 회수 환경",
+      "드라이파우더 집행 속도(43.2조원)",
+      "인수금융 금리",
+      "KOSPI 밸류에이션"
+    ],
+    "confidence": "낮음"
+  },
+  "long_term": {
+    "horizon": "1-3Y",
+    "scenarios": [
+      {
+        "name": "Base",
+        "prob": 0.55,
+        "narrative": "[판단] 펀드레이징 견조·대형사 집중, 회수는 점진 개선. 평가가치 완만한 상승.",
+        "factor_shocks": {
+          "kr_pe_value_pct": 5,
+          "equity_kospi_pct": 5
+        },
+        "shock_rationale": "주식시장 완만 상승 가정*에 PE 평가가치 동행(추정)"
+      },
+      {
+        "name": "Bull",
+        "prob": 0.2,
+        "narrative": "[판단] 금리 하락·IPO 활성화로 대형 엑시트 재개, 멀티플 확장.",
+        "factor_shocks": {
+          "kr_pe_value_pct": 15,
+          "equity_kospi_pct": 15
+        },
+        "shock_rationale": "멀티플 확장·회수 개선 시 +15% 추정"
+      },
+      {
+        "name": "Bear",
+        "prob": 0.25,
+        "narrative": "[판단] 경기 둔화·주가 하락으로 회수 지연, 포트폴리오 평가손.",
+        "factor_shocks": {
+          "kr_pe_value_pct": -15,
+          "equity_kospi_pct": -20
+        },
+        "shock_rationale": "주가 -20% 시 비상장 평가 지연 반영해 PE -15% 추정"
+      }
+    ]
+  },
+  "house_views": {
+    "consensus": "[사실] 최근 30일(2026-09-25~2026-10-25) 담당 topic 카드 0개 — 하우스 컨센서스 미확인.",
+    "divergence": "[사실] 카드 0개로 하우스 간 이견 판단 불가(미확인).",
+    "cards_used": []
+  },
+  "short_term_factor_shocks": {
+    "kr_pe_value_pct": 0,
+    "equity_kospi_pct": 0
+  },
+  "short_term_shock_rationale": "KOSPI 현재값·경로 미확인으로 단기 중립(0%) 처리(추정)",
+  "data_gaps": [
+    "API 데이터 미수집 (snapshot 수집 상태 ecos/fred/dart=no_key, 담당 topic 지표 없음)",
+    "하우스 뷰 부족 (recent_cards.py --include-samples 결과 30일 이내 카드 0개)",
+    "국고채 경로(kr-fixed-income) 미참조 — 병렬 실행으로 할인율·캡레이트 충격은 국고채 보합 가정*에서 산출, 브리프 단계에서 일관성 재확인 필요",
+    "WebFetch가 이 환경에서 언론사 도메인 DNS 실패 → 웹확인 수치는 검색 결과 발췌 기준, 원문 미대조",
+    "PEF 수치는 2025-12-31 기준(298일 경과, 연간 통계) — 2026년 중 현황 미확인",
+    "PEF 투자회수(엑시트)·LP 구성 공식 수치 미확인",
+    "KOSPI 수준 API 미수집"
+  ],
+  "sources": [
+    "https://www.fnnews.com/news/202606171133180568",
+    "https://news.bizwatch.co.kr/article/market/2026/06/17/0036",
+    "https://www.heraldk.com/article/2026021918262922378",
+    "data/latest_snapshot.json (담당 지표 없음)"
+  ]
+}
