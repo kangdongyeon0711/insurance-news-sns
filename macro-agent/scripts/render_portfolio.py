@@ -97,7 +97,8 @@ def render(impact: dict, portfolios: list[dict], date: str) -> str:
     for i, r0 in enumerate(scen[0]["rows"]):
         cells = [f"{s['rows'][i]['impact_100m']:,.0f}{'*' if s['rows'][i]['estimated'] else ''}" for s in scen]
         if pw:
-            cells.append(f"{pw['rows'][i]['impact_100m']:,.0f}")
+            est = any(s["rows"][i]["estimated"] for s in scen if s["prob"] is not None)
+            cells.append(f"{pw['rows'][i]['impact_100m']:,.0f}{'*' if est else ''}")
         a(f"| {r0['key']} | {r0['mv_krw_bn']:,.0f} | " + " | ".join(cells) + " |")
     tot = [f"**{s['total_100m']:,.0f}**" for s in scen] + ([f"**{pw['total_100m']:,.0f}**"] if pw else [])
     bps = [f"{s['total_bp']:+.1f}" for s in scen] + ([f"{pw['total_bp']:+.1f}"] if pw else [])

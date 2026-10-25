@@ -25,6 +25,7 @@ tools: Read, Write, Bash, Glob, Grep, WebSearch, WebFetch
 - 현황 수치는 `data/latest_snapshot.json`에서만 인용하고 각 수치에 기준일(as_of)을 붙인다. 리포트·기사에 나온 과거 수치를 현재값처럼 쓰지 않는다.
 - snapshot에 없는 수치를 웹에서 확인해 쓸 때는 indicator에 `value_flag: "웹확인"`, `source: URL`, 그 수치의 기준일을 명시한다. 확인 못 하면 `value: null`, `value_flag: "미확인"`.
 - 증권사 리서치 사이트·보험사 IR 사이트는 WebFetch로도 수집하지 않는다. 증권사 의견은 `knowledge/view_cards/`의 카드로만 반영한다.
+- 웹 수치 출처 우선순위: 공식 기관(한은·통계청·연준·FRED·EIA·금감원·한국부동산원) > 주요 언론 보도 > 기타. 위키(나무위키 등)·브로커/CFD 업체 분석 페이지·투자은행 자료는 단독 근거로 쓰지 않는다(보조 표기만).
 - 문장마다 `[사실]`(데이터·공식 발표), `[하우스]`(view_card 근거, card_id 병기), `[판단]`(에이전트 자체 판단) 태그를 단다.
 - 장기 전망은 Base/Bull/Bear + 확률(합 = 1). 빈칸을 그럴듯한 숫자로 채우지 않는다. 추정치에는 "추정"을 표시한다.
 - snapshot 지표가 `stale: true`면 summary와 data_gaps에 "기준일 X, N일 경과" 경고를 쓴다.

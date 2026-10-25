@@ -14,7 +14,7 @@ CLAUDE.md의 원칙 9개를 따른다. 기준일 `AS_OF` = 오늘. 회사 = 인�
    검증: `python scripts/validate_json.py knowledge/portfolios/{회사}/` + `python scripts/validate_exposures.py knowledge/portfolios/{회사}/ --trend`
 3. **매크로 전망 확인**: `ls knowledge/macro_topics/` 에서 가장 최근 날짜 폴더. AS_OF보다 7일 넘게 오래되었거나 없으면 **사용자에게 `/macro-brief`를 먼저 실행할지 묻는다** (AskUserQuestion). 사용자가 거절하면 오래된 전망임을 리포트에 경고하고 진행.
 4. **시나리오 세트 생성**: `python scripts/build_shocks.py --date {macro_date}` → `reports/tmp/{macro_date}_factor_shocks.json`
-   (단기, 장기-Base, 장기-Bull, 장기-Bear, 확률가중 기대값. 결합 규칙은 build_shocks.py docstring.)
+   (단기, 장기-Base, 장기-Bull, 장기-Bear, 기대충격(확률가중 기대 충격). calc_impact는 장기 3개 시나리오 영향의 확률가중 기대값도 따로 낸다. 결합 규칙은 build_shocks.py docstring.)
 5. **영향 계산**: `python scripts/calc_impact.py --portfolio knowledge/portfolios/{회사}/{최신기간}.json --shocks reports/tmp/{macro_date}_factor_shocks.json --out reports/tmp/{AS_OF}_{회사}_impact`
    → `_impact.json`, `_impact.csv`, 콘솔 표. 숫자는 이 출력에서만 인용한다.
 6. **정성 보완**: `.claude/skills/impact-mapping/SKILL.md`와 `sensitivity_matrix.md`를 읽고, 계산이 단순화한 경로(PF 충당금, 대체투자 평가 지연, 부채 할인율, K-ICS)를 서술로 보완한다.

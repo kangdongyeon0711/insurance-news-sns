@@ -23,9 +23,31 @@ TOPIC_NAMES = {
     "us_alt_re": "미국 대체투자 - 부동산", "us_alt_infra": "미국 대체투자 - 인프라", "us_alt_pe": "미국 대체투자 - PE (Equity)",
     "us_alt_pd": "미국 대체투자 - PE (Debt) / Private Credit",
 }
-DISCLAIMER = ("본 자료는 개인의 의사결정 보조를 위한 분석 자료이며 투자 권유가 아닙니다. 현황 수치는 기준일 시점의 공개 API 데이터이고, "
+DISCLAIMER = ("본 자료는 개인의 의사결정 보조를 위한 분석 자료이며 투자 권유가 아닙니다. 현황 수치는 기준일 시점의 공개 API 데이터 "
+              "또는 [웹확인] 표시된 웹 검색 값(공식 원문 대조 전)이고, "
               "전망·시나리오·확률은 하우스 뷰와 에이전트 판단에 기반한 추정으로 실제 결과와 다를 수 있습니다. "
               "증권사 리포트 내용은 개인 분석용으로 요약했으며 원문의 저작권은 각 발행사에 있습니다.")
+
+
+def ind_stale(ind: dict, ref: str) -> bool:
+    """indicator 기준일이 오래되었는지. snapshot 값은 stale 필드, 웹확인 값은 기준일로 판정
+    (일자 = 7일, YYYY-MM 월 단위 = 월말 + 45일)."""
+    if ind.get("stale") is not None:
+        return bool(ind["stale"])
+    d = ind.get("as_of")
+    if not d or ind.get("value") is None:
+        return False
+    from datetime import date, timedelta
+    import calendar
+
+    r = date.fromisoformat(ref)
+    try:
+        if len(d) == 7:
+            y, m = map(int, d.split("-"))
+            return (r - date(y, m, calendar.monthrange(y, m)[1])).days > 45
+        return (r - date.fromisoformat(d[:10])).days > 7
+    except ValueError:
+        return False
 
 
 def fmt_num(v) -> str:
@@ -36,10 +58,11 @@ def fmt_num(v) -> str:
     return f"{v:g}" if isinstance(v, float) else str(v)
 
 
-def ind_cell(ind: dict) -> str:
+def ind_cell(ind: dict, ref: str) -> str:
     if ind.get("value") is None:
         return f"{ind.get('name') or ind['series_id']} 미확인"
     flag = "" if ind.get("value_flag", "API") == "API" else f" [{ind['value_flag']}]"
+    flag += " ⚠stale" if ind_stale(ind, ref) else ""
     return f"{ind.get('name') or ind['series_id']} {fmt_num(ind['value'])}{ind['unit']} ({ind.get('as_of')}){flag}"
 
 
@@ -68,7 +91,8 @@ def render(date: str) -> str:
     if not snap["series"] or bad or stale:
         a("> ⚠ **데이터 경고**")
         if not snap["series"]:
-            a("> - API 시계열이 하나도 수집되지 않아 현황 수치는 모두 **미확인**입니다 (`.env`에 API 키 입력 후 `python scripts/fetch_all.py`).")
+            a("> - API 시계열이 하나도 수집되지 않았습니다. 현황 수치는 `[웹확인]`(웹 검색, 공식 원문 대조 전) 또는 **미확인**입니다 "
+              "(`.env`에 API 키 입력 후 `python scripts/fetch_all.py`).")
         if bad:
             a("> - 수집 상태: " + ", ".join(f"{k}={v}" for k, v in bad.items()))
         for s in stale:
@@ -87,7 +111,7 @@ def render(date: str) -> str:
             a(f"| {i} | {TOPIC_NAMES[t]} | 미확인 | 미확인 | 미확인 | — |")
             continue
         inds = [x for x in d["current"]["indicators"] if x.get("value") is not None][:2]
-        cur = "<br>".join(ind_cell(x) for x in inds) or "미확인"
+        cur = "<br>".join(ind_cell(x, date) for x in inds) or "미확인"
         st = d["short_term"]
         base = next(s for s in d["long_term"]["scenarios"] if s["name"] == "Base")
         a(f"| {i} | {TOPIC_NAMES[t]} | {cur} | {short(st.get('direction') or st['view'], 50)} | "
@@ -123,7 +147,7 @@ def render(date: str) -> str:
         for x in d["current"]["indicators"]:
             chg = "—" if x.get("chg_1m") is None else f"{x['chg_1m']:+g}{x.get('chg_unit', '')}"
             val = "미확인" if x.get("value") is None else f"{fmt_num(x['value'])} {x['unit']}"
-            flag = x.get("value_flag", "API") + (" ⚠stale" if x.get("stale") else "")
+            flag = x.get("value_flag", "API") + (" ⚠stale" if ind_stale(x, date) else "")
             src = f" ({x['source']})" if x.get("source") else ""
             a(f"| {x.get('name', '')} | `{x['series_id']}` | {val} | {x.get('as_of') or '미확인'} | {chg} | {flag}{src} |")
         a(f"\n{d['current']['summary']}\n")

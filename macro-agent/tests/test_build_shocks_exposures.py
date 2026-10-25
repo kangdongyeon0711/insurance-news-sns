@@ -30,8 +30,8 @@ def test_build_shocks_owner_and_expected(tmp_path):
     assert sum(sc[f"장기-{n}"]["prob"] for n in ["Base", "Bull", "Bear"]) == pytest.approx(1.0)
     assert sc["장기-Base"]["prob"] == pytest.approx(0.55)
     # 기대값: ktb_10y = 0.5×−20 + 0.2×−50 + 0.3×30 = −11 ; base rate = 0.6×−25 + 0.2×−50 = −25
-    assert sc["확률가중"]["shocks"]["ktb_10y_bp"] == pytest.approx(-11)
-    assert sc["확률가중"]["shocks"]["kr_base_rate_bp"] == pytest.approx(-25)
+    assert sc["기대충격"]["shocks"]["ktb_10y_bp"] == pytest.approx(-11)
+    assert sc["기대충격"]["shocks"]["kr_base_rate_bp"] == pytest.approx(-25)
 
 
 def test_validate_exposures_total_and_shift(tmp_path, capsys):

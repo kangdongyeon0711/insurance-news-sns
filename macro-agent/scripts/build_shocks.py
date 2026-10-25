@@ -6,7 +6,7 @@ python scripts/build_shocks.py [--date YYYY-MM-DD] [--out reports/tmp/{date}_fac
 1. 팩터별 '주인 topic'은 config/factors.yaml의 topic_id. 주인 topic이 그 팩터를 제시하면 그 값을 쓰고,
    없으면 그 팩터를 제시한 다른 topic들의 평균을 쓴다 (factor_sources에 기록).
 2. 시나리오: 단기(prob 없음), 장기-Base/Bull/Bear(같은 이름끼리 결합 — 모든 topic이 같은 시나리오에 있다고 보는
-   공동 단조 가정), 확률가중(팩터별로 주인 topic의 확률로 가중한 기대 충격, prob 없음).
+   공동 단조 가정), 기대충격(팩터별로 주인 topic의 확률로 가중한 기대 충격, prob 없음).
 3. 장기 시나리오 확률 = topic별 확률의 평균을 합 1로 정규화.
 날짜를 생략하면 가장 최근 폴더를 쓴다.
 """
@@ -77,8 +77,8 @@ def build(topic_dir: Path) -> dict:
             vals.append(sum(sc[n]["prob"] * float(sc[n].get("factor_shocks", {}).get(f, 0.0)) for n in LT if n in sc))
         expected[f] = round(sum(vals) / len(vals), 4)
         exp_src[f] = ",".join(cands)
-    scenarios.append({"name": "확률가중", "prob": None, "horizon": "1-3Y", "shocks": expected})
-    sources["확률가중"] = exp_src
+    scenarios.append({"name": "기대충격", "prob": None, "horizon": "1-3Y", "shocks": expected})
+    sources["기대충격"] = exp_src
     return {"as_of": topic_dir.name, "source": f"knowledge/macro_topics/{topic_dir.name}/ (build_shocks.py)",
             "topics_used": sorted(topics), "missing_topics": [], "note": "장기 시나리오는 topic 간 공동 단조(같은 이름끼리 결합) 가정",
             "factor_sources": sources, "scenarios": scenarios}
