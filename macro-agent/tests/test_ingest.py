@@ -58,3 +58,22 @@ def test_filing_ingest_tables(tmp_path):
 def test_house_guess():
     assert ing.guess_house("신한투자증권 리서치센터") == "신한투자증권"
     assert ing.guess_date("발간일 2026년 9월 3일") == "2026-09-03"
+
+
+def test_filing_xlsx_and_entity_detection(tmp_path):
+    import openpyxl
+
+    inbox, processed, manifest = _dirs(tmp_path)
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = "(4) Investment"
+    ws.append(["구분", "2026. 6월 말"])
+    ws.append(["운용자산 계", 45594028.4])
+    wb.save(inbox / "filings" / "가상증권_2026Q2_IR데이터.xlsx")
+    e = ing.process("filing", inbox=inbox, processed=processed, manifest_path=manifest)["new"][0]
+    assert e["format"] == "xlsx" and e["entity_type"] == "securities" and e["company"] == "가상증권"
+    txt = (processed / "filings" / f"{e['stem']}.txt").read_text(encoding="utf-8")
+    assert "[시트: (4) Investment]" in txt and "운용자산 계 | 45594028.4" in txt
+    assert (processed / "filings" / f"{e['stem']}.xlsx").exists()
+    assert ing.detect_entity_type("미래에셋자산운용") == "asset_manager"
+    assert ing.detect_entity_type("현대해상") == "insurer" and ing.detect_entity_type("NH투자증권") == "securities"

@@ -21,12 +21,24 @@ def f0(v) -> str:
     return "—" if v is None else f"{v:,.0f}"
 
 
+def _ratio_text(pf: dict) -> str:
+    """업종별 대표 자본비율 한 줄 (capital_ratios 우선, 없으면 kics_ratio)."""
+    caps = pf.get("capital_ratios") or []
+    if caps:
+        c = caps[0]
+        return f"{c['name']} {'미확인' if c.get('value') is None else format(c['value'], 'g') + c.get('unit', '')}"
+    return f"K-ICS {pf.get('kics_ratio') or '미확인'}"
+
+
 def render(impact: dict, portfolios: list[dict], date: str) -> str:
     L: list[str] = []
     a = L.append
     co = impact["company"]
     latest = portfolios[-1] if portfolios else None
+    ent = impact.get("entity_type", "insurer")
+    ent_label = {"insurer": "보험사", "securities": "증권사", "asset_manager": "자산운용사", "bank": "은행"}.get(ent, "금융회사")
     a(f"# {co} 포트폴리오 매크로 영향 분석 — {date}\n")
+    a(f"> 업종: {ent_label} (`entity_type: {ent}`) — 분석 관점은 `config/entity_profiles.yaml`\n")
     if impact.get("is_sample"):
         a("> ⚠ **가상 샘플 포트폴리오** — 실제 회사 데이터가 아닙니다. 계산·리포트 흐름 시연용입니다.\n")
     a(f"> 익스포저 기준 {impact['period']} · 매크로 충격 기준일 {impact.get('shocks_as_of')} ({impact.get('shocks_source')}) · "
@@ -63,7 +75,7 @@ def render(impact: dict, portfolios: list[dict], date: str) -> str:
     if latest:
         a(f"총 운용자산 {latest['total_invested_assets_krw_bn'] / 1000:,.1f}조원 ({latest['period']}, "
           f"{latest.get('total_flag', '공시')}{', ' + latest['total_page_ref'] if latest.get('total_page_ref') else ''}) · "
-          f"회계기준 {latest['accounting_basis']} · K-ICS {latest.get('kics_ratio') or '미확인'} · "
+          f"회계기준 {latest.get('accounting_basis') or '미확인'} · {_ratio_text(latest)} · "
           f"운용수익률 {latest.get('investment_yield') or '미확인'}\n")
         a("| 자산군 | 지역 | 통화 | 금액 (십억원) | 비중 | 수정듀레이션 | 헤지비율 | 값 플래그 | 근거 |")
         a("|---|---|---|---|---|---|---|---|---|")
@@ -123,7 +135,42 @@ def render(impact: dict, portfolios: list[dict], date: str) -> str:
     a("<!-- TODO: impact-mapping/sensitivity_matrix.md 기준으로 주요 경로와 계산이 포착하지 못한 정성 영향(PF 충당금 시차, "
       "대체투자 평가 지연, 회계 분류에 따른 손익 인식 차이)을 서술 -->\n")
 
-    a("## ALM 관점\n")
+    caps = impact.get("capital_ratios") or []
+    if caps:
+        a("## 자본비율\n")
+        a("| 지표 | 값 | 기준일 | 플래그 | 근거 |")
+        a("|---|---|---|---|---|")
+        for c in caps:
+            v = "미확인" if c.get("value") is None else f"{c['value']:g}{c.get('unit', '')}"
+            a(f"| {c['name']} | {v} | {c.get('as_of') or '—'} | {c['value_flag']} | {c.get('page_ref') or '—'} |")
+        a("")
+    cal = impact.get("calibration") or []
+    if cal:
+        a("## 공시 금리 민감도 vs 엔진 (캘리브레이션)\n")
+        a("| 충격 | 공시 자산 (억원) | 엔진: 국내 커브 (억원) | 엔진: 국내+해외 커브 (억원) | 엔진/공시 (국내) | 엔진/공시 (국내+해외) | 공시 부채 (억원) | 엔진 부채 (억원) | 공시 가용자본 (억원) | 공시 자본비율 | 근거 |")
+        a("|---|---|---|---|---|---|---|---|---|---|---|")
+        for c in cal:
+            r1 = "—" if c["ratio_model_kr_to_disclosed"] is None else f"{c['ratio_model_kr_to_disclosed']:.2f}"
+            r2 = "—" if c["ratio_model_kr_fx_to_disclosed"] is None else f"{c['ratio_model_kr_fx_to_disclosed']:.2f}"
+            a(f"| {c['shock_bp']:+g}bp | {f0(c['disclosed_asset_100m'])} | {f0(c['model_asset_kr_100m'])}{'*' if c['estimated'] else ''} | "
+              f"{f0(c['model_asset_kr_fx_100m'])}{'*' if c['estimated'] else ''} | {r1} | {r2} | {f0(c['disclosed_liab_100m'])} | "
+              f"{f0(c['model_liab_100m'])} | {f0(c['disclosed_capital_100m'])} | {c['disclosed_ratio'] or '—'} | {c['page_ref'] or '—'} |")
+        a(f"\n산출 기준(공시): {cal[0].get('basis') or '미확인'}. 엔진은 금리 요인(rate)만 비교하며 스프레드·환율은 제외. "
+          "비율이 1에서 멀면 듀레이션 가정(assumptions.yaml) 또는 자산 분류를 재점검한다.\n")
+        a("<!-- TODO: 엔진/공시 비율을 해석(어느 자산군 듀레이션 가정이 과대·과소인지)하고, 시나리오 영향의 신뢰도에 주는 함의를 서술 -->\n")
+    aum_sc = [(s["name"], s["aum_fee"]) for s in scen if s.get("aum_fee")]
+    if aum_sc:
+        a("## AUM·보수수익 영향\n")
+        a("| 시나리오 | AUM 평가 변화 (억원) | 연간 운용보수 영향 (억원) |")
+        a("|---|---|---|")
+        for n, x in aum_sc:
+            a(f"| {n} | {f0(x['total_aum_chg_100m'])} | {x['total_fee_impact_100m']:,.1f} |")
+        a(f"\n{aum_sc[0][1]['note']}. 보수율 미공시 유형은 `assumptions.aum_fee_bp` 가정값 사용.\n")
+        a("<!-- TODO: 유형별(채권형·주식형·대체) 자금 유출입 가능성을 정성 서술 -->\n")
+    if ent == "securities":
+        a("## 조달·유동성\n")
+        a("<!-- TODO: 단기 조달(RP·발행어음·CP) 구조와 단기금리 충격(kr_base_rate_bp, kr_cd_91d) 시 캐리·유동성 영향을 정성 서술. 우발채무(PF 채무보증)는 위 표의 '우발:' 행 참고 -->\n")
+    a("## ALM 관점\n" if ent in ("insurer", "bank") else "## 금리 민감 부채 (참고)\n")
     alms = [(s["name"], s["alm"]) for s in scen if s.get("alm")]
     if alms:
         a("| 시나리오 | 금리 팩터 | Δy (bp) | 자산 (억원) | 부채 (억원) | 순자산 (억원) | 순자산 (bp) | 듀레이션 갭 (년) | 추정 |")

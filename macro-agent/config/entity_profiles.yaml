@@ -1,0 +1,83 @@
+# 업종별 분석 프로필 — portfolio-analyst와 /portfolio-impact가 회사 유형에 맞춰 무엇을 추출·계산·서술할지 정한다.
+# entity_type: insurer | securities | asset_manager | bank | other
+# 새 업종을 추가할 때는 이 파일에 프로필을 추가하고, 필요하면 assumptions.yaml의 duration_by_entity,
+# constraints.yaml의 entity_overrides에 해당 키를 추가한다.
+
+detect:   # 회사명·문서로 업종 추정 (ingest_inbox.py, portfolio-analyst가 사용). 위에서부터 먼저 맞는 것.
+  - {entity_type: asset_manager, name_patterns: ["자산운용", "운용사", "Asset Management"]}
+  - {entity_type: securities,    name_patterns: ["증권", "투자증권", "금융투자", "Securities"]}
+  - {entity_type: insurer,       name_patterns: ["화재", "해상", "손해보험", "손보", "생명", "보험", "라이프", "Life", "Insurance", "재보험"]}
+  - {entity_type: bank,          name_patterns: ["은행", "Bank"]}
+
+profiles:
+  insurer:
+    label: 보험사
+    sources:   # 사용자가 inbox/filings에 넣을 자료와 찾을 위치
+      - "IR 경영실적(분기): 운용자산 구성·투자이익률·K-ICS·듀레이션 갭·금리 민감도"
+      - "정기경영공시: 자산 듀레이션, 신용등급 분포, 대체투자 상세, 금리위험(ALM), 부채 듀레이션"
+      - "사업·분기·반기보고서(DART): 유가증권 계정 분류(FVPL/FVOCI/AC), 대출채권 상세, 외화자산"
+    balance_sheet: "운용자산 = 현금예금 + 유가증권(국내채권·주식·수익증권·외화유가증권) + 대출채권 + 부동산"
+    liabilities: "보험계약부채(BEL+RA+CSM). 금리민감 부채 = 장기보험료부채·장기위험마진(PAP 기준). duration과 pv_krw_bn 필요"
+    capital_ratios: ["K-ICS", "기본자본비율"]
+    key_metrics: ["투자이익률", "CSM 잔액", "신계약 CSM", "보험손익", "투자손익", "ROE"]
+    disclosed_sensitivity: "IR·정기경영공시의 '금리 변동시 재무 영향'(±50bp 자산·부채·가용자본·K-ICS) → rate_sensitivity_disclosed에 기록, 엔진 캘리브레이션"
+    impact_focus:
+      - "자산·부채 듀레이션 갭과 금리 충격 시 순자산(가용자본) 영향"
+      - "K-ICS 비율 민감도 (요구자본 위험계수 미입력 시 정성)"
+      - "대체투자(수익증권·해외 인프라/부동산/PE) 평가 지연과 헤지비용"
+      - "부동산 PF·담보대출 손실률"
+    report_sections: ["ALM 관점", "자본비율(K-ICS)"]
+
+  securities:
+    label: 증권사
+    sources:
+      - "사업·분기·반기보고서(DART): 자산 구성(현금·유가증권·대출채권·파생), 채무보증(PF 우발채무), 순자본비율(NCR)·레버리지비율"
+      - "IR 실적자료: 사업부문별 손익(위탁매매·IB·운용·이자), 부동산 PF 익스포저, 해외 대체투자"
+    balance_sheet: "운용자산 = 트레이딩/투자 유가증권(국내채권·주식·수익증권·외화) + 신용공여·대출 + 파생 + 현금성. 채권은 단기·운용목적이라 듀레이션이 보험사보다 짧다"
+    liabilities: "단기 조달(RP 매도, 발행어음, CP, 단기차입) 중심 — duration은 짧게(0.3~1년), 조달금리 상승 = 캐리 축소. pv_krw_bn은 금리민감 조달부채"
+    capital_ratios: ["NCR(순자본비율)", "레버리지비율", "종투사 자기자본"]
+    key_metrics: ["자기자본", "ROE", "IB 수수료", "부동산 PF 익스포저(대출+채무보증)", "해외 대체투자 잔액"]
+    contingent: "부동산 PF 채무보증(매입보장·확약 등)은 contingent에 기록 — 손실률 팩터로 손실 추정"
+    impact_focus:
+      - "채권 운용 포지션의 금리·스프레드 손익(짧은 듀레이션이지만 레버리지)"
+      - "부동산 PF 대출·채무보증 손실률(우발채무 포함)"
+      - "주식 운용·자기자본투자(PI) 평가손익, 해외 대체투자 평가"
+      - "조달금리(단기금리) 상승의 캐리 영향 — 정성 또는 floating 보완"
+    report_sections: ["우발채무(PF 채무보증)", "자본비율(NCR·레버리지)", "조달·유동성"]
+
+  asset_manager:
+    label: 자산운용사
+    sources:
+      - "사업보고서(DART): 운용자산(AUM) 유형별(채권형·주식형·MMF·부동산·특별자산·혼합 등), 수수료수익, 고유재산(시딩·자기투자)"
+      - "금융투자협회 공시: 펀드 유형별 수탁고·평균 보수율"
+    balance_sheet: "고유재산(시딩·자기투자·현금)만 대차대조표 위험 — assets에 기록"
+    liabilities: "대차대조표 부채의 금리민감도는 작음 — 보통 미확인/해당 없음"
+    capital_ratios: ["최소영업자본액 대비 자기자본", "자기자본"]
+    key_metrics: ["AUM", "운용보수율(bp)", "수수료수익", "성과보수 비중"]
+    aum: "AUM은 aum 배열에 유형별로 기록(class 표준 매핑 + fee_bp). calc_impact가 시나리오별 AUM 평가 변화 × 보수율 → 연간 보수수익 영향을 계산"
+    impact_focus:
+      - "시장 충격에 따른 AUM 평가 변화 → 운용보수 수익(연간) 영향"
+      - "자금 유출입(정성) — 금리 상승 시 채권형 유출, 위험회피 시 주식형 유출 등"
+      - "고유재산 평가손익"
+      - "대체자산 펀드의 평가 지연·성과보수 변동"
+    report_sections: ["AUM·보수수익 영향", "자금흐름(정성)"]
+
+  bank:
+    label: 은행
+    sources: ["사업보고서·IR: 원화대출 구성, NIM, 유가증권, BIS 비율, IRRBB 민감도"]
+    balance_sheet: "유가증권 + 대출채권(변동금리 비중 중요)"
+    liabilities: "예금·차입 — IRRBB 공시값 활용"
+    capital_ratios: ["BIS 총자본비율", "CET1"]
+    key_metrics: ["NIM", "대손비용률", "연체율"]
+    impact_focus: ["순이자이익(NII) 민감도 — 정성", "유가증권 평가", "대손비용(부도율 팩터)"]
+    report_sections: ["자본비율(BIS)"]
+
+  other:
+    label: 기타 금융회사
+    sources: ["사업보고서(DART) 재무제표 주석의 금융자산 분류·시장위험 공시"]
+    balance_sheet: "금융자산을 표준 class로 매핑"
+    liabilities: "공시 확인 시 기록"
+    capital_ratios: []
+    key_metrics: []
+    impact_focus: ["금융자산 평가손익"]
+    report_sections: []

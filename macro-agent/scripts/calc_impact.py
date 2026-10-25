@@ -44,9 +44,10 @@ class Cell:
 
 
 class Engine:
-    def __init__(self, assumptions: dict | None = None, floating_income: bool = False):
+    def __init__(self, assumptions: dict | None = None, floating_income: bool = False, entity_type: str = "insurer"):
         self.a = assumptions or load_yaml(CONFIG_DIR / "assumptions.yaml")
         self.floating_income = floating_income
+        self.entity = entity_type
 
     # ---------- 필드 조회 (공시값 우선, 없으면 가정값 + estimated) ----------
     def _field(self, asset: dict, key: str, default, cell: Cell, label: str):
@@ -59,7 +60,9 @@ class Engine:
         return v
 
     def _duration(self, asset: dict, cell: Cell) -> float:
-        return float(self._field(asset, "mod_duration", self.a["duration"].get(asset["class"], 0.0), cell, "D_mod"))
+        by_entity = (self.a.get("duration_by_entity") or {}).get(self.entity) or {}
+        default = by_entity.get(asset["class"], self.a["duration"].get(asset["class"], 0.0))
+        return float(self._field(asset, "mod_duration", default, cell, "D_mod"))
 
     def _spread_duration(self, asset: dict, d: float, cell: Cell) -> float:
         if asset.get("spread_duration") is not None:
@@ -186,9 +189,12 @@ class Engine:
             self._fx(asset, mv, shocks, cell, missing)
 
         elif method == "loss_rate":
-            beta = float(self.a["pf_loss_beta"].get(cls, 1.0))
-            if beta != 1.0:
-                cell.est(f"손실률 배수 {beta} 가정")
+            if asset.get("loss_beta") is not None:
+                beta = float(asset["loss_beta"])
+            else:
+                beta = float(self.a["pf_loss_beta"].get(cls, 1.0))
+                if beta != 1.0:
+                    cell.est(f"손실률 배수 {beta} 가정")
             cell.add("credit_loss", -mv * beta * self._g(shocks, rule["factor"], cell, missing) / 100)
 
         elif method == "discount_rate":
@@ -251,14 +257,84 @@ def row_key(asset: dict, idx: int, counts: dict) -> str:
     return base
 
 
+def _contingent_assets(portfolio: dict) -> list[dict]:
+    """우발채무(contingent)를 손실률 계산용 가상 자산으로 변환. key는 '우발:'로 시작."""
+    out = []
+    for c in portfolio.get("contingent") or []:
+        out.append({"class": c["class"], "region": c.get("region", "KR"), "currency": "KRW",
+                    "mv_krw_bn": float(c["exposure_krw_bn"]), "loss_beta": c.get("loss_beta"),
+                    "value_flag": c.get("value_flag"), "label": c.get("label"), "_contingent": True})
+    return out
+
+
+def aum_fee_impact(portfolio: dict, shocks: dict, engine: "Engine") -> dict | None:
+    """자산운용사: 시나리오별 AUM 평가 변화와 연간 운용보수 영향(억원). 대차대조표 합계에는 넣지 않는다."""
+    items = portfolio.get("aum") or []
+    if not items:
+        return None
+    rows, missing = [], set()
+    default_fee = engine.a.get("aum_fee_bp", {})
+    for it in items:
+        asset = {**it, "mv_krw_bn": float(it["aum_krw_bn"]), "currency": it.get("currency", "KRW")}
+        cell = engine.asset_impact(asset, shocks, missing)
+        fee = it.get("fee_bp")
+        est = cell.estimated
+        if fee is None:
+            fee = float(default_fee.get(it["class"], default_fee.get("default", 30)))
+            est = True
+        d_aum = cell.impact_bn
+        rows.append({"key": it.get("label") or it["class"], "class": it["class"], "aum_krw_bn": it["aum_krw_bn"],
+                     "aum_chg_100m": round(d_aum * 10, 1), "aum_chg_pct": round(d_aum / it["aum_krw_bn"] * 100, 2) if it["aum_krw_bn"] else None,
+                     "fee_bp": fee, "fee_impact_100m": round(d_aum * fee / 1e4 * 10, 2), "estimated": est})
+    return {"rows": rows, "total_aum_chg_100m": round(sum(r["aum_chg_100m"] for r in rows), 1),
+            "total_fee_impact_100m": round(sum(r["fee_impact_100m"] for r in rows), 2),
+            "note": "연간 운용보수 영향 = AUM 평가 변화 × 보수율 (자금 유출입 미반영)", "missing_factors": sorted(missing)}
+
+
+def calibration(portfolio: dict, engine: "Engine") -> list[dict]:
+    """회사 공시 금리 민감도(rate_sensitivity_disclosed)와 엔진 결과 대조.
+    엔진: 국내 커브(ktb 3·10·30y) 평행 이동만 적용한 원화 채권·대출(bond_kr) 영향, 그리고 해외 커브까지 함께 이동한 경우."""
+    out = []
+    for d in portfolio.get("rate_sensitivity_disclosed") or []:
+        bp = float(d["shock_bp"])
+        kr = {"ktb_3y_bp": bp, "ktb_10y_bp": bp, "ktb_30y_bp": bp}
+        both = {**kr, "ust_2y_bp": bp, "ust_10y_bp": bp, "ust_30y_bp": bp}
+        def rate_only(shocks, methods):
+            tot, est = 0.0, False
+            for a in portfolio["assets"]:
+                if engine.a["class_rules"].get(a["class"], {}).get("method") in methods:
+                    cell = engine.asset_impact(a, shocks, set())
+                    tot += cell.components.get("rate", 0.0)
+                    est = est or cell.estimated
+            return tot, est
+        m_kr, est1 = rate_only(kr, ("bond_kr",))
+        m_both, est2 = rate_only(both, ("bond_kr", "bond_foreign"))
+        liab = portfolio.get("liabilities") or {}
+        m_liab = (-float(liab["duration"]) * float(liab["pv_krw_bn"]) * bp * BP
+                  if liab.get("duration") is not None and liab.get("pv_krw_bn") is not None else None)
+        disc_a = d.get("asset_chg_krw_bn")
+        out.append({"shock_bp": bp, "basis": d.get("basis"), "page_ref": d.get("page_ref"),
+                    "disclosed_asset_100m": None if disc_a is None else round(disc_a * 10, 1),
+                    "model_asset_kr_100m": round(m_kr * 10, 1), "model_asset_kr_fx_100m": round(m_both * 10, 1),
+                    "ratio_model_kr_to_disclosed": round(m_kr / disc_a, 3) if disc_a else None,
+                    "ratio_model_kr_fx_to_disclosed": round(m_both / disc_a, 3) if disc_a else None,
+                    "disclosed_liab_100m": None if d.get("liab_chg_krw_bn") is None else round(d["liab_chg_krw_bn"] * 10, 1),
+                    "model_liab_100m": None if m_liab is None else round(m_liab * 10, 1),
+                    "disclosed_capital_100m": None if d.get("capital_chg_krw_bn") is None else round(d["capital_chg_krw_bn"] * 10, 1),
+                    "disclosed_ratio": None if d.get("ratio_chg_pp") is None else f"{d.get('ratio_name') or ''} {d['ratio_chg_pp']:+g}%p".strip(),
+                    "estimated": est1 or est2})
+    return out
+
+
 def run(portfolio: dict, shocks_doc: dict, engine: Engine | None = None) -> dict:
-    engine = engine or Engine()
+    engine = engine or Engine(entity_type=portfolio.get("entity_type", "insurer"))
+    engine.entity = portfolio.get("entity_type", engine.entity)
     total = float(portfolio["total_invested_assets_krw_bn"])
-    assets = portfolio["assets"]
+    assets = list(portfolio["assets"]) + _contingent_assets(portfolio)
     from collections import Counter
 
     counts = Counter(a["class"] + ("" if a.get("region", "KR") == "KR" else f"({a['region']})") for a in assets)
-    keys = [row_key(a, i, counts) for i, a in enumerate(assets)]
+    keys = [("우발:" if a.get("_contingent") else "") + row_key(a, i, counts) for i, a in enumerate(assets)]
     scenarios_out = []
     for sc in shocks_doc["scenarios"]:
         shocks, missing = sc["shocks"], set()
@@ -266,6 +342,7 @@ def run(portfolio: dict, shocks_doc: dict, engine: Engine | None = None) -> dict
         for key, asset in zip(keys, assets):
             cell = engine.asset_impact(asset, shocks, missing)
             rows.append({"key": key, "class": asset["class"], "region": asset.get("region", "KR"),
+                         "contingent": bool(asset.get("_contingent")),
                          "mv_krw_bn": asset["mv_krw_bn"], "impact_100m": round(cell.impact_bn * 10, 2),
                          "impact_bp": round(cell.impact_bn / total * 1e4, 2) if total else None,
                          "pct_of_class": round(cell.impact_bn / asset["mv_krw_bn"] * 100, 3) if asset["mv_krw_bn"] else None,
@@ -278,6 +355,7 @@ def run(portfolio: dict, shocks_doc: dict, engine: Engine | None = None) -> dict
             "total_bp": round(tot_bn / total * 1e4, 1) if total else None,
             "any_estimated": any(r["estimated"] for r in rows),
             "missing_factors": sorted(missing), "alm": engine.alm(portfolio, shocks),
+            "aum_fee": aum_fee_impact(portfolio, shocks, engine),
         })
     weighted = [s for s in scenarios_out if s["prob"] is not None]
     pw = None
@@ -291,6 +369,9 @@ def run(portfolio: dict, shocks_doc: dict, engine: Engine | None = None) -> dict
               "total_100m": round(tot, 1), "total_bp": round(tot / 10 / total * 1e4, 1)}
     return {
         "company": portfolio["company"], "period": portfolio["period"], "is_sample": portfolio.get("is_sample", False),
+        "entity_type": portfolio.get("entity_type", "insurer"),
+        "calibration": calibration(portfolio, engine),
+        "capital_ratios": portfolio.get("capital_ratios") or [],
         "total_invested_assets_krw_bn": total, "shocks_as_of": shocks_doc.get("as_of"),
         "shocks_source": shocks_doc.get("source"), "computed_at": today().isoformat(),
         "valuation_basis": engine.a.get("valuation_basis"), "units": {"impact": "억원", "bp": "운용자산 대비 bp"},
@@ -300,7 +381,10 @@ def run(portfolio: dict, shocks_doc: dict, engine: Engine | None = None) -> dict
 
 def check_constraints(portfolio: dict, constraints: dict, alm: dict | None = None,
                       proposal: dict | None = None) -> list[dict]:
-    """현재(또는 proposal의 %p 조정 반영 후) 비중이 한도를 지키는지 점검."""
+    """현재(또는 proposal의 %p 조정 반영 후) 비중이 한도를 지키는지 점검.
+    constraints.yaml의 entity_overrides[entity_type]에 있는 키는 기본값(보험사 기준)을 대체한다."""
+    ent = portfolio.get("entity_type", "insurer")
+    constraints = {**constraints, **((constraints.get("entity_overrides") or {}).get(ent) or {})}
     total = float(portfolio["total_invested_assets_krw_bn"])
     weights = []
     for a in portfolio["assets"]:

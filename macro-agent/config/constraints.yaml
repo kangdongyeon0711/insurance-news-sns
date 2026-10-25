@@ -14,6 +14,22 @@ limits:
   - {name: 현금성 최소, classes: [현금예금], min: 0.01}
   - {name: 회사채 BBB 이하, classes: [회사채], grades: [BBB, BB, B, HY], max: 0.02}
 
+# 업종별 덮어쓰기: 키를 주면 위 기본값(보험사 기준)을 통째로 대체 (예시값 — 회사 내부 한도·감독 규정 확인 필요)
+entity_overrides:
+  securities:
+    duration_gap: {max_abs_years: null}       # 증권사는 자산·부채 듀레이션 갭 한도 대신 NCR·레버리지로 관리
+    limits:
+      - {name: 부동산PF(대출) 비중, classes: [대출-부동산PF], max: 0.10}
+      - {name: 주식 합계, classes: [주식, 해외주식], max: 0.20}
+      - {name: 해외자산 합계, regions: [US, EU, 기타, 혼합], max: 0.30}
+      - {name: 대체투자 합계, classes: [부동산, 대체-인프라, 대체-PE, 대체-사모대출], max: 0.15}
+      - {name: 현금성 최소, classes: [현금예금], min: 0.05}
+  asset_manager:
+    duration_gap: {max_abs_years: null}
+    limits:
+      - {name: 고유재산 위험자산(주식·대체) 비중, classes: [주식, 해외주식, 수익증권, 대체-PE, 대체-사모대출, 부동산, 대체-인프라], max: 0.60}
+      - {name: 현금성 최소, classes: [현금예금], min: 0.10}
+
 # 1회 리밸런싱 제안의 자산군별 최대 조정 폭 (%p)
 max_step_pp: 3.0
 

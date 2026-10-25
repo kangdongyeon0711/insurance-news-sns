@@ -146,13 +146,31 @@ def classify_report(path: Path, first_page: str) -> dict:
             "estimate_note": f"파일명 규칙 불일치 — 첫 페이지에서 날짜({date or '미확인'})·하우스({house or '미확인'}) 추정"}
 
 
+COMPANY_RE = re.compile(r"([가-힣A-Za-z]{1,12}(?:화재|손해보험|생명보험|생명|증권|투자증권|금융투자|자산운용|은행))")
+
+
+def detect_entity_type(company: str | None, text: str = "") -> str:
+    """config/entity_profiles.yaml의 detect 규칙으로 업종 추정 (회사명 우선, 없으면 본문)."""
+    from common import CONFIG_DIR, load_yaml
+
+    rules = load_yaml(CONFIG_DIR / "entity_profiles.yaml").get("detect", [])
+    for target in (company or "", text[:3000]):
+        for r in rules:
+            if any(p in target for p in r["name_patterns"]):
+                return r["entity_type"]
+    return "other"
+
+
 def classify_filing(path: Path, first_page: str) -> dict:
     m = FILING_RE.match(path.stem)
     if m:
         company = _norm_company(m["company"])
         return {"company": company, "period": m["period"], "doc_kind": m["kind"], "stem": path.stem,
-                "estimated": False}
+                "estimated": False, "entity_type": detect_entity_type(company, first_page)}
     company = next((c for c in INSURERS if c in first_page or c in path.stem), None)
+    if not company:   # 목록에 없는 보험사·증권사·운용사·은행: 이름 패턴으로
+        mm = COMPANY_RE.search(path.stem) or COMPANY_RE.search(first_page)
+        company = mm.group(1) if mm else None
     company = _norm_company(company) if company else None
     pm = re.search(r"(20\d{2})\s*년?\s*(?:([1-4])\s*(?:분기|Q))", first_page + " " + path.stem)
     if pm:
@@ -163,6 +181,7 @@ def classify_filing(path: Path, first_page: str) -> dict:
     kind = next((k for k in DOC_KINDS if k in first_page or k in path.stem), "미확인")
     stem = f"{company or '미확인'}_{period}_{_safe(kind)}_{_safe(path.stem)}"
     return {"company": company or "미확인", "period": period, "doc_kind": kind, "stem": stem, "estimated": True,
+            "entity_type": detect_entity_type(company, first_page),
             "estimate_note": f"파일명 규칙 불일치 — 첫 페이지/파일명에서 회사({company or '미확인'})·기간({period}) 추정"}
 
 
@@ -189,9 +208,36 @@ def load_manifest() -> dict:
     return {"files": []}
 
 
-def _unique_dest(directory: Path, stem: str) -> str:
+def _num(x: float) -> str:
+    """재무 데이터 정밀도 보존: 최단 왕복 표현(repr), 지수 표기일 때만 고정소수로."""
+    s = repr(float(x))
+    if "e" in s or "E" in s:
+        s = f"{x:.12f}".rstrip("0").rstrip(".")
+    return s[:-2] if s.endswith(".0") else s
+
+
+def extract_xlsx(path: Path) -> tuple[list[str], list[dict]]:
+    """엑셀(IR 데이터 시트 등) → 시트별 텍스트(행은 ' | ' 구분)와 표 목록. 시트를 '페이지'로 취급(=== p.N === 대신 시트명 병기)."""
+    import openpyxl
+
+    wb = openpyxl.load_workbook(path, data_only=True, read_only=True)
+    pages, tables = [], []
+    for i, ws in enumerate(wb.worksheets, start=1):
+        rows = []
+        for r in ws.iter_rows(values_only=True):
+            if any(c not in (None, "") for c in r):
+                rows.append(["" if c is None else (_num(c) if isinstance(c, float) else str(c)) for c in r])
+        pages.append(f"[시트: {ws.title}]\n" + "\n".join(" | ".join(r) for r in rows))
+        tables.append({"page": i, "page_ref": f"sheet:{ws.title}", "index": 1, "rows": rows})
+    return pages, tables
+
+
+ACCEPT = {"report": {".pdf"}, "filing": {".pdf", ".xlsx", ".xlsm"}}
+
+
+def _unique_dest(directory: Path, stem: str, ext: str = ".pdf") -> str:
     candidate, n = stem, 2
-    while (directory / f"{candidate}.pdf").exists():
+    while (directory / f"{candidate}{ext}").exists():
         candidate = f"{stem}_{n}"
         n += 1
     return candidate
@@ -207,9 +253,10 @@ def process(kind: str, dry_run: bool = False, inbox: Path = INBOX_DIR, processed
     for path in sorted(src_dir.iterdir()) if src_dir.exists() else []:
         if path.name.startswith(".") or path.is_dir():
             continue
-        if path.suffix.lower() != ".pdf":
+        ext = path.suffix.lower()
+        if ext not in ACCEPT[kind]:
             result["ignored"].append(path.name)
-            log.warning("PDF가 아니어서 건너뜀: %s", path.name)
+            log.warning("지원하지 않는 형식이라 건너뜀(%s): %s", "/".join(sorted(ACCEPT[kind])), path.name)
             continue
         digest = sha256(path)
         if digest in seen:
@@ -217,23 +264,27 @@ def process(kind: str, dry_run: bool = False, inbox: Path = INBOX_DIR, processed
             log.info("이미 처리됨(해시 동일), inbox에 그대로 둠: %s → %s", path.name, seen[digest]["stem"])
             continue
         try:
-            pages, engine = extract_text(path)
+            if ext == ".pdf":
+                pages, engine = extract_text(path)
+            else:
+                pages, xl_tables = extract_xlsx(path)
+                engine = "openpyxl"
             first = pages[0] if pages else ""
             meta = classify_report(path, first) if kind == "report" else classify_filing(path, first)
-            meta["stem"] = _unique_dest(dst_dir, meta["stem"])
+            meta["stem"] = _unique_dest(dst_dir, meta["stem"], ext)
             if dry_run:
                 result["new"].append({"file": path.name, **meta})
                 continue
             stem = meta["stem"]
             text = "\n".join(f"=== p.{i} ===\n{t}" for i, t in enumerate(pages, start=1))
             save_text(dst_dir / f"{stem}.txt", text)
-            tables = extract_tables(path)
-            save_json(dst_dir / f"{stem}_tables.json", {"source": f"processed/{sub}/{stem}.pdf", "tables": tables})
+            tables = extract_tables(path) if ext == ".pdf" else xl_tables
+            save_json(dst_dir / f"{stem}_tables.json", {"source": f"processed/{sub}/{stem}{ext}", "tables": tables})
             dst_dir.mkdir(parents=True, exist_ok=True)
-            shutil.move(str(path), dst_dir / f"{stem}.pdf")
+            shutil.move(str(path), dst_dir / f"{stem}{ext}")
             entry = {
-                "original_name": path.name, "stem": stem, "type": kind, "sha256": digest,
-                "pdf": f"processed/{sub}/{stem}.pdf", "text": f"processed/{sub}/{stem}.txt",
+                "original_name": path.name, "stem": stem, "type": kind, "sha256": digest, "format": ext.lstrip("."),
+                "pdf": f"processed/{sub}/{stem}{ext}", "text": f"processed/{sub}/{stem}.txt",
                 "tables": f"processed/{sub}/{stem}_tables.json", "n_tables": len(tables),
                 "pages": len(pages), "text_engine": engine, "text_quality": quality_flag(pages),
                 "processed_at": datetime.now().isoformat(timespec="seconds"),
