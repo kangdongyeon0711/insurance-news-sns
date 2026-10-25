@@ -21,6 +21,7 @@ from common import CONFIG_DIR, SNAPSHOT_PATH, load_json, load_yaml
 
 NUM = re.compile(r"[-+]?\d[\d,]*\.?\d*")
 DATE = re.compile(r"\d{4}-\d{2}-\d{2}")
+VALCELL = re.compile(r"[-+]?\d[\d,]*(\.\d+)?(\s+.*)?")
 
 
 def cells(line: str) -> list[str]:
@@ -77,7 +78,8 @@ def check_macro(text: str, snap: dict) -> tuple[list[str], list[str]]:
             st = series[m.group(1)]
             rest = cs[:i] + cs[i + 1:]
             datecell = next((x for x in rest if DATE.fullmatch(x.split()[0] if x.split() else "")), None)
-            valcell = next((x for x in cs[i + 1:] if num(x) is not None and not DATE.search(x)), None)
+            valcell = next((x for x in cs[i + 1:]   # 숫자로 시작하는 칸만 값으로 봄(지표명 속 '3년' 등 제외)
+                            if VALCELL.fullmatch(x) and not DATE.search(x)), None)
             if any("미확인" == x.split()[0] for x in cs[i + 1:i + 2] if x.split()):
                 errs.append(f"L{n}: {st['series_id']} '미확인' 표기지만 snapshot 값 {st['last_value']} ({st['as_of']}) 있음")
                 break
