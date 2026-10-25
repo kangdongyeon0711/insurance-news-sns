@@ -83,7 +83,7 @@ def render(impact: dict, portfolios: list[dict], date: str) -> str:
         a(f"총 운용자산 {latest['total_invested_assets_krw_bn'] / 1000:,.1f}조원 ({latest['period']}, "
           f"{latest.get('total_flag', '공시')}{', ' + latest['total_page_ref'] if latest.get('total_page_ref') else ''}) · "
           f"회계기준 {latest.get('accounting_basis') or '미확인'} · {_ratio_text(latest)} · "
-          f"운용수익률 {latest.get('investment_yield') or '미확인'}\n")
+          f"운용수익률 {str(latest['investment_yield']) + '%' if latest.get('investment_yield') is not None else '미확인'}\n")
         a("| 자산군 | 지역 | 통화 | 금액 (십억원) | 비중 | 수정듀레이션 | 헤지비율 | 값 플래그 | 근거 |")
         a("|---|---|---|---|---|---|---|---|---|")
         for x in sorted(latest["assets"], key=lambda x: class_order(x["class"])):
@@ -91,7 +91,7 @@ def render(impact: dict, portfolios: list[dict], date: str) -> str:
             dur = "—" if x.get("mod_duration") is None else f"{x['mod_duration']:g}{' (추정)' if ff.get('mod_duration') == '추정' else ''}"
             h = "—" if x.get("fx_hedge_ratio") is None else f"{x['fx_hedge_ratio']:.0%}"
             a(f"| {x['class']}{' · ' + x['label'] if x.get('label') else ''} | {x['region']} | {x['currency']} | "
-              f"{x['mv_krw_bn']:,.0f} | {x['weight']:.1%} | {dur} | {h} | {x['value_flag']} | {x.get('page_ref') or '—'} |")
+              f"{x['mv_krw_bn']:,.0f} | {x['mv_krw_bn'] / latest['total_invested_assets_krw_bn']:.1%} | {dur} | {h} | {x['value_flag']} | {x.get('page_ref') or '—'} |")
     if len(portfolios) > 1:
         a("\n**비중 추이 (%)**\n")
         classes = sorted({x["class"] for p in portfolios for x in p["assets"]}, key=class_order)

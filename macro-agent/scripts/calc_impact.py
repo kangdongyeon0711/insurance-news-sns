@@ -43,6 +43,11 @@ class Cell:
             self.est_reasons.append(reason)
 
 
+def rate_sensitive(rule: dict) -> bool:
+    """금리 요인이 있는 규칙인지 (ALM 자산 듀레이션·캘리브레이션 대상)."""
+    return rule.get("method") in ("bond_kr", "bond_foreign", "discount_rate") or bool(rule.get("rate"))
+
+
 class Engine:
     def __init__(self, assumptions: dict | None = None, floating_income: bool = False, entity_type: str = "insurer"):
         self.a = assumptions or load_yaml(CONFIG_DIR / "assumptions.yaml")
@@ -196,6 +201,10 @@ class Engine:
                 if beta != 1.0:
                     cell.est(f"손실률 배수 {beta} 가정")
             cell.add("credit_loss", -mv * beta * self._g(shocks, rule["factor"], cell, missing) / 100)
+            if rule.get("rate"):   # 담보대출 등 금리민감 대출: 원화 커브 금리 효과도 반영
+                d = self._duration(asset, cell)
+                c = self._convexity(asset, d)
+                cell.add("rate", self._price_effect(mv, d, c, self._curve_shift_bp("KR", d, shocks, cell, missing)))
 
         elif method == "discount_rate":
             d = self._duration(asset, cell)
@@ -234,7 +243,7 @@ class Engine:
         dy = float(shocks.get(factor, 0.0)) * BP
         da_a, est = 0.0, liab.get("value_flag") == "추정"
         for asset in portfolio["assets"]:
-            if self.a["class_rules"].get(asset["class"], {}).get("method") in ("bond_kr", "bond_foreign", "discount_rate"):
+            if rate_sensitive(self.a["class_rules"].get(asset["class"], {})):
                 tmp = Cell()
                 da_a += self._duration(asset, tmp) * float(asset["mv_krw_bn"])
                 est = est or tmp.estimated
@@ -281,7 +290,8 @@ def apply_calibration(result: dict, portfolio: dict, engine: "Engine") -> None:
     for s in result["scenarios"]:
         adj = 0.0
         for r in s["rows"]:
-            if engine.a["class_rules"].get(r["class"], {}).get("method") in methods:
+            rule = engine.a["class_rules"].get(r["class"], {})
+            if (rule.get("method") in methods or rule.get("rate")) and not r.get("contingent"):
                 rate = r["components_100m"].get("rate", 0.0)
                 ratio = up if rate < 0 else dn
                 adj += rate * (1 / ratio - 1)
@@ -342,7 +352,8 @@ def calibration(portfolio: dict, engine: "Engine") -> list[dict]:
         def rate_only(shocks, methods):
             tot, est = 0.0, False
             for a in portfolio["assets"]:
-                if engine.a["class_rules"].get(a["class"], {}).get("method") in methods:
+                rule = engine.a["class_rules"].get(a["class"], {})
+                if rule.get("method") in methods or (rule.get("rate") and "bond_kr" in methods):
                     cell = engine.asset_impact(a, shocks, set())
                     tot += cell.components.get("rate", 0.0)
                     est = est or cell.estimated
@@ -419,6 +430,22 @@ def run(portfolio: dict, shocks_doc: dict, engine: Engine | None = None) -> dict
     }
     apply_calibration(result, portfolio, engine)
     return result
+
+
+def apply_proposal(portfolio: dict, proposal: dict) -> dict:
+    """proposal의 자산군별 %p 조정을 금액에 반영한 포트폴리오 사본 (같은 class 행들에 금액 비례 배분)."""
+    import copy
+
+    pf = copy.deepcopy(portfolio)
+    total = float(pf["total_invested_assets_krw_bn"])
+    for cls, d_pp in (proposal.get("deltas_pp") or {}).items():
+        rows = [a for a in pf["assets"] if a["class"] == cls]
+        if not rows:
+            continue
+        cls_mv = sum(float(a["mv_krw_bn"]) for a in rows) or 1.0
+        for a in rows:
+            a["mv_krw_bn"] = float(a["mv_krw_bn"]) + total * d_pp / 100 * float(a["mv_krw_bn"]) / cls_mv
+    return pf
 
 
 def check_constraints(portfolio: dict, constraints: dict, alm: dict | None = None,
@@ -523,7 +550,10 @@ def main(argv: list[str] | None = None) -> int:
         alm = next((s["alm"] for s in result["scenarios"] if s["alm"]), None)
         result["constraints_current"] = check_constraints(portfolio, cons, alm)
         if args.proposal:
-            result["constraints_after_proposal"] = check_constraints(portfolio, cons, alm, load_json(Path(args.proposal)))
+            prop = load_json(Path(args.proposal))
+            eng = Engine(floating_income=args.floating_income, entity_type=portfolio.get("entity_type", "insurer"))
+            alm_after = eng.alm(apply_proposal(portfolio, prop), {})   # 갭은 충격과 무관 — 조정 후 포트폴리오로 재계산
+            result["constraints_after_proposal"] = check_constraints(portfolio, cons, alm_after, prop)
     out = Path(args.out) if args.out else TMP_REPORTS_DIR / f"{shocks.get('as_of', today().isoformat())}_{portfolio['company']}_impact"
     save_json(out.with_suffix(".json"), result)
     write_csv(result, out.with_suffix(".csv"))

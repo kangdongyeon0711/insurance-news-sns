@@ -133,3 +133,20 @@ def test_infra_discount_rate_by_region():
     s2 = _one(pf, {"infra_discount_rate_bp": 10})
     assert s2["rows"][1]["components_100m"]["discount_rate"] == pytest.approx(-10.0)
     assert any("근사" in x for x in s2["rows"][1]["estimated_reasons"])
+
+
+def test_secured_loan_has_rate_and_loss():
+    """부동산담보대출: 금리(원화 커브, D=4) + 손실률(배수 0.3)."""
+    s = _one(_pf({"class": "대출-부동산담보", "mv_krw_bn": 100, "mod_duration": 4}),
+             {"ktb_3y_bp": 100, "ktb_10y_bp": 100, "ktb_30y_bp": 100, "kr_pf_loss_rate_pp": 1})
+    comp = s["rows"][0]["components_100m"]
+    assert comp["rate"] == pytest.approx(-40.0) and comp["credit_loss"] == pytest.approx(-3.0)
+
+
+def test_proposal_recomputes_duration_gap():
+    pf = _pf({"class": "국공채", "mv_krw_bn": 500, "mod_duration": 18}, {"class": "회사채", "mv_krw_bn": 500, "mod_duration": 6},
+             liabilities={"duration": 12, "pv_krw_bn": 1000, "value_flag": "공시", "page_ref": "p.1"})
+    eng = ci.Engine()
+    before = eng.alm(pf, {})["duration_gap_years"]                 # (9000+3000−12000)/1000 = 0
+    after = eng.alm(ci.apply_proposal(pf, {"deltas_pp": {"국공채": -10, "회사채": 10}}), {})["duration_gap_years"]
+    assert before == pytest.approx(0.0) and after == pytest.approx(-1.2)   # 100 이동 × (6−18) / 1000

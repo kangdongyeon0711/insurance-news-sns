@@ -143,7 +143,7 @@ class_rules:
   수익증권:       {method: equity, factor: equity_kospi_pct, share: beneficiary_equity_share}
   해외주식:       {method: equity, factor: equity_spx_pct}
   대출-부동산PF:  {method: loss_rate, factor: kr_pf_loss_rate_pp}
-  대출-부동산담보: {method: loss_rate, factor: kr_pf_loss_rate_pp}
+  대출-부동산담보: {method: loss_rate, factor: kr_pf_loss_rate_pp, rate: true}   # 고정금리분 금리 효과(원화 커브) + 손실률
   대출-기업:      {method: bond_kr}
   대출-신용/약관: {method: none, note: 약관대출은 해약환급금 담보로 시장위험 미미}
   부동산:         {method: cap_rate}
