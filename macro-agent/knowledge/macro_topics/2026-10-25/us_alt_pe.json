@@ -78,7 +78,7 @@
       {
         "name": "Base",
         "prob": 0.55,
-        "narrative": "[판단] UST10Y 완만 하락(가정 −25bp)과 이익 성장으로 엑시트·분배가 점진 정상화, PE 평가가치는 연 한 자릿수 상승; 빈티지 간 성과 격차 확대.",
+        "narrative": "[판단] UST10Y 완만 하락(가정 −25bp)과 이익 성장으로 엑시트·분배가 점진 정상화, PE 평가가치는 연 한 자릿수 상승; 빈티지 간 성과 격차 확대. [하우스] 삼성(20260528_삼성_2026하반기대체투자전망, p.16-17)의 '배수 확장 기여 축소' 구조 뷰와 정합.",
         "factor_shocks": {
           "us_pe_value_pct": 4,
           "equity_spx_pct": 6
@@ -108,9 +108,11 @@
     ]
   },
   "house_views": {
-    "consensus": "하우스 뷰 없음 — 최근 30일(2026-09-25~10-25) 담당 topic 카드 0개.",
-    "divergence": "해당 없음(하우스 뷰 없음).",
-    "cards_used": []
+    "consensus": "[하우스] 삼성증권(20260528_삼성_2026하반기대체투자전망, 2026-05 발간, 약 5개월 전 — 구조적·장기 뷰만 반영, 당시 단기 판단·수치는 현재값으로 쓰지 않음): ① LP 평가 기준이 IRR에서 실제 분배(DPI)로 구조적 이동(p.20, 확신 높음) ② 고금리 장기화로 레버리지·배수 확장 기여 축소, 운영개선(EBITDA 성장) 중심 가치창출로 전환(p.16-17, 높음) ③ 세컨더리·컨티뉴에이션 펀드가 핵심 엑시트 대안으로 구조적 성장, 연차 높은 펀드일수록 NAV 할인 확대(p.19, 높음) ④ 운용사 간 성과 격차 확대(p.14, 중간) ⑤ 메가딜 밸류에이션 상승 여지는 수익률 부담 요인(p.15, 중간).",
+    "divergence": "[판단] 방향은 대체로 일치: 3Q26 엑시트 금액 회복·건수 감소(대형 딜 편중)는 삼성의 '메가딜 중심·분배 정체' 구조 진단과 부합하며, Base의 '이익 성장 중심·배수 보합' 가정과도 정합. [판단] 차이: 삼성은 배수 확장 기여 축소를 구조적으로 보지만 Bull(UST10Y −75bp 가정)은 배수 확장을 포함 — 삼성 뷰는 고금리 장기화 전제이므로 Bull 확률 0.2(Base보다 낮음)로 이미 반영된 것으로 판단, 수치 변경 없음. [판단] 삼성의 단기 엑시트 '횡보' 콜(p.13)은 5개월 전 판단으로, 현재는 3Q26 실데이터로 대체.",
+    "cards_used": [
+      "20260528_삼성_2026하반기대체투자전망"
+    ]
   },
   "short_term_factor_shocks": {
     "us_pe_value_pct": -1,
@@ -119,7 +121,7 @@
   "short_term_shock_rationale": "UST10Y 5% 내외 고착·매파적 동결로 S&P500 소폭 조정 −2%(판단, 추정) × PE 베타 0.7 ≈ −1%; 대형 엑시트 회복이 하락 폭을 제한",
   "data_gaps": [
     "API 데이터 미수집 — snapshot에 PE 지표 없음",
-    "하우스 뷰 부족 — 하우스 뷰 없음(30일 내 담당 topic 카드 0개)",
+    "하우스 뷰 부족(1곳: 삼성증권, 2026-05 발간 — 구조적 뷰만 반영)",
     "PitchBook 원문 미확인 — 3Q26 수치는 법률·회계법인 요약(보조 출처) 기준",
     "dry powder 출처별 정의 상이($0.46~2조) — 미확인 처리",
     "NAV 대출 규모, 바이아웃 EV/EBITDA 최신치 미확인",
@@ -129,6 +131,7 @@
     "https://www.foley.com/?p=129506",
     "https://www.cohnreznick.com/insights/private-equity-q3-2026-market-outlook/",
     "https://www.axios.com/pro/merger-deals/2026/06/25/continuation-vehicles-exits-private-equity-exits",
-    "https://www.foley.com/insights/publications/2026/04/private-equity-in-q1-2026-resilient-activity-constrained-capital-environment/"
+    "https://www.foley.com/insights/publications/2026/04/private-equity-in-q1-2026-resilient-activity-constrained-capital-environment/",
+    "20260528_삼성_2026하반기대체투자전망"
   ]
 }

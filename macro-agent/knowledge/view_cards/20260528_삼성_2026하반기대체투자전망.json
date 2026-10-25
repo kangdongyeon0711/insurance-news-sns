@@ -1,0 +1,207 @@
+{
+  "card_id": "20260528_삼성_2026하반기대체투자전망",
+  "house": "삼성증권",
+  "report_title": "2026년 하반기 대체투자 시장 전망: 현금흐름 우선 전략",
+  "published": "2026-05-28",
+  "published_estimated": false,
+  "source_file": "processed/reports/20260528_삼성_2026하반기대체투자전망.pdf",
+  "topics": ["us_alt_pe", "us_alt_pd", "us_alt_infra"],
+  "views": [
+    {
+      "topic_id": "us_alt_pe",
+      "variable": "pe_dpi",
+      "direction": "상승",
+      "horizon": "장기",
+      "target": null,
+      "rationale": "분배 지연이 길어지고 금리가 예상보다 높게 유지되면서 LP 평가 기준이 최종 IRR에서 실제 현금 분배(DPI)로 옮겨가고 있다고 봄. GP 선별과 약정 조건에서 DPI 실적의 비중이 구조적으로 커진다는 핵심 콜. 방향은 'DPI 중시도' 상승의 의미.",
+      "page_ref": "p.20",
+      "conviction": "높음"
+    },
+    {
+      "topic_id": "us_alt_pe",
+      "variable": "pe_multiple_expansion_contribution",
+      "direction": "하락",
+      "horizon": "장기",
+      "target": null,
+      "rationale": "고금리 장기화로 레버리지와 멀티플 확대에 기댄 가치창출이 어려워져, 투자 초기부터 운영 개선(EBITDA 성장)으로 수익을 내야 하는 구조로 전환된다고 판단. 보유 기간은 길어지나 시장 민감도는 낮아지는 건전한 변화로 평가.",
+      "page_ref": "p.16-17",
+      "conviction": "높음"
+    },
+    {
+      "topic_id": "us_alt_pe",
+      "variable": "pe_valuation_multiple",
+      "direction": "상승",
+      "horizon": "장기",
+      "target": null,
+      "rationale": "상장-비상장 간 할인 폭은 커졌지만 대형 딜은 오히려 상장주식보다 비싸게 거래되며, 국부펀드가 전략적 투자자로 메가딜에 참여하면서 대형 딜 밸류에이션이 더 오를 여지가 있다고 봄. 수익률 측면에서는 부담 요인으로 제시.",
+      "page_ref": "p.15",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "us_alt_pe",
+      "variable": "pe_exit_activity",
+      "direction": "횡보",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "엑시트는 반등했으나 대부분 메가딜에 몰려 있고 중소형 딜은 미매각 장기화로 미실현 NAV가 누적된 상태. 총액 회복에도 LP 분배는 부진해 전반적 엑시트 정상화는 더딜 것으로 해석. 방향은 리포트 서술에서 도출한 것.",
+      "page_ref": "p.13",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "us_alt_pe",
+      "variable": "pe_secondary_volume",
+      "direction": "상승",
+      "horizon": "장기",
+      "target": null,
+      "rationale": "IPO·전략적 매각·2차 바이아웃 경로가 막히면서 세컨더리와 컨티뉴에이션 펀드가 핵심 엑시트 대안으로 자리잡아 구조적 성장 국면에 들어섰다고 봄. 다만 펀드 연차가 높을수록 NAV 할인은 커질 것으로 예상.",
+      "page_ref": "p.19",
+      "conviction": "높음"
+    },
+    {
+      "topic_id": "us_alt_pe",
+      "variable": "pe_return_dispersion",
+      "direction": "확대",
+      "horizon": "장기",
+      "target": null,
+      "rationale": "상위 펀드는 고가 매입 빈티지에서도 회복한 반면 하위 펀드는 부진이 이어지고, 메가딜 중심 엑시트 구조가 지속돼 운용사 간 성과 격차는 줄어들기 어렵다고 판단. 빈티지와 NAV 회전 속도를 함께 봐야 한다는 시사점.",
+      "page_ref": "p.14",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "us_alt_pd",
+      "variable": "pd_direct_lending_spread",
+      "direction": "확대",
+      "horizon": "단기",
+      "target": "SOFR+450~499bp (LBO 직접대출 시장의 균형 가격대로 제시)",
+      "rationale": "수년간 이어진 경쟁적 스프레드 축소가 크레딧 이벤트와 BDC 환매를 계기로 멈추고 신규 딜에서 반등이 나타났다고 진단. 저금리기보다는 높고 경색기보다는 낮은 수준에서 균형이 형성될 것으로 봄.",
+      "page_ref": "p.25",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "us_alt_pd",
+      "variable": "pd_default_rate",
+      "direction": "상승",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "표면 손실률 변화는 아직 작지만 현금 부족으로 전환되는 부실 PIK가 선순위 대출까지 번지는 등 실질 신용은 약화 중이라고 봄. 2021~2022년 고점 대출·고레버리지 소프트웨어·서브프라임 소비자금융 쪽 손실에 유의하라는 입장.",
+      "page_ref": "p.33",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "us_alt_pd",
+      "variable": "pd_systemic_risk",
+      "direction": "중립",
+      "horizon": "장기",
+      "target": null,
+      "rationale": "BDC의 법정 레버리지 상한, 환매 한도, 이자 쿠션 덕분에 비상장 BDC 부실이 금융위기식 시스템 위기로 번질 가능성은 낮다고 판단. 다만 고금리 장기화와 급격한 경기침체가 2027~2028년 레버리지론 만기 집중과 겹치면 위험이 커진다는 조건을 붙임.",
+      "page_ref": "p.28",
+      "conviction": "높음"
+    },
+    {
+      "topic_id": "us_alt_pd",
+      "variable": "pd_aum_growth",
+      "direction": "상승",
+      "horizon": "장기",
+      "target": null,
+      "rationale": "은행 규제 강화와 AI·데이터센터·인프라 파이낸싱의 막대한 자금 수요, 고도화된 대출 구조를 근거로 사모대출 시장 성장은 추세적이라고 평가. 이벤트는 반복되겠지만 연착륙에 무게를 둠.",
+      "page_ref": "p.37",
+      "conviction": "높음"
+    },
+    {
+      "topic_id": "us_alt_pd",
+      "variable": "pd_strategy_diversification",
+      "direction": "상승",
+      "horizon": "장기",
+      "target": null,
+      "rationale": "직접대출 쏠림과 수익률 저하로 자금이 ABF·메자닌·부실채권/특수상황 등 비직접대출 전략으로 분산되는 흐름이 가속될 것으로 봄. 기회주의적 펀드로의 자금 유입이 오히려 경착륙 가능성을 낮춘다는 해석.",
+      "page_ref": "p.34-36",
+      "conviction": "높음"
+    },
+    {
+      "topic_id": "us_alt_pd",
+      "variable": "nontraded_bdc_return",
+      "direction": "하락",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "비상장 BDC에서 순유출이 처음 발생하고 공정가치 평가도 엄격해져, 환매 국면이 진정될 때까지 성과는 약할 가능성이 높다고 봄. 바닥 신호로는 상장 BDC의 NAV 회복 여부를 제시.",
+      "page_ref": "p.29-31",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "us_alt_pd",
+      "variable": "pd_secondary_nav_discount",
+      "direction": "확대",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "세컨더리에 대출 자산 매물이 늘고 있으나 아직 호가 차이가 커 거래는 제한적이며, 환매가 길어질수록 NAV 대비 할인율이 점차 커질 것으로 예상. 이를 노린 자금이 사모대출 투자의 보완 수단이 된다고 봄.",
+      "page_ref": "p.39",
+      "conviction": "낮음"
+    },
+    {
+      "topic_id": "us_alt_infra",
+      "variable": "infra_relative_return",
+      "direction": "상승",
+      "horizon": "장기",
+      "target": null,
+      "rationale": "물가와 성장 모두 현금흐름에 긍정적이고 금리 영향은 주로 밸류에이션에 그쳐, 고금리·고물가 환경에 가장 방어적인 하위 전략으로 평가. 멀티플보다 현금흐름 기반 가치창출이라 위험조정수익률 최상위로 최선호 전략이라는 핵심 콜.",
+      "page_ref": "p.42-43",
+      "conviction": "높음"
+    },
+    {
+      "topic_id": "us_alt_infra",
+      "variable": "datacenter_demand",
+      "direction": "상승",
+      "horizon": "장기",
+      "target": null,
+      "rationale": "AI 붐으로 데이터센터가 신규 착공이 많은데도 사전 임대율과 임대료 상승 폭이 견조해 가장 강한 펀더멘털을 보인다고 판단. 개발형 비중이 높아 에쿼티보다 대출 형태 투자 수요가 크다고 봄.",
+      "page_ref": "p.49",
+      "conviction": "높음"
+    },
+    {
+      "topic_id": "us_alt_infra",
+      "variable": "us_power_utility_investment",
+      "direction": "상승",
+      "horizon": "장기",
+      "target": null,
+      "rationale": "데이터센터발 전력 수요 증가로 정체됐던 미국 전력 수요가 성장으로 돌아서 유틸리티가 슈퍼사이클에 들어섰다고 봄. 요금 저항으로 신규 투자보다 M&A 중심 재편이 진행되고, 가스 발전이 브릿지 전원으로 재부상한다고 평가.",
+      "page_ref": "p.50",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "us_alt_infra",
+      "variable": "infra_debt_aum",
+      "direction": "상승",
+      "horizon": "장기",
+      "target": "향후 5년 내 인프라 사모대출 시장 3천억달러 (리포트 인용 전망)",
+      "rationale": "현금흐름 확실성 덕에 대출 전략 리스크가 낮고, 데이터센터·미드스트림 등 대규모 capex 섹터의 차입 수요로 인프라 대출이 가장 빠르게 커지는 하위 전략이 될 것으로 봄. 비은행 대주의 프로젝트 파이낸싱 점유율 확대도 근거.",
+      "page_ref": "p.53",
+      "conviction": "높음"
+    },
+    {
+      "topic_id": "us_alt_infra",
+      "variable": "infra_debt_spread",
+      "direction": "확대",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "금리 안정기에 좁혀졌던 인프라 사모대출 스프레드가 데이터센터 등 고위험 자산 중심으로 재반등했다고 진단. 동급 회사채 대비 부도율은 낮은데 스프레드는 더 높아 위험조정 매력이 크다는 판단.",
+      "page_ref": "p.56-57",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "us_alt_infra",
+      "variable": "us_renewable_infra_fundraising",
+      "direction": "하락",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "IRA 혜택 축소와 관세에 따른 건설비 상승으로 미국 재생에너지 펀드 모집이 위축되고 프로젝트 취소·보류가 나타났다고 봄. 인프라 자금은 원가 전가가 가능한 데이터센터와 규제 유틸리티로 쏠릴 전망.",
+      "page_ref": "p.58",
+      "conviction": "중간"
+    }
+  ],
+  "key_risks": [
+    "데이터센터 대출의 차주·임차인인 빅테크의 재무비율 약화 및 AI 수요 예측 실패·기술 진부화 (p.59)",
+    "2020~2022년 고가 매입 소프트웨어 기업 대출의 평가액 하락과 비상장 BDC 환매 장기화 (p.26-29)",
+    "고금리 장기화·급격한 경기침체가 2027~2028년 레버리지론 만기 집중과 겹칠 경우 사모대출 부실 확대, 메가딜 밸류에이션 과열 (p.38, p.15)"
+  ],
+  "notes": "2026년 5월 발간 — 기준일(2026-10-25) 대비 약 5개월 경과. 구조적·장기 하우스 뷰로만 활용, 당시 단기 판단·수치는 현재값으로 쓰지 않음. 삼성증권 리서치센터 대체투자팀의 반기 대체투자 전망(65쪽)으로 미국·글로벌 사모시장(PE/PD/인프라)을 다룸. 결론: 투자 관점이 Gross IRR에서 DPI로 전환, 현금흐름 기반 인프라·사모대출(특히 인프라 사모대출) 선호 지속, 전통자산과의 분산 필요(p.4). 부동산은 독립된 전망이 없어 us_alt_re는 매핑하지 않았고, 한국 특정 뷰도 없어 kr_alt_*는 미매핑. 단기 뷰(스프레드·부도율·BDC 성과·엑시트·재생에너지 모집)는 2026년 상반기 상황 기반이므로 현재 판단에 쓰기 전 최신 데이터로 재확인 필요. target 2건은 리포트에 명시된 가격대/시장규모 전망을 옮긴 것."
+}

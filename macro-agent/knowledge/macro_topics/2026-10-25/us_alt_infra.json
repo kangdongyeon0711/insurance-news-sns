@@ -88,7 +88,7 @@
       {
         "name": "Bear",
         "prob": 0.25,
-        "narrative": "[판단] 인플레 재가속으로 UST10Y +50bp(가정), 건설비·전력가격 상승과 정책 리스크(재생에너지 보조 축소)로 리스크 프리미엄 확대, 평가가치 하락.",
+        "narrative": "[판단] 인플레 재가속으로 UST10Y +50bp(가정), 건설비·전력가격 상승과 정책 리스크(재생에너지 보조 축소)로 리스크 프리미엄 확대, 평가가치 하락. [하우스] 삼성(20260528_삼성_2026하반기대체투자전망, p.42-43)은 인프라 현금흐름이 고물가에 방어적이라고 보나, 할인율(밸류에이션) 경로는 금리 연동 유지.",
         "factor_shocks": {
           "infra_discount_rate_bp": 40
         },
@@ -97,9 +97,11 @@
     ]
   },
   "house_views": {
-    "consensus": "하우스 뷰 없음 — 최근 30일(2026-09-25~10-25) 담당 topic 카드 0개.",
-    "divergence": "해당 없음(하우스 뷰 없음).",
-    "cards_used": []
+    "consensus": "[하우스] 삼성증권(20260528_삼성_2026하반기대체투자전망, 2026-05 발간, 약 5개월 전 — 구조적·장기 뷰만 반영, 당시 시장규모·스프레드 수치는 현재값으로 쓰지 않음): ① 물가·성장이 모두 현금흐름에 긍정적이고 금리 영향은 주로 밸류에이션에 그쳐 고금리·고물가에 가장 방어적, 위험조정수익률 최상위의 최선호 전략(p.42-43, 확신 높음) ② AI발 데이터센터 펀더멘털 최강, 개발형 비중이 높아 대출형 투자 수요 큼(p.49, 높음) ③ 데이터센터발 전력수요로 유틸리티 슈퍼사이클, M&A 중심 재편·가스 발전 브릿지 전원 재부상(p.50, 중간) ④ 인프라 사모대출이 가장 빠르게 성장하는 하위 전략(p.53, 높음) ⑤ IRA 혜택 축소·관세 건설비로 재생에너지 모집 위축, 자금은 데이터센터·규제 유틸리티로 쏠림(p.58, 중간).",
+    "divergence": "[판단] 수요 측 판단은 일치: EIA STEO(2026-10) 2026·27 전력수요 연속 사상 최고 전망은 삼성의 전력·데이터센터 구조 뷰를 현재 데이터로 뒷받침. [판단] 삼성의 '현금흐름 방어'는 캐시플로 측면이고 '금리 영향은 밸류에이션에 그친다'는 점을 인정하므로, 할인율 경로(UST10Y 연동, 전이율 0.6)를 바꿀 근거는 아님 — infra_discount_rate_bp 수치 변경 없음. Bear의 정책·건설 리스크 프리미엄 +10bp는 삼성의 재생에너지 위축 진단(p.58)과 방향 일치. [판단] 이견/리스크: 신한 WeeklyGuideBook(20261023_신한_WeeklyGuideBook p.2, us_corp_bond 매핑 — 맥락으로만 사용)은 네오클라우드 등 AI 인프라 기업의 크레딧 스프레드 상승·자본조달 제약 의문이 당분간 이어진다고 언급; 삼성도 빅테크 재무 약화·AI 수요 예측 실패를 핵심 리스크로 명시(p.59). 삼성의 '데이터센터 최선호'는 차주(임차인) 신용 리스크 재평가 국면에서 선별이 필요하다고 판단.",
+    "cards_used": [
+      "20260528_삼성_2026하반기대체투자전망"
+    ]
   },
   "short_term_factor_shocks": {
     "infra_discount_rate_bp": 0
@@ -107,7 +109,7 @@
   "short_term_shock_rationale": "UST10Y 단기 보합(4.90~5.15%) × 전이율 0.6 ≈ 0bp; 수요 강세와 정책 불확실성이 상쇄(판단)",
   "data_gaps": [
     "API 데이터 미수집 — snapshot에 인프라 지표 없음",
-    "하우스 뷰 부족 — 하우스 뷰 없음(30일 내 담당 topic 카드 0개)",
+    "하우스 뷰 부족(1곳: 삼성증권, 2026-05 발간 — 구조적 뷰만 반영)",
     "EIA 공식 사이트 접속 실패 — STEO 수치는 언론 보도(보조 출처) 기준, 공식 재확인 필요",
     "인프라 할인율·밸류에이션 배수 수준 미확인",
     "IRA 세액공제 변경의 구체 내용·영향 미확인",
@@ -117,6 +119,7 @@
     "https://www.carriermanagement.com/news/2026/10/07/292552.htm",
     "https://cryptobriefing.com/eia-us-power-demand-record-highs-2026-2027/",
     "https://www.spglobal.com/en/research-insights/market-insights/daily-update-sep-29-2026",
-    "https://www.schroders.com/nl-nl/nl/professionele/inzichten/schroders-greencoat-infrastructure-lens-q1-2026/"
+    "https://www.schroders.com/nl-nl/nl/professionele/inzichten/schroders-greencoat-infrastructure-lens-q1-2026/",
+    "20260528_삼성_2026하반기대체투자전망"
   ]
 }

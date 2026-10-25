@@ -38,7 +38,7 @@ const H2 = t => new Paragraph({ heading: HeadingLevel.HEADING_2, spacing: { befo
 
 const body = [];
 body.push(new Paragraph({ spacing: { after: 60 }, children: [run("16개 매크로 항목 요약", { size: 36, bold: true, color: C.accent })] }));
-body.push(para([run(`기준일 ${data.date}  ·  자료: ECOS 수기 입력(100대 통계지표·일일지표), 신한투자증권 리포트 5건, 웹 검색`, { size: 18, color: C.sub })], { after: 60 }));
+body.push(para([run(`기준일 ${data.date}  ·  자료: ECOS 수기 입력(100대 통계지표·일일지표), 증권사 리포트 ${data.cards.length}건(${data.houses.join(", ")}), 웹 검색`, { size: 18, color: C.sub })], { after: 60 }));
 body.push(para([run("표기 ", { size: 17, color: C.sub, bold: true }),
   run("[사실] 데이터·공식 발표  [하우스] 증권사 리포트  [판단] 에이전트 판단  ·  값 플래그: 수기 = ECOS 홈페이지 값, 웹확인 = 웹 검색 값(공식 원문 대조 전), ⚠ = 기준일이 오래된 데이터", { size: 17, color: C.sub })], { after: 160 }));
 
@@ -51,7 +51,7 @@ body.push(table(sw, ["항목", "현황 핵심 수치 (기준일)", "단기 방�
     t.st_dir,
     t.scen[0] ? `${t.scen[0].short} (p=${t.scen[0].prob})` : "—",
     t.st_conf])));
-body.push(para([run("하우스 뷰는 신한투자증권 1곳뿐이라 하우스 간 컨센서스·이견은 비교할 수 없음. 미국 지표와 국고 10·30년물은 API 미수집으로 웹확인 값.", { size: 16, color: C.warn })], { before: 80 }));
+body.push(para([run(`하우스 뷰: ${data.houses.join(", ")} — 대부분 항목은 1곳만 다뤄 하우스 간 비교가 제한적. 발간 30일이 지난 리포트는 구조적·장기 뷰로만 반영. 미국 지표와 국고 10·30년물은 API 미수집으로 웹확인 값.`, { size: 16, color: C.warn })], { before: 80 }));
 
 body.push(new Paragraph({ children: [new PageBreak()] }));
 body.push(H1("항목별 정리"));
@@ -72,7 +72,7 @@ for (const t of data.topics) {
 }
 
 body.push(H1("사용한 증권사 리포트"));
-body.push(table([4200, 5438], ["card_id", "비고"], data.cards.map(c => [c, "신한투자증권 (사용자 제공 PDF, 개인 분석용 요약)"])));
+body.push(table([3700, 1500, 1200, 3238], ["card_id", "하우스", "발간일", "리포트"], data.cards.map(c => [c.id, c.house, c.published, c.title])));
 body.push(para([run("면책: ", { bold: true, size: 16 }), run("본 자료는 개인 의사결정 보조용 분석 자료이며 투자 권유가 아닙니다. 현황 수치는 기준일 시점의 ECOS 수기 입력값 또는 [웹확인] 표시된 웹 검색 값(공식 원문 대조 전)이고, 전망·시나리오·확률은 하우스 뷰와 에이전트 판단에 기반한 추정입니다. 증권사 리포트의 저작권은 각 발행사에 있습니다.", { size: 16, color: C.sub })], { before: 200 }));
 
 const doc = new Document({
