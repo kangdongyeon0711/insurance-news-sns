@@ -1,0 +1,226 @@
+{
+  "topic_id": "kr_rate",
+  "as_of": "2026-10-25",
+  "current": {
+    "indicators": [
+      {
+        "series_id": "kr_base_rate",
+        "name": "한국은행 기준금리",
+        "value": 3.0,
+        "unit": "%",
+        "as_of": "2026-10-22",
+        "value_flag": "수기",
+        "source": "data/latest_snapshot.json (data/manual/ecos100_20261025.yaml, ECOS 100대 통계지표 수기 입력)"
+      },
+      {
+        "series_id": "kr_call_1d",
+        "name": "콜금리(1일, 전체거래)",
+        "value": 3.032,
+        "unit": "%",
+        "as_of": "2026-10-22",
+        "value_flag": "수기",
+        "source": "data/latest_snapshot.json (data/manual/ecos100_20261025.yaml, ECOS 100대 통계지표 수기 입력)"
+      },
+      {
+        "series_id": "kr_cd_91d",
+        "name": "CD 91일",
+        "value": 3.26,
+        "unit": "%",
+        "as_of": "2026-10-23",
+        "value_flag": "수기",
+        "source": "data/latest_snapshot.json (data/manual/ecos100_20261025.yaml, ECOS 100대 통계지표 수기 입력)"
+      },
+      {
+        "series_id": "kr_koribor_3m",
+        "name": "KORIBOR(3개월)",
+        "value": 3.39,
+        "unit": "%",
+        "as_of": "2026-10-23",
+        "value_flag": "수기",
+        "source": "data/latest_snapshot.json (data/manual/ecos100_20261025.yaml, ECOS 100대 통계지표 수기 입력)"
+      },
+      {
+        "series_id": "kr_msb_364d",
+        "name": "통안증권수익률(364일)",
+        "value": 3.551,
+        "unit": "%",
+        "as_of": "2026-10-23",
+        "value_flag": "수기",
+        "source": "data/latest_snapshot.json (data/manual/ecos100_20261025.yaml, ECOS 100대 통계지표 수기 입력)"
+      },
+      {
+        "series_id": "kr_cpi",
+        "name": "소비자물가지수(총지수)",
+        "value": 120.43,
+        "unit": "index",
+        "as_of": "2026-09-30",
+        "value_flag": "수기",
+        "source": "data/latest_snapshot.json (data/manual/ecos100_20261025.yaml, ECOS 100대 통계지표 수기 입력)"
+      },
+      {
+        "series_id": "kr_cpi_yoy",
+        "name": "소비자물가 상승률(전년동월대비)",
+        "value": 2.9,
+        "unit": "%",
+        "as_of": "2026-09-30",
+        "value_flag": "수기",
+        "source": "data/latest_snapshot.json (data/manual/ecos100_20261025.yaml, ECOS 100대 통계지표 수기 입력)"
+      },
+      {
+        "series_id": "kr_core_cpi",
+        "name": "농산물 및 석유류제외 소비자물가지수",
+        "value": 118.71,
+        "unit": "2020=100",
+        "as_of": "2026-09-30",
+        "value_flag": "수기",
+        "source": "data/latest_snapshot.json (data/manual/ecos100_20261025.yaml, ECOS 100대 통계지표 수기 입력)"
+      },
+      {
+        "series_id": "kr_ppi_yoy",
+        "name": "생산자물가 상승률(전년동월대비)",
+        "value": 7.7,
+        "unit": "%",
+        "as_of": "2026-09-30",
+        "value_flag": "수기",
+        "source": "data/latest_snapshot.json (data/manual/ecos100_20261025.yaml, ECOS 100대 통계지표 수기 입력)"
+      },
+      {
+        "series_id": "kr_gdp_qoq",
+        "name": "실질 GDP 성장률(계절조정 전기대비)",
+        "value": 0.6,
+        "unit": "%",
+        "as_of": "2026-06-30",
+        "value_flag": "수기",
+        "source": "data/latest_snapshot.json (data/manual/ecos100_20261025.yaml, ECOS 100대 통계지표 수기 입력)"
+      },
+      {
+        "series_id": "kr_gdp_yoy",
+        "name": "실질 GDP 성장률(전년동기대비)",
+        "value": 3.7,
+        "unit": "%",
+        "as_of": "2026-06-30",
+        "value_flag": "수기",
+        "source": "data/latest_snapshot.json (data/manual/ecos100_20261025.yaml, ECOS 100대 통계지표 수기 입력)"
+      },
+      {
+        "series_id": "kr_unemployment",
+        "name": "실업률",
+        "value": 2.0,
+        "unit": "%",
+        "as_of": "2026-09-30",
+        "value_flag": "수기",
+        "source": "data/latest_snapshot.json (data/manual/ecos100_20261025.yaml, ECOS 100대 통계지표 수기 입력)"
+      },
+      {
+        "series_id": "kr_household_credit",
+        "name": "가계신용",
+        "value": 2019785.3,
+        "unit": "십억원",
+        "as_of": "2026-06-30",
+        "value_flag": "수기",
+        "source": "data/latest_snapshot.json (data/manual/ecos100_20261025.yaml, ECOS 100대 통계지표 수기 입력)"
+      },
+      {
+        "series_id": "kr_household_delinquency",
+        "name": "가계대출연체율",
+        "value": 0.45,
+        "unit": "%",
+        "as_of": "2026-08-31",
+        "value_flag": "수기",
+        "source": "data/latest_snapshot.json (data/manual/ecos100_20261025.yaml, ECOS 100대 통계지표 수기 입력)",
+        "stale": true
+      },
+      {
+        "series_id": "kr_m2_yoy",
+        "name": "M2 증가율(전년동월대비)",
+        "value": 5.6,
+        "unit": "%",
+        "as_of": "2026-08-31",
+        "value_flag": "수기",
+        "source": "data/latest_snapshot.json (data/manual/ecos100_20261025.yaml, ECOS 100대 통계지표 수기 입력)",
+        "stale": true
+      }
+    ],
+    "summary": "[사실] 기준금리 3.00%(2026-10-22, 수기) — 10/22 금통위 만장일치 동결, 7·8월 각 25bp 인상 후 숨 고르기. [사실] 단기시장금리: 콜 3.032%(10-22), CD91 3.26%·KORIBOR3M 3.39%·통안364일 3.551%(10-23, 수기)로 통안1년이 기준금리 대비 +55bp 높아 추가 인상 1~2회를 반영. [사실] CPI 전년비 2.9%(2026-09, 수기), PPI 전년비 7.7%(2026-09)로 비용 측 상방 압력 큼. 근원 CPI는 지수(118.71)만 확보, 전년비는 미확인. [사실] 2Q GDP 전기비 0.6%·전년비 3.7%(2026-06-30), 실업률 2.0%(2026-09). 3Q GDP 속보치는 기준일 현재 미발표(미확인). [사실] 결정문은 추가 인상 기조 유지로 보도됨(뉴스1·헤럴드). [주의] 가계대출연체율·M2는 기준일 2026-08-31, 55일 경과(stale)."
+  },
+  "short_term": {
+    "horizon": "3-6M",
+    "direction": "상승(인상 1회 이상)",
+    "view": "[판단] 매파적 동결 후 11월 또는 2027년 1월 금통위에서 25bp 추가 인상 가능성이 높다. 성장(2Q 0.6% 서프라이즈)·물가(CPI 2.9%, PPI 7.7%)가 모두 인상을 지지하고, 9월 가계대출 순감은 금융안정 부담을 다소 덜어준다. [하우스] 신한투자증권은 10월 동결을 '추가 인상 방향 유지'로 해석하고 3Q GDP 양호 시 인상 판단이 지지된다고 봄(20261023_신한_EconCheckup p.1, 20261023_신한_WeeklyGuideBook p.2). [판단] 다만 10월 증시 급락·AI 투자 수익성 우려 등 위험회피가 커지면 인상 시점이 늦어질 수 있어 확신도는 중간.",
+    "drivers": [
+      "[사실] 10/22 금통위 3.00% 만장일치 동결, 추가 인상 기조 유지 보도(2026-10-22)",
+      "[사실] CPI 전년비 2.9%, PPI 전년비 7.7%(2026-09, 수기) — 물가 목표(2%) 상회",
+      "[사실] 2Q GDP 전기비 0.6%(2026-06-30). 3Q GDP 속보치 발표 대기(미확인) — 단기 최대 이벤트",
+      "[사실] 9월 전 금융권 가계대출 9개월 만에 감소 전환(2026-10-15 금융위·한은 발표 보도)",
+      "[판단] 미 연준 경로·원화 약세 압력이 인상 지속 쪽으로 작용(us-fixed-income과 일관성 확인 필요)",
+      "[판단] 10월 국내 증시 급락·안전자산 선호는 인상 속도 조절 요인"
+    ],
+    "confidence": "중간"
+  },
+  "long_term": {
+    "horizon": "1-3Y",
+    "scenarios": [
+      {
+        "name": "Base",
+        "prob": 0.55,
+        "narrative": "[판단] 2027년 상반기까지 2회 추가 인상해 최종금리 3.50% 도달 후 장기 동결. [하우스] 신한투자증권 경로(20261022_신한_10월금통위 p.1)와 일치.",
+        "factor_shocks": {
+          "kr_base_rate_bp": 50
+        },
+        "shock_rationale": "현 3.00% → 최종 3.50% (25bp × 2회)"
+      },
+      {
+        "name": "Bull",
+        "prob": 0.2,
+        "narrative": "[판단] 물가 둔화·소비 위축·글로벌 위험회피로 인상은 1회(3.25%)에서 종료되고 2028년 전후 인하 전환해 3.00% 이하로 복귀.",
+        "factor_shocks": {
+          "kr_base_rate_bp": -25
+        },
+        "shock_rationale": "1회 인상 후 2회 인하 가정 → 순 -25bp"
+      },
+      {
+        "name": "Bear",
+        "prob": 0.25,
+        "narrative": "[판단] PPI 상승의 소비자물가 전가·원화 약세·수도권 집값 재과열로 인상이 3.75~4.00%까지 이어짐.",
+        "factor_shocks": {
+          "kr_base_rate_bp": 75
+        },
+        "shock_rationale": "최종금리 3.75% 가정(25bp × 3회), 4.00% 꼬리위험은 미반영"
+      }
+    ]
+  },
+  "house_views": {
+    "consensus": "[하우스] 신한투자증권(단일): 10월 동결은 7~8월 선제 인상 효과를 점검하는 매파적 동결이며, 2027년 상반기까지 2회 추가 인상해 최종 3.50%(확신 높음, 20261022_신한_10월금통위 p.1). 단기적으로도 3Q GDP 양호 시 인상 기대가 커질 것으로 봄(20261023_신한_EconCheckup p.1, 20261023_신한_WeeklyGuideBook p.2).",
+    "divergence": "단일 하우스 — 비교 불가. 신한 내부 뉘앙스: 크레딧 리포트(20261020_신한_WeeklyCreditMonitor p.2-3)는 금통위 전 '동결 기대'를 시장 강세 요인으로 인용했을 뿐 자체 금리 콜이 아니며, 금통위·이코노미 리포트는 인상 방향으로 일관.",
+    "cards_used": [
+      "20261020_신한_WeeklyCreditMonitor",
+      "20261022_신한_10월금통위",
+      "20261023_신한_EconCheckup",
+      "20261023_신한_WeeklyGuideBook"
+    ]
+  },
+  "short_term_factor_shocks": {
+    "kr_base_rate_bp": 25
+  },
+  "short_term_shock_rationale": "3~6개월 내 25bp 인상 1회(11월 또는 2027년 1월) 가정 — 하우스 경로의 첫 단계",
+  "data_gaps": [
+    "하우스 뷰 부족(1곳: 신한투자증권)",
+    "3Q GDP 속보치 미발표(미확인)",
+    "근원 CPI 전년비 미확인(지수만 확보), 기대인플레이션 미확인",
+    "10월 금통위 소수의견·의사록·총재 기자간담회 세부 발언 미확인",
+    "가계대출연체율·M2·예금은행 금리: 기준일 2026-08-31, 55일 경과(stale)",
+    "수도권 주택가격 최신치 미확인, 10월 가계대출 동향 미발표"
+  ],
+  "sources": [
+    "data/latest_snapshot.json (data/manual/ecos100_20261025.yaml, ECOS 100대 통계지표 수기 입력)",
+    "https://www.news1.kr/economy/trend/6328320",
+    "https://biz.heraldcorp.com/article/10911244",
+    "https://www.fntimes.com/html/view.php?ud=202610220949143753179ad43907_18",
+    "https://news.mtn.co.kr/article/2026101513252932708",
+    "https://www.mt.co.kr/economy/2026/07/23/2026072310003476983",
+    "knowledge/view_cards/20261022_신한_10월금통위.json",
+    "knowledge/view_cards/20261023_신한_EconCheckup.json",
+    "knowledge/view_cards/20261023_신한_WeeklyGuideBook.json",
+    "knowledge/view_cards/20261020_신한_WeeklyCreditMonitor.json"
+  ]
+}

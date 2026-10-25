@@ -74,6 +74,8 @@ ECOS **100대 통계지표 엑셀**은 `python scripts/import_ecos100.py <파일
 2. Claude Code에서 `/macro-brief` → `reports/{YYYY-MM-DD}_macro_brief.md`
 3. 공시 분석이 필요할 때 공시 PDF를 `inbox/filings/`에 넣고 `/portfolio-impact 현대해상` → `reports/{YYYY-MM-DD}_현대해상_portfolio_impact.md`
 
+워드 요약본(16개 항목 한 장 요약 + 항목별 정리): `python scripts/export_summary_prep.py YYYY-MM-DD && node scripts/export_summary_docx.js YYYY-MM-DD` → `reports/{날짜}_매크로16개항목_요약.docx` (node `docx` 패키지 필요: `npm install -g docx`).
+
 `/ingest`만 따로 실행해 리포트 → view_card 변환만 할 수도 있습니다.
 
 ### 파일명 규칙

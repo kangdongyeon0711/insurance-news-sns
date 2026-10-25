@@ -1,0 +1,141 @@
+{
+  "topic_id": "oil",
+  "as_of": "2026-10-25",
+  "current": {
+    "indicators": [
+      {
+        "series_id": "brent",
+        "name": "Brent 선물 종가(웹)",
+        "value": 116.72,
+        "unit": "USD/bbl",
+        "as_of": "2026-10-23",
+        "value_flag": "웹확인",
+        "source": "https://www.cnbc.com/2026/10/23/oil-price-brent-wti-iran-war-saudi-arabia.html (+3.1% d/d, 4/29 이후 최고)"
+      },
+      {
+        "series_id": "wti",
+        "name": "WTI 선물 종가(웹)",
+        "value": 103.27,
+        "unit": "USD/bbl",
+        "as_of": "2026-10-23",
+        "value_flag": "웹확인",
+        "source": "https://www.cnbc.com/2026/10/23/oil-price-brent-wti-iran-war-saudi-arabia.html (+3.8% d/d; 보조: https://fortune.com/article/price-of-oil-10-23-2026/)"
+      },
+      {
+        "series_id": "dubai",
+        "name": "Dubai유(현물, 월평균)",
+        "value": 111.83,
+        "unit": "달러/배럴",
+        "as_of": "2026-09-30",
+        "value_flag": "수기",
+        "stale": false
+      },
+      {
+        "series_id": "us_crude_stocks",
+        "name": "미국 상업용 원유재고(SPR 제외, 웹)",
+        "value": 412.5,
+        "unit": "백만배럴",
+        "as_of": "2026-10-16",
+        "value_flag": "웹확인",
+        "source": "https://www.rigzone.com/news/usa_crude_oil_stocks_drop_3mm_barrels_wow-22-oct-2026-184911-article/ (EIA 주간 발표 10/21 보도, 주간 −3.1백만배럴, 5년 평균 대비 −3%; 보조: https://www.oilandgas360.com/crude-inventories-10-16/)"
+      },
+      {
+        "series_id": "kr_import_price",
+        "name": "수입물가지수",
+        "value": 159.37,
+        "unit": "2020=100",
+        "as_of": "2026-09-30",
+        "value_flag": "수기",
+        "stale": false
+      },
+      {
+        "series_id": "kr_terms_of_trade",
+        "name": "순상품교역조건지수",
+        "value": 119.52,
+        "unit": "2020=100",
+        "as_of": "2026-09-30",
+        "value_flag": "수기",
+        "stale": false
+      }
+    ],
+    "summary": "[사실] Brent 116.72달러·WTI 103.27달러(2026-10-23 종가, 웹확인·CNBC) — Brent 주간 +6.2%, 3주 연속 상승. Dubai유 9월 평균 111.83달러/배럴(2026-09-30, 수기). [사실] 미국 상업용 원유재고 412.5백만배럴(주간 −3.1백만, 5년 평균 대비 −3%, 2026-10-16 기준 주, 웹확인). [사실] OPEC+ 핵심 7개국은 10/4 회의에서 11월 목표 동결, 걸프 산유국 실제 수출은 정상의 60~80% 수준(Reuters 보도). [사실] 호르무즈 해협 사실상 상업 통행 중단, 후티의 사우디 시설 공격 주장(10/24~25, 피해 미확인). [사실] 수입물가지수 159.37(2026-09, 수기). [판단] 공급 차질에 따른 지정학 프리미엄이 가격을 지배 — 국내 수입물가·CPI 상방, 한은 인상 논거 강화(kr-fixed-income과 일관)."
+  },
+  "short_term": {
+    "horizon": "3-6M",
+    "direction": "고점권 횡보~소폭 하락, 양방향 변동성 매우 큼",
+    "view": "[하우스] 신한투자증권은 중동 군사 긴장·해상운송 차질 위험이 가격을 받치는 하방 경직 국면으로 보되 협상 진전 시 위험 프리미엄 축소 가능성을 함께 제시(WTI 횡보, 20261023_신한_WeeklyGuideBook p.12), 지정학 불확실성을 유가·물가 상방 요인으로 언급(20261023_신한_EconCheckup p.1, 확신 낮음). [판단] 호르무즈 봉쇄·SPR 저수준으로 하방은 경직적이나 이미 6개월 최고 수준이고 수요 둔화·우회 수송(동서 파이프라인) 확대로 추가 급등보다는 고점권 등락 후 소폭 되돌림(Brent −5% 내외)을 기본으로 본다. 다만 사우디 시설 피해 확인 시 상방 급등 꼬리위험.",
+    "drivers": [
+      "[사실] 호르무즈 해협 사실상 통행 중단, 10월 선박 피격 다수(웹, Gulf News 등)",
+      "[사실] OPEC+ 11월 목표 동결, 2027년 전까지 정책 변경 없을 전망·차기 회의 11/29(웹확인)",
+      "[사실] 미 원유재고 5년 평균 대비 −3%, 3주 연속 감소(2026-10-16 주)",
+      "[사실] 미국 SPR 약 282.7백만배럴로 1982년 이후 최저(웹 보도, 단일 출처 — 보조)",
+      "[판단] 고유가·Fed 긴축에 따른 수요 둔화가 상단 제한",
+      "[판단] 유가 → 수입물가 → CPI → 한은 인상 경로(kr_rate와 일관)"
+    ],
+    "confidence": "낮음"
+  },
+  "long_term": {
+    "horizon": "1-3Y",
+    "scenarios": [
+      {
+        "name": "Base",
+        "prob": 0.5,
+        "narrative": "[판단] 2027년 중 호르무즈 통행이 점진적으로 회복되고 OPEC+가 2027년 쿼터 재조정으로 공급을 늘리며 위험 프리미엄이 상당 부분 해소. Brent 90달러 초반대로 하향 안정(추정).",
+        "factor_shocks": {
+          "brent_pct": -20.0
+        },
+        "shock_rationale": "116.72달러 대비 −20% ≈ 93달러(추정): 공급 차질 해소 + 고유가 수요 파괴, 다만 재고 재축적 수요로 위기 이전 수준까지는 미복귀."
+      },
+      {
+        "name": "Bull",
+        "prob": 0.2,
+        "narrative": "[판단] 조기 휴전·항로 정상화와 걸프 수출 완전 회복, OPEC+ 증산 경쟁·미국 셰일 증산이 겹쳐 공급 과잉 전환. 수입국(한국) 관점의 Bull(유가 하락).",
+        "factor_shocks": {
+          "brent_pct": -35.0
+        },
+        "shock_rationale": "116.72달러 대비 −35% ≈ 76달러(추정): 지정학 프리미엄 전액 소멸 + 공급 과잉."
+      },
+      {
+        "name": "Bear",
+        "prob": 0.3,
+        "narrative": "[판단] 미·이란 충돌 확대, 사우디 동서 파이프라인·홍해 우회로까지 차질이 장기화되며 구조적 공급 부족. 수입국 관점의 Bear(유가 상승)로 국내 물가·교역조건 악화.",
+        "factor_shocks": {
+          "brent_pct": 25.0
+        },
+        "shock_rationale": "116.72달러 대비 +25% ≈ 146달러(추정): 우회 수송로 차질 + SPR 저수준으로 완충 여력 부족."
+      }
+    ]
+  },
+  "house_views": {
+    "consensus": "[하우스] 신한투자증권(단일): 단기 WTI 횡보(하방 경직, 협상 진전 시 프리미엄 축소 가능, 확신 중간, 20261023_신한_WeeklyGuideBook p.12); 지정학 불확실성을 유가 상승·물가 상방 요인으로 부수 언급(유종 미특정, 확신 낮음, 20261023_신한_EconCheckup p.1). 목표가 없음.",
+    "divergence": "단일 하우스 — 비교 불가",
+    "cards_used": [
+      "20261023_신한_WeeklyGuideBook",
+      "20261023_신한_EconCheckup"
+    ]
+  },
+  "short_term_factor_shocks": {
+    "brent_pct": -5.0
+  },
+  "short_term_shock_rationale": "신한 '횡보·하방 경직' 뷰에 고점권 되돌림 판단을 더해 116.72달러 대비 −5%(≈111달러, 추정). 확신 낮음 — 사우디 시설 피해 확인 시 상방 리스크.",
+  "data_gaps": [
+    "하우스 뷰 부족(1곳: 신한투자증권)",
+    "API 데이터 미수집(FRED/EIA): brent·wti·us_crude_stocks는 웹확인 값으로 대체",
+    "미 원유재고는 EIA WPSR 원문 미확인(업계 언론 보도 기준), 2026-10-23 주 재고 미확인",
+    "Dubai유는 9월 월평균(2026-09-30)만 있어 10월 수준 미확인",
+    "후티의 사우디 시설 공격 피해 규모 미확인(사우디·아람코 미확인 상태)",
+    "하우스의 유가 목표치 없음 — 충격 크기는 에이전트 판단(추정)"
+  ],
+  "sources": [
+    "data/latest_snapshot.json (generated 2026-10-25T03:01:57; data/manual/ecos100_20261025.yaml)",
+    "https://www.cnbc.com/2026/10/23/oil-price-brent-wti-iran-war-saudi-arabia.html",
+    "https://fortune.com/article/price-of-oil-10-23-2026/",
+    "https://www.rigzone.com/news/usa_crude_oil_stocks_drop_3mm_barrels_wow-22-oct-2026-184911-article/",
+    "https://www.oilandgas360.com/crude-inventories-10-16/",
+    "https://www.enerdata.net/publications/daily-energy-news/opec-keeps-november-2026-production-targets-unchanged-amid-supply-disruptions.html",
+    "https://ca.finance.yahoo.com/news/opec-agrees-principle-keep-november-102508006.html",
+    "https://gulfnews.com/world/mena/middle-east-war-houthi-missile-targets-riyadh-tankers-hit-mines-near-hormuz-1.500721804",
+    "knowledge/view_cards/20261023_신한_WeeklyGuideBook.json",
+    "knowledge/view_cards/20261023_신한_EconCheckup.json"
+  ]
+}

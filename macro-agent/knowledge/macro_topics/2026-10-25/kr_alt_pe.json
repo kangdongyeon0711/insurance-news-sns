@@ -1,0 +1,140 @@
+{
+  "topic_id": "kr_alt_pe",
+  "as_of": "2026-10-25",
+  "current": {
+    "indicators": [
+      {
+        "series_id": "kospi",
+        "name": "KOSPI",
+        "value": 5550.3,
+        "unit": "1980.01.04=100",
+        "as_of": "2026-10-23",
+        "chg_1m": null,
+        "chg_unit": "%",
+        "value_flag": "수기",
+        "source": "data/latest_snapshot.json (data/manual/ecos100_20261025.yaml, ECOS 사용자 수기 입력)",
+        "stale": false
+      },
+      {
+        "series_id": "kr_pef_commitment",
+        "name": "기관전용 PEF 출자약정액(금감원)",
+        "value": 167.5,
+        "unit": "조원",
+        "as_of": "2025-12-31",
+        "chg_1m": null,
+        "value_flag": "웹확인",
+        "source": "https://www.fnnews.com/news/202606171133180568"
+      },
+      {
+        "series_id": "kr_pef_new_commitment",
+        "name": "PEF 신규 출자약정액(금감원)",
+        "value": 27.8,
+        "unit": "조원",
+        "as_of": "2025-12-31",
+        "chg_1m": null,
+        "value_flag": "웹확인",
+        "source": "https://www.fnnews.com/news/202606171133180568"
+      },
+      {
+        "series_id": "kr_pef_dry_powder",
+        "name": "PEF 미집행 약정액(금감원)",
+        "value": 43.2,
+        "unit": "조원",
+        "as_of": "2025-12-31",
+        "chg_1m": null,
+        "value_flag": "웹확인",
+        "source": "https://www.fnnews.com/news/202606171133180568"
+      },
+      {
+        "series_id": "kr_pef_count",
+        "name": "PEF 수(금감원)",
+        "value": 1195,
+        "unit": "개",
+        "as_of": "2025-12-31",
+        "chg_1m": null,
+        "value_flag": "웹확인",
+        "source": "https://core.asiae.co.kr/article/2026061710083948025"
+      },
+      {
+        "series_id": "kr_pe_exit_volume",
+        "name": "PE 엑시트(IPO·M&A) 규모(2026년 누적)",
+        "value": null,
+        "unit": "조원",
+        "as_of": null,
+        "value_flag": "미확인"
+      }
+    ],
+    "summary": "[사실] KOSPI 5,550.3(2026-10-23, 수기). [사실] 금감원(2026-06-17 발표) 2025년말 기관전용 PEF 1,195개, 출자약정액 167.5조원(역대 최대, +9%), 신규 약정 27.8조원(+44.8%), 미집행 약정액 43.2조원(+19.7%), 경영참여형 신규 투자 23.7조원으로 감소(웹확인, 언론 보도). [사실] 홈플러스 사태 이후 사모펀드 LBO·기간산업 인수 규제 입법 논의(2026-07 보도). [하우스] 신한투자증권(20261020_신한_WeeklyCreditMonitor)은 10월 증시 급락을 언급했으나 PE 직접 뷰는 없음. [판단] 드라이파우더 누적·M&A 둔화·규제 강화가 동시 진행 중으로 밸류에이션 압력과 엑시트 지연 우려."
+  },
+  "short_term": {
+    "horizon": "3-6M",
+    "direction": "평가가치 소폭 하락",
+    "view": "[판단] 10월 증시 조정과 금리 인상 재개(작업가정)가 상장 비교기업 멀티플과 인수금융 비용을 동시에 압박해 PE 지분 평가가치는 소폭 하향 조정 가능. [판단] 미집행 약정액 43.2조원(2025년말)이 하방을 일부 지지하나, LBO 규제 입법 리스크가 대형 바이아웃·엑시트를 지연시킬 수 있음.",
+    "drivers": [
+      "KOSPI 변동성(10월 급락 이후)",
+      "인수금융 금리(기준금리 인상 재개 작업가정)",
+      "PEF 규제 입법(LBO·기간산업 인수)",
+      "드라이파우더 43.2조원 집행 속도",
+      "IPO·M&A 엑시트 시장"
+    ],
+    "confidence": "낮음"
+  },
+  "long_term": {
+    "horizon": "1-3Y",
+    "scenarios": [
+      {
+        "name": "Base",
+        "prob": 0.5,
+        "narrative": "[판단] 금리 소폭 상승 속 증시 박스권 회복, 규제는 공시·내부통제 중심으로 완화된 형태로 입법. PE 평가가치는 완만한 상승.",
+        "factor_shocks": {
+          "kr_pe_value_pct": 3,
+          "equity_kospi_pct": 5
+        },
+        "shock_rationale": "KOSPI +5%(판단, 주식 전담 전망 아님) × PE 베타 약 0.6(평활화) ≈ +3%. 금리 +10bp(10Y)는 인수금융 비용 소폭 증가로 상쇄 요인."
+      },
+      {
+        "name": "Bull",
+        "prob": 0.2,
+        "narrative": "[판단] 금리 안정·증시 랠리 재개, 드라이파우더 집행과 대형 엑시트 활성화.",
+        "factor_shocks": {
+          "kr_pe_value_pct": 10,
+          "equity_kospi_pct": 15
+        },
+        "shock_rationale": "KOSPI +15% × 베타 약 0.6 ≈ +9%, 엑시트 프리미엄 가산 → +10%."
+      },
+      {
+        "name": "Bear",
+        "prob": 0.3,
+        "narrative": "[판단] 인상 폭 확대와 증시 추가 조정, LBO 규제 강화로 엑시트 지연·포트폴리오 기업 이자부담 증가.",
+        "factor_shocks": {
+          "kr_pe_value_pct": -12,
+          "equity_kospi_pct": -20
+        },
+        "shock_rationale": "KOSPI -20% × 베타 약 0.6 = -12%. 레버리지 비용 상승은 별도 가산하지 않음(이중계상 회피)."
+      }
+    ]
+  },
+  "house_views": {
+    "consensus": "하우스 뷰 없음(최근 30일 kr_alt_pe 카드 0개).",
+    "divergence": "해당 없음.",
+    "cards_used": []
+  },
+  "short_term_factor_shocks": {
+    "kr_pe_value_pct": -2,
+    "equity_kospi_pct": -3
+  },
+  "short_term_shock_rationale": "10월 급락 이후 변동성 지속 가정 KOSPI -3%(판단) × 베타 0.6 ≈ -2%, 인수금융 금리 상승(3Y +10bp 작업가정) 반영 반올림 -2%.",
+  "data_gaps": [
+    "하우스 뷰 없음 — 하우스 뷰 부족(0곳)",
+    "2026년 PE 엑시트·펀드레이징 집계 미확인(최신 공식은 2025년말 금감원)",
+    "금감원 원문 보도자료 미확인(언론 보도 기준)",
+    "equity_kospi_pct는 주식 전담 에이전트 부재로 에이전트 판단치"
+  ],
+  "sources": [
+    "data/latest_snapshot.json",
+    "https://www.fnnews.com/news/202606171133180568",
+    "https://core.asiae.co.kr/article/2026061710083948025",
+    "https://www.newsis.com/view/NISX20260722_0003718732",
+    "knowledge/view_cards/20261020_신한_WeeklyCreditMonitor.json (p.1)"
+  ]
+}
