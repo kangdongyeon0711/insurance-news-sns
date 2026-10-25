@@ -34,7 +34,7 @@ def main(argv: list[str] | None = None) -> int:
         return 0
     print(tabulate([[r["series_id"], r["name"], r["last_value"], r["unit"], r["as_of"], r["chg_1w"], r["chg_1m"],
                      r["chg_3m"], r["chg_1y"], r["chg_unit"], r["pct_rank_5y"], "⚠stale" if r["stale"] else "",
-                     "" if r["verified"] else "미검증"] for r in rows],
+                     "수기" if r.get("source_type") == "manual" else ("" if r["verified"] else "미검증")] for r in rows],
                    headers=["series_id", "이름", "값", "단위", "기준일", "1W", "1M", "3M", "1Y", "변화단위", "5Y백분위", "", ""]))
     return 0
 

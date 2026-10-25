@@ -25,7 +25,7 @@
               "chg_1m": {"type": ["number", "null"]},
               "chg_unit": {"type": "string"},
               "source": {"type": "string", "description": "latest_snapshot.json 외 출처(웹 등)면 명시하고 value_flag로 표시"},
-              "value_flag": {"enum": ["API", "웹확인", "추정", "미확인"]},
+              "value_flag": {"enum": ["API", "수기", "웹확인", "추정", "미확인"], "description": "API·수기는 latest_snapshot.json 값(수기 = data/manual 사용자 입력)"},
               "stale": {"type": "boolean"}
             }
           }

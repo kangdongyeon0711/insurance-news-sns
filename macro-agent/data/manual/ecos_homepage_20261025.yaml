@@ -1,0 +1,98 @@
+# 수기 입력 데이터 — ECOS 홈페이지(일일지표·주요지표)에서 사용자가 직접 확인한 값.
+# 원문: ecos_homepage_20261025_raw.txt (같은 폴더)
+# - fetch_all.py가 data/series/*.csv(API 값)와 합쳐 스냅샷을 만든다. 같은 날짜는 API 값 우선,
+#   차이가 있으면 경고. 스냅샷에는 source_type: manual, value_flag: 수기 로 표시된다.
+# - as_of: 일별은 해당 일자, 월별은 해당 월 말일, 분기는 분기 말일(기간 값). period_label에 원래 표기 보존.
+# - series_id가 config/series.yaml에 있으면 그 메타데이터를 쓰고, 없으면 아래 meta를 쓴다.
+source: ECOS 홈페이지 일일지표·주요지표 (사용자 수기 입력)
+retrieved: 2026-10-25
+raw_file: data/manual/ecos_homepage_20261025_raw.txt
+
+points:
+  # ---- 금리 (series.yaml 기존 시리즈) ----
+  - {series_id: kr_cd_91d,      value: 3.26,   as_of: 2026-10-23, period_label: "10.23 마감", raw_label: "CD(91일)"}
+  - {series_id: ktb_3y,         value: 3.803,  as_of: 2026-10-23, period_label: "10.23 마감", raw_label: "국고채(3년)"}
+  - {series_id: kr_corp_aa_3y,  value: 4.492,  as_of: 2026-10-23, period_label: "10.23 마감", raw_label: "회사채(3년,AA-)"}
+  # ---- 환율 ----
+  - {series_id: krw_usd,        value: 1324.70, as_of: 2026-10-24, period_label: "10.24 05:00", raw_label: "원달러",
+     note: "05:00 시점 값(연장 거래 포함 가능) — ECOS 매매기준율(731Y001) 일별값과 다를 수 있음"}
+  - series_id: krw_cny
+    value: 198.58
+    as_of: 2026-10-23
+    period_label: "10.23 마감"
+    raw_label: 원위안
+    meta: {name: 원/위안 환율, unit: KRW, cycle: D, chg_type: pct, topic_id: fx_krwusd}
+  - series_id: usd_jpy_tokyo
+    value: 156.80
+    as_of: 2026-10-23
+    period_label: "10.23 19:00"
+    raw_label: 엔달러(동경)
+    meta: {name: 엔/달러 환율(동경), unit: JPY, cycle: D, chg_type: pct, topic_id: fx_krwusd}
+  # ---- 주가지수 ----
+  - series_id: kospi
+    value: 5550.30
+    as_of: 2026-10-23
+    period_label: "10.23 마감"
+    raw_label: 코스피
+    meta: {name: KOSPI, unit: pt, cycle: D, chg_type: pct, topic_id: null}
+  - series_id: kosdaq
+    value: 751.69
+    as_of: 2026-10-23
+    period_label: "10.23 마감"
+    raw_label: 코스닥
+    meta: {name: KOSDAQ, unit: pt, cycle: D, chg_type: pct, topic_id: null}
+  # ---- 거시 (기간 값) ----
+  - series_id: kr_gdp_qoq
+    value: 0.6
+    as_of: 2026-06-30
+    period_label: "2026.2/4"
+    raw_label: GDP 전기대비
+    meta: {name: 실질 GDP 성장률(전기대비), unit: "%", cycle: Q, chg_type: diff, topic_id: kr_rate}
+  - series_id: kr_gdp_yoy
+    value: 3.7
+    as_of: 2026-06-30
+    period_label: "2026.2/4"
+    raw_label: GDP 전년동기대비
+    meta: {name: 실질 GDP 성장률(전년동기대비), unit: "%", cycle: Q, chg_type: diff, topic_id: kr_rate}
+  - series_id: kr_cpi_mom
+    value: 0.3
+    as_of: 2026-09-30
+    period_label: "2026.09"
+    raw_label: 소비자물가 전월대비
+    meta: {name: 소비자물가 상승률(전월대비), unit: "%", cycle: M, chg_type: diff, topic_id: kr_rate}
+  - series_id: kr_cpi_yoy
+    value: 2.9
+    as_of: 2026-09-30
+    period_label: "2026.09"
+    raw_label: 소비자물가 전년동월대비
+    meta: {name: 소비자물가 상승률(전년동월대비), unit: "%", cycle: M, chg_type: diff, topic_id: kr_rate}
+  - series_id: kr_ppi_mom
+    value: 0.2
+    as_of: 2026-09-30
+    period_label: "2026.09"
+    raw_label: 생산자물가 전월대비
+    meta: {name: 생산자물가 상승률(전월대비), unit: "%", cycle: M, chg_type: diff, topic_id: kr_rate}
+  - series_id: kr_ppi_yoy
+    value: 7.7
+    as_of: 2026-09-30
+    period_label: "2026.09"
+    raw_label: 생산자물가 전년동월대비
+    meta: {name: 생산자물가 상승률(전년동월대비), unit: "%", cycle: M, chg_type: diff, topic_id: kr_rate}
+  - series_id: kr_current_account
+    value: 46.1
+    as_of: 2026-08-31
+    period_label: "2026.08"
+    raw_label: 경상수지
+    meta: {name: 경상수지(월), unit: 십억USD, cycle: M, chg_type: pct, topic_id: fx_krwusd}
+  - series_id: kr_m2_mom
+    value: 0.9
+    as_of: 2026-08-31
+    period_label: "2026.08"
+    raw_label: 통화량(M2) 전월대비
+    meta: {name: M2 증가율(전월대비), unit: "%", cycle: M, chg_type: diff, topic_id: kr_rate}
+  - series_id: kr_m2_yoy
+    value: 5.6
+    as_of: 2026-08-31
+    period_label: "2026.08"
+    raw_label: 통화량(M2) 전년동월대비
+    meta: {name: M2 증가율(전년동월대비), unit: "%", cycle: M, chg_type: diff, topic_id: kr_rate}

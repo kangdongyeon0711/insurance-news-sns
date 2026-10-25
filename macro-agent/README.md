@@ -55,6 +55,18 @@ python scripts/fetch_fred.py --verify
 python scripts/fetch_all.py --print     # 전체 수집 + data/latest_snapshot.json + 주요 값 출력
 ```
 
+### API 키가 없을 때: 수기 입력
+ECOS 홈페이지 등에서 직접 확인한 값을 `data/manual/*.yaml`에 넣으면 스냅샷에 반영됩니다(예: `data/manual/ecos_homepage_20261025.yaml`, 원문은 같은 이름의 `_raw.txt`).
+```yaml
+points:
+  - {series_id: ktb_3y, value: 3.803, as_of: 2026-10-23, period_label: "10.23 마감"}
+  - series_id: kospi            # series.yaml에 없는 지표는 meta 필요
+    value: 5550.30
+    as_of: 2026-10-23
+    meta: {name: KOSPI, unit: pt, cycle: D, chg_type: pct, topic_id: null}
+```
+`python scripts/fetch_all.py --no-fetch --print`로 스냅샷을 다시 만듭니다. 수기 값은 `value_flag: 수기`로 표시되고, 나중에 API로 같은 날짜가 수집되면 API 값이 우선합니다(괴리 0.5% 초과 시 경고). 단일 시점 값이라 1주·1개월 변화는 API 수집 전까지 비어 있습니다.
+
 ## 3. 주간 사용 루틴
 
 1. 증권사 리서치센터에서 경제/외환, 채권, 크레딧, 대체자산 리포트 5~10개를 직접 다운로드해 파일명 규칙대로 `inbox/reports/`에 저장
@@ -132,6 +144,7 @@ tests/       pytest (calc_impact 손계산, ingest, 스냅샷, 스키마 검증,
 14. **헬퍼 스크립트 추가**: 서브에이전트가 snapshot·카드를 안정적으로 읽도록 `snapshot_view.py`, `recent_cards.py`를 추가했습니다.
 15. **금액 단위**: 익스포저 입력은 십억원(`mv_krw_bn`), 영향 출력은 억원(`impact_100m`)과 운용자산 대비 bp.
 16. **K-ICS**: 위험계수는 감독기준 확인 전까지 `assumptions.kics.risk_factors: null` — 정성 서술만 합니다.
+17. **수기 입력값**: API 차단·키 미입력 시 사용자가 확인한 공식 홈페이지 값을 `data/manual/`에 원문과 함께 보관하고 스냅샷에 `source_type: manual`로 합칩니다. CSV(API 원본)는 덮어쓰지 않고 스냅샷 생성 시 메모리에서만 병합합니다. 같은 날짜는 API 우선. 원/달러 수기값(10.24 05:00)은 시각 기준이 매매기준율과 다를 수 있어 메모로 남겼습니다.
 
 ## 7. 미검증 시리즈 코드
 

@@ -10,7 +10,7 @@
 
 의미 검사:
   - macro_topic: 시나리오 확률 합 = 1(±0.001), Base/Bull/Bear 각 1개, factor 이름 ∈ factors.yaml,
-    indicators의 value/as_of가 latest_snapshot.json과 일치(value_flag가 API인 경우)
+    indicators의 value/as_of가 latest_snapshot.json과 일치(value_flag가 API 또는 수기인 경우)
   - view_card: views의 topic_id ⊆ topics, card_id = source_file 파일명
   - factor_shocks: factor 이름 ∈ factors.yaml, prob가 있으면 합 = 1
 """
@@ -74,7 +74,7 @@ def semantic_errors(kind: str, doc: dict, snapshot: dict | None) -> list[str]:
         if snapshot is not None:
             series = snapshot.get("series", {})
             for ind in doc.get("current", {}).get("indicators", []):
-                if ind.get("value_flag", "API") != "API":
+                if ind.get("value_flag", "API") not in ("API", "수기"):
                     continue
                 st = series.get(ind["series_id"])
                 if st is None:

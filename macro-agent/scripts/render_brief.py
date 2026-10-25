@@ -88,11 +88,14 @@ def render(date: str) -> str:
     status = snap.get("fetch_status") or {}
     bad = {k: v for k, v in status.items() if v != "ok"}
     stale = [s for s in snap["series"].values() if s.get("stale")]
-    if not snap["series"] or bad or stale:
+    manual = [s for s in snap["series"].values() if s.get("source_type") == "manual"]
+    if not snap["series"] or bad or stale or manual:
         a("> ⚠ **데이터 경고**")
         if not snap["series"]:
             a("> - API 시계열이 하나도 수집되지 않았습니다. 현황 수치는 `[웹확인]`(웹 검색, 공식 원문 대조 전) 또는 **미확인**입니다 "
               "(`.env`에 API 키 입력 후 `python scripts/fetch_all.py`).")
+        if manual:
+            a(f"> - 수기 입력값 {len(manual)}개 (`data/manual/`, ECOS 홈페이지 등 사용자 확인값) — 표에 `수기`로 표시, API 수집 후 교차검증 필요")
         if bad:
             a("> - 수집 상태: " + ", ".join(f"{k}={v}" for k, v in bad.items()))
         for s in stale:

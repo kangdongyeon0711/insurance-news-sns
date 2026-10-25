@@ -51,3 +51,26 @@ def test_csv_roundtrip(tmp_path):
     write_series_csv("x", [("2026-01-02", 1.5), ("2026-01-01", 1.0), ("2026-01-02", 2.0)], tmp_path)
     s = read_series_csv("x", tmp_path)
     assert list(s.values) == [1.0, 2.0]
+
+
+def test_manual_points_merge(tmp_path):
+    """수기 입력(data/manual/*.yaml)과 API CSV 병합: 같은 날짜는 API 우선 + 괴리 경고, 신규 시리즈·파생 계산."""
+    series_dir, manual_dir = tmp_path / "series", tmp_path / "manual"
+    manual_dir.mkdir(parents=True)
+    _write(series_dir, "ktb_3y", "2026-10-20", [3.70, 3.75, 3.80])          # API: 10-20 ~ 10-22
+    (manual_dir / "m.yaml").write_text(
+        "source: test\npoints:\n"
+        "  - {series_id: ktb_3y, value: 3.90, as_of: 2026-10-22}\n"        # API와 같은 날짜, 다른 값
+        "  - {series_id: ktb_3y, value: 3.803, as_of: 2026-10-23}\n"       # API보다 최신
+        "  - {series_id: kr_corp_aa_3y, value: 4.492, as_of: 2026-10-23}\n"
+        "  - {series_id: kospi, value: 5550.3, as_of: 2026-10-23,\n"
+        "     meta: {name: KOSPI, unit: pt, cycle: D, chg_type: pct, topic_id: null}}\n", encoding="utf-8")
+    snap = fetch_all.build_snapshot(series_dir, date(2026, 10, 25), manual_dir=manual_dir)
+    s = snap["series"]
+    assert s["ktb_3y"]["last_value"] == 3.803 and s["ktb_3y"]["source_type"] == "manual"
+    assert s["ktb_3y"]["value_flag"] == "수기" and s["ktb_3y"]["manual"]["source"] == "test"
+    assert any("ktb_3y" in w and "괴리" in w for w in snap["warnings"])
+    merged = read_series_csv("ktb_3y", series_dir)   # API CSV 자체는 수기값으로 덮어쓰지 않음
+    assert merged.iloc[-1] == 3.80
+    assert s["kr_aa_spread"]["last_value_bp"] == 68.9 and s["kr_aa_spread"]["value_flag"] == "수기"
+    assert s["kospi"]["last_value"] == 5550.3 and s["kospi"]["topic_id"] is None

@@ -6,6 +6,8 @@
   python scripts/fetch_all.py --print      # 주요 값 출력
 
 수집 실패/키 누락이어도 스냅샷은 기존 CSV로 생성하고 warnings에 기록한다.
+수기 입력값(data/manual/*.yaml — 예: ECOS 홈페이지에서 직접 확인한 값)은 API 값과 합친다. 같은 날짜는 API 우선,
+괴리 0.5% 초과 시 경고. 스냅샷 항목의 source_type(api|manual)·value_flag(API|수기)로 구분한다.
 """
 from __future__ import annotations
 
@@ -64,11 +66,46 @@ def series_stats(s: pd.Series, meta: dict, ref: date) -> dict:
     }
 
 
-def build_derived(defs: list[dict], series_dir: Path) -> list[dict]:
-    """파생 스프레드 계산 → series_dir/{id}.csv 저장. 계산된 정의 목록 반환."""
+def load_manual(manual_dir: Path) -> dict[str, dict]:
+    """data/manual/*.yaml의 수기 입력값 → {series_id: {"points": pd.Series, "meta": {...}, "files": {...}}}."""
+    out: dict[str, dict] = {}
+    for f in sorted(manual_dir.glob("*.yaml")) if manual_dir.exists() else []:
+        doc = load_yaml(f) or {}
+        for pt in doc.get("points", []):
+            sid = pt["series_id"]
+            e = out.setdefault(sid, {"rows": {}, "meta": {}, "info": {}})
+            d = pd.Timestamp(str(pt["as_of"]))
+            e["rows"][d] = float(pt["value"])
+            e["meta"].update(pt.get("meta") or {})
+            e["info"][d.strftime("%Y-%m-%d")] = {"file": str(f.relative_to(manual_dir.parent.parent)),
+                                                 "source": doc.get("source"), "period_label": pt.get("period_label"),
+                                                 "note": pt.get("note")}
+    for e in out.values():
+        e["points"] = pd.Series(e.pop("rows")).sort_index()
+    return out
+
+
+def merge_series(api: pd.Series | None, manual: dict | None, sid: str, warnings: list[str]) -> tuple[pd.Series | None, str]:
+    """API 값 우선으로 수기 값을 합친다. 반환: (합친 시계열, 마지막 값의 출처 'api'|'manual')."""
+    if manual is None:
+        return api, "api"
+    m = manual["points"]
+    if api is None:
+        return m, "manual"
+    both = api.index.intersection(m.index)
+    for d0 in both:
+        a, b = float(api[d0]), float(m[d0])
+        if a and abs(b / a - 1) > 0.005:
+            warnings.append(f"{sid}: {d0.date()} 수기 {b} vs API {a} 괴리 {abs(b / a - 1) * 100:.2f}% — 확인 필요")
+    merged = api.combine_first(m).sort_index()
+    return merged, ("api" if merged.index[-1] in api.index else "manual")
+
+
+def build_derived(defs: list[dict], data: dict[str, pd.Series], series_dir: Path) -> list[dict]:
+    """파생 스프레드 계산 → series_dir/{id}.csv 저장 + data에 추가. 계산된 정의 목록 반환."""
     built = []
     for d in defs:
-        a, b = read_series_csv(d["a"], series_dir), read_series_csv(d["b"], series_dir)
+        a, b = data.get(d["a"]), data.get(d["b"])
         if a is None or b is None:
             log.warning("파생 %s 계산 불가: %s 또는 %s 없음", d["series_id"], d["a"], d["b"])
             continue
@@ -78,41 +115,62 @@ def build_derived(defs: list[dict], series_dir: Path) -> list[dict]:
         df = pd.concat([a.rename("a"), b.rename("b")], axis=1, join="inner").dropna()
         if df.empty:
             continue
-        rows = [(i.strftime("%Y-%m-%d"), round(v, 4)) for i, v in (df["a"] - df["b"]).items()]
-        write_series_csv(d["series_id"], rows, series_dir)
+        diff = (df["a"] - df["b"]).round(4)
+        write_series_csv(d["series_id"], [(i.strftime("%Y-%m-%d"), v) for i, v in diff.items()], series_dir)
+        data[d["series_id"]] = diff
         built.append(d)
     return built
 
 
-def build_snapshot(series_dir: Path = SERIES_DIR, ref: date | None = None, fetch_status: dict | None = None) -> dict:
+def build_snapshot(series_dir: Path = SERIES_DIR, ref: date | None = None, fetch_status: dict | None = None,
+                   manual_dir: Path | None = None) -> dict:
     ref = ref or today()
+    manual_dir = manual_dir or (series_dir.parent / "manual")
     cfg = load_yaml(CONFIG_DIR / "series.yaml")
     warnings: list[str] = []
     out: dict[str, dict] = {}
-    by_id = {}
-    for meta in cfg["series"]:
-        s = read_series_csv(meta["series_id"], series_dir)
+    by_id: dict[str, dict] = {}
+    data: dict[str, pd.Series] = {}
+    src_type: dict[str, str] = {}
+    manual = load_manual(manual_dir)
+    metas = list(cfg["series"])
+    known = {m["series_id"] for m in metas}
+    for sid, e in manual.items():
+        if sid not in known:
+            metas.append({"series_id": sid, "source": "manual", "verified": None, **e["meta"]})
+    for meta in metas:
+        sid = meta["series_id"]
+        api = read_series_csv(sid, series_dir) if meta.get("source") != "manual" else None
+        s, st = merge_series(api, manual.get(sid), sid, warnings)
         if s is None:
-            warnings.append(f"{meta['series_id']}({meta['name']}): 데이터 없음 — 미확인")
+            warnings.append(f"{sid}({meta['name']}): 데이터 없음 — 미확인")
             continue
-        by_id[meta["series_id"]] = meta
-        out[meta["series_id"]] = series_stats(s, meta, ref)
-    for d in build_derived(cfg.get("derived", []), series_dir):
-        s = read_series_csv(d["series_id"], series_dir)
+        by_id[sid], data[sid], src_type[sid] = meta, s, st
+        out[sid] = series_stats(s, meta, ref)
+        out[sid]["source_type"] = st
+        out[sid]["value_flag"] = "API" if st == "api" else "수기"
+        if st == "manual":
+            out[sid]["manual"] = manual[sid]["info"][out[sid]["as_of"]]
+    for d in build_derived(cfg.get("derived", []), data, series_dir):
+        s = data[d["series_id"]]
         comps = [by_id.get(d["a"], {}), by_id.get(d["b"], {})]
+        st = "manual" if "manual" in (src_type.get(d["a"]), src_type.get(d["b"])) else "api"
         meta = {**d, "source": "derived", "unit": "%p", "chg_type": "diff",
                 "cycle": "M" if any(c.get("cycle") == "M" for c in comps) else "D",
                 "verified": all(c.get("verified", False) for c in comps)}
         out[d["series_id"]] = {**series_stats(s, meta, ref), "last_value_bp": round(float(s.iloc[-1]) * 100, 1),
-                               "formula": f"{d['a']} - {d['b']}"}
+                               "formula": f"{d['a']} - {d['b']}", "source_type": st,
+                               "value_flag": "API" if st == "api" else "수기"}
     for sid, st in out.items():
         if st["stale"]:
             warnings.append(f"{sid}: 기준일 {st['as_of']} ({st['age_days']}일 경과) — 오래된 데이터")
-        if not st["verified"]:
+        if st["source_type"] == "manual":
+            warnings.append(f"{sid}: 수기 입력값(ECOS 홈페이지) — API 수집 후 교차검증 필요")
+        elif not st["verified"]:
             warnings.append(f"{sid}: 시리즈 코드 미검증(verified: false)")
     # ECOS vs FRED 원/달러 교차검증
-    if "krw_usd" in out and "krw_usd_fred" in out:
-        e, f = read_series_csv("krw_usd", series_dir), read_series_csv("krw_usd_fred", series_dir)
+    if "krw_usd" in data and "krw_usd_fred" in data:
+        e, f = data["krw_usd"], data["krw_usd_fred"]
         common = e.index.intersection(f.index)
         if len(common):
             d0 = common[-1]

@@ -23,6 +23,7 @@ tools: Read, Write, Bash, Glob, Grep, WebSearch, WebFetch
 ## 공통 원칙
 **이 에이전트는 CLAUDE.md의 원칙 9개를 모두 따른다.** 특히:
 - 현황 수치는 `data/latest_snapshot.json`에서만 인용하고 각 수치에 기준일(as_of)을 붙인다. 리포트·기사에 나온 과거 수치를 현재값처럼 쓰지 않는다.
+- snapshot 항목의 `source_type`이 `manual`이면(사용자가 `data/manual/`에 입력한 ECOS 홈페이지 값 등) indicator에 `value_flag: "수기"`로 쓰고 value·as_of는 snapshot 그대로 옮긴다. 같은 지표의 웹 검색값보다 수기 값을 우선한다.
 - snapshot에 없는 수치를 웹에서 확인해 쓸 때는 indicator에 `value_flag: "웹확인"`, `source: URL`, 그 수치의 기준일을 명시한다. 확인 못 하면 `value: null`, `value_flag: "미확인"`.
 - 증권사 리서치 사이트·보험사 IR 사이트는 WebFetch로도 수집하지 않는다. 증권사 의견은 `knowledge/view_cards/`의 카드로만 반영한다.
 - 웹 수치 출처 우선순위: 공식 기관(한은·통계청·연준·FRED·EIA·금감원·한국부동산원) > 주요 언론 보도 > 기타. 위키(나무위키 등)·브로커/CFD 업체 분석 페이지·투자은행 자료는 단독 근거로 쓰지 않는다(보조 표기만).
