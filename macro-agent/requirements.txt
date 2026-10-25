@@ -1,0 +1,10 @@
+requests
+pandas
+numpy
+python-dotenv
+pyyaml
+jsonschema
+pdfplumber
+pymupdf
+pytest
+tabulate
