@@ -1,0 +1,76 @@
+{
+  "card_id": "20261023_샘플_가상MacroWeekly",
+  "house": "샘플(가상)",
+  "report_title": "가상MacroWeekly",
+  "published": "2026-10-23",
+  "published_estimated": false,
+  "source_file": "processed/reports/20261023_샘플_가상MacroWeekly.pdf",
+  "topics": ["us_rate", "us_treasury", "fx_krwusd", "kr_corp_bond"],
+  "views": [
+    {
+      "topic_id": "us_rate",
+      "variable": "us_ffr",
+      "direction": "하락",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "미국 고용 둔화를 근거로 FOMC가 연내 추가 인하에 나설 가능성이 높다고 판단. 구체적 인하 폭·횟수는 제시하지 않음.",
+      "page_ref": "p.1",
+      "conviction": "높음"
+    },
+    {
+      "topic_id": "us_treasury",
+      "variable": "ust_10y",
+      "direction": "하락",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "인하 기대를 배경으로 미 국채 10년물 금리가 단기적으로 내려갈 것으로 예상. 목표 수준은 없음.",
+      "page_ref": "p.1",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "us_treasury",
+      "variable": "ust_2s10s",
+      "direction": "확대",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "미 국채 커브 스티프닝(장단기 금리차 확대)을 전망. 시계 불명확하여 단기로 분류.",
+      "page_ref": "p.1",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "fx_krwusd",
+      "variable": "krw_usd",
+      "direction": "하락",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "달러 약세 전환에 따라 원/달러 환율이 단기적으로 내려가는(원화 강세) 쪽으로 기울 것으로 봄.",
+      "page_ref": "p.1",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "kr_corp_bond",
+      "variable": "kr_aa_minus_spread",
+      "direction": "확대",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "연말 계절적 요인으로 국내 회사채 AA- 스프레드가 소폭 벌어질 수 있다는 조건부 언급.",
+      "page_ref": "p.2",
+      "conviction": "낮음"
+    },
+    {
+      "topic_id": "kr_corp_bond",
+      "variable": "kr_aa_minus_spread",
+      "direction": "횡보",
+      "horizon": "장기",
+      "target": null,
+      "rationale": "단기 계절성과 별개로 장기적으로는 AA- 스프레드가 안정될 것으로 판단.",
+      "page_ref": "p.2",
+      "conviction": "중간"
+    }
+  ],
+  "key_risks": [
+    "미국 재정적자 확대에 따른 기간 프리미엄 상승",
+    "지정학 리스크에 따른 유가 급등"
+  ],
+  "notes": "통합 테스트용으로 생성된 가상(VIRTUAL) 샘플 리포트이며 실제 증권사 리포트가 아님 — 원문에도 '실제 의견 없음, 투자 판단에 사용 금지'로 명시. 실제 하우스 뷰로 인용하지 말 것. 성격: 주간 매크로 전략(가상). 목표치 제시 없음. 유가는 리스크 요인으로만 언급되어 view로 만들지 않음."
+}
