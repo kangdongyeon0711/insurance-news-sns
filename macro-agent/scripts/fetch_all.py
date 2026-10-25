@@ -66,16 +66,25 @@ def series_stats(s: pd.Series, meta: dict, ref: date) -> dict:
     }
 
 
-def load_manual(manual_dir: Path) -> dict[str, dict]:
-    """data/manual/*.yaml의 수기 입력값 → {series_id: {"points": pd.Series, "meta": {...}, "files": {...}}}."""
+def load_manual(manual_dir: Path, warnings: list[str] | None = None) -> dict[str, dict]:
+    """data/manual/*.yaml의 수기 입력값 → {series_id: {"points": pd.Series, "meta": {...}, "info": {...}}}.
+
+    같은 series_id·같은 날짜가 여러 파일에 있으면 priority가 높은 파일(동률이면 나중 파일) 값을 쓰고,
+    값이 0.5% 넘게 다르면 경고한다.
+    """
     out: dict[str, dict] = {}
-    for f in sorted(manual_dir.glob("*.yaml")) if manual_dir.exists() else []:
-        doc = load_yaml(f) or {}
+    warnings = warnings if warnings is not None else []
+    docs = [(f, load_yaml(f) or {}) for f in (sorted(manual_dir.glob("*.yaml")) if manual_dir.exists() else [])]
+    docs.sort(key=lambda x: x[1].get("priority", 0))   # 안정 정렬: 낮은 priority 먼저 → 높은 것이 덮어씀
+    for f, doc in docs:
         for pt in doc.get("points", []):
             sid = pt["series_id"]
             e = out.setdefault(sid, {"rows": {}, "meta": {}, "info": {}})
             d = pd.Timestamp(str(pt["as_of"]))
-            e["rows"][d] = float(pt["value"])
+            v = float(pt["value"])
+            if d in e["rows"] and e["rows"][d] and abs(v / e["rows"][d] - 1) > 0.005:
+                warnings.append(f"{sid}: {d.date()} 수기 파일 간 값 불일치 {e['rows'][d]} → {v} ({f.name} 채택)")
+            e["rows"][d] = v
             e["meta"].update(pt.get("meta") or {})
             e["info"][d.strftime("%Y-%m-%d")] = {"file": str(f.relative_to(manual_dir.parent.parent)),
                                                  "source": doc.get("source"), "period_label": pt.get("period_label"),
@@ -132,12 +141,13 @@ def build_snapshot(series_dir: Path = SERIES_DIR, ref: date | None = None, fetch
     by_id: dict[str, dict] = {}
     data: dict[str, pd.Series] = {}
     src_type: dict[str, str] = {}
-    manual = load_manual(manual_dir)
+    manual = load_manual(manual_dir, warnings)
     metas = list(cfg["series"])
     known = {m["series_id"] for m in metas}
     for sid, e in manual.items():
         if sid not in known:
-            metas.append({"series_id": sid, "source": "manual", "verified": None, **e["meta"]})
+            metas.append({"series_id": sid, "source": "manual", "verified": None, "name": sid, "unit": "",
+                          "cycle": "D", "chg_type": "pct", "topic_id": None, **e["meta"]})
     for meta in metas:
         sid = meta["series_id"]
         api = read_series_csv(sid, series_dir) if meta.get("source") != "manual" else None
@@ -165,9 +175,12 @@ def build_snapshot(series_dir: Path = SERIES_DIR, ref: date | None = None, fetch
         if st["stale"]:
             warnings.append(f"{sid}: 기준일 {st['as_of']} ({st['age_days']}일 경과) — 오래된 데이터")
         if st["source_type"] == "manual":
-            warnings.append(f"{sid}: 수기 입력값(ECOS 홈페이지) — API 수집 후 교차검증 필요")
+            pass  # 아래에서 한 줄로 요약
         elif not st["verified"]:
             warnings.append(f"{sid}: 시리즈 코드 미검증(verified: false)")
+    n_manual = sum(1 for st in out.values() if st["source_type"] == "manual")
+    if n_manual:
+        warnings.append(f"수기 입력값 {n_manual}개(data/manual/, value_flag=수기) — API 수집 후 교차검증 필요")
     # ECOS vs FRED 원/달러 교차검증
     if "krw_usd" in data and "krw_usd_fred" in data:
         e, f = data["krw_usd"], data["krw_usd_fred"]

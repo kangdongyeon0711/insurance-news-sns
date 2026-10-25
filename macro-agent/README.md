@@ -65,6 +65,7 @@ points:
     as_of: 2026-10-23
     meta: {name: KOSPI, unit: pt, cycle: D, chg_type: pct, topic_id: null}
 ```
+ECOS **100대 통계지표 엑셀**은 `python scripts/import_ecos100.py <파일.xlsx> --date YYYY-MM-DD`로 바로 변환됩니다(원본 사본 보관, 주요 60개 지표에 series_id·topic 매핑, 나머지는 `ecos100_번호`로 이름 보존).
 `python scripts/fetch_all.py --no-fetch --print`로 스냅샷을 다시 만듭니다. 수기 값은 `value_flag: 수기`로 표시되고, 나중에 API로 같은 날짜가 수집되면 API 값이 우선합니다(괴리 0.5% 초과 시 경고). 단일 시점 값이라 1주·1개월 변화는 API 수집 전까지 비어 있습니다.
 
 ## 3. 주간 사용 루틴

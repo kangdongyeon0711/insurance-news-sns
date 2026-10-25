@@ -74,3 +74,32 @@ def test_manual_points_merge(tmp_path):
     assert merged.iloc[-1] == 3.80
     assert s["kr_aa_spread"]["last_value_bp"] == 68.9 and s["kr_aa_spread"]["value_flag"] == "수기"
     assert s["kospi"]["last_value"] == 5550.3 and s["kospi"]["topic_id"] is None
+
+
+def test_manual_priority_and_ecos100_convert(tmp_path):
+    import openpyxl
+
+    import import_ecos100 as ie
+
+    mdir = tmp_path / "manual"
+    mdir.mkdir()
+    (mdir / "a.yaml").write_text("points:\n  - {series_id: kr_current_account, value: 46.1, as_of: 2026-08-31}\n", encoding="utf-8")
+    (mdir / "b.yaml").write_text("priority: 1\npoints:\n  - {series_id: kr_current_account, value: 46.113, as_of: 2026-08-31}\n",
+                                 encoding="utf-8")
+    snap = fetch_all.build_snapshot(tmp_path / "series", date(2026, 10, 25), manual_dir=mdir)
+    assert snap["series"]["kr_current_account"]["last_value"] == 46.113
+    # 엑셀 변환: 시점 해석·매핑·단위 환산
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    for row in [("분류", "100대통계명", "시점", "ECOS값", "단위"), ("시장금리", "국고채수익률(3년)", "20261023", 3.803, "%"),
+                ("국제수지", "경상수지", "202608", 46113.0, "백만달러"), ("성장률", "GDP(명목, 계절조정)", "2026Q2", 1.0, "십억원"),
+                ("인구", "합계출산율", "2025", 0.799, "명"), ("채권", "채권거래대금", "202610", 81.0, "조원")]:
+        ws.append(row)
+    x = tmp_path / "e.xlsx"
+    wb.save(x)
+    pts = {p["series_id"]: p for p in ie.convert(x, "2026-10-25")["points"]}
+    assert pts["ktb_3y"]["as_of"] == "2026-10-23" and pts["ktb_3y"]["meta"]["chg_type"] == "diff"
+    assert pts["kr_current_account"]["value"] == 46.113 and pts["kr_current_account"]["meta"]["unit"] == "십억USD"
+    assert pts["ecos100_003"]["as_of"] == "2026-06-30" and pts["ecos100_003"]["meta"]["cycle"] == "Q"
+    assert pts["ecos100_004"]["as_of"] == "2025-12-31"
+    assert pts["kr_bond_trading_value"]["as_of"] == "2026-10-25" and "진행 중" in pts["kr_bond_trading_value"]["note"]

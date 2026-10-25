@@ -1,0 +1,1112 @@
+# ECOS 100대 통계지표 — 2026-10-25 기준, scripts/import_ecos100.py로 변환 (원본: data/manual/ecos100_20261025.xlsx)
+# 수기 입력 데이터: fetch_all.py가 API 시계열과 병합(같은 날짜는 API 우선). priority 1 = 다른 수기 파일보다 우선.
+source: ECOS 100대 통계지표 엑셀 (사용자가 ECOS 홈페이지에서 직접 내려받음)
+retrieved: '2026-10-25'
+priority: 1
+raw_file: data/manual/ecos100_20261025.xlsx
+points:
+- series_id: kr_base_rate
+  value: 3.0
+  as_of: '2026-10-22'
+  period_label: '20261022'
+  raw_label: 시장금리 / 한국은행 기준금리
+  meta:
+    name: 한국은행 기준금리
+    unit: '%'
+    cycle: D
+    chg_type: diff
+    topic_id: kr_rate
+- series_id: kr_call_1d
+  value: 3.032
+  as_of: '2026-10-22'
+  period_label: '20261022'
+  raw_label: 시장금리 / 콜금리(익일물)
+  meta:
+    name: 콜금리(익일물)
+    unit: '%'
+    cycle: D
+    chg_type: diff
+    topic_id: kr_rate
+- series_id: kr_koribor_3m
+  value: 3.39
+  as_of: '2026-10-23'
+  period_label: '20261023'
+  raw_label: 시장금리 / KORIBOR(3개월)
+  meta:
+    name: KORIBOR(3개월)
+    unit: '%'
+    cycle: D
+    chg_type: diff
+    topic_id: kr_rate
+- series_id: kr_cd_91d
+  value: 3.26
+  as_of: '2026-10-23'
+  period_label: '20261023'
+  raw_label: 시장금리 / CD수익률(91일)
+  meta:
+    name: CD수익률(91일)
+    unit: '%'
+    cycle: D
+    chg_type: diff
+    topic_id: kr_rate
+- series_id: kr_msb_364d
+  value: 3.551
+  as_of: '2026-10-23'
+  period_label: '20261023'
+  raw_label: 시장금리 / 통안증권수익률(364일)
+  meta:
+    name: 통안증권수익률(364일)
+    unit: '%'
+    cycle: D
+    chg_type: diff
+    topic_id: kr_rate
+- series_id: ktb_3y
+  value: 3.803
+  as_of: '2026-10-23'
+  period_label: '20261023'
+  raw_label: 시장금리 / 국고채수익률(3년)
+  meta:
+    name: 국고채수익률(3년)
+    unit: '%'
+    cycle: D
+    chg_type: diff
+    topic_id: kr_govt_bond
+- series_id: ktb_5y
+  value: 3.948
+  as_of: '2026-10-23'
+  period_label: '20261023'
+  raw_label: 시장금리 / 국고채수익률(5년)
+  meta:
+    name: 국고채수익률(5년)
+    unit: '%'
+    cycle: D
+    chg_type: diff
+    topic_id: kr_govt_bond
+- series_id: kr_corp_aa_3y
+  value: 4.492
+  as_of: '2026-10-23'
+  period_label: '20261023'
+  raw_label: 시장금리 / 회사채수익률(3년,AA-)
+  meta:
+    name: 회사채수익률(3년,AA-)
+    unit: '%'
+    cycle: D
+    chg_type: diff
+    topic_id: kr_corp_bond
+- series_id: kr_deposit_rate
+  value: 3.21
+  as_of: '2026-08-31'
+  period_label: '202608'
+  raw_label: 여수신금리 / 예금은행 수신금리
+  meta:
+    name: 예금은행 수신금리
+    unit: '%'
+    cycle: M
+    chg_type: diff
+    topic_id: kr_rate
+- series_id: kr_loan_rate
+  value: 4.4
+  as_of: '2026-08-31'
+  period_label: '202608'
+  raw_label: 여수신금리 / 예금은행 대출금리
+  meta:
+    name: 예금은행 대출금리
+    unit: '%'
+    cycle: M
+    chg_type: diff
+    topic_id: kr_rate
+- series_id: ecos100_011
+  value: 2267776.4
+  as_of: '2026-08-31'
+  period_label: '202608'
+  raw_label: 예금/대출금 / 예금은행총예금(말잔)
+  meta:
+    name: 예금은행총예금(말잔)
+    unit: 십억원
+    cycle: M
+    chg_type: pct
+    topic_id: null
+- series_id: ecos100_012
+  value: 2586899.8
+  as_of: '2026-08-31'
+  period_label: '202608'
+  raw_label: 예금/대출금 / 예금은행대출금(말잔)
+  meta:
+    name: 예금은행대출금(말잔)
+    unit: 십억원
+    cycle: M
+    chg_type: pct
+    topic_id: null
+- series_id: kr_household_credit
+  value: 2019785.3
+  as_of: '2026-06-30'
+  period_label: 2026Q2
+  raw_label: 예금/대출금 / 가계신용
+  meta:
+    name: 가계신용
+    unit: 십억원
+    cycle: Q
+    chg_type: pct
+    topic_id: kr_rate
+- series_id: kr_household_delinquency
+  value: 0.45
+  as_of: '2026-08-31'
+  period_label: '202608'
+  raw_label: 예금/대출금 / 가계대출연체율
+  meta:
+    name: 가계대출연체율
+    unit: '%'
+    cycle: M
+    chg_type: diff
+    topic_id: kr_rate
+- series_id: kr_m1
+  value: 1351852.9
+  as_of: '2026-08-31'
+  period_label: '202608'
+  raw_label: 통화량 / M1(협의통화, 평잔)
+  meta:
+    name: M1(협의통화, 평잔)
+    unit: 십억원
+    cycle: M
+    chg_type: pct
+    topic_id: kr_rate
+- series_id: kr_m2
+  value: 4257820.8
+  as_of: '2026-08-31'
+  period_label: '202608'
+  raw_label: 통화량 / M2(광의통화, 평잔)
+  meta:
+    name: M2(광의통화, 평잔)
+    unit: 십억원
+    cycle: M
+    chg_type: pct
+    topic_id: kr_rate
+- series_id: kr_lf
+  value: 6380326.8
+  as_of: '2026-08-31'
+  period_label: '202608'
+  raw_label: 통화량 / Lf(평잔)
+  meta:
+    name: Lf(평잔)
+    unit: 십억원
+    cycle: M
+    chg_type: pct
+    topic_id: kr_rate
+- series_id: kr_l
+  value: 8094032.9
+  as_of: '2026-08-31'
+  period_label: '202608'
+  raw_label: 통화량 / L(말잔)
+  meta:
+    name: L(말잔)
+    unit: 십억원
+    cycle: M
+    chg_type: pct
+    topic_id: kr_rate
+- series_id: krw_usd_close
+  value: 1324.6
+  as_of: '2026-10-23'
+  period_label: '20261023'
+  raw_label: 환율 / 원/달러 환율(종가)
+  meta:
+    name: 원/달러 환율(종가)
+    unit: 원
+    cycle: D
+    chg_type: pct
+    topic_id: fx_krwusd
+- series_id: krw_jpy100
+  value: 846.12
+  as_of: '2026-10-23'
+  period_label: '20261023'
+  raw_label: 환율 / 원/엔(100엔) 환율(매매기준율)
+  meta:
+    name: 원/엔(100엔) 환율(매매기준율)
+    unit: 원
+    cycle: D
+    chg_type: pct
+    topic_id: fx_krwusd
+- series_id: krw_eur
+  value: 1486.4
+  as_of: '2026-10-23'
+  period_label: '20261023'
+  raw_label: 환율 / 원/유로 환율(매매기준율)
+  meta:
+    name: 원/유로 환율(매매기준율)
+    unit: 원
+    cycle: D
+    chg_type: pct
+    topic_id: fx_krwusd
+- series_id: krw_cny
+  value: 198.58
+  as_of: '2026-10-23'
+  period_label: '20261023'
+  raw_label: 환율 / 원/위안 환율(종가)
+  meta:
+    name: 원/위안 환율(종가)
+    unit: 원
+    cycle: D
+    chg_type: pct
+    topic_id: fx_krwusd
+- series_id: kospi
+  value: 5550.3
+  as_of: '2026-10-23'
+  period_label: '20261023'
+  raw_label: 주식 / 코스피지수
+  meta:
+    name: 코스피지수
+    unit: 1980.01.04=100
+    cycle: D
+    chg_type: pct
+    topic_id: null
+- series_id: kosdaq
+  value: 751.69
+  as_of: '2026-10-23'
+  period_label: '20261023'
+  raw_label: 주식 / 코스닥지수
+  meta:
+    name: 코스닥지수
+    unit: 1996.07.01=1000
+    cycle: D
+    chg_type: pct
+    topic_id: null
+- series_id: ecos100_025
+  value: 427.2
+  as_of: '2026-09-30'
+  period_label: '202609'
+  raw_label: 주식 / 주식거래대금(KOSPI)
+  meta:
+    name: 주식거래대금(KOSPI)
+    unit: 조원
+    cycle: M
+    chg_type: pct
+    topic_id: null
+- series_id: ecos100_026
+  value: 104.7
+  as_of: '2026-09-30'
+  period_label: '202609'
+  raw_label: 주식 / 투자자예탁금
+  meta:
+    name: 투자자예탁금
+    unit: 조원
+    cycle: M
+    chg_type: pct
+    topic_id: null
+- series_id: kr_bond_trading_value
+  value: 81.0
+  as_of: '2026-10-25'
+  period_label: '202610'
+  raw_label: 채권 / 채권거래대금
+  meta:
+    name: 채권거래대금
+    unit: 조원
+    cycle: M
+    chg_type: pct
+    topic_id: kr_govt_bond
+  note: 202610 진행 중 기간 값(누적·추계 등) — 기준일을 자료 기준일 2026-10-25로 둠
+- series_id: ktb_issuance
+  value: 21228.0
+  as_of: '2026-08-31'
+  period_label: '202608'
+  raw_label: 채권 / 국고채발행액
+  meta:
+    name: 국고채발행액
+    unit: 십억원
+    cycle: M
+    chg_type: pct
+    topic_id: kr_govt_bond
+- series_id: kr_gdp_qoq
+  value: 0.6
+  as_of: '2026-06-30'
+  period_label: 2026Q2
+  raw_label: 성장률 / 경제성장률(실질, 계절조정 전기대비)
+  meta:
+    name: 경제성장률(실질, 계절조정 전기대비)
+    unit: '%'
+    cycle: Q
+    chg_type: diff
+    topic_id: kr_rate
+- series_id: kr_consumption_qoq
+  value: 0.4
+  as_of: '2026-06-30'
+  period_label: 2026Q2
+  raw_label: 성장률 / 민간소비증감률(실질, 계절조정 전기대비)
+  meta:
+    name: 민간소비증감률(실질, 계절조정 전기대비)
+    unit: '%'
+    cycle: Q
+    chg_type: diff
+    topic_id: kr_rate
+- series_id: kr_capex_qoq
+  value: 0.2
+  as_of: '2026-06-30'
+  period_label: 2026Q2
+  raw_label: 성장률 / 설비투자증감률(실질, 계절조정 전기대비)
+  meta:
+    name: 설비투자증감률(실질, 계절조정 전기대비)
+    unit: '%'
+    cycle: Q
+    chg_type: diff
+    topic_id: kr_rate
+- series_id: kr_construction_qoq
+  value: -0.1
+  as_of: '2026-06-30'
+  period_label: 2026Q2
+  raw_label: 성장률 / 건설투자증감률(실질, 계절조정 전기대비)
+  meta:
+    name: 건설투자증감률(실질, 계절조정 전기대비)
+    unit: '%'
+    cycle: Q
+    chg_type: diff
+    topic_id: kr_alt_re
+- series_id: kr_goods_export_qoq
+  value: 1.1
+  as_of: '2026-06-30'
+  period_label: 2026Q2
+  raw_label: 성장률 / 재화의 수출 증감률(실질, 계절조정 전기대비)
+  meta:
+    name: 재화의 수출 증감률(실질, 계절조정 전기대비)
+    unit: '%'
+    cycle: Q
+    chg_type: diff
+    topic_id: fx_krwusd
+- series_id: ecos100_034
+  value: 834925.1
+  as_of: '2026-06-30'
+  period_label: 2026Q2
+  raw_label: 소득 / GDP(명목, 계절조정)
+  meta:
+    name: GDP(명목, 계절조정)
+    unit: 십억원
+    cycle: Q
+    chg_type: pct
+    topic_id: null
+- series_id: ecos100_035
+  value: 36963.4
+  as_of: '2025-12-31'
+  period_label: '2025'
+  raw_label: 소득 / 1인당GNI
+  meta:
+    name: 1인당GNI
+    unit: 달러
+    cycle: A
+    chg_type: pct
+    topic_id: null
+- series_id: ecos100_036
+  value: 45.6
+  as_of: '2026-06-30'
+  period_label: 2026Q2
+  raw_label: GDP대비 비율 / 총저축률
+  meta:
+    name: 총저축률
+    unit: '%'
+    cycle: Q
+    chg_type: diff
+    topic_id: null
+- series_id: ecos100_037
+  value: 24.2
+  as_of: '2026-06-30'
+  period_label: 2026Q2
+  raw_label: GDP대비 비율 / 국내총투자율
+  meta:
+    name: 국내총투자율
+    unit: '%'
+    cycle: Q
+    chg_type: diff
+    topic_id: null
+- series_id: ecos100_038
+  value: 91.5
+  as_of: '2025-12-31'
+  period_label: '2025'
+  raw_label: GDP대비 비율 / 수출입의 대 GNI 비율
+  meta:
+    name: 수출입의 대 GNI 비율
+    unit: '%'
+    cycle: A
+    chg_type: diff
+    topic_id: null
+- series_id: ecos100_039
+  value: 118.7
+  as_of: '2026-08-31'
+  period_label: '202608'
+  raw_label: 생산 / 전산업생산지수
+  meta:
+    name: 전산업생산지수
+    unit: 2020=100
+    cycle: M
+    chg_type: pct
+    topic_id: null
+- series_id: ecos100_040
+  value: 116.8
+  as_of: '2026-08-31'
+  period_label: '202608'
+  raw_label: 생산 / 제조업생산지수
+  meta:
+    name: 제조업생산지수
+    unit: 2020=100
+    cycle: M
+    chg_type: pct
+    topic_id: null
+- series_id: ecos100_041
+  value: 107.9
+  as_of: '2026-08-31'
+  period_label: '202608'
+  raw_label: 생산 / 제조업출하지수
+  meta:
+    name: 제조업출하지수
+    unit: 2020=100
+    cycle: M
+    chg_type: pct
+    topic_id: null
+- series_id: ecos100_042
+  value: 108.9
+  as_of: '2026-08-31'
+  period_label: '202608'
+  raw_label: 생산 / 제조업재고지수
+  meta:
+    name: 제조업재고지수
+    unit: 2020=100
+    cycle: M
+    chg_type: pct
+    topic_id: null
+- series_id: ecos100_043
+  value: 99.6
+  as_of: '2026-08-31'
+  period_label: '202608'
+  raw_label: 생산 / 제조업가동률지수
+  meta:
+    name: 제조업가동률지수
+    unit: 2020=100
+    cycle: M
+    chg_type: pct
+    topic_id: null
+- series_id: ecos100_044
+  value: 124.9
+  as_of: '2026-08-31'
+  period_label: '202608'
+  raw_label: 생산 / 서비스업생산지수
+  meta:
+    name: 서비스업생산지수
+    unit: 2020=100
+    cycle: M
+    chg_type: pct
+    topic_id: null
+- series_id: ecos100_045
+  value: 108.0
+  as_of: '2026-08-31'
+  period_label: '202608'
+  raw_label: 생산 / 도소매업생산지수
+  meta:
+    name: 도소매업생산지수
+    unit: 2020=100
+    cycle: M
+    chg_type: pct
+    topic_id: null
+- series_id: ecos100_046
+  value: 101.2
+  as_of: '2026-08-31'
+  period_label: '202608'
+  raw_label: 소비 / 소매판매액지수
+  meta:
+    name: 소매판매액지수
+    unit: 2020=100
+    cycle: M
+    chg_type: pct
+    topic_id: null
+- series_id: ecos100_047
+  value: 80429718.0
+  as_of: '2026-07-31'
+  period_label: '202607'
+  raw_label: 소비 / 개인신용카드사용액
+  meta:
+    name: 개인신용카드사용액
+    unit: 백만원
+    cycle: M
+    chg_type: pct
+    topic_id: null
+- series_id: ecos100_048
+  value: 94.1
+  as_of: '2026-08-31'
+  period_label: '202608'
+  raw_label: 소비 / 자동차판매액지수
+  meta:
+    name: 자동차판매액지수
+    unit: 2020=100
+    cycle: M
+    chg_type: pct
+    topic_id: null
+- series_id: ecos100_049
+  value: 131.1
+  as_of: '2026-08-31'
+  period_label: '202608'
+  raw_label: 투자 / 설비투자지수
+  meta:
+    name: 설비투자지수
+    unit: 2015=100
+    cycle: M
+    chg_type: pct
+    topic_id: null
+- series_id: ecos100_050
+  value: 116.8
+  as_of: '2026-08-31'
+  period_label: '202608'
+  raw_label: 투자 / 설비용 기계류내수출하지수
+  meta:
+    name: 설비용 기계류내수출하지수
+    unit: 2020=100
+    cycle: M
+    chg_type: pct
+    topic_id: null
+- series_id: ecos100_051
+  value: 4.1
+  as_of: '2026-08-31'
+  period_label: '202608'
+  raw_label: 투자 / 국내기계수주액
+  meta:
+    name: 국내기계수주액
+    unit: 조원
+    cycle: M
+    chg_type: pct
+    topic_id: null
+- series_id: kr_construction_completed
+  value: 9.6
+  as_of: '2026-08-31'
+  period_label: '202608'
+  raw_label: 투자 / 건설기성액
+  meta:
+    name: 건설기성액
+    unit: 조원
+    cycle: M
+    chg_type: pct
+    topic_id: kr_alt_re
+- series_id: kr_building_permits
+  value: 9169.14
+  as_of: '2026-08-31'
+  period_label: '202608'
+  raw_label: 투자 / 건축허가면적
+  meta:
+    name: 건축허가면적
+    unit: 천㎡
+    cycle: M
+    chg_type: pct
+    topic_id: kr_alt_re
+- series_id: kr_construction_orders
+  value: 14.4
+  as_of: '2026-08-31'
+  period_label: '202608'
+  raw_label: 투자 / 건설수주액
+  meta:
+    name: 건설수주액
+    unit: 조원
+    cycle: M
+    chg_type: pct
+    topic_id: kr_alt_re
+- series_id: kr_building_starts
+  value: 6297.68
+  as_of: '2026-08-31'
+  period_label: '202608'
+  raw_label: 투자 / 건축착공면적
+  meta:
+    name: 건축착공면적
+    unit: 천㎡
+    cycle: M
+    chg_type: pct
+    topic_id: kr_alt_re
+- series_id: kr_coincident_cycle
+  value: 101.7
+  as_of: '2026-08-31'
+  period_label: '202608'
+  raw_label: 경기순환지표 / 동행지수순환변동치
+  meta:
+    name: 동행지수순환변동치
+    unit: 2020=100
+    cycle: M
+    chg_type: pct
+    topic_id: kr_rate
+- series_id: kr_leading_cycle
+  value: 104.2
+  as_of: '2026-08-31'
+  period_label: '202608'
+  raw_label: 경기순환지표 / 선행지수순환변동치
+  meta:
+    name: 선행지수순환변동치
+    unit: 2020=100
+    cycle: M
+    chg_type: pct
+    topic_id: kr_rate
+- series_id: ecos100_058
+  value: 99.1
+  as_of: '2026-09-30'
+  period_label: '202609'
+  raw_label: 심리지표 / 전산업 기업심리지수실적
+  meta:
+    name: 전산업 기업심리지수실적
+    unit: ''
+    cycle: M
+    chg_type: pct
+    topic_id: null
+- series_id: kr_csi
+  value: 106.6
+  as_of: '2026-09-30'
+  period_label: '202609'
+  raw_label: 심리지표 / 소비자심리지수
+  meta:
+    name: 소비자심리지수
+    unit: ''
+    cycle: M
+    chg_type: pct
+    topic_id: kr_rate
+- series_id: ecos100_060
+  value: 99.9
+  as_of: '2026-09-30'
+  period_label: '202609'
+  raw_label: 심리지표 / 경제심리지수
+  meta:
+    name: 경제심리지수
+    unit: ''
+    cycle: M
+    chg_type: pct
+    topic_id: null
+- series_id: ecos100_061
+  value: 2.41
+  as_of: '2025-12-31'
+  period_label: '2025'
+  raw_label: 기업경영지표 / 제조업매출액증감률
+  meta:
+    name: 제조업매출액증감률
+    unit: '%'
+    cycle: A
+    chg_type: diff
+    topic_id: null
+- series_id: ecos100_062
+  value: 6.92
+  as_of: '2025-12-31'
+  period_label: '2025'
+  raw_label: 기업경영지표 / 제조업매출액세전순이익률
+  meta:
+    name: 제조업매출액세전순이익률
+    unit: '%'
+    cycle: A
+    chg_type: diff
+    topic_id: null
+- series_id: ecos100_063
+  value: 74.4
+  as_of: '2025-12-31'
+  period_label: '2025'
+  raw_label: 기업경영지표 / 제조업부채비율
+  meta:
+    name: 제조업부채비율
+    unit: '%'
+    cycle: A
+    chg_type: diff
+    topic_id: null
+- series_id: ecos100_064
+  value: 6969.4
+  as_of: '2024-12-31'
+  period_label: 2024Q4
+  raw_label: 가계 / 가구당월평균소득
+  meta:
+    name: 가구당월평균소득
+    unit: 천원
+    cycle: Q
+    chg_type: pct
+    topic_id: null
+- series_id: ecos100_065
+  value: 68.1
+  as_of: '2024-12-31'
+  period_label: 2024Q4
+  raw_label: 가계 / 평균소비성향
+  meta:
+    name: 평균소비성향
+    unit: '%'
+    cycle: Q
+    chg_type: diff
+    topic_id: null
+- series_id: ecos100_066
+  value: 0.325
+  as_of: '2024-12-31'
+  period_label: '2024'
+  raw_label: 소득분배지표 / 지니계수
+  meta:
+    name: 지니계수
+    unit: ''
+    cycle: A
+    chg_type: pct
+    topic_id: null
+- series_id: ecos100_067
+  value: 5.78
+  as_of: '2024-12-31'
+  period_label: '2024'
+  raw_label: 소득분배지표 / 5분위배율
+  meta:
+    name: 5분위배율
+    unit: ''
+    cycle: A
+    chg_type: pct
+    topic_id: null
+- series_id: kr_unemployment
+  value: 2.0
+  as_of: '2026-09-30'
+  period_label: '202609'
+  raw_label: 고용 / 실업률
+  meta:
+    name: 실업률
+    unit: '%'
+    cycle: M
+    chg_type: diff
+    topic_id: kr_rate
+- series_id: kr_employment_rate
+  value: 63.5
+  as_of: '2026-09-30'
+  period_label: '202609'
+  raw_label: 고용 / 고용률
+  meta:
+    name: 고용률
+    unit: '%'
+    cycle: M
+    chg_type: diff
+    topic_id: kr_rate
+- series_id: ecos100_070
+  value: 29866.0
+  as_of: '2026-09-30'
+  period_label: '202609'
+  raw_label: 고용 / 경제활동인구
+  meta:
+    name: 경제활동인구
+    unit: 천명
+    cycle: M
+    chg_type: pct
+    topic_id: null
+- series_id: ecos100_071
+  value: 29266.0
+  as_of: '2026-09-30'
+  period_label: '202609'
+  raw_label: 고용 / 취업자수
+  meta:
+    name: 취업자수
+    unit: 천명
+    cycle: M
+    chg_type: pct
+    topic_id: null
+- series_id: ecos100_072
+  value: 119.5
+  as_of: '2026-06-30'
+  period_label: 2026Q2
+  raw_label: 노동 / 시간당명목임금지수
+  meta:
+    name: 시간당명목임금지수
+    unit: 2020=100
+    cycle: Q
+    chg_type: pct
+    topic_id: null
+- series_id: ecos100_073
+  value: 113.7
+  as_of: '2026-06-30'
+  period_label: 2026Q2
+  raw_label: 노동 / 노동생산성지수
+  meta:
+    name: 노동생산성지수
+    unit: 2020=100
+    cycle: Q
+    chg_type: pct
+    topic_id: null
+- series_id: ecos100_074
+  value: 105.1
+  as_of: '2026-06-30'
+  period_label: 2026Q2
+  raw_label: 노동 / 단위노동비용지수
+  meta:
+    name: 단위노동비용지수
+    unit: 2020=100
+    cycle: Q
+    chg_type: pct
+    topic_id: null
+- series_id: ecos100_075
+  value: 51609.1
+  as_of: '2026-10-25'
+  period_label: '2026'
+  raw_label: 인구 / 추계인구
+  meta:
+    name: 추계인구
+    unit: 천명
+    cycle: A
+    chg_type: pct
+    topic_id: null
+  note: 2026 진행 중 기간 값(누적·추계 등) — 기준일을 자료 기준일 2026-10-25로 둠
+- series_id: ecos100_076
+  value: 21.6
+  as_of: '2026-10-25'
+  period_label: '2026'
+  raw_label: 인구 / 고령인구비율
+  meta:
+    name: 고령인구비율
+    unit: '%'
+    cycle: A
+    chg_type: diff
+    topic_id: null
+  note: 2026 진행 중 기간 값(누적·추계 등) — 기준일을 자료 기준일 2026-10-25로 둠
+- series_id: ecos100_077
+  value: 0.799
+  as_of: '2025-12-31'
+  period_label: '2025'
+  raw_label: 인구 / 합계출산율
+  meta:
+    name: 합계출산율
+    unit: 명
+    cycle: A
+    chg_type: pct
+    topic_id: null
+- series_id: kr_current_account
+  value: 46.113
+  as_of: '2026-08-31'
+  period_label: '202608'
+  raw_label: 국제수지 / 경상수지
+  meta:
+    name: 경상수지
+    unit: 십억USD
+    cycle: M
+    chg_type: pct
+    topic_id: fx_krwusd
+  note: 원자료 46113 백만달러 → 십억USD로 환산
+- series_id: kr_fdi_assets
+  value: 6216.0
+  as_of: '2026-08-31'
+  period_label: '202608'
+  raw_label: 국제수지 / 직접투자(자산)
+  meta:
+    name: 직접투자(자산)
+    unit: 백만달러
+    cycle: M
+    chg_type: pct
+    topic_id: fx_krwusd
+- series_id: kr_fdi_liabilities
+  value: -1608.7
+  as_of: '2026-08-31'
+  period_label: '202608'
+  raw_label: 국제수지 / 직접투자(부채)
+  meta:
+    name: 직접투자(부채)
+    unit: 백만달러
+    cycle: M
+    chg_type: pct
+    topic_id: fx_krwusd
+- series_id: kr_portfolio_inv_assets
+  value: 16595.0
+  as_of: '2026-08-31'
+  period_label: '202608'
+  raw_label: 국제수지 / 증권투자(자산)
+  meta:
+    name: 증권투자(자산)
+    unit: 백만달러
+    cycle: M
+    chg_type: pct
+    topic_id: fx_krwusd
+- series_id: kr_portfolio_inv_liabilities
+  value: -4847.7
+  as_of: '2026-08-31'
+  period_label: '202608'
+  raw_label: 국제수지 / 증권투자(부채)
+  meta:
+    name: 증권투자(부채)
+    unit: 백만달러
+    cycle: M
+    chg_type: pct
+    topic_id: fx_krwusd
+- series_id: kr_export_value_index
+  value: 287.41
+  as_of: '2026-09-30'
+  period_label: '202609'
+  raw_label: 통관수출입 / 수출금액지수
+  meta:
+    name: 수출금액지수
+    unit: 2020=100
+    cycle: M
+    chg_type: pct
+    topic_id: fx_krwusd
+- series_id: kr_import_value_index
+  value: 183.54
+  as_of: '2026-09-30'
+  period_label: '202609'
+  raw_label: 통관수출입 / 수입금액지수
+  meta:
+    name: 수입금액지수
+    unit: 2020=100
+    cycle: M
+    chg_type: pct
+    topic_id: fx_krwusd
+- series_id: kr_terms_of_trade
+  value: 119.52
+  as_of: '2026-09-30'
+  period_label: '202609'
+  raw_label: 통관수출입 / 순상품교역조건지수
+  meta:
+    name: 순상품교역조건지수
+    unit: 2020=100
+    cycle: M
+    chg_type: pct
+    topic_id: fx_krwusd
+- series_id: ecos100_086
+  value: 216.7
+  as_of: '2026-09-30'
+  period_label: '202609'
+  raw_label: 통관수출입 / 소득교역조건지수
+  meta:
+    name: 소득교역조건지수
+    unit: 2020=100
+    cycle: M
+    chg_type: pct
+    topic_id: null
+- series_id: kr_fx_reserves
+  value: 440.556657
+  as_of: '2026-09-30'
+  period_label: '202609'
+  raw_label: 대외채권/채무 / 외환보유액
+  meta:
+    name: 외환보유액
+    unit: 십억USD
+    cycle: M
+    chg_type: pct
+    topic_id: fx_krwusd
+  note: 원자료 4.40557e+08 천달러 → 십억USD로 환산
+- series_id: kr_external_debt
+  value: 812831.9
+  as_of: '2026-06-30'
+  period_label: 2026Q2
+  raw_label: 대외채권/채무 / 대외채무
+  meta:
+    name: 대외채무
+    unit: 백만달러
+    cycle: Q
+    chg_type: pct
+    topic_id: fx_krwusd
+- series_id: kr_external_assets
+  value: 1180626.7
+  as_of: '2026-06-30'
+  period_label: 2026Q2
+  raw_label: 대외채권/채무 / 대외채권
+  meta:
+    name: 대외채권
+    unit: 백만달러
+    cycle: Q
+    chg_type: pct
+    topic_id: fx_krwusd
+- series_id: kr_cpi
+  value: 120.43
+  as_of: '2026-09-30'
+  period_label: '202609'
+  raw_label: 소비자/생산자 물가 / 소비자물가지수
+  meta:
+    name: 소비자물가지수
+    unit: 2020=100
+    cycle: M
+    chg_type: pct
+    topic_id: kr_rate
+- series_id: kr_core_cpi
+  value: 118.71
+  as_of: '2026-09-30'
+  period_label: '202609'
+  raw_label: 소비자/생산자 물가 / 농산물 및 석유류제외 소비자물가지수
+  meta:
+    name: 농산물 및 석유류제외 소비자물가지수
+    unit: 2020=100
+    cycle: M
+    chg_type: pct
+    topic_id: kr_rate
+- series_id: kr_living_cpi
+  value: 123.4
+  as_of: '2026-09-30'
+  period_label: '202609'
+  raw_label: 소비자/생산자 물가 / 생활물가지수
+  meta:
+    name: 생활물가지수
+    unit: 2020=100
+    cycle: M
+    chg_type: pct
+    topic_id: kr_rate
+- series_id: kr_ppi
+  value: 129.78
+  as_of: '2026-09-30'
+  period_label: '202609'
+  raw_label: 소비자/생산자 물가 / 생산자물가지수
+  meta:
+    name: 생산자물가지수
+    unit: 2020=100
+    cycle: M
+    chg_type: pct
+    topic_id: kr_rate
+- series_id: kr_export_price
+  value: 182.29
+  as_of: '2026-09-30'
+  period_label: '202609'
+  raw_label: 수출입 물가 / 수출물가지수
+  meta:
+    name: 수출물가지수
+    unit: 2020=100
+    cycle: M
+    chg_type: pct
+    topic_id: fx_krwusd
+- series_id: kr_import_price
+  value: 159.37
+  as_of: '2026-09-30'
+  period_label: '202609'
+  raw_label: 수출입 물가 / 수입물가지수
+  meta:
+    name: 수입물가지수
+    unit: 2020=100
+    cycle: M
+    chg_type: pct
+    topic_id: oil
+- series_id: kr_house_price
+  value: 101.4
+  as_of: '2026-01-31'
+  period_label: '202601'
+  raw_label: 부동산 가격 / 주택매매가격지수
+  meta:
+    name: 주택매매가격지수
+    unit: 2025.03=100
+    cycle: M
+    chg_type: pct
+    topic_id: kr_alt_re
+- series_id: kr_jeonse_price
+  value: 101.2
+  as_of: '2026-01-31'
+  period_label: '202601'
+  raw_label: 부동산 가격 / 주택전세가격지수
+  meta:
+    name: 주택전세가격지수
+    unit: 2025.03=100
+    cycle: M
+    chg_type: pct
+    topic_id: kr_alt_re
+- series_id: kr_land_price_chg
+  value: 0.202
+  as_of: '2026-08-31'
+  period_label: '202608'
+  raw_label: 부동산 가격 / 지가변동률(전기대비)
+  meta:
+    name: 지가변동률(전기대비)
+    unit: '%'
+    cycle: M
+    chg_type: diff
+    topic_id: kr_alt_re
+- series_id: dubai
+  value: 111.83
+  as_of: '2026-09-30'
+  period_label: '202609'
+  raw_label: 국제원자재가격 / Dubai유(현물)
+  meta:
+    name: Dubai유(현물)
+    unit: 달러/배럴
+    cycle: M
+    chg_type: pct
+    topic_id: oil
+- series_id: gold
+  value: 4334.75
+  as_of: '2026-09-30'
+  period_label: '202609'
+  raw_label: 국제원자재가격 / 금
+  meta:
+    name: 금
+    unit: 달러/트로이온스
+    cycle: M
+    chg_type: pct
+    topic_id: null
