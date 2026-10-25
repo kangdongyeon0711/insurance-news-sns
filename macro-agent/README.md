@@ -78,6 +78,14 @@ ECOS **100대 통계지표 엑셀**은 `python scripts/import_ecos100.py <파일
 
 `/ingest`만 따로 실행해 리포트 → view_card 변환만 할 수도 있습니다.
 
+운용수익률 제고 전략(배분 최적화): `/portfolio-impact` 이후
+```bash
+python scripts/optimize_allocation.py --portfolio knowledge/portfolios/현대해상/2026Q2.json --shocks reports/tmp/{날짜}_factor_shocks.json --date {날짜}
+python scripts/opt_sensitivity.py --portfolio ... --shocks ... --date {날짜}      # 가정 민감도
+python scripts/render_yield_strategy.py --company 현대해상 --date {날짜}            # 골격(표) 생성 → 서술 TODO 채움
+```
+가정은 `config/yield_assumptions.yaml`(신규 자금 기대수익·기대손실·K-ICS 계수 범위·연간 조정 한도·전략별 제약). 3년 경로는 `class_bounds_pp`를 3배로 한 사본을 `--assumptions`로 넘겨 계산합니다. 투자손익 분해는 `knowledge/portfolios/{회사}/income_{기간}.json`.
+
 ### 파일명 규칙
 | 종류 | 형식 | 예 |
 |---|---|---|
@@ -162,6 +170,7 @@ tests/       pytest (calc_impact 손계산, ingest, 스냅샷, 스키마 검증,
 18. **해외 인프라 할인율 팩터 분리**: 명세의 `infra_discount_rate_bp`는 국내·해외 공통이었는데, build_shocks는 팩터당 주인 topic 1개 값만 남겨 해외 인프라 자산에도 국내 할인율이 적용되는 문제가 있었습니다. 그래서 `us_infra_discount_rate_bp`(주인 us_alt_infra)를 추가하고, calc_impact가 region ≠ KR 인프라 자산에 이 값을 쓰도록 했습니다(없으면 국내 값으로 근사하고 추정 표시).
 19. **대표 지표·오래된 데이터 판정 일원화**: 브리프 한 장 요약과 워드 요약본은 `render_brief.PREF`의 항목별 대표 지표 순서를 공유합니다. 웹확인 값은 에이전트가 적은 stale 필드 대신 기준일로 판정하고(일자 7일, 월 45일), 정책금리는 결정일 기준이라 제외합니다.
 20. **업종 범용화**: 보험사 전용이던 파이프라인 B를 entity_type(insurer/securities/asset_manager/bank/other)으로 일반화했습니다. 업종별 기본 듀레이션(`assumptions.duration_by_entity`), 제약(`constraints.entity_overrides`), 우발채무(`contingent`, 손익 포함), AUM 보수 영향(`aum`, 대차대조표 합계와 분리), 공시 금리 민감도 캘리브레이션(`rate_sensitivity_disclosed`)을 추가했습니다. 기존 보험사 익스포저는 entity_type이 없어도 insurer로 처리됩니다.
+21. **배분 최적화(LP)**: `optimize_allocation.py`는 자산군별 기대 총수익(시장 base + 스프레드 − 기대손실 − 헤지비용 + 확률가중 평가변화 ÷ 2년)을 최대화합니다. 제약은 K-ICS 하한(위험계수 상단 × 분산효과, 요구자본은 공시 비율로 역산), 공시 듀레이션 갭, Bear 추가 손실, 대체 상한, 현금 하한, 자산군별 연간 조정 한도입니다. 한도가 없으면 해가 한 자산군에 몰리므로(코너 해), 만기 재투자·딜 파이프라인 속도를 한도로 둡니다. K-ICS 계수 중 주식·부동산만 웹확인, 나머지는 가정 범위입니다.
 
 ## 7. 미검증 시리즈 코드
 

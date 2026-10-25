@@ -1,0 +1,42 @@
+{
+  "company": "현대해상",
+  "period": "1H26",
+  "unit": "십억원",
+  "source": "processed/filings/현대해상_2026Q2_IR데이터 sheet:(4) Investment (백만원 ÷ 1,000)",
+  "avg_invested_assets_krw_bn": 46304.9,
+  "avg_basis": "(2025-12말 47,015.8 + 2026-06말 45,594.0) / 2",
+  "components": {
+    "이자·배당": {
+      "1H26": 868.1,
+      "1H25": 829.5,
+      "annualized_yield_pct_1H26": 3.75
+    },
+    "유가증권 평가·처분(순)": {
+      "1H26": -57.6,
+      "1H25": 21.2,
+      "annualized_yield_pct_1H26": -0.249
+    },
+    "파생·외환(순)": {
+      "1H26": -71.5,
+      "1H25": -63.3,
+      "annualized_yield_pct_1H26": -0.309
+    },
+    "기타(순)": {
+      "1H26": -163.4,
+      "1H25": -149.0,
+      "annualized_yield_pct_1H26": -0.706
+    },
+    "재산관리비": {
+      "1H26": -6.9,
+      "1H25": -5.1,
+      "annualized_yield_pct_1H26": -0.03
+    }
+  },
+  "total_1H26": 568.8,
+  "total_1H25": 633.4,
+  "sum_check_1H26": 568.8,
+  "foreign_securities_avg_krw_bn": 7213.1,
+  "fx_deriv_drag_vs_foreign_pct": 1.98,
+  "oci_krw_bn_2026_06": -2474.5076,
+  "oci_source": "sheet:(6) BS 기타포괄손익"
+}

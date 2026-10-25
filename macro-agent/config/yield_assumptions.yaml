@@ -1,0 +1,65 @@
+# 신규 자금(재투자) 기준 자산군별 기대수익·기대손실·K-ICS 자본 소모 가정 — optimize_allocation.py 입력
+# 기준일 2026-10-25. base는 시장 시계열(series_id)을 data/latest_snapshot.json 또는
+# knowledge/macro_topics/{date}/*.json indicators에서 찾아 쓴다(value_flag 그대로 전파: 수기/웹확인).
+# spread_bp·el_pct·charge·duration은 모두 "가정"(근거를 note에 적음). 실제 투자 시 개별 딜 조건으로 대체할 것.
+#
+# 기대 총수익(연) = base + spread − el(기대손실) − hedge_cost(외화·헤지분) + 확률가중 평가변화 ÷ horizon_years
+#   확률가중 평가변화는 calc_impact의 장기 Base/Bull/Bear 결과(자산군별 %)를 사용 → 매크로 전망이 배분에 반영됨.
+# K-ICS 추가 요구자본(근사) = Σ 증가 익스포저 × charge × diversification (감소분은 같은 방식으로 차감)
+#   charge 출처: 주식 35%(선진 상장)·48%(기타)·부동산 25%는 웹확인(2차 출처, 감독규정 원문 미대조).
+#   신용·스프레드·대체(대출형) 계수는 미확인 → 범위(low/high)로 두고 결과도 범위로 낸다.
+
+horizon_years: 2.0          # 장기 시나리오(1~3년)의 평가 변화를 연 단위로 환산할 때 쓰는 기간 (가정)
+diversification: 0.7        # 시장·신용위험 분산효과 근사 (가정)
+hedge_cost:
+  # 연 헤지비용 ≈ 미국 단기금리 − 한국 단기금리 + 베이시스. FFR 중간값과 CD 91일로 계산 + 베이시스(가정)
+  usd_short: {series: us_ffr_upper, adj_bp: -12.5}   # 목표 범위 중간값 = 상단 − 12.5bp
+  krw_short: {series: kr_cd_91d}
+  basis_bp: 30                                       # 통화 스왑 베이시스 등 (가정)
+
+classes:
+  현금예금:       {base: kr_cd_91d,     spread_bp: 0,   el_pct: 0.00, charge: [0.00, 0.00], duration: 0.0,  note: "CD 91일 수준"}
+  국공채:         {base: ktb_30y,       spread_bp: 0,   el_pct: 0.00, charge: [0.00, 0.00], duration: 17.0, note: "초장기 국고(ALM 매칭) — 금리위험은 ALM 제약으로 관리"}
+  특수채:         {base: ktb_5y,        spread_bp: 25,  el_pct: 0.02, charge: [0.005, 0.02], duration: 4.5, note: "공사채·은행채 AAA, 국고 5년 + 25bp (가정)"}
+  회사채:         {base: kr_corp_aa_3y, spread_bp: 0,   el_pct: 0.05, charge: [0.02, 0.05], duration: 2.8,  note: "AA- 3년 민평 수준(수기). AA 이상 우량물"}
+  대출-기업:      {base: kr_loan_rate,  spread_bp: 20,  el_pct: 0.30, charge: [0.04, 0.10], duration: 2.0,  note: "우량 기업대출·인수금융 선순위. 예금은행 대출금리(8월, 수기) + 20bp"}
+  대출-부동산담보: {base: kr_loan_rate,  spread_bp: -20, el_pct: 0.10, charge: [0.02, 0.05], duration: 4.0,  note: "주택담보 선순위(LTV ≤ 60%)"}
+  대체-사모대출:  {base: kr_cd_91d,     spread_bp: 300, el_pct: 0.60, charge: [0.06, 0.15], duration: 1.0,  region: KR, note: "부동산 대출형 사모펀드(선순위 중심, 변동금리) — 기사의 '중위험·중수익'. PF·브릿지 제외 가정"}
+  대체-인프라:    {base: ktb_10y,       spread_bp: 150, el_pct: 0.20, charge: [0.05, 0.20], duration: 8.0,  note: "국내 인프라 대출·지분 혼합 펀드 — 장기 ALM 매칭 기여"}
+  부동산:         {base: null, fixed_pct: 4.5, el_pct: 0.00, charge: [0.25, 0.25], duration: 0.0, note: "코어 오피스·물류 인컴수익률 ≈ 캡레이트 4.5%(assumptions.cap_rate.KR). 시니어하우징 등 개발형은 PF 성격으로 별도"}
+  대체-PE:        {base: null, fixed_pct: 9.0, el_pct: 0.00, charge: [0.48, 0.48], duration: 0.0, note: "기대 IRR 9% (가정), 기타 주식 48% 충격 근사"}
+  해외채:         {base: ust_10y, spread_series: us_ig_oas, el_pct: 0.10, charge: [0.03, 0.06], duration: 7.5, hedged: true, region: US, currency: USD, note: "UST 10년 + IG OAS, 100% 헤지(사용자 가정)"}
+  주식:           {base: null, fixed_pct: 7.0, el_pct: 0.00, charge: [0.35, 0.35], duration: 0.0, note: "KOSPI 기대수익 7%(배당 포함, 가정)"}
+  수익증권:       {base: null, fixed_pct: 5.0, el_pct: 0.20, charge: [0.15, 0.30], duration: 0.0, note: "기타 혼합형 펀드 (가정)"}
+
+# 자산군별 연간 조정 한도(%p, 운용자산 대비) — 전략의 step_pp보다 우선. 근거(가정):
+#  - 국공채·특수채·회사채 감소: 매도 시 FVOCI 평가손(기타포괄손익 −2.47조) 실현 → 만기 도래분 재투자 범위로 제한
+#  - 대출 감소: 자연 상환 속도, 부동산 감소: 매각 유동성
+#  - PE·주식·사모대출·인프라 증가: 딜 파이프라인·집중 위험(신규 약정은 수년에 걸쳐 집행)
+class_bounds_pp:
+  국공채: [-1.0, 3.0]
+  특수채: [-1.5, 3.0]
+  회사채: [-1.0, 3.0]
+  대출-기업: [-1.0, 2.0]
+  대출-부동산담보: [-1.0, 1.5]
+  부동산: [-1.0, 0.5]
+  대체-PE: [-0.5, 1.0]
+  주식: [-0.5, 0.5]
+  대체-사모대출: [0.0, 2.0]
+  대체-인프라: [-0.5, 1.5]
+  해외채: [-2.0, 2.0]
+  수익증권: [-1.27, 0.5]
+
+# 매매 불가·정책 자산(최적화에서 고정)
+fixed_classes: [기타, 대출-신용/약관]
+
+# 전략별 제약 (K-ICS 하한, 대체투자 상한, Bear 손실 추가 허용, 1회 조정폭, 현금 하한, 듀레이션 갭 범위)
+# gap 범위는 공시 기준 갭(자산 D − 부채 D, PAP)에 대한 변화 허용치. 공시 금리민감 자산 기준액은 portfolio에서 역산.
+strategies:
+  보수형: {kics_floor: 2.05, alt_cap: 0.15, bear_extra_bp: 0,  step_pp: 2.0, cash_min: 0.03, gap_range: [-0.3, 1.0]}
+  균형형: {kics_floor: 2.00, alt_cap: 0.17, bear_extra_bp: 30, step_pp: 3.0, cash_min: 0.03, gap_range: [-0.3, 1.0]}
+  적극형: {kics_floor: 1.90, alt_cap: 0.20, bear_extra_bp: 60, step_pp: 4.0, cash_min: 0.025, gap_range: [-0.5, 1.0]}
+alt_classes: [부동산, 대체-인프라, 대체-PE, 대체-사모대출]
+
+# K-ICS 현재 가용·요구자본 (조원) — 공시값을 portfolio key_metrics/capital_ratios에서 못 찾으면 여기 값 사용
+kics_capital_fallback: {available_trn: 15.3, required_trn: 7.3, source: "현대해상 IR p.10 자본구성(2Q26), 조원 단위 반올림"}
