@@ -1,0 +1,57 @@
+{
+  "card_id": "20261022_미래_FixedIncomeComment_10월금통위",
+  "house": "미래에셋증권",
+  "report_title": "Fixed Income Comment: [10월 금통위] 경기 전망과 긴축 속도의 괴리",
+  "published": "2026-10-22",
+  "published_estimated": false,
+  "source_file": "processed/reports/20261022_미래_FixedIncomeComment_10월금통위.pdf",
+  "topics": ["kr_rate", "kr_govt_bond", "us_rate"],
+  "views": [
+    {
+      "topic_id": "kr_rate",
+      "variable": "kr_base_rate",
+      "direction": "상승",
+      "horizon": "단기",
+      "target": "11월 금통위 추가 인상",
+      "rationale": "10월 3.00% 만장일치 동결은 앞선 빅스텝 효과 점검 성격이며, 한은이 성장·물가 전망을 8월보다 높여 잡을 것으로 보여 11월 회의에서 전망 상향과 함께 인상할 가능성이 크다고 봄.",
+      "page_ref": "p.1-2",
+      "conviction": "높음"
+    },
+    {
+      "topic_id": "kr_rate",
+      "variable": "kr_base_rate",
+      "direction": "횡보",
+      "horizon": "장기",
+      "target": "2027년 상반기 3.25%에서 동결",
+      "rationale": "반도체 호황이 고용·소비로 번지는 효과가 제한적이고 가계부채·자산시장 부담도 커 수요측 물가 압력이 크지 않다고 판단. 따라서 3.25% 도달 이후 추가 인상에는 한은이 신중할 것으로 보고 최종금리 3.25% 전망을 유지.",
+      "page_ref": "p.1-2",
+      "conviction": "높음"
+    },
+    {
+      "topic_id": "kr_govt_bond",
+      "variable": "ktb_3y",
+      "direction": "횡보",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "총재 발언이 비둘기적으로 읽히며 국고채 금리가 반락했고 시장이 예상하는 1~2회 추가 인상 경로와 부합해 안정 요인. 다만 견조한 3Q GDP·미 물가·연준 경로에 따른 대외금리 변동성을 경계해 듀레이션 중립과 금리 하락 시 일부 차익실현 등 연말 리스크 관리를 권고. 만기 특정 없어 3년물에 매핑.",
+      "page_ref": "p.1-2",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "us_rate",
+      "variable": "us_ffr",
+      "direction": "횡보",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "미국 코어 인플레이션이 다시 빨라지고 있어 연준이 다음 FOMC에서도 매파적 기조를 유지할 가능성이 높다고 봄. 금리 수준 전망은 제시하지 않은 부수적 언급.",
+      "page_ref": "p.2",
+      "conviction": "낮음"
+    }
+  ],
+  "key_risks": [
+    "견조한 국내외 3Q GDP와 미국 코어 인플레이션 재가속에 따른 대외금리 변동성",
+    "연준의 매파 기조 지속",
+    "한은의 성장·물가 전망 상향에 따른 긴축 경계 재부각"
+  ],
+  "notes": "성격: 한은 금통위 리뷰(Fixed Income Comment, 4쪽). 원문이 이미지 PDF라 추출 텍스트가 거의 없어 PDF를 시각적으로 직접 읽어 작성. 한은은 2027년 성장률 3%대 상향, 근원물가 2.5% 상회 가능성을 시사(p.1-2); 당사 GDP 전망은 26년 하반기 3.7%, 27년 상반기 3.4%, 27년 하반기 2.3%(p.2 그림1, 데이터). p.3은 8월/10월 통방문 비교표, p.4 컴플라이언스. 환율은 총재 발언(원화 10% 강세 시 저소득층 구매력 개선, BIS 실효환율 기준 아직 약세)만 있고 하우스 전망이 없어 fx_krwusd view 미작성."
+}

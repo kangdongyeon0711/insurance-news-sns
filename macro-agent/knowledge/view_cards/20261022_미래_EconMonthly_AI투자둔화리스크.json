@@ -1,0 +1,61 @@
+{
+  "card_id": "20261022_미래_EconMonthly_AI투자둔화리스크",
+  "house": "미래에셋증권",
+  "report_title": "Economic Monthly: AI 투자 둔화 시나리오의 리스크 분석",
+  "published": "2026-10-22",
+  "published_estimated": false,
+  "source_file": "processed/reports/20261022_미래_EconMonthly_AI투자둔화리스크.pdf",
+  "topics": [
+    "us_corp_bond",
+    "us_alt_infra",
+    "us_alt_pd"
+  ],
+  "views": [
+    {
+      "topic_id": "us_corp_bond",
+      "variable": "hyperscaler_credit_spillover_risk",
+      "direction": "중립",
+      "horizon": "장기",
+      "target": null,
+      "rationale": "AI 관련 계약상 총익스포저는 공시부채보다 훨씬 크지만, 스트레스 테스트상 하이퍼스케일러가 현금여력으로 보증·약정을 이행해 손실 대부분을 주주가 흡수. 외부 채권자로의 손실 전이는 경제적 가치가 76~84% 이상 훼손될 때만 급증해 시스템 전이 가능성은 낮다고 봄.",
+      "page_ref": "p.1",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "us_corp_bond",
+      "variable": "neocloud_credit_spread",
+      "direction": "확대",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "외부 차입 의존도가 높은 네오클라우드는 금리 상승·금융여건 악화에 따른 조달비용 부담이 현재 가장 취약한 부분으로, 하이퍼스케일러 대비 CDS 격차 확대가 이를 반영. 명시적 스프레드 전망은 아니며 리스크 진단 성격.",
+      "page_ref": "p.13",
+      "conviction": "낮음"
+    },
+    {
+      "topic_id": "us_alt_infra",
+      "variable": "datacenter_financing_risk",
+      "direction": "중립",
+      "horizon": "장기",
+      "target": null,
+      "rationale": "AI 데이터센터 투자는 역사적 인프라 붐을 넘는 규모이나 클라우드 매출 증가·GPU 임대가격 견조로 수요 급감은 기본 시나리오가 아님. 다만 전력연결·준공 지연, GPU 기술 진부화, 담보가치 하락 시 차환 가능액 축소로 유동성 위험이 생길 수 있다고 경고.",
+      "page_ref": "p.2-3",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "us_alt_pd",
+      "variable": "datacenter_spv_lending_risk",
+      "direction": "중립",
+      "horizon": "장기",
+      "target": null,
+      "rationale": "SPV 차입·장기임대·지급보증으로 얽힌 그림자 차입 구조에서 대주의 회수는 보증기업 신용에 의존. 기준 시나리오에선 외부 손실이 미미하나, 심각 시나리오에선 임대인·대출기관·채권자 손실이 커지고 단기 임대 갱신과 장기 채권 간 만기 미스매치도 부담.",
+      "page_ref": "p.5-6",
+      "conviction": "낮음"
+    }
+  ],
+  "key_risks": [
+    "AI 투자의 구조적 둔화(수요 미달·중국 저가 모델 경쟁)로 보증기업 본업 현금흐름과 보증 청구가 동시에 악화되는 역방향 위험",
+    "하이퍼스케일러 잉여현금흐름 회복(컨센서스상 2028년 흑자 전환) 지연과 조달비용 상승",
+    "GPU 공급업체 1곳에 지급보증이 집중돼 해당 기업 부실 시 다른 채권자로 손실이 급격히 전이"
+  ],
+  "notes": "성격: 월간 경제 테마 리포트(Global Macro, AI 투자 둔화 리스크 분석). 원본이 이미지 PDF(text_quality low)라 PDF 20쪽을 Read로 시각 판독함. 핵심 결론: 금리 상승 자체는 AI 투자 축소 신호가 아니며(p.14), 손실 전이는 보증기업 현금여력과 자체 AI 매출 감소 여부에 좌우됨. 스트레스 수치(기준 시나리오 총손실 약 1.18조 달러·외부 전이 약 15억 달러, 심각 시나리오 약 3.6조 달러, 전이 임계점 84%/자체매출감소 반영 시 76%; p.16-17)는 Wagner(2026) 연구 인용으로 전망 목표치가 아니어서 target에 넣지 않음. 권고 모니터링 신호(p.12-13, p.19): 하이퍼스케일러 설비투자 대비 영업현금흐름·FCF 전환 시점, 네오클라우드 계약수익과 실제 현금회수, 데이터센터 가동률·임대료, GPU·클라우드 서비스 가격, AI 모델기업 컴퓨팅 수요·투자계획 축소, 데이터센터 계약 취소·연기, 장기 수주잔고 증가세 둔화, 추가 자금조달 규모와 차입 차환 여건, 하이퍼스케일러-네오클라우드 CDS 격차. 금리·국채·환율·한국 자산에 대한 명시적 전망은 없어 매핑하지 않음."
+}

@@ -1,0 +1,47 @@
+{
+  "card_id": "20261023_미래_MacroWeekAhead",
+  "house": "미래에셋증권",
+  "report_title": "Macro Week Ahead: 금리 하락을 대하는 자세 (10/26~30)",
+  "published": "2026-10-23",
+  "published_estimated": false,
+  "source_file": "processed/reports/20261023_미래_MacroWeekAhead.pdf",
+  "topics": ["us_treasury", "us_rate", "kr_govt_bond"],
+  "views": [
+    {
+      "topic_id": "us_treasury",
+      "variable": "ust_10y",
+      "direction": "횡보",
+      "horizon": "단기",
+      "target": "미국채 10년물 5.0% 중심 박스권 등락",
+      "rationale": "미국 실물지표는 견조하나 금리는 증시 흐름과 동조화될 것으로 보며, AI 기업 자금조달 우려로 인한 CAPEX 둔화 가능성이 금리 상단을 막는 요인이라고 판단. 주간 단위 전망(10/26~30)이며 하우스의 핵심 콜.",
+      "page_ref": "p.1",
+      "conviction": "높음"
+    },
+    {
+      "topic_id": "us_rate",
+      "variable": "us_ffr",
+      "direction": "횡보",
+      "horizon": "단기",
+      "target": "10월 FOMC(10/27~28) 만장일치 동결",
+      "rationale": "10월 FOMC에서 정책금리를 만장일치로 묶을 것으로 예상하며, 연준은 AI 투자와 유가 상승이 물가에 미칠 영향을 지켜보겠다는 입장을 다시 확인할 것으로 봄.",
+      "page_ref": "p.1",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "kr_govt_bond",
+      "variable": "ktb_3y",
+      "direction": "횡보",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "AI 수익성 우려로 국내 금리가 크게 내려왔으나 미 중간선거(11/3) 이후 대외정책과 유가 경로 확인이 필요하다며, 원화채 추격 매수 대신 듀레이션 중립으로 리스크를 관리하라고 권고. 만기 특정 없어 3년물에 매핑, 방향은 중립 대응 권고를 횡보로 해석.",
+      "page_ref": "p.1",
+      "conviction": "중간"
+    }
+  ],
+  "key_risks": [
+    "AI 과잉투자 우려(빅테크 FCF 적자 전환·CAPEX 확대)에 따른 증시 변동성과 금리 연동",
+    "미 중간선거(11/3) 이후 미 정부 대외정책 기조 변화",
+    "유가 상승(WTI 100달러 수준)의 인플레이션 파급"
+  ],
+  "notes": "성격: 주간 글로벌 매크로 전략(Macro Week Ahead, 채권·경제 공동). 원문이 이미지 PDF라 추출 텍스트가 거의 없어 PDF 8쪽을 시각적으로 직접 읽어 작성. 한국 3Q GDP는 전기비 약 +1.0% 근접한 높은 성장 예상(당사 전망, p.1) — 16개 topic 외라 view 미작성. p.1 통화 표(원/달러 1326.4, 주간 -0.59% 등)와 '원화 강세 지속' 코멘트는 지난주 동향 데이터 스냅샷이며 전망이 아니므로 fx_krwusd view로 만들지 않음. 'WTI는 다시 100달러 수준'(p.1 차트 제목)도 현황 서술이고 방향성 전망이 없어 oil view 없음. p.2 지표 리뷰, p.3 Fed Watch(CME·점도표·연준 인사 성향), p.4-7 국고채·크레딧 스프레드·글로벌 금리·환율·원자재 차트는 데이터 자료이며 회사채 관련 명시적 뷰 없음. p.8 컴플라이언스."
+}
