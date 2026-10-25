@@ -1,0 +1,395 @@
+{
+  "company": "현대해상",
+  "entity_type": "insurer",
+  "period": "2026Q2",
+  "as_of": "2026-06-30",
+  "source_files": [
+    "processed/filings/현대해상_2026Q2_IR경영실적.pdf",
+    "processed/filings/현대해상_2026Q2_IR데이터.xlsx"
+  ],
+  "accounting_basis": "IFRS17/IFRS9 (금액은 IR데이터 엑셀 재무상태표·운용자산 기준, 장부가)",
+  "total_invested_assets_krw_bn": 45594.0,
+  "total_flag": "공시",
+  "total_page_ref": "sheet:(4) Investment; p.8",
+  "assets": [
+    {
+      "class": "현금예금",
+      "label": "현·예금및예치금",
+      "region": "KR",
+      "currency": "KRW",
+      "mv_krw_bn": 1797.0,
+      "weight": 0.0394,
+      "value_flag": "공시",
+      "page_ref": "sheet:(4) Investment",
+      "mod_duration": 0.0
+    },
+    {
+      "class": "주식",
+      "label": "주식(국내)",
+      "region": "KR",
+      "currency": "KRW",
+      "mv_krw_bn": 233.8,
+      "weight": 0.0051,
+      "value_flag": "공시",
+      "page_ref": "sheet:(4) Investment"
+    },
+    {
+      "class": "국공채",
+      "label": "채권-국공채",
+      "region": "KR",
+      "currency": "KRW",
+      "mv_krw_bn": 10248.8,
+      "weight": 0.2248,
+      "value_flag": "공시",
+      "page_ref": "sheet:(4) Investment",
+      "mod_duration": 18.0,
+      "field_flags": {
+        "mod_duration": "추정"
+      }
+    },
+    {
+      "class": "특수채",
+      "label": "채권-특수채 및 금융채(금융채 포함)",
+      "region": "KR",
+      "currency": "KRW",
+      "mv_krw_bn": 5595.4,
+      "weight": 0.1227,
+      "value_flag": "공시",
+      "page_ref": "sheet:(4) Investment",
+      "mod_duration": 11.0,
+      "field_flags": {
+        "mod_duration": "추정"
+      }
+    },
+    {
+      "class": "회사채",
+      "label": "채권-회사채 (rating_dist는 국내채권 전체 분포, p.8)",
+      "region": "KR",
+      "currency": "KRW",
+      "mv_krw_bn": 2336.2,
+      "weight": 0.0512,
+      "value_flag": "공시",
+      "page_ref": "sheet:(4) Investment",
+      "rating_dist": {
+        "AAA": 88.7,
+        "AA": 11.1,
+        "A": 0.2
+      },
+      "credit_grade": "AA",
+      "mod_duration": 6.0,
+      "field_flags": {
+        "mod_duration": "추정",
+        "credit_grade": "추정",
+        "rating_dist": "공시"
+      }
+    },
+    {
+      "class": "대출-기업",
+      "label": "대출채권-기업(56.2%)",
+      "region": "KR",
+      "currency": "KRW",
+      "mv_krw_bn": 5405.9,
+      "weight": 0.1186,
+      "value_flag": "공시",
+      "page_ref": "p.8; sheet:(4) Investment",
+      "mod_duration": 4.0,
+      "field_flags": {
+        "mod_duration": "추정"
+      }
+    },
+    {
+      "class": "대출-부동산담보",
+      "label": "대출채권-개인 중 부동산(43.8%×96.9%)",
+      "region": "KR",
+      "currency": "KRW",
+      "mv_krw_bn": 4082.5,
+      "weight": 0.0895,
+      "value_flag": "공시",
+      "page_ref": "p.8; sheet:(4) Investment",
+      "mod_duration": 4.0,
+      "field_flags": {
+        "mod_duration": "추정"
+      }
+    },
+    {
+      "class": "대출-신용/약관",
+      "label": "대출채권-개인 중 기타(43.8%×3.1%)",
+      "region": "KR",
+      "currency": "KRW",
+      "mv_krw_bn": 130.6,
+      "weight": 0.0029,
+      "value_flag": "공시",
+      "page_ref": "p.8; sheet:(4) Investment",
+      "mod_duration": 0.0,
+      "field_flags": {
+        "mod_duration": "추정"
+      }
+    },
+    {
+      "class": "해외채",
+      "label": "외화유가증권-채권",
+      "region": "혼합",
+      "currency": "USD",
+      "mv_krw_bn": 6321.1,
+      "weight": 0.1386,
+      "value_flag": "공시",
+      "page_ref": "sheet:(4) Investment",
+      "fx_hedge_ratio": null,
+      "mod_duration": 8.0,
+      "field_flags": {
+        "mod_duration": "추정",
+        "currency": "추정",
+        "region": "추정"
+      }
+    },
+    {
+      "class": "기타",
+      "label": "외화유가증권-채권 외(기타·구조화)",
+      "region": "혼합",
+      "currency": "USD",
+      "mv_krw_bn": 1175.2,
+      "weight": 0.0258,
+      "value_flag": "공시",
+      "page_ref": "sheet:(4) Investment",
+      "field_flags": {
+        "currency": "추정",
+        "region": "추정"
+      }
+    },
+    {
+      "class": "대체-인프라",
+      "label": "수익증권-인프라(41.7%)",
+      "region": "KR",
+      "currency": "KRW",
+      "mv_krw_bn": 2366.6,
+      "weight": 0.0519,
+      "value_flag": "공시",
+      "page_ref": "p.8; sheet:(4) Investment"
+    },
+    {
+      "class": "부동산",
+      "label": "수익증권-부동산(28.0%)",
+      "region": "KR",
+      "currency": "KRW",
+      "mv_krw_bn": 1589.1,
+      "weight": 0.0349,
+      "value_flag": "공시",
+      "page_ref": "p.8; sheet:(4) Investment"
+    },
+    {
+      "class": "대체-PE",
+      "label": "수익증권-PE/인수(20.1%)",
+      "region": "KR",
+      "currency": "KRW",
+      "mv_krw_bn": 1140.7,
+      "weight": 0.025,
+      "value_flag": "공시",
+      "page_ref": "p.8; sheet:(4) Investment"
+    },
+    {
+      "class": "수익증권",
+      "label": "수익증권-기타(10.2%)",
+      "region": "KR",
+      "currency": "KRW",
+      "mv_krw_bn": 578.9,
+      "weight": 0.0127,
+      "value_flag": "공시",
+      "page_ref": "p.8; sheet:(4) Investment"
+    },
+    {
+      "class": "부동산",
+      "label": "부동산(직접 보유)",
+      "region": "KR",
+      "currency": "KRW",
+      "mv_krw_bn": 1217.2,
+      "weight": 0.0267,
+      "value_flag": "공시",
+      "page_ref": "sheet:(4) Investment"
+    },
+    {
+      "class": "기타",
+      "label": "출자금 등",
+      "region": "KR",
+      "currency": "KRW",
+      "mv_krw_bn": 432.9,
+      "weight": 0.0095,
+      "value_flag": "공시",
+      "page_ref": "sheet:(4) Investment"
+    },
+    {
+      "class": "기타",
+      "label": "관계·종속기업투자주식",
+      "region": "KR",
+      "currency": "KRW",
+      "mv_krw_bn": 942.2,
+      "weight": 0.0207,
+      "value_flag": "공시",
+      "page_ref": "sheet:(4) Investment"
+    }
+  ],
+  "liabilities": {
+    "duration": 10.0,
+    "pv_krw_bn": 37200.0,
+    "value_flag": "공시",
+    "pv_flag": "추정",
+    "page_ref": "p.10",
+    "basis": "금감원 듀레이션 갭 산출기준(초안), PAP — 부채: 장기보험료부채 및 장기위험마진. pv는 공시 +50bp 부채 변화(−1.86조)에서 역산: 1,860/(10.0×0.005)=37,200 (추정)"
+  },
+  "kics_ratio": 209.0,
+  "investment_yield": 2.47,
+  "capital_ratios": [
+    {
+      "name": "K-ICS",
+      "value": 209.0,
+      "unit": "%",
+      "as_of": "2026-06-30",
+      "value_flag": "공시",
+      "page_ref": "p.3; p.10; sheet:(1) Highlights"
+    },
+    {
+      "name": "기본자본비율",
+      "value": 83.8,
+      "unit": "%",
+      "as_of": "2026-06-30",
+      "value_flag": "공시",
+      "page_ref": "p.10"
+    },
+    {
+      "name": "기본자본비율(해약환급금준비금 100% 인정시)",
+      "value": 95.0,
+      "unit": "%",
+      "as_of": "2026-06-30",
+      "value_flag": "공시",
+      "page_ref": "p.10"
+    }
+  ],
+  "rate_sensitivity_disclosed": [
+    {
+      "shock_bp": 50,
+      "asset_chg_krw_bn": -1980,
+      "liab_chg_krw_bn": -1860,
+      "capital_chg_krw_bn": -110,
+      "ratio_name": "K-ICS",
+      "ratio_chg_pp": 0.7,
+      "basis": "PAP(건전성회계) 기준; 자산=채권·대출, 부채=장기보험료부채 및 장기위험마진; 가용자본은 세후, 기준일 2026-06말",
+      "value_flag": "공시",
+      "page_ref": "p.10"
+    },
+    {
+      "shock_bp": -50,
+      "asset_chg_krw_bn": 2120,
+      "liab_chg_krw_bn": 2040,
+      "capital_chg_krw_bn": 80,
+      "ratio_name": "K-ICS",
+      "ratio_chg_pp": 0.3,
+      "basis": "PAP(건전성회계) 기준; 자산=채권·대출, 부채=장기보험료부채 및 장기위험마진; 가용자본은 세후, 기준일 2026-06말",
+      "value_flag": "공시",
+      "page_ref": "p.10"
+    }
+  ],
+  "key_metrics": {
+    "투자이익률(1H26)": {
+      "value": 2.47,
+      "unit": "%",
+      "value_flag": "공시",
+      "page_ref": "p.9; sheet:(4) Investment"
+    },
+    "투자이익률(2Q26)": {
+      "value": 2.94,
+      "unit": "%",
+      "value_flag": "공시",
+      "page_ref": "p.9; sheet:(4) Investment"
+    },
+    "투자이익률_평가처분제외(1H26)": {
+      "value": 3.04,
+      "unit": "%",
+      "value_flag": "공시",
+      "page_ref": "p.9"
+    },
+    "투자이익률_평가처분제외(2Q26)": {
+      "value": 2.99,
+      "unit": "%",
+      "value_flag": "공시",
+      "page_ref": "p.9"
+    },
+    "당기순이익(1H26)": {
+      "value": 615.1,
+      "unit": "십억원",
+      "value_flag": "공시",
+      "page_ref": "p.3; sheet:(1) Highlights"
+    },
+    "CSM 잔액(2026.6말, 보유)": {
+      "value": 9894.4,
+      "unit": "십억원",
+      "value_flag": "공시",
+      "page_ref": "p.6; sheet:(1) Highlights"
+    },
+    "신계약 CSM(1H26, 원수)": {
+      "value": 950.9,
+      "unit": "십억원",
+      "value_flag": "공시",
+      "page_ref": "p.6"
+    },
+    "보험손익(1H26)": {
+      "value": 705.8,
+      "unit": "십억원",
+      "value_flag": "공시",
+      "page_ref": "p.3; sheet:(1) Highlights"
+    },
+    "투자손익(1H26, 보험금융손익 차감)": {
+      "value": 105.8,
+      "unit": "십억원",
+      "value_flag": "공시",
+      "page_ref": "p.3; p.9"
+    },
+    "ROE(1H26)": {
+      "value": 23.5,
+      "unit": "%",
+      "value_flag": "공시",
+      "page_ref": "p.3"
+    },
+    "자기자본(2026.6말)": {
+      "value": 6205.0,
+      "unit": "십억원",
+      "value_flag": "공시",
+      "page_ref": "sheet:(6) BS"
+    },
+    "NPL비율(2Q26)": {
+      "value": 0.36,
+      "unit": "%",
+      "value_flag": "공시",
+      "page_ref": "p.9"
+    },
+    "대손충당금 Coverage ratio(2Q26)": {
+      "value": 275.9,
+      "unit": "%",
+      "value_flag": "공시",
+      "page_ref": "p.9"
+    },
+    "13회차 유지율(1H26)": {
+      "value": 87.5,
+      "unit": "%",
+      "value_flag": "공시",
+      "page_ref": "p.6"
+    },
+    "25회차 유지율(1H26)": {
+      "value": 74.1,
+      "unit": "%",
+      "value_flag": "공시",
+      "page_ref": "p.6"
+    },
+    "자산 Duration(2Q26, PAP)": {
+      "value": 10.7,
+      "unit": "년",
+      "value_flag": "공시",
+      "page_ref": "p.10"
+    },
+    "부채 Duration(2Q26, PAP)": {
+      "value": 10.0,
+      "unit": "년",
+      "value_flag": "공시",
+      "page_ref": "p.10"
+    }
+  },
+  "notes": "금액은 IR데이터 엑셀 (4) Investment(백만원÷1,000=십억원) 우선, 합계 45,594.0 = 엑셀 운용자산 계(관계·종속기업투자주식·출자금 포함). 대출(9,619.0)과 수익증권(5,675.2)은 PDF p.8 원그래프 비중(공시)으로 금액을 나눔 — 비중은 공시, 금액은 비율 역산(반올림 오차). 대출: 기업 56.2% / 개인 43.8%(부동산 96.9%→대출-부동산담보, 기타 3.1%→대출-신용/약관). 부동산PF 금액은 미공시 → 대출-부동산PF 미확인(임의 배분 안 함; 기업대출 안에 일부 포함 가능). 수익증권: 인프라 41.7%/부동산 28.0%/PE·인수 20.1%/기타 10.2%; region은 국내 수익증권으로 KR 처리(기초자산 해외 비중 미공시 — 미확인). 외화유가증권 7,496.3: 엑셀 채권 6,321.1→해외채, 채권 외 1,175.2→기타. PDF p.8 비중(채권 78.7/기타 15.4/구조화 5.9)은 엑셀 비율(채권 84.3%)과 분류 기준이 달라 금액에는 엑셀을 씀. 지역·통화 미공시 → region 혼합, currency USD는 추정. fx_hedge_ratio 미공시 → null(엔진 가정값 사용). 국내채권 신용등급 AAA 88.7/AA 11.1/A 0.2(p.8)는 국내채권 18.2조 전체 분포이며 회사채 항목의 rating_dist에 참고로 기재(회사채 자체 분포 아님). AA+A 합(11.3%≈2,054십억원)이 회사채(2,336)보다 작아 회사채 다수가 AA 이상으로 판단 → credit_grade AA(추정). 듀레이션: 공시 자산 Duration 10.7년(PAP, 채권·대출, p.10)은 회사 전체 값이라 class별로는 추정. 보험사 초장기 국고채 보유를 감안해 국공채 18.0/특수채 11.0/회사채 6.0/대출 4.0(신용·약관 0.0)으로 두어 국내채권+대출 MV가중평균 10.72년 ≈ 10.7. 해외채는 assumptions 기본값 8.0(추정); 해외채 포함 시 가중평균 10.22년. 참고: 공시 +50bp 자산 변화 −1.98조는 D×A≈396조·bp 수준으로, 국내채권+대출 27.8조 기준 내재 듀레이션 ≈14.2, 해외채 포함 34.1조 기준 ≈11.6 — PAP 평가액이 장부가와 다르거나 해외채 포함 기준일 가능성(미확인). 캘리브레이션 시 참고. 부채: 듀레이션 10.0(공시), pv 37,200 = 1,860/(10.0×0.005) 역산(추정). 듀레이션 갭(자산−부채) +0.7년(p.10). investment_yield 2.47은 1H26 누계 투자이익률(p.9); 2Q26 단일분기 2.94%."
+}
