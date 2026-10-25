@@ -1,0 +1,54 @@
+{
+  "topic_id": "us_corp_bond",
+  "as_of": "2026-10-25",
+  "current": {
+    "indicators": [
+      {"series_id": "us_ig_oas", "name": "ICE BofA US IG OAS", "value": null, "unit": "%", "as_of": null, "value_flag": "미확인"},
+      {"series_id": "us_hy_oas", "name": "ICE BofA US HY OAS", "value": 3.16, "unit": "%", "as_of": "2026-10-13", "chg_1m": null, "source": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2/analysis-correlation-spy-vol", "value_flag": "웹확인", "stale": true}
+    ],
+    "summary": "[사실] API 데이터 미수집으로 수치는 웹확인 값이다. [사실] US HY OAS 3.16%(2026-10-13, FRED 검색 스냅샷 기준; 12일 경과 — stale 경고). [사실] 같은 출처 계열에서 7~8월 HY OAS는 2.6~2.7% 수준이었다(2026-07-16 2.71%, 2026-08-27 2.63%). [사실] US IG OAS의 10월 값은 미확인. [판단] HY는 여름 저점 대비 약 45~50bp 확대(추정)됐으나 절대 수준은 여전히 역사적으로 타이트한 편이며, 고금리(10년 5% 내외)·고용 둔화·AI 관련 위험회피가 추가 확대 압력이다. 5년 백분위(pct_rank_5y)는 미확인."
+  },
+  "short_term": {
+    "horizon": "3-6M",
+    "direction": "스프레드 확대",
+    "view": "[판단] 정책금리 인상 국면과 고용 둔화가 겹쳐 HY 중심으로 스프레드가 추가 확대될 것으로 본다. IG는 높은 all-in yield에 따른 수요로 확대폭이 제한적일 것. [하우스] 담당 topic(us_corp_bond)에 대한 카드 view 없음.",
+    "drivers": [
+      "[사실] FFR 3.75~4.00%로 인상, 12월 추가 인상 확률 약 71% — 차환 비용 상승",
+      "[사실] 9월 NFP +2.9만명, 실업률 4.2% — 경기 둔화 신호",
+      "[사실] HY OAS 여름 2.6~2.7% → 10/13 3.16%로 확대",
+      "[판단] 높은 금리 수준(IG all-in yield)이 IG 수요를 지지",
+      "[판단] 레버리지론·Private Credit로의 발행 이동 지속 가능성(us-alternatives와 일관성 확인 필요); IG·HY 발행량, 부도율 최신치는 미확인"
+    ],
+    "confidence": "중간"
+  },
+  "long_term": {
+    "horizon": "1-3Y",
+    "scenarios": [
+      {"name": "Base", "prob": 0.5, "narrative": "[판단] 완만한 경기 둔화와 2027년 후반 인하로 연착륙, 부도율은 소폭 상승. HY는 장기 평균 쪽으로 정상화되고 IG는 소폭 확대.", "factor_shocks": {"us_ig_oas_bp": 15, "us_hy_oas_bp": 70}, "shock_rationale": "타이트한 현 수준에서 장기 평균 방향 부분 정상화: IG +15bp, HY +70bp(추정)"},
+      {"name": "Bull", "prob": 0.2, "narrative": "[판단] 유가 안정·빠른 디스인플레이션으로 인하 사이클 진입, 위험선호 회복으로 스프레드 여름 수준으로 재축소.", "factor_shocks": {"us_ig_oas_bp": -5, "us_hy_oas_bp": -40}, "shock_rationale": "HY 여름 저점(2.6~2.7%) 근처 복귀 가정: HY -40bp, IG 소폭 축소"},
+      {"name": "Bear", "prob": 0.3, "narrative": "[판단] 추가 인상·고금리 장기화로 경기침체, 부도율 급등(레버리지론·저등급 중심). HY 6%대, IG 1.5%대 이상으로 확대.", "factor_shocks": {"us_ig_oas_bp": 80, "us_hy_oas_bp": 300}, "shock_rationale": "과거 경기침체기 수준의 확대 가정: IG +80bp, HY +300bp(추정)"}
+    ]
+  },
+  "house_views": {
+    "consensus": "[하우스] us_corp_bond에 대한 하우스 뷰 없음 (30일 이내 카드는 가상 샘플 20261023_샘플_가상MacroWeekly 1개뿐이며 이 topic의 view 없음).",
+    "divergence": "하우스 뷰 없음 — 판단 불가.",
+    "cards_used": []
+  },
+  "short_term_factor_shocks": {"us_ig_oas_bp": 10, "us_hy_oas_bp": 40},
+  "short_term_shock_rationale": "인상 국면·고용 둔화로 HY +40bp(여름 이후 확대 추세 연장), IG는 수요 지지로 +10bp",
+  "data_gaps": [
+    "API 데이터 미수집 (latest_snapshot.json 비어 있음 — FRED no_key): 모든 현황 수치는 웹확인 값, chg_1m·pct_rank_5y 미확인",
+    "us_hy_oas: 기준일 2026-10-13, 12일 경과 (stale), FRED 검색 스냅샷 기준으로 원본 페이지 직접 확인 안 함",
+    "us_ig_oas 10월 값 미확인",
+    "IG·HY 발행량, Moody's/S&P 부도율, Senior Loan Officer Survey 최신치 미확인",
+    "하우스 뷰 부족 (us_corp_bond 카드 0개; 전체 30일 이내 카드 1개는 가상 샘플 20261023_샘플_가상MacroWeekly)"
+  ],
+  "sources": [
+    "data/latest_snapshot.json (비어 있음)",
+    "https://fred.stlouisfed.org/series/BAMLH0A0HYM2/analysis-correlation-spy-vol",
+    "https://fred.stlouisfed.org/graph/?g=1iMgK",
+    "https://fred.stlouisfed.org/data/BAMLC0A0CM",
+    "https://www.cnbc.com/2026/10/23/bonds-yields-us-treasurys.html",
+    "https://www.bls.gov/news.release/archives/empsit_10022026.htm"
+  ]
+}
