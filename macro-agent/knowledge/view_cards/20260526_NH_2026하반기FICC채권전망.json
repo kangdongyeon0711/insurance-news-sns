@@ -1,0 +1,167 @@
+{
+  "card_id": "20260526_NH_2026하반기FICC채권전망",
+  "house": "NH투자증권",
+  "report_title": "2026년 하반기 FICC 전망 / 채권: Big Divergence",
+  "published": "2026-05-26",
+  "published_estimated": false,
+  "source_file": "processed/reports/20260526_NH_2026하반기FICC채권전망.pdf",
+  "topics": ["us_rate", "us_treasury", "kr_rate", "kr_govt_bond", "oil"],
+  "views": [
+    {
+      "topic_id": "us_rate",
+      "variable": "us_ffr",
+      "direction": "하락",
+      "horizon": "단기",
+      "target": "2026년 12월 FOMC 25bp 인하 1회, 4Q26 기말 정책금리 3.50% (p.89 표 기준)",
+      "rationale": "에너지 순수출국인 미국은 장기 기대인플레가 안정적이고 실질소득·고용 둔화로 수요발 물가 압력이 약해 인상 전환은 어렵다고 봄. 3분기까지는 동결로 인내를 강조하다 9월 FOMC부터 완화 신호, 연말 유가 역기저까지 반영해 12월 인하한다는 핵심 콜.",
+      "page_ref": "p.2",
+      "conviction": "높음"
+    },
+    {
+      "topic_id": "us_rate",
+      "variable": "us_ffr",
+      "direction": "하락",
+      "horizon": "장기",
+      "target": "2027년 말 3.25% 후 2028년 유지 (금번 인하 사이클 터미널 3.25% 추정)",
+      "rationale": "중간선거·소비 구축·관세와 유가 등 일시적 물가 요인의 피크아웃을 근거로 인하 옵션이 살아 있다고 보고, 이번 사이클의 최종 정책금리를 3.25%로 추정. 연도별 경로는 전망 표에서 확인.",
+      "page_ref": "p.29",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "us_treasury",
+      "variable": "ust_10y",
+      "direction": "하락",
+      "horizon": "단기",
+      "target": "2026 하반기 레인지 4.20~4.75%, 분기 평균 3Q 4.40% → 4Q 4.30%",
+      "rationale": "고유가 탠트럼 이후 3분기부터 유가 부담의 수요 구축 효과가 드러나고 연준이 다시 완화 쪽으로 기울면서 시장금리가 점차 안정될 것으로 봄. 분기 평균 경로는 완만한 하향.",
+      "page_ref": "p.29",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "us_treasury",
+      "variable": "ust_10y",
+      "direction": "하락",
+      "horizon": "장기",
+      "target": "연평균 2027년 4.08%, 2028년 4.00%",
+      "rationale": "정책금리 터미널 3.25%로의 추가 인하와 2027년 유가 역기저에 따른 물가 하향을 반영해 10년물 연평균이 점진적으로 낮아지는 경로를 제시.",
+      "page_ref": "p.89",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "us_treasury",
+      "variable": "ust_duration_preference",
+      "direction": "중립",
+      "horizon": "단기",
+      "target": "투자의견 중립(선호도 5/10), 선호 만기 단기(2년 이하)",
+      "rationale": "커버리지 국가 하반기 투자의견에서 미국채는 중립으로, 장기물보다 2년 이하 단기 구간을 선호. 정책금리 인하 기대가 단기물에 더 직접적으로 반영된다는 판단으로 해석(커브 함의는 에이전트 해석).",
+      "page_ref": "p.4",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "us_treasury",
+      "variable": "ust_structural_demand",
+      "direction": "상승",
+      "horizon": "장기",
+      "target": null,
+      "rationale": "워시 의장 하의 QT 재개 우려는 과도하며 대차대조표는 재무부와 조율될 것으로 봄. SLR 완화에 따른 은행 매수, 스테이블코인 준비금, 연준의 T-bill 매입, 견조한 외국인 보유가 국채 수요를 구조적으로 떠받친다는 시각.",
+      "page_ref": "p.22-28",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "kr_rate",
+      "variable": "kr_base_rate",
+      "direction": "상승",
+      "horizon": "단기",
+      "target": "3Q·4Q 각 25bp 인상 → 2026년 말 3.00%",
+      "rationale": "전쟁발 유가 충격의 2차 파급과 기대인플레 관리, 1분기 GDP 서프라이즈·반도체 호조로 인상 여력이 있어 한은이 '보험용' 선제 인상에 나설 것으로 봄. 사이클 초기에 빠르게 올린 뒤 효과를 점검하는 형태라는 핵심 콜.",
+      "page_ref": "p.64",
+      "conviction": "높음"
+    },
+    {
+      "topic_id": "kr_rate",
+      "variable": "kr_base_rate",
+      "direction": "횡보",
+      "horizon": "장기",
+      "target": "터미널 3.00%, 2027~2028년 동결",
+      "rationale": "선제적 성격의 인상이라 횟수는 제한적이고, 추가 인상 여지는 열어두되 실제로는 점검에 무게가 실려 2027년 동결 기조로 전환할 것으로 봄. 정부 확장재정을 구축하지 않는 점진적 인상이라는 판단도 근거.",
+      "page_ref": "p.88-89",
+      "conviction": "높음"
+    },
+    {
+      "topic_id": "kr_govt_bond",
+      "variable": "ktb_3y",
+      "direction": "하락",
+      "horizon": "단기",
+      "target": "분기 평균 3Q 3.70% → 4Q 3.65% (2026E 연평균 3.58%)",
+      "rationale": "시장이 극단적 공포로 터미널을 과대 반영한 상태로 보고, 연말로 갈수록 한은 인상 종료 기대와 연준 인하가 겹쳐 금리가 안정될 것으로 전망. 과거 사이클상 3년물 고점은 터미널+약 40bp(터미널 3.0%면 3.40%)라는 분석 제시.",
+      "page_ref": "p.87-89",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "kr_govt_bond",
+      "variable": "ktb_10y",
+      "direction": "하락",
+      "horizon": "단기",
+      "target": "분기 평균 3Q 4.15% → 4Q 4.00%, 상단 저항선 4.3%",
+      "rationale": "물가 상승으로 장기금리 상방이 열린 점은 인정하나, 잠재성장률이 실질금리 상단으로 작동해왔고 2026~27년 평균 물가 2.5% 전망을 감안하면 10년물 4.3% 부근이 강한 저항이 된다고 봄.",
+      "page_ref": "p.80",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "kr_govt_bond",
+      "variable": "ktb_3y",
+      "direction": "하락",
+      "horizon": "장기",
+      "target": "연평균 2027년 3.50%, 2028년 3.30%",
+      "rationale": "기준금리 3.00% 동결 아래 2027년 물가가 목표 범위로 수렴하고 3월부터 유가 상승률이 급락하는 역기저가 나타나 단기물 금리가 완만히 내려갈 것으로 전망.",
+      "page_ref": "p.77",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "kr_govt_bond",
+      "variable": "ktb_10y",
+      "direction": "하락",
+      "horizon": "장기",
+      "target": "연평균 2027년 3.80%, 2028년 3.70%",
+      "rationale": "물가 안정과 반도체발 세수 호조에 따른 국채 발행 축소 가능성이 장기금리 하향을 지지한다고 봄. 다만 정부 지출 확대에 따른 텀프리미엄 상승 가능성도 함께 인정.",
+      "page_ref": "p.81-82",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "kr_govt_bond",
+      "variable": "ktb_duration_preference",
+      "direction": "중립",
+      "horizon": "단기",
+      "target": "투자의견 중립(선호도 5/10), 선호 만기 단기(3년 이하)",
+      "rationale": "커버리지 국가 하반기 투자의견에서 한국은 중립, 3년 이하 구간 선호. 장기물 비중확대는 영국·일본(10년 이상)에 배정해 'Big Divergence' 속 한국 장기물에는 신중한 입장.",
+      "page_ref": "p.4",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "kr_govt_bond",
+      "variable": "ktb_30y_10y_spread",
+      "direction": "확대",
+      "horizon": "장기",
+      "target": null,
+      "rationale": "금리 상승으로 K-ICS 비율이 개선된 보험사의 초장기물 수요가 약해지고 WGBI 외국인 매수도 3~10년에 집중돼, 2027년 초장기 발행이 늘면 오래 이어진 10-30년 역전이 해소될 수 있다고 봄. 다만 금리 반전 후 보험사 수요 복귀 가능성도 언급한 조건부 시각.",
+      "page_ref": "p.84-86",
+      "conviction": "낮음"
+    },
+    {
+      "topic_id": "oil",
+      "variable": "wti",
+      "direction": "하락",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "EIA 수급 전망상 4분기부터 공급 우위로 돌아서고 선물 곡선도 백워데이션이라, 전쟁 여파가 지나면 유가는 하향 안정되고 연말 시장은 2027년 역기저를 더 반영할 것으로 봄. 이것이 하반기 금리 안정 콜의 핵심 전제.",
+      "page_ref": "p.6",
+      "conviction": "중간"
+    }
+  ],
+  "key_risks": [
+    "미-이란 전쟁·고유가 장기화로 기대인플레가 자극돼 2차 파급이 확산되면 연준의 인하 대신 동결 장기화/인상 우려 재부상 (p.2, p.8)",
+    "부동산 가격 급등·반도체 호황으로 한은 인상 사이클이 터미널 3%를 넘어설 가능성 및 정부 확장재정에 따른 텀프리미엄 확대 (p.63, p.81, p.87)",
+    "보험사 수요 약화·초장기 발행 증가로 인한 초장기 국고채 수급 부담 (p.84-86)"
+  ],
+  "notes": "2026년 5월 발간 — 기준일(2026-10-25) 대비 약 5개월 경과. 이후 실제 전개: 한은 7·8월 인상 후 3.00% 동결(10/22), 연준 9/16 25bp 인상(3.75~4.00%) — 리포트의 연준 12월 인하 전망과 반대로 전개. 구조적·장기 하우스 뷰로만 활용. NH투자증권 리서치본부 FICC리서치부의 반기 채권 전망(90쪽, 표지일 2026-05-26; 사용자 원본 파일명은 0522였으나 표지 날짜를 published로 사용). 구성: I. 미국(전략적 인내와 케빈 워시), II. 미국 외 글로벌(Reluctant Hikes), III. 한국(보험용 금리인상). 메인 테마 'Big Divergence' = 미국 완화 유지 vs 비미국 금리인상 재개(p.4). II장 요약(topic 미매핑): ECB 6·12월 각 25bp 인상 후 동결·커브 베어 플래트닝, BOE 7월 1회 인상 후 2027년 인하 전환, BOJ 6월 인상 후 2027년 1월 추가 인상으로 터미널 1.25%; 투자의견은 영국(비중확대, 7)·일본(비중확대, 6) 장기물 선호, 유로존·호주 비중축소(p.3-4, p.89). target은 모두 p.89 '주요 금리 전망 Table' 및 본문에 명시된 전망치이며, 표의 1Q·2Q 수치는 당시 실적/추정치라 현재값으로 쓰지 않음. 국고채 30년·UST 2년의 수치 전망은 리포트에 없음(미확인). 한국 크레딧(kr_corp_bond) 명시 뷰 없음."
+}
