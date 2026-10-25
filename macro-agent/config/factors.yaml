@@ -1,0 +1,29 @@
+# 팩터 충격 표준 이름. 모든 factor_shocks(macro_topic, factor_shocks JSON)는 이 이름만 쓴다.
+# 부호 규약: 금리·스프레드·캡레이트·할인율은 상승이 +, krw_usd_pct는 원화 약세(원/달러 상승)가 +.
+factors:
+  krw_usd_pct:            {unit: "%",  topic_id: fx_krwusd,   desc: "원/달러 환율 변화율 (+ = 원화 약세)"}
+  dxy_pct:                {unit: "%",  topic_id: fx_krwusd,   desc: "달러 지수 변화율"}
+  brent_pct:              {unit: "%",  topic_id: oil,         desc: "Brent 유가 변화율"}
+  kr_base_rate_bp:        {unit: bp,   topic_id: kr_rate,     desc: "한국은행 기준금리 변화"}
+  ktb_3y_bp:              {unit: bp,   topic_id: kr_govt_bond, desc: "국고채 3년 금리 변화"}
+  ktb_10y_bp:             {unit: bp,   topic_id: kr_govt_bond, desc: "국고채 10년 금리 변화"}
+  ktb_30y_bp:             {unit: bp,   topic_id: kr_govt_bond, desc: "국고채 30년 금리 변화"}
+  kr_aa_spread_bp:        {unit: bp,   topic_id: kr_corp_bond, desc: "회사채 AA- 3년 − 국고채 3년 스프레드 변화"}
+  kr_bbb_spread_bp:       {unit: bp,   topic_id: kr_corp_bond, desc: "회사채 BBB- 3년 − 국고채 3년 스프레드 변화"}
+  us_ffr_bp:              {unit: bp,   topic_id: us_rate,     desc: "FFR 목표 상단 변화"}
+  ust_2y_bp:              {unit: bp,   topic_id: us_treasury, desc: "UST 2년 금리 변화"}
+  ust_10y_bp:             {unit: bp,   topic_id: us_treasury, desc: "UST 10년 금리 변화"}
+  ust_30y_bp:             {unit: bp,   topic_id: us_treasury, desc: "UST 30년 금리 변화"}
+  us_ig_oas_bp:           {unit: bp,   topic_id: us_corp_bond, desc: "US IG OAS 변화"}
+  us_hy_oas_bp:           {unit: bp,   topic_id: us_corp_bond, desc: "US HY OAS 변화"}
+  kr_cre_cap_rate_bp:     {unit: bp,   topic_id: kr_alt_re,   desc: "한국 상업용부동산 캡레이트 변화"}
+  us_cre_cap_rate_bp:     {unit: bp,   topic_id: us_alt_re,   desc: "미국 상업용부동산 캡레이트 변화"}
+  kr_pf_loss_rate_pp:     {unit: "%p", topic_id: kr_alt_re,   desc: "국내 부동산 PF·담보대출 손실률 변화 (익스포저 대비)"}
+  infra_discount_rate_bp: {unit: bp,   topic_id: kr_alt_infra, desc: "인프라 자산 할인율 변화 (국내·해외 공통)"}
+  kr_pe_value_pct:        {unit: "%",  topic_id: kr_alt_pe,   desc: "국내 PE 지분 평가가치 변화율"}
+  us_pe_value_pct:        {unit: "%",  topic_id: us_alt_pe,   desc: "해외(미국) PE 지분 평가가치 변화율"}
+  kr_pd_default_pp:       {unit: "%p", topic_id: kr_alt_pd,   desc: "국내 사모대출 부도율 변화"}
+  us_pd_default_pp:       {unit: "%p", topic_id: us_alt_pd,   desc: "미국 Private Credit 부도율 변화"}
+  equity_kospi_pct:       {unit: "%",  topic_id: null,        desc: "KOSPI 변화율"}
+  equity_spx_pct:         {unit: "%",  topic_id: null,        desc: "S&P500 변화율 (USD 기준)"}
+  fx_hedge_cost_bp:       {unit: bp,   topic_id: fx_krwusd,   desc: "USD/KRW 연환산 헤지비용 변화 (+ = 비용 증가, 대략 한미 단기금리차 확대)"}

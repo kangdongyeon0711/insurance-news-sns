@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "macro_topic",
+  "description": "주간 topic별 분석 결과. knowledge/macro_topics/{YYYY-MM-DD}/{topic_id}.json. 시나리오 확률 합=1, factor 이름은 factors.yaml (validate_json.py가 추가 검사).",
+  "type": "object",
+  "required": ["topic_id", "as_of", "current", "short_term", "long_term", "house_views", "short_term_factor_shocks", "data_gaps", "sources"],
+  "properties": {
+    "topic_id": {"$ref": "view_card.schema.json#/$defs/topic_id"},
+    "as_of": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+    "current": {
+      "type": "object",
+      "required": ["indicators", "summary"],
+      "properties": {
+        "indicators": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["series_id", "value", "unit", "as_of"],
+            "properties": {
+              "series_id": {"type": "string"},
+              "name": {"type": "string"},
+              "value": {"type": ["number", "null"], "description": "null = 미확인"},
+              "unit": {"type": "string"},
+              "as_of": {"type": ["string", "null"]},
+              "chg_1m": {"type": ["number", "null"]},
+              "chg_unit": {"type": "string"},
+              "source": {"type": "string", "description": "latest_snapshot.json 외 출처(웹 등)면 명시하고 value_flag로 표시"},
+              "value_flag": {"enum": ["API", "웹확인", "추정", "미확인"]},
+              "stale": {"type": "boolean"}
+            }
+          }
+        },
+        "summary": {"type": "string", "minLength": 1}
+      }
+    },
+    "short_term": {
+      "type": "object",
+      "required": ["horizon", "view", "drivers", "confidence"],
+      "properties": {
+        "horizon": {"const": "3-6M"},
+        "direction": {"type": "string"},
+        "view": {"type": "string", "minLength": 1},
+        "drivers": {"type": "array", "items": {"type": "string"}},
+        "confidence": {"enum": ["높음", "중간", "낮음"]}
+      }
+    },
+    "long_term": {
+      "type": "object",
+      "required": ["horizon", "scenarios"],
+      "properties": {
+        "horizon": {"const": "1-3Y"},
+        "scenarios": {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "type": "object",
+            "required": ["name", "prob", "narrative", "factor_shocks"],
+            "properties": {
+              "name": {"enum": ["Base", "Bull", "Bear"]},
+              "prob": {"type": "number", "minimum": 0, "maximum": 1},
+              "narrative": {"type": "string", "minLength": 1},
+              "factor_shocks": {"type": "object", "additionalProperties": {"type": "number"}},
+              "shock_rationale": {"type": "string"}
+            }
+          }
+        }
+      }
+    },
+    "house_views": {
+      "type": "object",
+      "required": ["consensus", "divergence", "cards_used"],
+      "properties": {
+        "consensus": {"type": "string"},
+        "divergence": {"type": "string"},
+        "cards_used": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "short_term_factor_shocks": {"type": "object", "additionalProperties": {"type": "number"}},
+    "short_term_shock_rationale": {"type": "string"},
+    "data_gaps": {"type": "array", "items": {"type": "string"}},
+    "sources": {"type": "array", "items": {"type": "string"}, "minItems": 1}
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "_note": "가상 예시 — 실제 분석 아님 (validate_json 테스트용)",
+  "topic_id": "kr_corp_bond",
+  "as_of": "2026-10-25",
+  "current": {
+    "indicators": [{"series_id": "kr_aa_spread", "value": null, "unit": "%p", "as_of": null, "chg_1m": null, "value_flag": "미확인"}],
+    "summary": "[사실] API 데이터 미수집으로 현황 수치 미확인."
+  },
+  "short_term": {"horizon": "3-6M", "view": "[판단] 스프레드 소폭 확대", "drivers": ["연말 계절성"], "confidence": "낮음"},
+  "long_term": {
+    "horizon": "1-3Y",
+    "scenarios": [
+      {"name": "Base", "prob": 0.5, "narrative": "안정", "factor_shocks": {"kr_aa_spread_bp": 0}, "shock_rationale": "현 수준 유지"},
+      {"name": "Bull", "prob": 0.2, "narrative": "축소", "factor_shocks": {"kr_aa_spread_bp": -15}, "shock_rationale": "금리 하락기 수요"},
+      {"name": "Bear", "prob": 0.3, "narrative": "확대", "factor_shocks": {"kr_aa_spread_bp": 40}, "shock_rationale": "PF 이벤트"}
+    ]
+  },
+  "house_views": {"consensus": "", "divergence": "", "cards_used": []},
+  "short_term_factor_shocks": {"kr_aa_spread_bp": 10},
+  "short_term_shock_rationale": "계절성 +10bp",
+  "data_gaps": ["하우스 뷰 부족"],
+  "sources": ["data/latest_snapshot.json"]
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "view_card",
+  "description": "증권사 리포트 1개 = 카드 1개. 원문 복사 금지, 페이지 근거 필수.",
+  "type": "object",
+  "required": ["card_id", "house", "report_title", "published", "source_file", "topics", "views", "key_risks", "notes"],
+  "additionalProperties": false,
+  "properties": {
+    "card_id": {"type": "string", "pattern": "^[0-9]{8}_.+"},
+    "house": {"type": "string", "minLength": 1},
+    "report_title": {"type": "string", "minLength": 1},
+    "published": {"type": "string", "format": "date", "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+    "published_estimated": {"type": "boolean", "description": "파일명 규칙 불일치로 날짜/하우스를 PDF에서 추정했으면 true"},
+    "source_file": {"type": "string"},
+    "topics": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/topic_id"}},
+    "views": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["topic_id", "variable", "direction", "horizon", "target", "rationale", "page_ref", "conviction"],
+        "additionalProperties": false,
+        "properties": {
+          "topic_id": {"$ref": "#/$defs/topic_id"},
+          "variable": {"type": "string", "minLength": 1},
+          "direction": {"enum": ["하락", "상승", "횡보", "확대", "축소", "중립"]},
+          "horizon": {"enum": ["단기", "장기"]},
+          "target": {"type": ["string", "null"]},
+          "rationale": {"type": "string", "minLength": 1, "maxLength": 300},
+          "page_ref": {"type": "string", "pattern": "^p\\.\\d+"},
+          "conviction": {"enum": ["높음", "중간", "낮음"]}
+        }
+      }
+    },
+    "key_risks": {"type": "array", "items": {"type": "string"}},
+    "notes": {"type": "string"}
+  },
+  "$defs": {
+    "topic_id": {"enum": ["fx_krwusd", "oil", "kr_rate", "kr_govt_bond", "kr_corp_bond", "us_rate", "us_treasury", "us_corp_bond", "kr_alt_re", "kr_alt_infra", "kr_alt_pe", "kr_alt_pd", "us_alt_re", "us_alt_infra", "us_alt_pe", "us_alt_pd"]}
+  }
+}
