@@ -150,3 +150,15 @@ def test_proposal_recomputes_duration_gap():
     before = eng.alm(pf, {})["duration_gap_years"]                 # (9000+3000−12000)/1000 = 0
     after = eng.alm(ci.apply_proposal(pf, {"deltas_pp": {"국공채": -10, "회사채": 10}}), {})["duration_gap_years"]
     assert before == pytest.approx(0.0) and after == pytest.approx(-1.2)   # 100 이동 × (6−18) / 1000
+
+
+def test_proposal_adds_class_not_held():
+    pf = _pf({"class": "국공채", "mv_krw_bn": 900.0, "mod_duration": 10.0},
+             {"class": "부동산", "mv_krw_bn": 100.0})
+    prop = {"deltas_pp": {"부동산": -2.0, "대체-사모대출": 2.0}}
+    after = ci.apply_proposal(pf, prop)
+    new = [a for a in after["assets"] if a["class"] == "대체-사모대출"]
+    assert len(new) == 1 and new[0]["mv_krw_bn"] == pytest.approx(20.0) and new[0]["value_flag"] == "추정"
+    cons = {"limits": [{"name": "대체투자 합계", "classes": ["부동산", "대체-사모대출"], "max": 0.15}]}
+    res = ci.check_constraints(pf, cons, proposal=prop)
+    assert res[0]["value"] == pytest.approx(0.10)  # 10% − 2%p + 2%p

@@ -432,6 +432,12 @@ def run(portfolio: dict, shocks_doc: dict, engine: Engine | None = None) -> dict
     return result
 
 
+def new_class_row(cls: str, mv: float, total: float) -> dict:
+    """제안으로 새로 편입하는 자산군 행. 지역·통화는 국내·원화로 가정한다."""
+    return {"class": cls, "label": f"{cls}(신규 편입, 제안)", "region": "KR", "currency": "KRW",
+            "mv_krw_bn": mv, "weight": mv / total if total else 0.0, "value_flag": "추정", "page_ref": None}
+
+
 def apply_proposal(portfolio: dict, proposal: dict) -> dict:
     """proposal의 자산군별 %p 조정을 금액에 반영한 포트폴리오 사본 (같은 class 행들에 금액 비례 배분)."""
     import copy
@@ -441,6 +447,9 @@ def apply_proposal(portfolio: dict, proposal: dict) -> dict:
     for cls, d_pp in (proposal.get("deltas_pp") or {}).items():
         rows = [a for a in pf["assets"] if a["class"] == cls]
         if not rows:
+            # 현재 보유하지 않은 자산군을 새로 편입하는 제안: 국내·원화 신규 행으로 추가(추정)
+            if d_pp > 0:
+                pf["assets"].append(new_class_row(cls, total * d_pp / 100, total))
             continue
         cls_mv = sum(float(a["mv_krw_bn"]) for a in rows) or 1.0
         for a in rows:
@@ -462,6 +471,10 @@ def check_constraints(portfolio: dict, constraints: dict, alm: dict | None = Non
         for w in weights:
             w["w"] += float(proposal.get("deltas_pp", {}).get(w["class"], 0.0)) / 100 / max(
                 1, sum(1 for x in weights if x["class"] == w["class"]))
+        held = {w["class"] for w in weights}
+        for cls, d_pp in (proposal.get("deltas_pp") or {}).items():
+            if cls not in held and d_pp > 0:
+                weights.append({**new_class_row(cls, total * d_pp / 100, total), "w": d_pp / 100})
     out = []
     for lim in constraints.get("limits", []):
         sel = [w for w in weights

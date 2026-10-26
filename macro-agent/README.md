@@ -84,6 +84,7 @@ python scripts/optimize_allocation.py --portfolio knowledge/portfolios/현대해
 python scripts/opt_sensitivity.py --portfolio ... --shocks ... --date {날짜}      # 가정 민감도
 python scripts/render_yield_strategy.py --company 현대해상 --date {날짜}            # 골격(표) 생성 → 서술 TODO 채움
 ```
+재무제표 요약(손익·보험손익 분해·재무상태표·영업지표): `python scripts/extract_ir_financials.py --xlsx processed/filings/{회사}_{기간}_IR데이터.xlsx --company {회사} --period 1H26 --avg-assets {평균 운용자산}` → `knowledge/portfolios/{회사}/financials_{기간}.json` (현대해상 IR Factsheet 양식 기준, 다른 양식은 라벨 조정 필요).
 가정은 `config/yield_assumptions.yaml`(신규 자금 기대수익·기대손실·K-ICS 계수 범위·연간 조정 한도·전략별 제약). 3년 경로는 `class_bounds_pp`를 3배로 한 사본을 `--assumptions`로 넘겨 계산합니다. 투자손익 분해는 `knowledge/portfolios/{회사}/income_{기간}.json`.
 
 ### 파일명 규칙

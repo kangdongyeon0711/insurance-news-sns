@@ -253,7 +253,8 @@ def main(argv: list[str] | None = None) -> int:
     args = ap.parse_args(argv)
     impact = load_json(Path(args.impact))
     files = sorted(Path(args.portfolio_dir).glob("*.json")) if args.portfolio_dir else ([Path(args.portfolio)] if args.portfolio else [])
-    portfolios = sorted((load_json(f) for f in files), key=lambda d: period_key(d["period"]))
+    # 익스포저 파일만 사용(같은 폴더의 income_*.json 등 보조 자료는 assets가 없어 제외)
+    portfolios = sorted((d for d in (load_json(f) for f in files) if "assets" in d), key=lambda d: period_key(d["period"]))
     out = Path(args.out) if args.out else REPORTS_DIR / f"{args.date}_{impact['company']}_portfolio_impact.md"
     if out.exists() and not args.force:
         print(f"이미 존재: {out} — 덮어쓰려면 --force (사용자 확인 후)")
