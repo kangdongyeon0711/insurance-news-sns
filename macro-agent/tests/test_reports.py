@@ -61,3 +61,13 @@ def test_portfolio_render_and_check():
     assert any("국공채/스트레스" in e for e in errs)
     nostar = md.replace("| 국공채 | 20,000 | -12,000*", "| 국공채 | 20,000 | -12,000")
     assert any("'*'" in e for e in cr.check_portfolio(nostar, impact)[0])
+
+
+def test_sentences_never_cut_mid_sentence():
+    from render_brief import sentences, scenario_line
+    text = "[판단] 첫 문장은 3.50%에서 정점. 두 번째 문장은 조금 더 길게 이어진다. 세 번째."
+    assert sentences(text, 10) == "[판단] 첫 문장은 3.50%에서 정점."  # 한도보다 길어도 첫 문장은 통째로
+    assert sentences(text, 200) == text
+    assert "…" not in sentences(text, 30)
+    assert scenario_line({"headline": "한 문장 요약.", "narrative": text}) == "한 문장 요약."
+    assert scenario_line({"narrative": text}) == "[판단] 첫 문장은 3.50%에서 정점."

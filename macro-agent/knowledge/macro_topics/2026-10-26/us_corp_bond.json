@@ -75,6 +75,7 @@
       {
         "name": "Base",
         "prob": 0.5,
+        "headline": "AI 인프라 섹터 중심으로 IG +10bp(1.0% 내외), HY +50bp(3.9% 내외) 점진 확대된다.",
         "narrative": "[판단] FFR 4.25% 정점 후 4.00% 복귀(us_rate Base), 성장 둔화 속 AI 인프라 섹터 중심 점진 확대: IG 1.0%, HY 3.9% 내외.",
         "factor_shocks": {
           "us_ig_oas_bp": 10,
@@ -85,6 +86,7 @@
       {
         "name": "Bull",
         "prob": 0.25,
+        "headline": "인하 사이클과 AI 투자 수익 가시화로 IG −5bp, HY −25bp 소폭 좁혀진다.",
         "narrative": "[판단] 물가 둔화로 인하 사이클(us_rate Bull) 진입, 연착륙과 AI 투자 수익 가시화로 스프레드 소폭 축소.",
         "factor_shocks": {
           "us_ig_oas_bp": -5,
@@ -95,6 +97,7 @@
       {
         "name": "Bear",
         "prob": 0.25,
+        "headline": "스태그플레이션과 AI 설비투자 둔화로 AI 인프라 발행사부터 차환이 막혀 IG +80bp, HY +300bp 넓어진다.",
         "narrative": "[판단] 추가 인상(us_rate Bear +75bp)과 스태그플레이션에 AI 설비투자 둔화가 겹치면 외부 차입 의존도가 높은 네오클라우드·AI 인프라 발행사부터 조달비용 급등·차환 제약이 나타나 섹터 신용 이벤트로 번지고, IG 1.7%, HY 6.4% 내외로 확대. [하우스] 미래에셋은 하이퍼스케일러 손실 대부분이 주주에게 흡수되고 외부 채권자 전이는 경제적 가치 76~84% 이상 훼손 시에만 급증한다고 봐(20261022_미래_EconMonthly_AI투자둔화리스크 p.1), 본 Bear의 IG 확대는 시스템 전이가 아니라 거시 충격+섹터 리프라이싱 경로로 해석.",
         "factor_shocks": {
           "us_ig_oas_bp": 80,

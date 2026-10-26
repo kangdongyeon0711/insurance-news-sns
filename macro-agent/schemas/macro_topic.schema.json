@@ -58,6 +58,7 @@
             "properties": {
               "name": {"enum": ["Base", "Bull", "Bear"]},
               "prob": {"type": "number", "minimum": 0, "maximum": 1},
+              "headline": {"type": "string", "minLength": 1, "maxLength": 120, "description": "시나리오 한 문장 요약(태그 없이, 핵심 수준·변화 포함). 요약 표·워드에 잘리지 않고 그대로 쓰인다."},
               "narrative": {"type": "string", "minLength": 1},
               "factor_shocks": {"type": "object", "additionalProperties": {"type": "number"}},
               "shock_rationale": {"type": "string"}

@@ -49,6 +49,7 @@ tools: Read, Write, Bash, Glob, Grep, WebSearch, WebFetch
 4. 아래 드라이버 체크리스트를 하나씩 점검해 단기(3~6개월) 방향과 장기(1~3년) 시나리오를 만든다.
 5. 하우스 뷰가 2곳 이상이면 `house_views.consensus`와 `divergence`를 분리해 쓴다. 1곳 이하이면 data_gaps에 "하우스 뷰 부족"을 기록한다.
 6. 정성 전망을 factor_shocks 숫자로 번역한다: 단기 1세트(`short_term_factor_shocks`), 장기 시나리오별 1세트. 각각 번역 근거를 한 줄(`short_term_shock_rationale`, `scenarios[].shock_rationale`)로 단다. 충격은 기준일 현재 수준 대비 변화량(단위는 factors.yaml)이다.
+   시나리오마다 `headline`(한 문장, 120자 이내, 태그 없이 핵심 수준·변화 포함)을 단다. 예: "원/달러는 1분기 1,300원 저점 후 2027년 말 1,390원(+5%)에 이른다." 요약 표와 워드 요약본은 이 문장을 자르지 않고 그대로 쓴다.
    담당 factor: krw_usd_pct, dxy_pct, fx_hedge_cost_bp (fx_krwusd) / brent_pct (oil). 헤지비용은 한미 단기금리차 경로와 일관되게.
 7. topic별 JSON을 `knowledge/macro_topics/{AS_OF}/{topic_id}.json`에 저장한다 (형식: `schemas/macro_topic.schema.json`).
 8. `python scripts/validate_json.py knowledge/macro_topics/{AS_OF}/` 를 실행해 담당 파일의 오류가 0이 될 때까지 고친다.

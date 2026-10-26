@@ -85,6 +85,7 @@
       {
         "name": "Base",
         "prob": 0.5,
+        "headline": "증시 박스권 회복(KOSPI +5%) 속 PE 평가가치가 3% 완만히 오른다.",
         "narrative": "[판단] 금리 소폭 상승 속 증시 박스권 회복, 규제는 공시·내부통제 중심으로 완화된 형태로 입법. PE 평가가치는 완만한 상승.",
         "factor_shocks": {
           "kr_pe_value_pct": 3,
@@ -95,6 +96,7 @@
       {
         "name": "Bull",
         "prob": 0.2,
+        "headline": "증시 랠리(KOSPI +15%)와 대형 엑시트로 PE 평가가치가 10% 오른다.",
         "narrative": "[판단] 금리 안정·증시 랠리 재개, 드라이파우더 집행과 대형 엑시트 활성화.",
         "factor_shocks": {
           "kr_pe_value_pct": 10,
@@ -105,6 +107,7 @@
       {
         "name": "Bear",
         "prob": 0.3,
+        "headline": "증시 조정(KOSPI −20%)과 LBO 규제 강화로 엑시트가 늦어져 PE 평가가치가 12% 내린다.",
         "narrative": "[판단] 인상 폭 확대와 증시 추가 조정, LBO 규제 강화로 엑시트 지연·포트폴리오 기업 이자부담 증가.",
         "factor_shocks": {
           "kr_pe_value_pct": -12,

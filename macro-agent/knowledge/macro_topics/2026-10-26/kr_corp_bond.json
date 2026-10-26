@@ -71,6 +71,7 @@
       {
         "name": "Base",
         "prob": 0.45,
+        "headline": "캐리 수요로 AA- 스프레드는 5bp 줄고, 고금리 장기화로 BBB-는 10bp 넓어진다.",
         "narrative": "[판단] 기준금리 3.50% 정점 이후 금리 안정과 높은 절대금리에 대한 캐리 수요로 AA- 스프레드는 60bp대 초중반으로 소폭 축소, BBB-는 고금리 장기화로 소폭 확대.",
         "factor_shocks": {
           "kr_aa_spread_bp": -5,
@@ -81,6 +82,7 @@
       {
         "name": "Bull",
         "prob": 0.3,
+        "headline": "인하 전환과 PF 정리 마무리로 AA- −15bp, BBB- −40bp로 크레딧 전반이 좁혀진다.",
         "narrative": "[판단] 인하 전환과 경기 연착륙으로 크레딧 전반 축소, PF 구조조정 마무리로 저등급 리스크 프리미엄 하락.",
         "factor_shocks": {
           "kr_aa_spread_bp": -15,
@@ -91,6 +93,7 @@
       {
         "name": "Bear",
         "prob": 0.25,
+        "headline": "인상 장기화와 PF 부실 재부각으로 AA- +30bp, BBB- +120bp로 크레딧 전반이 넓어진다.",
         "narrative": "[판단] 인상 장기화(3.75% 이상)와 부동산 PF 부실 재부각·경기 둔화가 겹쳐 등급 하향과 미매각이 늘고 크레딧 전반 확대.",
         "factor_shocks": {
           "kr_aa_spread_bp": 30,

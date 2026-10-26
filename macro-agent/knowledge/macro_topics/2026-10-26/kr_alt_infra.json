@@ -77,6 +77,7 @@
       {
         "name": "Base",
         "prob": 0.45,
+        "headline": "국고 10년 +10bp에 맞춰 인프라 할인율이 7bp 오르고 리스크 스프레드는 유지된다.",
         "narrative": "[판단] 2회 인상 후 동결, KTB 10Y +10bp. 신규 민자 물량은 점진적으로 늘고 에너지 전환·데이터센터 딜이 증가하나 리스크 스프레드는 대체로 유지.",
         "factor_shocks": {
           "infra_discount_rate_bp": 7
@@ -86,6 +87,7 @@
       {
         "name": "Bull",
         "prob": 0.3,
+        "headline": "금리 하락과 정책 물량·공모펀드 수요로 할인율이 15bp 내린다.",
         "narrative": "[판단] 경기 둔화로 금리 하락(KTB 10Y -20bp), 정책 물량 확대와 공모펀드 수요가 우량 자산 가격을 지지.",
         "factor_shocks": {
           "infra_discount_rate_bp": -15
@@ -95,6 +97,7 @@
       {
         "name": "Bear",
         "prob": 0.25,
+        "headline": "국고 10년 +40bp와 신규 물량 급증·수요 리스크로 할인율이 30bp 오른다.",
         "narrative": "[판단] 인상 폭 확대로 KTB 10Y +40bp, 신규 물량 급증과 지방 민자 부진·수요 리스크로 요구수익률 상승.",
         "factor_shocks": {
           "infra_discount_rate_bp": 30

@@ -92,6 +92,7 @@
       {
         "name": "Base",
         "prob": 0.5,
+        "headline": "2년물은 −50bp로 정책금리에 수렴하고 10년 −25bp, 30년 −15bp로 덜 내려 커브가 가팔라진다.",
         "narrative": "[판단] FFR 정점 4.25% 후 4.00% 복귀(us_rate Base 0bp)에 맞춰 2Y가 정책금리 수준으로 수렴, 장기물은 재정 term premium으로 덜 하락하며 커브 스티프닝(10Y 4.75%·30Y 5.15% 내외). [하우스] NH의 구조적 국채 수요 뷰(20260526_NH_2026하반기FICC채권전망 p.22-28, 2026-05 발간)는 장기물 term premium 상단을 제한하는 장기 고려사항 — 충격값은 유지.",
         "factor_shocks": {
           "ust_2y_bp": -50,
@@ -103,6 +104,7 @@
       {
         "name": "Bull",
         "prob": 0.25,
+        "headline": "FFR 3.00%까지 인하에 2년 −150bp, 10년 −90bp, 30년 −70bp의 강한 불 스티프닝이 나타난다.",
         "narrative": "[판단] FFR 상단 3.00%까지 인하(us_rate Bull -100bp), 고용 악화·물가 둔화로 커브 강한 불 스티프닝.",
         "factor_shocks": {
           "ust_2y_bp": -150,
@@ -114,6 +116,7 @@
       {
         "name": "Bear",
         "prob": 0.25,
+        "headline": "FFR 4.75%와 재정 우려로 2년 +60bp, 10년 +50bp(5.5% 내외), 30년 +55bp 오른다.",
         "narrative": "[판단] FFR 상단 4.75%(us_rate Bear +75bp), 기대인플레이션 상승과 재정 우려로 장기물 동반 상승(10Y 5.5%, 30Y 5.9% 내외).",
         "factor_shocks": {
           "ust_2y_bp": 60,

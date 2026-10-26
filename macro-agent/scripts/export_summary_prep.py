@@ -6,18 +6,14 @@ import json, re, sys
 from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
-from render_brief import PREF, TOPIC_NAMES, fmt_num, fmt_unit, ind_stale
+from render_brief import PREF, TOPIC_NAMES, fmt_num, fmt_unit, ind_stale, sentences, scenario_line
 from common import TOPIC_IDS
 DATE = sys.argv[1]
 tdir = ROOT / "knowledge/macro_topics" / DATE
 
 def clip(t, n=170):
-    t = " ".join(t.split())
-    if len(t) <= n:
-        return t
-    cut = t[:n]
-    m = max(cut.rfind(". "), cut.rfind("다. "), cut.rfind("음. "), cut.rfind("함. "))
-    return (cut[:m + 1] if m > 60 else cut.rstrip() + "…")
+    """완결된 문장만 n자 안에서 이어 붙인다(최소 첫 문장). 문장을 중간에서 자르지 않는다."""
+    return sentences(t, n)
 
 out = {"date": DATE, "topics": []}
 cards = set()
@@ -35,7 +31,7 @@ for i, t in enumerate(TOPIC_IDS, 1):
         flag = x.get("value_flag", "API") + (" ⚠" if ind_stale(x, DATE) else "")
         nm = x.get("name") or x["series_id"]
         short = re.sub(r"\s*\((?:[^()]*(?:ECOS|웹|FRED|STEO|PitchBook|Trepp|한국부동산원|TTM|분기|부실)[^()]*)\)", "", nm)
-        inds.append({"short": short[:22], "name": nm, "value": f"{fmt_num(x['value'])}{fmt_unit(x['unit'])}".strip(),
+        inds.append({"short": short.strip(), "name": nm, "value": f"{fmt_num(x['value'])}{fmt_unit(x['unit'])}".strip(),
                      "as_of": x.get("as_of") or "미확인", "flag": flag})
     sc = {s["name"]: s for s in d["long_term"]["scenarios"]}
     hv = d["house_views"]
@@ -46,7 +42,7 @@ for i, t in enumerate(TOPIC_IDS, 1):
         "summary": clip(d["current"]["summary"], 150),
         "st_dir": d["short_term"].get("direction") or clip(d["short_term"]["view"], 60),
         "st_view": clip(d["short_term"]["view"], 150), "st_conf": d["short_term"]["confidence"],
-        "scen": [{"name": n, "prob": sc[n]["prob"], "text": clip(sc[n]["narrative"], 85), "short": clip(sc[n]["narrative"], 60)} for n in ("Base", "Bull", "Bear") if n in sc],
+        "scen": [{"name": n, "prob": sc[n]["prob"], "text": scenario_line(sc[n]), "short": scenario_line(sc[n])} for n in ("Base", "Bull", "Bear") if n in sc],
         "house": clip(hv["consensus"], 260) if hv["consensus"] else "하우스 뷰 없음",
         "cards": hv["cards_used"],
         "gaps": [clip(g, 70) for g in d["data_gaps"][:2]],

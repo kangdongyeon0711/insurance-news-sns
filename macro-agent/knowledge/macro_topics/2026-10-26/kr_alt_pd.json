@@ -85,6 +85,7 @@
       {
         "name": "Base",
         "prob": 0.45,
+        "headline": "사모대출 시장은 성장하지만 금리 부담으로 부도율이 0.3%p 오른다.",
         "narrative": "[판단] 2회 인상 후 동결, PF 정리 마무리. 사모대출 시장은 규제 공백을 채우며 성장하되 부도율은 금리 부담으로 소폭 상승.",
         "factor_shocks": {
           "kr_pd_default_pp": 0.3
@@ -94,6 +95,7 @@
       {
         "name": "Bull",
         "prob": 0.3,
+        "headline": "금리 안정과 PF 정상화로 부도율이 0.2%p 내린다.",
         "narrative": "[판단] 금리 안정·조기 인하, PF 정상화 가속과 차주 재무 개선으로 부도율 하락.",
         "factor_shocks": {
           "kr_pd_default_pp": -0.2
@@ -103,6 +105,7 @@
       {
         "name": "Bear",
         "prob": 0.25,
+        "headline": "인상 폭 확대와 경기 둔화로 LBO·부동산 담보 대출 부실이 커져 부도율이 1.5%p 오른다.",
         "narrative": "[판단] 인상 폭 확대와 경기 둔화로 LBO·부동산 담보 사모대출 부실 확대, 2금융권 토담대 부실 전이.",
         "factor_shocks": {
           "kr_pd_default_pp": 1.5

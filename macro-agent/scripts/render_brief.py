@@ -8,6 +8,8 @@ python scripts/render_brief.py --date 2026-10-25 [--out reports/2026-10-25_macro
 """
 from __future__ import annotations
 
+import re
+
 import argparse
 import sys
 from pathlib import Path
@@ -96,9 +98,27 @@ def shocks_str(sh: dict) -> str:
     return ", ".join(f"`{k}` {v:+g}" for k, v in sh.items()) or "—"
 
 
+_SENT_END = re.compile(r"(?<=[^\sA-Za-z0-9]\.)\s+")
+
+
+def sentences(text: str, n: int = 60) -> str:
+    """완결된 문장만 n자 안에서 이어 붙인다(최소 첫 문장 1개). 문장 중간을 자르거나 '…'를 붙이지 않는다."""
+    parts = _SENT_END.split(" ".join(text.split()))
+    out = parts[0]
+    for s in parts[1:]:
+        if len(out) + 1 + len(s) > n:
+            break
+        out += " " + s
+    return out
+
+
+def scenario_line(s: dict) -> str:
+    """시나리오 한 문장 요약: headline(작성 시 1문장) 우선, 없으면 narrative 첫 문장."""
+    return s.get("headline") or sentences(s["narrative"], 0)
+
+
 def short(text: str, n: int = 60) -> str:
-    text = " ".join(text.split())
-    return text if len(text) <= n else text[: n - 1] + "…"
+    return sentences(text, n)
 
 
 def render(date: str) -> str:
@@ -144,7 +164,7 @@ def render(date: str) -> str:
         st = d["short_term"]
         base = next(s for s in d["long_term"]["scenarios"] if s["name"] == "Base")
         a(f"| {i} | {TOPIC_NAMES[t]} | {cur} | {short(st.get('direction') or st['view'], 50)} | "
-          f"{short(base['narrative'], 50)} (p={base['prob']:g}) | {st['confidence']} |")
+          f"{scenario_line(base)} (p={base['prob']:g}) | {st['confidence']} |")
     a("")
 
     movers = sorted((s for s in snap["series"].values() if s.get("chg_1w") is not None),
@@ -189,7 +209,7 @@ def render(date: str) -> str:
         a("| 시나리오 | 확률 | 내용 | 팩터 충격 | 번역 근거 |")
         a("|---|---|---|---|---|")
         for s in d["long_term"]["scenarios"]:
-            a(f"| {s['name']} | {s['prob']:g} | {s['narrative']} | {shocks_str(s['factor_shocks'])} | {s.get('shock_rationale', '')} |")
+            a(f"| {s['name']} | {s['prob']:g} | {('**' + s['headline'] + '** ') if s.get('headline') else ''}{s['narrative']} | {shocks_str(s['factor_shocks'])} | {s.get('shock_rationale', '')} |")
         hv = d["house_views"]
         a("\n**하우스 뷰**\n")
         a(f"- 컨센서스: {hv['consensus'] or '—'}")
