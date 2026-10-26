@@ -1,0 +1,166 @@
+{
+  "topic_id": "us_treasury",
+  "as_of": "2026-10-26",
+  "current": {
+    "indicators": [
+      {
+        "series_id": "ust_2y",
+        "name": "UST 2년 (재무부 par yield)",
+        "value": 4.69,
+        "unit": "%",
+        "as_of": "2026-10-23",
+        "chg_1m": null,
+        "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=202610",
+        "value_flag": "웹확인",
+        "stale": false
+      },
+      {
+        "series_id": "ust_10y",
+        "name": "UST 10년 (재무부 par yield)",
+        "value": 5.0,
+        "unit": "%",
+        "as_of": "2026-10-23",
+        "chg_1m": null,
+        "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=202610",
+        "value_flag": "웹확인",
+        "stale": false
+      },
+      {
+        "series_id": "ust_30y",
+        "name": "UST 30년 (재무부 par yield)",
+        "value": 5.33,
+        "unit": "%",
+        "as_of": "2026-10-23",
+        "chg_1m": null,
+        "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=202610",
+        "value_flag": "웹확인",
+        "stale": false
+      },
+      {
+        "series_id": "ust_10y_2y",
+        "name": "UST 10Y-2Y (파생: 10Y−2Y)",
+        "value": 0.31,
+        "unit": "%p",
+        "as_of": "2026-10-23",
+        "chg_1m": null,
+        "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=202610 (10Y 5.00 − 2Y 4.69 계산)",
+        "value_flag": "웹확인",
+        "stale": false
+      },
+      {
+        "series_id": "ust_10y_2y_fred",
+        "name": "UST 10Y-2Y (FRED 공식)",
+        "value": 0.31,
+        "unit": "%p",
+        "as_of": "2026-10-23",
+        "chg_1m": null,
+        "source": "https://fred.stlouisfed.org/series/T10Y2Y",
+        "value_flag": "웹확인",
+        "stale": false
+      },
+      {
+        "series_id": "us_bei_10y",
+        "name": "10년 기대인플레이션(BEI)",
+        "value": 2.35,
+        "unit": "%",
+        "as_of": "2026-10-16",
+        "chg_1m": null,
+        "source": "https://govspending.org/series/T10YIE/ (FRED T10YIE 집계 사이트 경유)",
+        "value_flag": "웹확인",
+        "stale": false
+      }
+    ],
+    "summary": "[사실] API 데이터 미수집으로 모든 현황 수치는 웹확인 값이다. [사실] 2026-10-23 재무부 par yield 기준 UST 2Y 4.69%, 10Y 5.00%, 30Y 5.33%, 10Y-2Y 0.31%p(파생값과 FRED T10Y2Y 일치). [사실] 10Y는 10/21 5.13% → 10/22 4.96%로 17bp 급락(AI 붐 우려에 따른 안전자산 수요 보도) 후 10/23 5.00%로 반등했다. [사실] 참고로 9/23 수준은 2Y 4.85%, 10Y 5.11%, 30Y 5.40%(2차 출처)로 1개월간 커브는 불 스티프닝. [사실] 10Y BEI 2.35%(2026-10-16). [하우스] 신한투자증권은 차주 UST10Y 4.90~5.15% 밴드, 약보합(금리 소폭 상승) 전망(20261023_신한_WeeklyGuideBook p.8). [판단] 추가 인상 프라이싱과 높은 term premium으로 단기 하단이 받쳐지는 구간."
+  },
+  "short_term": {
+    "horizon": "3-6M",
+    "direction": "횡보~소폭 상승",
+    "view": "[판단] 연준 추가 인상 1회(상단 4.25%) 기본 경로에서 2Y는 소폭 상승, 10Y·30Y는 5.0~5.2% 박스권을 예상한다. [하우스][20261023_신한_WeeklyGuideBook p.8] 매파적 FOMC·9월 PCE 경계로 금리 하단이 받쳐진다는 시각과 일치. [하우스][20261023_미래_MacroWeekAhead p.1] 미래에셋도 10Y 5.0% 중심 박스권(확신 높음)을 제시해 동일 주간 두 하우스 수준 컨센서스가 강하다. [판단] AI 신용 우려 재부각 시 안전자산 수요로 하락 리스크가 있어 확신도는 중간.",
+    "drivers": [
+      "[사실] FFR 3.75~4.00%, SEP 2026년 말 4.1%",
+      "[사실] 9월 CPI 3.7%, 10Y BEI 2.35%",
+      "[사실] 9월 NFP +2.9만명 — 하락 압력",
+      "[사실] 재무부는 2026년 5월 리펀딩에서 쿠폰 발행 규모 동결·T-bill로 조달 조정 — 8월 QRA 내용은 미확인",
+      "[사실] 연준 RMP로 T-bill 매입 지속(7월 MPR) — 단기물 수요 지지",
+      "[판단] 재정적자 지속으로 30Y term premium 높게 유지"
+    ],
+    "confidence": "중간"
+  },
+  "long_term": {
+    "horizon": "1-3Y",
+    "scenarios": [
+      {
+        "name": "Base",
+        "prob": 0.5,
+        "narrative": "[판단] FFR 정점 4.25% 후 4.00% 복귀(us_rate Base 0bp)에 맞춰 2Y가 정책금리 수준으로 수렴, 장기물은 재정 term premium으로 덜 하락하며 커브 스티프닝(10Y 4.75%·30Y 5.15% 내외). [하우스] NH의 구조적 국채 수요 뷰(20260526_NH_2026하반기FICC채권전망 p.22-28, 2026-05 발간)는 장기물 term premium 상단을 제한하는 장기 고려사항 — 충격값은 유지.",
+        "factor_shocks": {
+          "ust_2y_bp": -50,
+          "ust_10y_bp": -25,
+          "ust_30y_bp": -15
+        },
+        "shock_rationale": "현재 2Y 4.69%가 추가 인상을 선반영 → FFR 4.00% 복귀 시 2Y ~4.2%(-50bp), 10Y·30Y는 term premium으로 제한적 하락"
+      },
+      {
+        "name": "Bull",
+        "prob": 0.25,
+        "narrative": "[판단] FFR 상단 3.00%까지 인하(us_rate Bull -100bp), 고용 악화·물가 둔화로 커브 강한 불 스티프닝.",
+        "factor_shocks": {
+          "ust_2y_bp": -150,
+          "ust_10y_bp": -90,
+          "ust_30y_bp": -70
+        },
+        "shock_rationale": "FFR -100bp + 추가 인상 프라이싱 소멸로 2Y -150bp, 장기물은 베타 0.5~0.6"
+      },
+      {
+        "name": "Bear",
+        "prob": 0.25,
+        "narrative": "[판단] FFR 상단 4.75%(us_rate Bear +75bp), 기대인플레이션 상승과 재정 우려로 장기물 동반 상승(10Y 5.5%, 30Y 5.9% 내외).",
+        "factor_shocks": {
+          "ust_2y_bp": 60,
+          "ust_10y_bp": 50,
+          "ust_30y_bp": 55
+        },
+        "shock_rationale": "FFR +75bp 중 일부 선반영, term premium 확대로 30Y 상승폭이 10Y보다 큼"
+      }
+    ]
+  },
+  "house_views": {
+    "consensus": "[하우스] 동일 주간 2곳(신한·미래에셋) 강한 공통: UST10Y 5.0% 부근 박스권. 미래에셋은 10Y 5.0% 중심 박스권 등락(확신 높음, 주간 10/26~30, 20261023_미래_MacroWeekAhead p.1 — 실물 견조하나 증시와 동조화, AI 기업 자금조달 우려에 따른 CAPEX 둔화 가능성이 상단 제한). 신한은 차주 4.90~5.15% 밴드·약보합(금리 소폭 상승 쪽), 매파적 FOMC·9월 PCE 경계가 하단 지지(확신 중간, 20261023_신한_WeeklyGuideBook p.8). [판단] 두 밴드 중심(5.0% vs 약 5.03%)이 사실상 일치. [하우스] 지연 참고(NH, 2026-05-26, 구조적 참고): 미국채 투자의견 중립·2년 이하 선호(20260526_NH_2026하반기FICC채권전망 p.4). [갱신 2026-10-26] 신한 연간 전망: 기간 프리미엄 0.75%(2015~24년 평균 대비 +1%p 이상)가 인상 종료 후에도 장기금리 하단을 지지, 적자 GDP 7~8%로 장기금리 부담 유지(확신 중간, 20261026_신한_2027전망P3_정책금융취약성 p.5, p.11). 2년물-기준금리 격차는 1분기 중 축소 전환(확신 낮음, p.3). [판단] 단기물 하락폭 > 장기물 하락폭인 Base(2Y −50, 10Y −25, 30Y −15bp, 스티프닝)와 정합 — 충격값 유지.",
+    "divergence": "[하우스] 동일 주간 2곳 간 차이는 상하방 기울기뿐: 신한은 금리 소폭 상승 편향(20261023_신한_WeeklyGuideBook p.8), 미래에셋은 AI CAPEX 둔화 우려로 상단 제한·증시 동조(20261023_미래_MacroWeekAhead p.1) — 미래에셋이 하방(강세) 리스크에 조금 더 무게. [하우스] 지연 참고(NH, 2026-05 발간·약 5개월 시차): 하반기 레인지 4.20~4.75%, 분기 평균 3Q 4.40% → 4Q 4.30%, 연평균 2027년 4.08%·2028년 4.00%(20260526_NH_2026하반기FICC채권전망 p.29, p.89). [사실] 현재 10Y 5.00%(2026-10-23, 웹확인)는 NH 레인지 상단을 넘어섰고, 전제였던 연준 12월 인하는 9/16 인상(3.75~4.00%)으로 미실현. [하우스] NH 구조 뷰(SLR 완화 은행 매수·스테이블코인 준비금·연준 T-bill 매입·외국인 보유가 국채 수요를 구조적으로 지지, p.22-28)는 term premium 상단을 제한하는 장기 고려사항으로만 유지. [판단] NH 수치 경로는 현재 전망으로 쓰지 않음.",
+    "cards_used": [
+      "20261023_신한_WeeklyGuideBook",
+      "20260526_NH_2026하반기FICC채권전망",
+      "20261023_미래_MacroWeekAhead",
+      "20261026_신한_2027전망P3_정책금융취약성"
+    ]
+  },
+  "short_term_factor_shocks": {
+    "ust_2y_bp": 10,
+    "ust_10y_bp": 5,
+    "ust_30y_bp": 5
+  },
+  "short_term_shock_rationale": "FFR +25bp(us_rate 단기) 중 상당분이 이미 2Y에 반영 → 2Y +10bp, 10Y·30Y는 하우스 밴드 중간(약 5.0~5.05%) 수준 +5bp — 미래에셋 5.0% 중심 박스권과도 정합, 변경 없음",
+  "data_gaps": [
+    "API 데이터 미수집 (FRED API 차단으로 latest_snapshot.json에 미국 시계열 없음) — 모든 현황 수치는 웹확인 값",
+    "하우스 2곳 동일 주간(신한·미래에셋) + NH(2026-05, 구조적 참고)",
+    "재무부 8월 QRA(쿠폰/T-bill 구성) 미확인",
+    "UST 5년 백분위·1개월 변화 공식값 미확인(9/23 비교치는 2차 출처)",
+    "BEI는 10/16 값(9일 경과) — 집계 사이트 경유, FRED 직접 조회 실패",
+    "재무부·FRED 사이트 직접 접속 불가 — 검색 결과 스니펫 기준 값"
+  ],
+  "sources": [
+    "data/latest_snapshot.json (미국 시계열 없음)",
+    "knowledge/view_cards/20261023_신한_WeeklyGuideBook",
+    "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=202610",
+    "https://fred.stlouisfed.org/series/T10Y2Y",
+    "https://fred.stlouisfed.org/series/DGS30",
+    "https://govspending.org/series/T10YIE/",
+    "https://statisticsoftheworld.com/news/2026-09-23 (보조)",
+    "https://gvwire.com/2026/05/04/us-treasury-seen-holding-coupon-sizes-steady-leaning-on-bills-as-tariff-refunds-loom/ (보조)",
+    "https://www.federalreserve.gov/monetarypolicy/2026-07-mpr-part2.htm",
+    "https://www.federalreserve.gov/monetarypolicy/fomcprojtabl20260916.htm",
+    "knowledge/view_cards/20260526_NH_2026하반기FICC채권전망.json",
+    "knowledge/view_cards/20261023_미래_MacroWeekAhead.json",
+    "knowledge/view_cards/20261026_신한_2027전망P3_정책금융취약성.json"
+  ]
+}

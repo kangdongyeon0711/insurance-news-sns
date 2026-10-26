@@ -1,0 +1,276 @@
+{
+  "topic_id": "kr_alt_re",
+  "as_of": "2026-10-26",
+  "current": {
+    "indicators": [
+      {
+        "series_id": "kr_house_price",
+        "name": "주택매매가격지수",
+        "value": 101.4,
+        "unit": "2025.03=100",
+        "as_of": "2026-01-31",
+        "chg_1m": null,
+        "chg_unit": "%",
+        "value_flag": "수기",
+        "source": "data/latest_snapshot.json (data/manual/ecos100_20261025.yaml, ECOS 사용자 수기 입력)",
+        "stale": true
+      },
+      {
+        "series_id": "kr_jeonse_price",
+        "name": "주택전세가격지수",
+        "value": 101.2,
+        "unit": "2025.03=100",
+        "as_of": "2026-01-31",
+        "chg_1m": null,
+        "chg_unit": "%",
+        "value_flag": "수기",
+        "source": "data/latest_snapshot.json (data/manual/ecos100_20261025.yaml, ECOS 사용자 수기 입력)",
+        "stale": true
+      },
+      {
+        "series_id": "kr_land_price_chg",
+        "name": "지가변동률(전기대비)",
+        "value": 0.202,
+        "unit": "%",
+        "as_of": "2026-08-31",
+        "chg_1m": null,
+        "chg_unit": "bp",
+        "value_flag": "수기",
+        "source": "data/latest_snapshot.json (data/manual/ecos100_20261025.yaml, ECOS 사용자 수기 입력)",
+        "stale": true
+      },
+      {
+        "series_id": "kr_construction_completed",
+        "name": "건설기성액",
+        "value": 9.6,
+        "unit": "조원",
+        "as_of": "2026-08-31",
+        "chg_1m": null,
+        "chg_unit": "%",
+        "value_flag": "수기",
+        "source": "data/latest_snapshot.json (data/manual/ecos100_20261025.yaml, ECOS 사용자 수기 입력)",
+        "stale": true
+      },
+      {
+        "series_id": "kr_construction_orders",
+        "name": "건설수주액",
+        "value": 14.4,
+        "unit": "조원",
+        "as_of": "2026-08-31",
+        "chg_1m": null,
+        "chg_unit": "%",
+        "value_flag": "수기",
+        "source": "data/latest_snapshot.json (data/manual/ecos100_20261025.yaml, ECOS 사용자 수기 입력)",
+        "stale": true
+      },
+      {
+        "series_id": "kr_building_permits",
+        "name": "건축허가면적",
+        "value": 9169.14,
+        "unit": "천㎡",
+        "as_of": "2026-08-31",
+        "chg_1m": null,
+        "chg_unit": "%",
+        "value_flag": "수기",
+        "source": "data/latest_snapshot.json (data/manual/ecos100_20261025.yaml, ECOS 사용자 수기 입력)",
+        "stale": true
+      },
+      {
+        "series_id": "kr_building_starts",
+        "name": "건축착공면적",
+        "value": 6297.68,
+        "unit": "천㎡",
+        "as_of": "2026-08-31",
+        "chg_1m": null,
+        "chg_unit": "%",
+        "value_flag": "수기",
+        "source": "data/latest_snapshot.json (data/manual/ecos100_20261025.yaml, ECOS 사용자 수기 입력)",
+        "stale": true
+      },
+      {
+        "series_id": "kr_construction_qoq",
+        "name": "건설투자증감률(실질, 계절조정 전기대비)",
+        "value": -0.1,
+        "unit": "%",
+        "as_of": "2026-06-30",
+        "chg_1m": null,
+        "chg_unit": "bp",
+        "value_flag": "수기",
+        "source": "data/latest_snapshot.json (data/manual/ecos100_20261025.yaml, ECOS 사용자 수기 입력)",
+        "stale": false
+      },
+      {
+        "series_id": "kr_office_vacancy_national",
+        "name": "오피스 공실률(전국, 한국부동산원)",
+        "value": 9.0,
+        "unit": "%",
+        "as_of": "2026-06-30",
+        "chg_1m": null,
+        "value_flag": "웹확인",
+        "source": "https://mobile.newsis.com/view/NISX20260729_0003728100"
+      },
+      {
+        "series_id": "kr_retail_vacancy_national",
+        "name": "중대형(일반) 상가 공실률(전국, 한국부동산원)",
+        "value": 13.4,
+        "unit": "%",
+        "as_of": "2026-06-30",
+        "chg_1m": null,
+        "value_flag": "웹확인",
+        "source": "https://mobile.newsis.com/view/NISX20260729_0003728100"
+      },
+      {
+        "series_id": "kr_office_rent_index_qoq",
+        "name": "오피스 임대가격지수 전분기대비(전국, 한국부동산원)",
+        "value": 0.42,
+        "unit": "%",
+        "as_of": "2026-06-30",
+        "chg_1m": null,
+        "value_flag": "웹확인",
+        "source": "https://www.fnnews.com/news/202607301012142708"
+      },
+      {
+        "series_id": "kr_office_vacancy_seoul_cbd",
+        "name": "오피스 공실률(서울 CBD)",
+        "value": null,
+        "unit": "%",
+        "as_of": null,
+        "value_flag": "미확인"
+      },
+      {
+        "series_id": "kr_office_vacancy_seoul_gbd",
+        "name": "오피스 공실률(서울 GBD)",
+        "value": null,
+        "unit": "%",
+        "as_of": null,
+        "value_flag": "미확인"
+      },
+      {
+        "series_id": "kr_office_vacancy_seoul_ybd",
+        "name": "오피스 공실률(서울 YBD)",
+        "value": null,
+        "unit": "%",
+        "as_of": null,
+        "value_flag": "미확인"
+      },
+      {
+        "series_id": "kr_logistics_vacancy",
+        "name": "물류센터 공실률",
+        "value": null,
+        "unit": "%",
+        "as_of": null,
+        "value_flag": "미확인"
+      },
+      {
+        "series_id": "kr_office_cap_rate_seoul",
+        "name": "서울 오피스 캡레이트",
+        "value": null,
+        "unit": "%",
+        "as_of": null,
+        "value_flag": "미확인"
+      },
+      {
+        "series_id": "kr_pf_exposure",
+        "name": "부동산 PF 익스포저(전 금융권, 금융위)",
+        "value": 169.8,
+        "unit": "조원",
+        "as_of": "2026-03-31",
+        "chg_1m": null,
+        "value_flag": "웹확인",
+        "source": "https://fsc.go.kr/no010101/87252"
+      },
+      {
+        "series_id": "kr_pf_delinquency_rate",
+        "name": "금융권 PF대출 연체율(금융위·금감원)",
+        "value": 4.65,
+        "unit": "%",
+        "as_of": "2026-03-31",
+        "chg_1m": null,
+        "value_flag": "웹확인",
+        "source": "https://fsc.go.kr/no010101/87252"
+      }
+    ],
+    "summary": "[사실] 수기 스냅샷 기준 지가변동률 0.202%(전기대비, 2026-08-31), 건설수주 14.4조원·건설기성 9.6조원(2026-08-31), 건축허가 9,169.14천㎡·착공 6,297.68천㎡(2026-08-31), 건설투자 -0.1%(전기대비, 2026-06-30). 주택매매가격지수 101.4·전세가격지수 101.2(2025.03=100, 2026-01-31)는 267일 경과로 현황 판단에 부적합하며, 월별 지표도 기준일 2026-08-31로 55일 경과(stale) 경고. [사실] 한국부동산원 2026년 2분기 오피스 공실률 전국 9.0%, 임대가격지수 +0.42%(전분기대비), 중대형 상가 공실률 13.4%로 통계 작성 이후 최고(2026-06-30, 웹확인). [사실] 금융위 기준 3월말 PF 익스포저 169.8조원(전분기 -4.5조원), PF대출 연체율 4.65%(+0.77%p, 계절요인)(2026-03-31, 웹확인). [하우스] 신한투자증권(20261020_신한_WeeklyCreditMonitor, p.1)은 금감원 6월말 발표를 인용해 PF대출이 2023년말 이후 처음 증가 전환하고 연체율이 전분기 대비 하락했다고 정리, 캠코펀드·신디케이트론·자기자본비율 규제 유예 등 정책 지원으로 정상화가 이어질 것으로 봄(6월말 공식 수치는 웹 미확인). [판단] 서울 오피스 캡레이트·권역별 공실률은 공개 자료로 확인하지 못함(미확인)."
+  },
+  "short_term": {
+    "horizon": "3-6M",
+    "direction": "캡레이트 소폭 상승·PF 손실 완만한 개선 정체",
+    "view": "[판단] 기준금리 인상 사이클 재개(작업가정) 하에서 오피스 캡레이트는 장기금리 상승분 일부를 반영해 소폭 상승 압력. 오피스 임대료는 상승 지속이나 거래량 위축(1분기 거래 규모 전년 대비 절반 수준 보도)으로 가격 발견이 지연. [하우스] PF는 신규 취급 증가·정책 지원으로 안정 국면(20261020_신한_WeeklyCreditMonitor, p.1). [판단] 다만 중소금융사 토지담보대출 연체율이 높고(3월말 31.88%, 웹확인) 브릿지론 정리가 남아 PF 손실률은 소폭 추가 상승 가능, 상가는 공실 최고치로 약세 지속.",
+    "drivers": [
+      "기준금리 인상 재개 여부와 국고채 10Y 경로(작업가정)",
+      "PF 신규 취급·정리·재구조화 속도, 캠코펀드 3조원 조성(하우스 인용)",
+      "PF 자기자본비율 규제(2027년부터 단계 상향) 대비 대체자금 수요",
+      "오피스 거래 위축과 SI(실수요) 중심 재편, 상가 공실률 최고치",
+      "월별 건설 선행지표(수주·허가·착공) 최신치 미반영"
+    ],
+    "confidence": "낮음"
+  },
+  "long_term": {
+    "horizon": "1-3Y",
+    "scenarios": [
+      {
+        "name": "Base",
+        "prob": 0.45,
+        "narrative": "[판단] 2회 인상(3.50%) 후 동결, KTB 10Y +10bp. 오피스는 서울 핵심권역 임대 견조·지방/상가 약세의 이원화. PF는 정리 마무리 단계로 신규 사업 위주 정상화되나 토담대·브릿지론 잔여 손실이 이어짐.",
+        "factor_shocks": {
+          "kr_cre_cap_rate_bp": 10,
+          "kr_pf_loss_rate_pp": 0.2
+        },
+        "shock_rationale": "KTB 10Y +10bp × 전가율 0.5(캡레이트 경직성) = +5bp에 거래 위축 리스크프리미엄 +5bp 가산 → +10bp. PF 손실률은 잔여 부실 정리분 반영 +0.2%p(추정). [확률 동기화 2026-10-25] kr_rate 시나리오 확률 변경(미래에셋 3.25% 최종금리 전망 반영, Base 0.55→0.45·Bull 0.20→0.30)에 맞춰 0.55→0.45. 충격값은 동일 금리 경로 전제라 유지."
+      },
+      {
+        "name": "Bull",
+        "prob": 0.3,
+        "narrative": "[판단] 경기 둔화로 인상이 1회에 그치거나 조기 인하 전환, KTB 10Y -20bp. 정책 지원과 대체자금(사모대출) 유입으로 PF 정상화가 빨라지고 오피스 거래가 회복.",
+        "factor_shocks": {
+          "kr_cre_cap_rate_bp": -15,
+          "kr_pf_loss_rate_pp": -0.3
+        },
+        "shock_rationale": "KTB 10Y -20bp × 전가율 0.5 = -10bp에 거래 회복 프리미엄 축소 -5bp → -15bp. PF 손실률 정리 완료·신규 우량 사업 비중 확대로 -0.3%p(추정). [확률 동기화 2026-10-25] kr_rate 시나리오 확률 변경(미래에셋 3.25% 최종금리 전망 반영, Base 0.55→0.45·Bull 0.20→0.30)에 맞춰 0.2→0.3. 충격값은 동일 금리 경로 전제라 유지."
+      },
+      {
+        "name": "Bear",
+        "prob": 0.25,
+        "narrative": "[판단] 물가·환율 압력으로 인상 폭 확대(3.50% 초과), KTB 10Y +40bp. 상가·지방 오피스 공실 확대, 거래 절벽 장기화, 브릿지론·토담대 부실이 2금융권 중심으로 재확대.",
+        "factor_shocks": {
+          "kr_cre_cap_rate_bp": 40,
+          "kr_pf_loss_rate_pp": 1.0
+        },
+        "shock_rationale": "KTB 10Y +40bp × 전가율 0.6(스트레스 시 전가 확대) = +24bp에 유동성 프리미엄 +16bp → +40bp. PF 손실률은 2금융권 토담대 부실 재확대 가정 +1.0%p(추정)."
+      }
+    ]
+  },
+  "house_views": {
+    "consensus": "[하우스] 신한투자증권 1곳(20261020_신한_WeeklyCreditMonitor, p.1): PF대출 증가 전환·연체율 하락, 정책 지원으로 PF 시장 정상화 지속(방향 상승, 확신도 낮음, 목표치 없음). 상업용 부동산 캡레이트·공실 관련 하우스 뷰 없음. [갱신 2026-10-26] 신한 연간 전망: 부동산 PF 익스포저 231조원(2023년 말) → 169조원(2026년 6월 말), 신규 PF 증가로 정상화 단계, 공공임대·LH 발주 확대로 2027년 건설투자 반등(PF 손실 하락 방향, 확신 중간, 20261026_신한_2027전망P4_주요국한국경제 p.20). 반도체 성과급 즉시 유동화분 약 21조원의 부동산·금융자산 유입 가능성(같은 카드 p.17).",
+    "divergence": "[판단] 신한(주간·연간 2개 카드)은 PF 정상화(손실 하락)를 보나, Base는 2금융권 토담대·브릿지론 잔여 손실로 PF 손실률 +0.2%p를 유지. 근거: 익스포저 축소는 대형사 중심이고 중소금융사 토담대 연체율(3월 말 31.88%, 웹확인)이 높음. 하우스 뷰가 맞다면 Bull(−0.3%p) 쪽으로 이동할 여지 — 다음 주 PF 연체율 공시로 재점검.",
+    "cards_used": [
+      "20261020_신한_WeeklyCreditMonitor",
+      "20261026_신한_2027전망P4_주요국한국경제"
+    ]
+  },
+  "short_term_factor_shocks": {
+    "kr_cre_cap_rate_bp": 5,
+    "kr_pf_loss_rate_pp": 0.1
+  },
+  "short_term_shock_rationale": "단기 작업가정 KTB 10Y +5bp·3Y +10bp(인상 재개) × 전가율 약 0.5~0.7 → 캡레이트 +5bp. PF 손실률은 하우스의 연체율 하락 뷰에도 토담대·브릿지론 잔여 부실을 감안해 +0.1%p(추정).",
+  "data_gaps": [
+    "하우스 뷰 부족(1곳: 신한투자증권)",
+    "스냅샷 월별 지표 stale: 건설기성·수주·건축허가·착공·지가변동률 기준일 2026-08-31(55일 경과, 45일 기준 초과), 주택매매·전세가격지수 기준일 2026-01-31(267일 경과) — 최신월 수기 입력 필요",
+    "서울 CBD/GBD/YBD 공실률·물류센터 공실률·오피스 캡레이트 공개 자료 미확인",
+    "2026년 3분기 한국부동산원 상업용부동산 임대동향 미발표 또는 미확인(최신 웹확인 2분기)",
+    "6월말 부동산 PF 공식 수치(금융위·금감원 보도자료) 웹 미확인 — 하우스 카드 인용분만 존재",
+    "국고채 경로는 kr-fixed-income 확정 전 작업가정(3Y +20bp/10Y +10bp, 1~3Y Base)"
+  ],
+  "sources": [
+    "data/latest_snapshot.json",
+    "knowledge/view_cards/20261020_신한_WeeklyCreditMonitor.json (p.1)",
+    "https://mobile.newsis.com/view/NISX20260729_0003728100",
+    "https://www.fnnews.com/news/202607301012142708",
+    "https://fsc.go.kr/no010101/87252",
+    "https://www.dailian.co.kr/news/view/1679056/%EA%B8%88%EC%9C%B5%EA%B6%8C-PF-%EC%97%B0%EC%B2%B4%EC%9C%A8-10%EB%85%84-%EB%A7%8C%EC%97%90-%EC%B5%9C%EA%B3%A0-2026",
+    "https://mobile.newsis.com/view/NISX20260710_0003704882",
+    "https://dealsite.co.kr/articles/129102",
+    "https://www.heraldk.com/article/2026062122251078491",
+    "knowledge/view_cards/20261026_신한_2027전망P4_주요국한국경제.json"
+  ]
+}

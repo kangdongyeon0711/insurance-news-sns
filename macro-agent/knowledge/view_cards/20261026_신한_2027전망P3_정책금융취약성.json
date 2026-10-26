@@ -1,0 +1,104 @@
+{
+  "card_id": "20261026_신한_2027전망P3_정책금융취약성",
+  "house": "신한투자증권",
+  "report_title": "2027년 경제 및 금융시장 전망: Time of Tempering — Part III. 정책 대응과 금융 취약성",
+  "published": "2026-10-26",
+  "published_estimated": false,
+  "source_file": "processed/reports/20261026_신한_2027전망P3_정책금융취약성.pdf",
+  "topics": [
+    "us_rate",
+    "kr_rate",
+    "us_treasury",
+    "us_corp_bond",
+    "us_alt_pd",
+    "kr_govt_bond"
+  ],
+  "views": [
+    {
+      "topic_id": "us_rate",
+      "variable": "us_ffr",
+      "direction": "횡보",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "주요국이 동시 재인상에 나섰지만 미국·한국은 인상 마무리 구간에 진입했다고 봄. 2027년 상반기 기본은 동결 유지이며 높아진 장기금리가 추가 긴축을 대신.",
+      "page_ref": "p.2, p.6",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "us_rate",
+      "variable": "us_ffr",
+      "direction": "하락",
+      "horizon": "장기",
+      "target": null,
+      "rationale": "헤드라인 물가가 안정되면 명목 동결만으로 실질 정책금리가 올라가 하반기에는 과잉 긴축 경계 속 물가 둔화 속도가 빨라질 경우 완만한 인하 여지가 생긴다고 봄.",
+      "page_ref": "p.6",
+      "conviction": "낮음"
+    },
+    {
+      "topic_id": "kr_rate",
+      "variable": "kr_base_rate",
+      "direction": "상승",
+      "horizon": "단기",
+      "target": "상반기 소폭 인상 후 동결",
+      "rationale": "국고채·대출금리 동반 상승이 긴축 효과를 내지만 원화 약세의 물가 2차 파급, 주식·주택 강세에 따른 금융안정 부담으로 소폭 인상 후 동결, 가계부채는 DSR 병행을 예상.",
+      "page_ref": "p.4",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "us_treasury",
+      "variable": "ust_10y",
+      "direction": "횡보",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "10년물 상승분의 80%가 기대 단기금리 상승이지만, 기간 프리미엄이 0.75%로 2015~24년 평균보다 1%p 이상 높아 인상 종료 후에도 장기금리 하단을 지지. 적자 GDP 7~8%로 장기금리 부담 유지.",
+      "page_ref": "p.5, p.11",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "us_treasury",
+      "variable": "ust_2y",
+      "direction": "하락",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "국채 2년과 기준금리 격차가 과거 정점 수준이라 유가 기저효과·핵심 물가 안정이 확인되는 1분기 중 격차가 축소로 돌아설 것으로 봄.",
+      "page_ref": "p.3",
+      "conviction": "낮음"
+    },
+    {
+      "topic_id": "us_corp_bond",
+      "variable": "us_ig_oas",
+      "direction": "확대",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "투자등급 스프레드는 저점권이나 하이퍼스케일러 회사채 스프레드가 상승하고 AI 회사채 발행이 2배로 늘어 AI 인프라 신용 재평가가 시작됐다고 봄. 하이일드는 3%대로 안정적이어서 전면 확산 가능성은 낮다고 판단.",
+      "page_ref": "p.5, p.13-14",
+      "conviction": "낮음"
+    },
+    {
+      "topic_id": "us_alt_pd",
+      "variable": "us_pd_default",
+      "direction": "상승",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "사모대출 차주 레버리지 상승과 고금리 장기화로 상환·차환 부담이 누적. BDC 환매 요청이 한도의 2배, 일부 BDC는 유동성 약정이 가용 유동성을 넘어 유동성 위험에 취약하다고 봄. 은행 대출태도는 중립적.",
+      "page_ref": "p.14-15",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "kr_govt_bond",
+      "variable": "ktb_10y",
+      "direction": "하락",
+      "horizon": "장기",
+      "target": null,
+      "rationale": "반도체 법인세 급증으로 한국 재정은 지출 확대에도 적자 축소가 가능해 국고채 발행 부담이 완화될 것으로 봄(수급 측면 우호).",
+      "page_ref": "p.8, p.11",
+      "conviction": "낮음"
+    }
+  ],
+  "key_risks": [
+    "AI 투자 모멘텀 둔화 속 공급 충격 지속 시 2001년형 경착륙",
+    "AI 인프라 회수 차질이 순환금융 자산가치·대주 여력을 함께 훼손해 비AI 부문으로 위험 전이",
+    "미국 부채한도 X-date(2027년 6~9월)·의회 구도, 프랑스 예산·대선에 따른 국채 스프레드"
+  ],
+  "notes": "성격: 연간 전망서 Part III(파일 16쪽, 파일 p.N = 원문 p.N+29). 실질 정책금리 전망(p.6 그림): 미국 2027년 6월말·12월말 2%대 중후반, 한국 1%대 중반. 금리 인상 프라이싱 정점 통과 조건 3가지(공급 충격 완화·핵심 물가 전이 차단·기대 물가 안정) 중 현재 미충족이 많다고 평가(p.3). 재정: 한국 2027년 법인세 전년 대비 두 배, 미국은 투자비용 즉시공제로 법인세 기여 제한(p.8); 2027년 재정 팽창은 독일·일본만 소폭(p.11). 빅테크 4사 2026년 CapEx 7,000억달러 중반, 인프라 사업자 이자/매출 7~25%(p.13). 은행 직접 익스포저 총자산 대비 0.8%(p.14)."
+}

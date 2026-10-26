@@ -1,0 +1,129 @@
+{
+  "topic_id": "kr_alt_infra",
+  "as_of": "2026-10-26",
+  "current": {
+    "indicators": [
+      {
+        "series_id": "ktb_5y",
+        "name": "국고채 5년(할인율 기준금리 참고)",
+        "value": 3.948,
+        "unit": "%",
+        "as_of": "2026-10-23",
+        "chg_1m": null,
+        "chg_unit": "bp",
+        "value_flag": "수기",
+        "source": "data/latest_snapshot.json (data/manual/ecos100_20261025.yaml, ECOS 사용자 수기 입력)",
+        "stale": false
+      },
+      {
+        "series_id": "ktb_3y",
+        "name": "국고채 3년",
+        "value": 3.803,
+        "unit": "%",
+        "as_of": "2026-10-23",
+        "chg_1m": null,
+        "chg_unit": "bp",
+        "value_flag": "수기",
+        "source": "data/latest_snapshot.json (data/manual/ecos100_20261025.yaml, ECOS 사용자 수기 입력)",
+        "stale": false
+      },
+      {
+        "series_id": "kr_base_rate",
+        "name": "기준금리",
+        "value": 3.0,
+        "unit": "%",
+        "as_of": "2026-10-22",
+        "chg_1m": null,
+        "chg_unit": "bp",
+        "value_flag": "수기",
+        "source": "data/latest_snapshot.json (data/manual/ecos100_20261025.yaml, ECOS 사용자 수기 입력)",
+        "stale": false
+      },
+      {
+        "series_id": "kr_infra_new_ppp_volume",
+        "name": "민자사업 신규 고시·협약 물량",
+        "value": null,
+        "unit": "조원",
+        "as_of": null,
+        "value_flag": "미확인"
+      },
+      {
+        "series_id": "kr_infra_equity_irr",
+        "name": "국내 인프라 지분 기대수익률(IRR)",
+        "value": null,
+        "unit": "%",
+        "as_of": null,
+        "value_flag": "미확인"
+      }
+    ],
+    "summary": "[사실] 할인율 기준인 KTB 5Y 3.948%·3Y 3.803%(2026-10-23, 수기), 기준금리 3.00%(2026-10-22, 수기). [사실] 정부는 2026-02-11 민간투자사업심의위원회에서 향후 5년 신규 민자사업 100조원 발굴 목표, AI 데이터센터·국가 송전망(에너지 고속도로)·철도복합시설 등 신규 분야, 국민참여 공모 인프라펀드(차입한도 30%→100%, 분리과세 연장) 도입을 담은 활성화 방안을 의결(웹확인, 언론 보도). [사실] KDI PIMAC은 공모펀드 참여 사업에 우협 심의 최대 10점 우대 표준안 개정(2026-06 보도), 10월에는 지방 민자사업 부진 보완을 위한 지방정부 권한 확대 논의 보도. [판단] 신규 물량 확대는 보험사에 장기 듀레이션·물가연동 자산 공급 증가 요인이나, 실제 고시·협약 규모 통계는 미확인. 국내 인프라 관련 하우스 뷰 없음."
+  },
+  "short_term": {
+    "horizon": "3-6M",
+    "direction": "할인율 소폭 상승",
+    "view": "[판단] 기준금리 인상 재개(작업가정)로 장기금리 소폭 상승 → 인프라 할인율 +5bp 내외. 인프라는 장기 계약 현금흐름 구조라 금리 전가율이 높은 편. [판단] 정책 물량(데이터센터·송전망)은 2027년 이후 본격화 가능성이 커 단기 공급 효과는 제한적.",
+    "drivers": [
+      "KTB 5~10Y 경로(작업가정 단기 10Y +5bp)",
+      "민자사업 100조원 발굴 목표 이행·실제 고시 물량",
+      "국민참여 인프라펀드 출시와 기관 경쟁",
+      "AI 데이터센터·송전망 민자 구조(수익 보장 방식)",
+      "물가연동 사용료 조정 정책"
+    ],
+    "confidence": "낮음"
+  },
+  "long_term": {
+    "horizon": "1-3Y",
+    "scenarios": [
+      {
+        "name": "Base",
+        "prob": 0.45,
+        "narrative": "[판단] 2회 인상 후 동결, KTB 10Y +10bp. 신규 민자 물량은 점진적으로 늘고 에너지 전환·데이터센터 딜이 증가하나 리스크 스프레드는 대체로 유지.",
+        "factor_shocks": {
+          "infra_discount_rate_bp": 7
+        },
+        "shock_rationale": "KTB 10Y +10bp × 전가율 0.7(장기 계약 현금흐름, 스프레드 일정 가정) = +7bp. [확률 동기화 2026-10-25] kr_rate 시나리오 확률 변경(미래에셋 3.25% 최종금리 전망 반영, Base 0.55→0.45·Bull 0.20→0.30)에 맞춰 0.55→0.45. 충격값은 동일 금리 경로 전제라 유지."
+      },
+      {
+        "name": "Bull",
+        "prob": 0.3,
+        "narrative": "[판단] 경기 둔화로 금리 하락(KTB 10Y -20bp), 정책 물량 확대와 공모펀드 수요가 우량 자산 가격을 지지.",
+        "factor_shocks": {
+          "infra_discount_rate_bp": -15
+        },
+        "shock_rationale": "KTB 10Y -20bp × 전가율 0.7 = -14bp, 반올림 -15bp. [확률 동기화 2026-10-25] kr_rate 시나리오 확률 변경(미래에셋 3.25% 최종금리 전망 반영, Base 0.55→0.45·Bull 0.20→0.30)에 맞춰 0.2→0.3. 충격값은 동일 금리 경로 전제라 유지."
+      },
+      {
+        "name": "Bear",
+        "prob": 0.25,
+        "narrative": "[판단] 인상 폭 확대로 KTB 10Y +40bp, 신규 물량 급증과 지방 민자 부진·수요 리스크로 요구수익률 상승.",
+        "factor_shocks": {
+          "infra_discount_rate_bp": 30
+        },
+        "shock_rationale": "KTB 10Y +40bp × 전가율 0.7 = +28bp에 수요위험 프리미엄 소폭 가산 → +30bp."
+      }
+    ]
+  },
+  "house_views": {
+    "consensus": "하우스 뷰 없음(최근 30일 kr_alt_infra 카드 0개).",
+    "divergence": "해당 없음.",
+    "cards_used": []
+  },
+  "short_term_factor_shocks": {
+    "infra_discount_rate_bp": 5
+  },
+  "short_term_shock_rationale": "단기 작업가정 KTB 10Y +5bp·3Y +10bp(인상 재개) × 전가율 0.7, 중간 듀레이션 고려 반올림 +5bp(추정).",
+  "data_gaps": [
+    "하우스 뷰 없음 — 하우스 뷰 부족(0곳)",
+    "국내 인프라 할인율·지분 IRR·신규 민자사업 고시/협약 통계 미확인",
+    "민간투자 활성화 방안은 언론 보도 기준(기획예산처 공식 보도자료 원문 미확인)",
+    "KTB 10Y 스냅샷 미수집 — 할인율 전가는 작업가정(10Y +10bp, 1~3Y Base) 사용",
+    "국고채 경로는 kr-fixed-income 확정 전 작업가정"
+  ],
+  "sources": [
+    "data/latest_snapshot.json",
+    "https://www.khan.co.kr/article/202602111755001",
+    "https://news.mtn.co.kr/news-detail/2026101613053524762",
+    "https://www.sateconomy.co.kr/news/view/1065576159831234",
+    "https://news.mtn.co.kr/news-detail/2026061317594557668"
+  ]
+}

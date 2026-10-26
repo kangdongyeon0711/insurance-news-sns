@@ -1,0 +1,182 @@
+{
+  "topic_id": "us_rate",
+  "as_of": "2026-10-26",
+  "current": {
+    "indicators": [
+      {
+        "series_id": "us_ffr_upper",
+        "name": "FFR 목표 상단",
+        "value": 4.0,
+        "unit": "%",
+        "as_of": "2026-09-16",
+        "chg_1m": null,
+        "source": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
+        "value_flag": "웹확인",
+        "stale": false
+      },
+      {
+        "series_id": "us_ffr_lower",
+        "name": "FFR 목표 하단",
+        "value": 3.75,
+        "unit": "%",
+        "as_of": "2026-09-16",
+        "chg_1m": null,
+        "source": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
+        "value_flag": "웹확인",
+        "stale": false
+      },
+      {
+        "series_id": "us_eff_ffr",
+        "name": "실효 연방기금금리(EFFR)",
+        "value": null,
+        "unit": "%",
+        "as_of": null,
+        "value_flag": "미확인"
+      },
+      {
+        "series_id": "us_cpi_yoy",
+        "name": "CPI 전년비 (2026년 9월분, 10/14 발표)",
+        "value": 3.7,
+        "unit": "%",
+        "as_of": "2026-09-30",
+        "chg_1m": null,
+        "source": "https://investinglive.com/news/us-september-cpi-vs-3-6-expected-0/",
+        "value_flag": "웹확인",
+        "stale": false
+      },
+      {
+        "series_id": "us_core_cpi_yoy",
+        "name": "Core CPI 전년비 (2026년 9월분)",
+        "value": 2.6,
+        "unit": "%",
+        "as_of": "2026-09-30",
+        "chg_1m": null,
+        "source": "https://investinglive.com/news/us-september-cpi-vs-3-6-expected-0/",
+        "value_flag": "웹확인",
+        "stale": false
+      },
+      {
+        "series_id": "us_core_pce_yoy",
+        "name": "Core PCE 전년비 (2026년 8월분, 9/30 발표)",
+        "value": 3.0,
+        "unit": "%",
+        "as_of": "2026-08-31",
+        "chg_1m": null,
+        "source": "https://tradingeconomics.com/united-states/core-pce-price-index-mom/news/588257",
+        "value_flag": "웹확인",
+        "stale": false
+      },
+      {
+        "series_id": "us_nfp_chg",
+        "name": "비농업고용(NFP) 증감 (2026년 9월분)",
+        "value": 29,
+        "unit": "천명",
+        "as_of": "2026-09-30",
+        "chg_1m": null,
+        "source": "https://www.bls.gov/news.release/archives/empsit_10022026.htm",
+        "value_flag": "웹확인",
+        "stale": false
+      },
+      {
+        "series_id": "us_unemployment",
+        "name": "실업률 (2026년 9월분)",
+        "value": 4.2,
+        "unit": "%",
+        "as_of": "2026-09-30",
+        "chg_1m": null,
+        "source": "https://www.bls.gov/news.release/archives/empsit_10022026.htm",
+        "value_flag": "웹확인",
+        "stale": false
+      }
+    ],
+    "summary": "[사실] API 데이터 미수집으로 모든 현황 수치는 웹확인 값이다. [사실] FOMC는 2026-09-16 만장일치(12-0)로 FFR 목표범위를 25bp 인상해 3.75~4.00%로 올렸다. [사실] 9월 SEP 중간값은 2026년 말 4.1%(연내 1회 추가 인상 시사), 2027년 4.1%, 2028년 3.9%이고 2026년 PCE 전망은 3.7%로 상향됐다(SEP 수치는 2차 보도 경유 확인, 연준 표 원문 대조 미완). [사실] 9월 CPI 3.7%(Core 2.6%)로 예상 상회, 8월 Core PCE 3.0%; 반면 9월 NFP +2.9만명·실업률 4.2%로 고용은 급둔화했다. [사실] 10/27~28 FOMC는 동결 확률 약 83%로 보도됐다(10/20 기준, 비공식 2차 출처). [하우스] 신한투자증권은 10월 매파적 동결과 추가 인상 여지를 전망한다(20261023_신한_WeeklyGuideBook p.3, 20261023_신한_EconCheckup p.1). [판단] 에너지발 헤드라인 물가와 고용 둔화가 충돌하는 국면으로, '1회 추가 인상 후 장기 동결'이 기본 경로다."
+  },
+  "short_term": {
+    "horizon": "3-6M",
+    "direction": "소폭 상승(25bp 1회 인상 후 동결)",
+    "view": "[판단] 10월 FOMC는 동결, 12월 또는 2027년 1분기에 25bp 추가 인상(상단 4.25%) 후 동결을 기본으로 본다. [사실] SEP 중간값(2026년 말 4.1%)이 같은 방향이다. [하우스][20261023_신한_WeeklyGuideBook p.3, 20261023_신한_EconCheckup p.1] 매파적 동결·추가 인상 옵션 유지 시각과 일치하나 하우스는 인상 시점을 확정하지 않았다. [하우스] 미래에셋도 10월 만장일치 동결·매파 기조 유지를 예상(20261023_미래_MacroWeekAhead p.1; 20261022_미래_FixedIncomeComment_10월금통위 p.2)하나 추가 인상은 언급하지 않음. [판단] NFP 급둔화(+2.9만명)가 이어지면 추가 인상이 보류될 수 있어 확신도는 중간.",
+    "drivers": [
+      "[사실] 9월 CPI 3.7%·Core 2.6%로 예상 상회, 에너지 주도",
+      "[사실] SEP 중간값 2026년 말 4.1%·2027년 4.1%·2028년 3.9%",
+      "[사실] 9월 NFP +2.9만명, 실업률 4.2%, 7~8월 합산 -6만명 하향 수정",
+      "[사실] 8월 Core PCE 3.0%(예상 3.3% 하회)",
+      "[사실] 연준은 2025년 12월부터 지준관리용 T-bill 매입(RMP) 진행, 7월 MPR 기준 연초 이후 약 2,500억달러 매입 — 9월 이후 속도는 미확인",
+      "[판단] 유가 안정 여부와 10월 고용지표가 12월 인상의 핵심 변수"
+    ],
+    "confidence": "중간"
+  },
+  "long_term": {
+    "horizon": "1-3Y",
+    "scenarios": [
+      {
+        "name": "Base",
+        "prob": 0.5,
+        "narrative": "[판단] 2026년 말~2027년 1분기 상단 4.25%에서 정점, 2027년 동결 후 2028년 소폭 인하해 상단 4.00% 내외(SEP 2028년 3.9%와 정합).",
+        "factor_shocks": {
+          "us_ffr_bp": 0
+        },
+        "shock_rationale": "현재 상단 4.00% → 정점 4.25% 후 4.00%로 복귀: 기준일 대비 0bp"
+      },
+      {
+        "name": "Bull",
+        "prob": 0.25,
+        "narrative": "[판단] 유가 진정과 고용 악화로 물가가 빠르게 둔화, 2027년 중 인하 사이클 전환해 상단 3.00% 내외. [하우스] NH의 인하 사이클 시각(터미널 3.25%, 20260526_NH_2026하반기FICC채권전망 p.29, 2026-05 발간)과 방향은 같으나, NH 단기 콜은 9월 인상으로 이미 빗나가 확률 상향 근거로 쓰지 않음.",
+        "factor_shocks": {
+          "us_ffr_bp": -100
+        },
+        "shock_rationale": "추가 인상 없이 25bp 4회 인하: -100bp"
+      },
+      {
+        "name": "Bear",
+        "prob": 0.25,
+        "narrative": "[판단] 에너지 충격이 기대인플레이션·Core로 전이되어 25bp 3회 추가 인상, 상단 4.75%에서 장기 유지.",
+        "factor_shocks": {
+          "us_ffr_bp": 75
+        },
+        "shock_rationale": "추가 인상 3회: +75bp"
+      }
+    ]
+  },
+  "house_views": {
+    "consensus": "[하우스] 동일 주간 2곳(신한·미래에셋) 강한 공통: 10월 FOMC(10/27~28) 동결 + 매파적 기조. 신한은 에너지발 비용 압력·실물 양호를 근거로 매파적 동결(확신 높음, 20261023_신한_WeeklyGuideBook p.3; 확신 중간, 20261023_신한_EconCheckup p.1). 미래에셋은 만장일치 동결, AI 투자·유가의 물가 영향 관망 재확인 예상(확신 중간, 20261023_미래_MacroWeekAhead p.1), 코어 인플레이션 재가속으로 매파 기조 유지 가능성 높음(확신 낮음, 20261022_미래_FixedIncomeComment_10월금통위 p.2). [하우스] 지연 참고(NH, 2026-05-26): 기대인플레 자극 시 '동결 장기화/인상 우려 재부상'을 핵심 리스크로 명시(20260526_NH_2026하반기FICC채권전망 p.2, p.8) — 실제 전개는 이 리스크에 가까움. [갱신 2026-10-26] 신한 연간 전망: 미국은 인상 마무리 구간, 2027년 상반기 동결 유지(장기금리가 긴축 대체), 하반기 과잉 긴축 경계 속 완만한 인하 여지(20261026_신한_2027전망P3_정책금융취약성 p.2, p.6). 외환 파트는 2026년 12월 마지막 인상을 가정하고 하반기 '연준 4.00% 동결'을 전제(20261026_신한_2027전망P5_외환 p.2, p.7; 상·하단 미표기). [판단] Base(4.25% 정점 후 4.00% 복귀)와 방향 일치 — 충격값 유지.",
+    "divergence": "[하우스] 동일 주간 2곳 간 차이는 추가 인상 옵션의 언급 여부뿐: 신한은 연준이 추가 인상 옵션을 열어둘 것으로 판단(확신 낮음, 시점 미확정, 20261023_신한_WeeklyGuideBook p.3), 미래에셋은 추가 인상 경로를 제시하지 않고 동결·관망만 언급(20261023_미래_MacroWeekAhead p.1). 두 하우스 모두 정책금리 수준 전망은 미제시. [하우스] 지연 참고(NH, 2026-05 발간·약 5개월 시차): 12월 25bp 인하(4Q26 말 3.50%)·터미널 3.25%(20260526_NH_2026하반기FICC채권전망 p.2, p.29, p.89). [사실] NH 12월 인하 콜은 미실현 — 2026-09-16 FOMC가 25bp 인상해 3.75~4.00%, SEP 2026년 말 중간값 4.1%. [판단] NH 경로는 Bull 시나리오의 방향 참고로만 사용.",
+    "cards_used": [
+      "20261023_신한_EconCheckup",
+      "20261023_신한_WeeklyGuideBook",
+      "20260526_NH_2026하반기FICC채권전망",
+      "20261022_미래_FixedIncomeComment_10월금통위",
+      "20261023_미래_MacroWeekAhead",
+      "20261026_신한_2027전망P3_정책금융취약성",
+      "20261026_신한_2027전망P5_외환"
+    ]
+  },
+  "short_term_factor_shocks": {
+    "us_ffr_bp": 25
+  },
+  "short_term_shock_rationale": "12월 또는 2027년 1분기 25bp 추가 인상 1회(SEP 중간값 정합): +25bp — 미래에셋 카드 추가 후에도 변경 없음(동결·매파 기조는 기존 가정과 일치)",
+  "data_gaps": [
+    "API 데이터 미수집 (FRED API 차단으로 latest_snapshot.json에 미국 시계열 없음) — 모든 현황 수치는 웹확인 값",
+    "하우스 2곳 동일 주간(신한·미래에셋) + NH(2026-05, 구조적 참고)",
+    "EFFR·Core PCE 9월분(10월 말 발표 예정)·9월 이후 RMP 속도 미확인",
+    "SEP 수치와 FedWatch 확률은 2차 보도 경유(공식 원문 직접 조회 실패: federalreserve.gov/CME 접속 불가)",
+    "10/28 FOMC 결과는 기준일 이후 — 미반영"
+  ],
+  "sources": [
+    "data/latest_snapshot.json (미국 시계열 없음)",
+    "knowledge/view_cards/20261023_신한_EconCheckup",
+    "knowledge/view_cards/20261023_신한_WeeklyGuideBook",
+    "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
+    "https://www.federalreserve.gov/monetarypolicy/fomcprojtabl20260916.htm",
+    "https://www.tmgm.com/es/analysis/market-news/article/fed-raises-2026-interest-rate-forecast-to-41-lifts-pce-inflation-projections-202609161858 (보조)",
+    "https://www.bls.gov/news.release/archives/empsit_10022026.htm",
+    "https://investinglive.com/news/us-september-cpi-vs-3-6-expected-0/",
+    "https://tradingeconomics.com/united-states/core-pce-price-index-mom/news/588257",
+    "https://www.noradarealestate.com/blog/interest-rate-predictions-october-2026/ (보조)",
+    "https://www.federalreserve.gov/monetarypolicy/2026-07-mpr-part2.htm",
+    "knowledge/view_cards/20260526_NH_2026하반기FICC채권전망.json",
+    "knowledge/view_cards/20261022_미래_FixedIncomeComment_10월금통위.json",
+    "knowledge/view_cards/20261023_미래_MacroWeekAhead.json",
+    "knowledge/view_cards/20261026_신한_2027전망P3_정책금융취약성.json",
+    "knowledge/view_cards/20261026_신한_2027전망P5_외환.json"
+  ]
+}

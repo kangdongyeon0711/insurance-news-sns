@@ -1,0 +1,275 @@
+{
+  "topic_id": "fx_krwusd",
+  "as_of": "2026-10-26",
+  "current": {
+    "indicators": [
+      {
+        "series_id": "krw_usd",
+        "name": "원/달러 환율(매매기준율, ECOS 홈페이지 10.24 05:00)",
+        "value": 1324.7,
+        "unit": "KRW",
+        "as_of": "2026-10-24",
+        "value_flag": "수기",
+        "source": "data/manual/ecos_homepage_20261025.yaml — 05:00 시점 값(연장거래 포함 가능), 731Y001 일별값과 다를 수 있음",
+        "stale": false
+      },
+      {
+        "series_id": "krw_usd_close",
+        "name": "원/달러 환율(종가)",
+        "value": 1324.6,
+        "unit": "원",
+        "as_of": "2026-10-23",
+        "value_flag": "수기",
+        "source": "data/manual/ecos100_20261025.yaml (언론 보도 종가 1,324.6원과 일치: https://www.seoulfn.com/news/articleView.html?idxno=640862)",
+        "stale": false
+      },
+      {
+        "series_id": "krw_usd_fred",
+        "name": "원/달러(FRED, 교차검증용)",
+        "value": null,
+        "unit": "KRW",
+        "as_of": null,
+        "value_flag": "미확인"
+      },
+      {
+        "series_id": "krw_jpy100",
+        "name": "원/엔(100엔) 매매기준율",
+        "value": 846.12,
+        "unit": "원",
+        "as_of": "2026-10-23",
+        "value_flag": "수기",
+        "stale": false
+      },
+      {
+        "series_id": "krw_eur",
+        "name": "원/유로 매매기준율",
+        "value": 1486.4,
+        "unit": "원",
+        "as_of": "2026-10-23",
+        "value_flag": "수기",
+        "stale": false
+      },
+      {
+        "series_id": "krw_cny",
+        "name": "원/위안 종가",
+        "value": 198.58,
+        "unit": "원",
+        "as_of": "2026-10-23",
+        "value_flag": "수기",
+        "stale": false
+      },
+      {
+        "series_id": "usd_jpy_tokyo",
+        "name": "엔/달러(동경)",
+        "value": 156.8,
+        "unit": "JPY",
+        "as_of": "2026-10-23",
+        "value_flag": "수기",
+        "stale": false
+      },
+      {
+        "series_id": "usd_broad_index",
+        "name": "달러 지수(Nominal Broad, FRED)",
+        "value": null,
+        "unit": "index",
+        "as_of": null,
+        "value_flag": "미확인"
+      },
+      {
+        "series_id": "dxy_ice",
+        "name": "달러 지수(ICE DXY, 웹)",
+        "value": 101.75,
+        "unit": "index",
+        "as_of": "2026-10-23",
+        "value_flag": "웹확인",
+        "source": "https://www.cnbc.com/quotes/.DXY (CNBC 10/23 101.752; 보조: Trading Economics 101.75)",
+        "stale": false
+      },
+      {
+        "series_id": "kr_base_rate",
+        "name": "한국은행 기준금리",
+        "value": 3.0,
+        "unit": "%",
+        "as_of": "2026-10-22",
+        "value_flag": "수기",
+        "stale": false
+      },
+      {
+        "series_id": "us_ffr_upper",
+        "name": "FFR 목표 상단(웹)",
+        "value": 4.0,
+        "unit": "%",
+        "as_of": "2026-09-16",
+        "value_flag": "웹확인",
+        "source": "https://www.forbes.com/sites/simonmoore/2026/10/19/what-to-look-for-from-the-feds-october-meeting/ (9월 25bp 인상, 3.75~4.00%)"
+      },
+      {
+        "series_id": "kr_us_policy_diff",
+        "name": "한미 기준금리차(한은−FFR 상단, 추정 계산)",
+        "value": -1.0,
+        "unit": "%p",
+        "as_of": "2026-10-22",
+        "value_flag": "추정",
+        "source": "kr_base_rate 3.00%(수기) − FFR 상단 4.00%(웹확인)로 계산. snapshot 파생지표는 미수집"
+      },
+      {
+        "series_id": "kr_us_10y_diff",
+        "name": "한미 10년 금리차(KTB−UST)",
+        "value": null,
+        "unit": "%p",
+        "as_of": null,
+        "value_flag": "미확인"
+      },
+      {
+        "series_id": "kr_current_account",
+        "name": "경상수지(월)",
+        "value": 46.113,
+        "unit": "십억USD",
+        "as_of": "2026-08-31",
+        "value_flag": "수기",
+        "stale": true
+      },
+      {
+        "series_id": "kr_portfolio_inv_assets",
+        "name": "증권투자(자산, 월)",
+        "value": 16595.0,
+        "unit": "백만달러",
+        "as_of": "2026-08-31",
+        "value_flag": "수기",
+        "stale": true
+      },
+      {
+        "series_id": "kr_portfolio_inv_liabilities",
+        "name": "증권투자(부채, 월)",
+        "value": -4847.7,
+        "unit": "백만달러",
+        "as_of": "2026-08-31",
+        "value_flag": "수기",
+        "stale": true
+      },
+      {
+        "series_id": "kr_fx_reserves",
+        "name": "외환보유액",
+        "value": 440.5567,
+        "unit": "십억USD",
+        "as_of": "2026-09-30",
+        "value_flag": "수기",
+        "stale": false
+      },
+      {
+        "series_id": "kr_export_value_index",
+        "name": "수출금액지수",
+        "value": 287.41,
+        "unit": "2020=100",
+        "as_of": "2026-09-30",
+        "value_flag": "수기",
+        "stale": false
+      },
+      {
+        "series_id": "kr_terms_of_trade",
+        "name": "순상품교역조건지수",
+        "value": 119.52,
+        "unit": "2020=100",
+        "as_of": "2026-09-30",
+        "value_flag": "수기",
+        "stale": false
+      }
+    ],
+    "summary": "[사실] 원/달러 매매기준율 1,324.7원(2026-10-24, 수기·05:00 시점), 종가 1,324.6원(2026-10-23, 수기; 언론 보도 종가와 일치). 원/엔(100엔) 846.12원·원/유로 1,486.4원·원/위안 198.58원·엔/달러 156.8엔(모두 2026-10-23, 수기). [사실] ICE DXY 101.75(2026-10-23, 웹확인·CNBC). [사실] 한은 기준금리 3.00%(2026-10-22 동결, 수기), FFR 3.75~4.00%(2026-09 25bp 인상, 웹확인) → 정책금리차 −1.00%p(추정 계산). [사실] 8월 경상수지 461.1억달러, 증권투자 자산 +166.0억달러·부채 −48.5억달러(2026-08-31, 수기) — ⚠ 기준일 2026-08-31, 55일 경과(stale). 외환보유액 4,405.6억달러(2026-09-30, 수기). [판단] 대규모 경상흑자·수출 호조가 원화를 지지하나, 달러 강세(매파 Fed)와 Brent 116.72달러(10/23) 유가 급등이 역풍으로 작용해 1,320원대 박스권. FRED 교차검증·한미 10년 금리차·달러 Broad 지수는 API 미수집으로 미확인."
+  },
+  "short_term": {
+    "horizon": "3-6M",
+    "direction": "원/달러 하락(원화 강세) — 1,300원 부근, 2027년 1분기 저점",
+    "view": "[하우스] 신한투자증권 연간 전망은 2026년 4분기~2027년 1분기 원/달러 1,300원을 제시: 1분기에 반도체 성과급·법인세 납부·배당 관련 기업 환전이 몰리고 한은 인상 효과가 더해져 원화 강세가 정점(20261026_신한_2027전망P5_외환 p.9, p.11). 주간 리포트의 원/달러 하락 뷰(20261023_신한_FXCheckup p.1)와 같은 방향. [판단] 현재 1,324.6원(2026-10-23, 수기) 대비 약 −2%. 경상흑자가 하단을, 중동발 유가·달러 강세가 상단을 열어둬 변동성은 크다. 헤지비용은 한미 단기금리차 축소로 소폭 하락.",
+    "drivers": [
+      "[사실] 한은 3.00% 동결(10/22) 후 신한은 11월 추가 인상 가능성 높게 봄(20261022_신한_10월금통위 p.1)",
+      "[사실] FOMC 10/27~28 회의 동결 우세, 12월 인상 기대(웹확인, Forbes 10/19)",
+      "[사실] 8월 경상수지 461.1억달러 대규모 흑자(stale)",
+      "[사실] Brent 116.72달러(10/23)로 6개월 최고 — 교역조건·무역수지 역풍",
+      "[사실] 국민연금 전략적 환헤지·한은 외환스와프(650억달러) 2026년 말까지 연장(2025-12 기금위) — 2027년 연장 여부 미확인",
+      "[판단] 유로(프랑스 재정)·엔(156.8엔) 약세로 DXY 강세 압력 지속",
+      "[하우스] 2027년 1분기 원화 수급 이벤트(반도체 성과급 1월, 법인세 신고·납부 4월, 배당) 집중 — 20261026_신한_2027전망P5_외환 p.9"
+    ],
+    "confidence": "중간"
+  },
+  "long_term": {
+    "horizon": "1-3Y",
+    "scenarios": [
+      {
+        "name": "Base",
+        "prob": 0.5,
+        "narrative": "[판단] 한은이 2027년 상반기까지 3.50%로 인상 후 동결, Fed는 12월 전후 1회 인상 뒤 2027~28년 중 되돌려 상단 4.00% 내외로 복귀(kr_rate·us_rate Base와 동일). [하우스] 원/달러는 2027년 1분기 1,300원 저점 후 하반기 한국 이익 모멘텀 둔화·한국→미국 주식자금 이동으로 반등해 2027년 말 1,390원, 중장기 균형환율은 1,400원 초반으로 우상향(20261026_신한_2027전망P5_외환 p.8, p.10-11). 달러지수는 연간 보합(같은 카드 p.2). [갱신 2026-10-26] 이전 Base(원화 −3%)는 금리차 축소 논리에 의존한 판단이었고 하우스 근거가 없었음 — 연간 전망의 명시 경로로 교체.",
+        "factor_shocks": {
+          "krw_usd_pct": 5.0,
+          "dxy_pct": 0.0,
+          "fx_hedge_cost_bp": -50
+        },
+        "shock_rationale": "Δ한국 단기금리 +50bp − Δ미국 0bp = 금리차 +50bp 축소 → 헤지비용 ≈ −50bp(변경 없음). [갱신 2026-10-26] 원/달러 +5.0%(2027년 말 1,390원 하우스 기본 ÷ 1,324.6원 ≈ +4.9%), DXY 0%(하우스 연간 보합)."
+      },
+      {
+        "name": "Bull",
+        "prob": 0.25,
+        "narrative": "[판단] 중동 휴전·유가 하락으로 물가가 둔화, Fed 100bp 인하(상단 3.00%)·한은 1회 인하(2.75%)의 글로벌 완화(us_rate·kr_rate Bull과 동일). [하우스] 신한의 원화 강세 쪽 시나리오(선진국 재정 우려로 달러 약세 1,300~1,330원, AI 확산이 비미국 성장으로 번지는 동반 호조 1,300~1,340원)의 하단에 해당(20261026_신한_2027전망P5_외환 p.11). [갱신 2026-10-26] 이전 −7%(약 1,230원)는 하우스 시나리오 범위 밖이라 축소.",
+        "factor_shocks": {
+          "krw_usd_pct": -2.0,
+          "dxy_pct": -3.0,
+          "fx_hedge_cost_bp": -75
+        },
+        "shock_rationale": "헤지비용 −75bp(Δ한국 −25bp, Δ미국 −100bp; 변경 없음). [갱신 2026-10-26] 원/달러 −2.0%(약 1,300원, 하우스 원화 강세 시나리오 하단), DXY −3%(재정 우려형 달러 약세, 판단)."
+      },
+      {
+        "name": "Bear",
+        "prob": 0.25,
+        "narrative": "[판단] 호르무즈 봉쇄 장기화로 유가가 고공행진하고 인플레가 재가속, Fed·한은 모두 75bp 추가 인상(us_rate·kr_rate Bear와 동일). [하우스] 재정 우려가 일반 신용 위험으로 번지거나 AI 투자 불안이 커지면 안전자산 선호로 1,450원 이상(20261026_신한_2027전망P5_외환 p.11). [갱신 2026-10-26] 이전 +6%(약 1,405원)에서 하우스 위험 시나리오 수준으로 확대.",
+        "factor_shocks": {
+          "krw_usd_pct": 10.0,
+          "dxy_pct": 4.0,
+          "fx_hedge_cost_bp": 0
+        },
+        "shock_rationale": "헤지비용 0bp(금리차 변화 없음; 변경 없음). [갱신 2026-10-26] 원/달러 +10%(약 1,457원, 하우스 '신용 위험 확산·AI 투자 불안' 1,450원 이상), DXY +4%."
+      }
+    ]
+  },
+  "house_views": {
+    "consensus": "[하우스] 신한투자증권(단일 하우스, 주간 + 연간 전망): 단기 원/달러 하락 — 주간(확신 중간, 20261023_신한_FXCheckup p.1)과 연간 전망 4Q26~1Q27 1,300원(확신 높음, 20261026_신한_2027전망P5_외환 p.11) 일치. 장기 2027년 말 1,390원·균형환율 1,400원 초반 우상향(확신 높음, 20261026_신한_2027전망P5_외환 p.8, p.11), 달러지수 연간 보합·하반기 +1.7%(확신 중간, 같은 카드 p.2). 환율 결정 기준이 금리차에서 AI 밸류체인 자금 흐름(교역대금 환전·주식자금)으로 이동했다는 프레임(같은 카드 p.3). 한은 2027년 상반기까지 최종 3.50%(20261022_신한_10월금통위 p.1).",
+    "divergence": "단일 하우스 — 하우스 간 비교 불가. [판단] 같은 하우스 안에서 시계별 방향이 다름: 단기(1분기까지) 원화 강세 vs 2027년 하반기 원화 약세 되돌림. 금리차 축소(헤지비용 하락)와 원화 약세가 동시에 진행될 수 있다는 점이 이전 Base와 다른 핵심.",
+    "cards_used": [
+      "20261023_신한_FXCheckup",
+      "20261023_신한_WeeklyGuideBook",
+      "20261022_신한_10월금통위",
+      "20261026_신한_2027전망P5_외환",
+      "20261026_신한_2027전망P1_AI사이클"
+    ]
+  },
+  "short_term_factor_shocks": {
+    "krw_usd_pct": -2.0,
+    "dxy_pct": 1.0,
+    "fx_hedge_cost_bp": -12.5
+  },
+  "short_term_shock_rationale": "원/달러 −2.0%([갱신 2026-10-26] 신한 연간 전망 4Q26~1Q27 1,300원, 20261026_신한_2027전망P5_외환 p.11 — 1,324.6원 대비 −1.9%), DXY +1.0%(신한 달러 강세 뷰). 헤지비용: Δ한국 단기금리 +37.5bp(11월 25bp + 2027년 상반기 2차 인상의 6개월 내 실현확률 50% × 25bp, 추정) − Δ미국 +25bp(12월 인상 시장 기대, 웹확인) = 금리차 +12.5bp 축소 → 헤지비용 ≈ −12.5bp.",
+  "data_gaps": [
+    "하우스 뷰 부족(1곳: 신한투자증권)",
+    "API 데이터 미수집(FRED): krw_usd.cross_check(ECOS vs FRED), usd_broad_index, kr_us_10y_diff 미확인",
+    "kr_us_policy_diff는 snapshot 파생값 없음 — 수기 기준금리와 웹확인 FFR로 추정 계산",
+    "⚠ 경상수지 기준일 2026-08-31, 55일 경과(월별 45일 기준 stale); 증권투자·직접투자도 2026-08-31(55일 경과)",
+    "krw_usd 수기값은 ECOS 홈페이지 05:00 시점 값으로 731Y001 매매기준율 일별값과 다를 수 있음",
+    "USD/KRW 스왑포인트·실제 헤지비용 수준 미확인(변화량만 금리차로 근사)",
+    "국민연금 전략적 환헤지·한은 외환스와프의 2027년 연장 여부, 10월 외환당국 개입 여부 미확인",
+    "9월 경상수지·외국인 증권투자, WGBI 편입 관련 자금 흐름 최신치 미확인",
+    "신한 연간 전망 Part VII(결론·경제지표 표) 미입수 — 분기별 금리·환율 전망 표는 Part V p.11 경로만 사용"
+  ],
+  "sources": [
+    "data/latest_snapshot.json (generated 2026-10-25T03:01:57; data/manual/ecos_homepage_20261025.yaml, data/manual/ecos100_20261025.yaml)",
+    "https://www.cnbc.com/quotes/.DXY",
+    "https://tradingeconomics.com/united-states/currency",
+    "https://www.forbes.com/sites/simonmoore/2026/10/19/what-to-look-for-from-the-feds-october-meeting/",
+    "https://www.seoulfn.com/news/articleView.html?idxno=640862",
+    "https://www.hankyung.com/article/2025121551907",
+    "https://www.cnbc.com/2026/10/23/oil-price-brent-wti-iran-war-saudi-arabia.html",
+    "knowledge/view_cards/20261023_신한_FXCheckup.json",
+    "knowledge/view_cards/20261023_신한_WeeklyGuideBook.json",
+    "knowledge/view_cards/20261022_신한_10월금통위.json",
+    "knowledge/view_cards/20261026_신한_2027전망P5_외환.json",
+    "knowledge/view_cards/20261026_신한_2027전망P1_AI사이클.json"
+  ]
+}

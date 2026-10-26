@@ -1,0 +1,137 @@
+{
+  "topic_id": "us_alt_pe",
+  "as_of": "2026-10-26",
+  "current": {
+    "indicators": [
+      {
+        "series_id": "us_pe_exit_value_q3",
+        "name": "미국 PE 엑시트 금액(2026 3Q, PitchBook First Look 인용)",
+        "value": 165.1,
+        "unit": "USD bn",
+        "as_of": "2026-09-30",
+        "value_flag": "웹확인",
+        "source": "https://www.foley.com/?p=129506"
+      },
+      {
+        "series_id": "us_pe_exit_count_q3",
+        "name": "미국 PE 엑시트 건수(2026 3Q)",
+        "value": 405,
+        "unit": "건",
+        "as_of": "2026-09-30",
+        "value_flag": "웹확인",
+        "source": "https://www.foley.com/?p=129506"
+      },
+      {
+        "series_id": "us_pe_exit_value_ytd_yoy",
+        "name": "미국 PE 엑시트 금액 YTD 전년비(2026 1~3Q)",
+        "value": 19,
+        "unit": "%",
+        "as_of": "2026-09-30",
+        "value_flag": "웹확인",
+        "source": "https://www.cohnreznick.com/insights/private-equity-q3-2026-market-outlook/"
+      },
+      {
+        "series_id": "us_pe_exit_count_ytd_yoy",
+        "name": "미국 PE 엑시트 건수 YTD 전년비(2026 1~3Q)",
+        "value": -34,
+        "unit": "%",
+        "as_of": "2026-09-30",
+        "value_flag": "웹확인",
+        "source": "https://www.cohnreznick.com/insights/private-equity-q3-2026-market-outlook/"
+      },
+      {
+        "series_id": "us_pe_dry_powder",
+        "name": "미국 PE dry powder",
+        "value": null,
+        "unit": "USD bn",
+        "as_of": null,
+        "value_flag": "미확인"
+      },
+      {
+        "series_id": "us_pe_ev_ebitda",
+        "name": "미국 바이아웃 EV/EBITDA 배수",
+        "value": null,
+        "unit": "x",
+        "as_of": null,
+        "value_flag": "미확인"
+      }
+    ],
+    "summary": "[사실] snapshot에 PE API 데이터 없음(API 데이터 미수집). [사실] PitchBook 3Q26 First Look(Foley 요약): 미국 PE 엑시트 405건(QoQ +11%), 금액 $165.1bn(QoQ +51%) — 소수 대형 매각이 금액 견인. CohnReznick(PitchBook 인용): 1~3Q 누적 엑시트 건수 약 1,311건(−34% YoY), 금액 약 $488bn(+19% YoY). [사실] 컨티뉴에이션 펀드 관련 엑시트 1~5월 64건(전년 73건, Axios/PitchBook 2026-06). [사실] dry powder는 출처별 정의 차이로 $0.46~2조 범위(2026 1Q 자료) — 수치 미확인 처리. [판단] '대형 딜 중심 금액 회복, 건수·분배는 여전히 정체' — LP 유동성 병목 지속."
+  },
+  "short_term": {
+    "horizon": "3-6M",
+    "direction": "보합~소폭 약세",
+    "view": "[판단] UST10Y ~5.0%·매파적 동결은 레버리지 비용과 공개시장 배수에 부담 — 4Q 평가(NAV)는 보합~소폭 하락. 대형 엑시트 회복은 긍정적이나 중소형 딜·분배 정체로 컨티뉴에이션 펀드·NAV 대출 의존 지속.",
+    "drivers": [
+      "[사실] 3Q26 미국 PE 엑시트 금액 $165.1bn(QoQ +51%), 건수 +11%(PitchBook 3Q First Look, Foley 요약)",
+      "[사실] 1~3Q 누적 엑시트 건수 −34% YoY, 금액 +19% YoY(CohnReznick, PitchBook 인용)",
+      "[사실] 5년 이상 보유 포트폴리오 기업 약 11,000개(Foley 2026-04, PitchBook 인용) — 엑시트 대기 물량",
+      "[사실] 컨티뉴에이션 펀드 엑시트 1~5월 64건 vs 전년 73건(Axios 2026-06)",
+      "[판단] UST10Y 4.90~5.15% 밴드(us-fixed-income 공통 금리 전제) → 할인율·차입비용 고착, 배수 확장 제한",
+      "[판단] NAV 대출 규모·바이아웃 배수 최신치 미확인"
+    ],
+    "confidence": "낮음"
+  },
+  "long_term": {
+    "horizon": "1-3Y",
+    "scenarios": [
+      {
+        "name": "Base",
+        "prob": 0.55,
+        "narrative": "[판단] UST10Y 완만 하락(가정 −25bp)과 이익 성장으로 엑시트·분배가 점진 정상화, PE 평가가치는 연 한 자릿수 상승; 빈티지 간 성과 격차 확대. [하우스] 삼성(20260528_삼성_2026하반기대체투자전망, p.16-17)의 '배수 확장 기여 축소' 구조 뷰와 정합.",
+        "factor_shocks": {
+          "us_pe_value_pct": 4,
+          "equity_spx_pct": 6
+        },
+        "shock_rationale": "S&P500 +6%(이익성장 중심, 배수 보합 가정) × PE 베타 약 0.7(평가 스무딩) ≈ +4%; UST10Y 완만 하락 Base와 정합"
+      },
+      {
+        "name": "Bull",
+        "prob": 0.2,
+        "narrative": "[판단] 연준 재인하·UST10Y −75bp(가정), IPO·M&A 창구 재개로 대규모 분배, 배수 확장.",
+        "factor_shocks": {
+          "us_pe_value_pct": 12,
+          "equity_spx_pct": 18
+        },
+        "shock_rationale": "S&P500 +18%(배수 확장 포함) × 베타 0.7 ≈ +12%"
+      },
+      {
+        "name": "Bear",
+        "prob": 0.25,
+        "narrative": "[판단] UST10Y +50bp(가정)·경기 둔화로 공개시장 조정, 고레버리지 포트폴리오 이자부담 확대와 엑시트 재동결, 평가 하향(시차 반영).",
+        "factor_shocks": {
+          "us_pe_value_pct": -14,
+          "equity_spx_pct": -20
+        },
+        "shock_rationale": "S&P500 −20% × 베타 0.7 ≈ −14%(평가 스무딩으로 하락폭 축소·시차); UST10Y 상승 Bear와 방향 일치"
+      }
+    ]
+  },
+  "house_views": {
+    "consensus": "[하우스] 삼성증권(20260528_삼성_2026하반기대체투자전망, 2026-05 발간, 약 5개월 전 — 구조적·장기 뷰만 반영, 당시 단기 판단·수치는 현재값으로 쓰지 않음): ① LP 평가 기준이 IRR에서 실제 분배(DPI)로 구조적 이동(p.20, 확신 높음) ② 고금리 장기화로 레버리지·배수 확장 기여 축소, 운영개선(EBITDA 성장) 중심 가치창출로 전환(p.16-17, 높음) ③ 세컨더리·컨티뉴에이션 펀드가 핵심 엑시트 대안으로 구조적 성장, 연차 높은 펀드일수록 NAV 할인 확대(p.19, 높음) ④ 운용사 간 성과 격차 확대(p.14, 중간) ⑤ 메가딜 밸류에이션 상승 여지는 수익률 부담 요인(p.15, 중간).",
+    "divergence": "[판단] 방향은 대체로 일치: 3Q26 엑시트 금액 회복·건수 감소(대형 딜 편중)는 삼성의 '메가딜 중심·분배 정체' 구조 진단과 부합하며, Base의 '이익 성장 중심·배수 보합' 가정과도 정합. [판단] 차이: 삼성은 배수 확장 기여 축소를 구조적으로 보지만 Bull(UST10Y −75bp 가정)은 배수 확장을 포함 — 삼성 뷰는 고금리 장기화 전제이므로 Bull 확률 0.2(Base보다 낮음)로 이미 반영된 것으로 판단, 수치 변경 없음. [판단] 삼성의 단기 엑시트 '횡보' 콜(p.13)은 5개월 전 판단으로, 현재는 3Q26 실데이터로 대체.",
+    "cards_used": [
+      "20260528_삼성_2026하반기대체투자전망"
+    ]
+  },
+  "short_term_factor_shocks": {
+    "us_pe_value_pct": -1,
+    "equity_spx_pct": -2
+  },
+  "short_term_shock_rationale": "UST10Y 5% 내외 고착·매파적 동결로 S&P500 소폭 조정 −2%(판단, 추정) × PE 베타 0.7 ≈ −1%; 대형 엑시트 회복이 하락 폭을 제한",
+  "data_gaps": [
+    "API 데이터 미수집 — snapshot에 PE 지표 없음",
+    "하우스 뷰 부족(1곳: 삼성증권, 2026-05 발간 — 구조적 뷰만 반영)",
+    "PitchBook 원문 미확인 — 3Q26 수치는 법률·회계법인 요약(보조 출처) 기준",
+    "dry powder 출처별 정의 상이($0.46~2조) — 미확인 처리",
+    "NAV 대출 규모, 바이아웃 EV/EBITDA 최신치 미확인",
+    "S&P500 현재 수준 snapshot 미수집"
+  ],
+  "sources": [
+    "https://www.foley.com/?p=129506",
+    "https://www.cohnreznick.com/insights/private-equity-q3-2026-market-outlook/",
+    "https://www.axios.com/pro/merger-deals/2026/06/25/continuation-vehicles-exits-private-equity-exits",
+    "https://www.foley.com/insights/publications/2026/04/private-equity-in-q1-2026-resilient-activity-constrained-capital-environment/",
+    "20260528_삼성_2026하반기대체투자전망"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "card_id": "20261026_신한_2027전망P1_AI사이클",
+  "house": "신한투자증권",
+  "report_title": "2027년 경제 및 금융시장 전망: Time of Tempering — Summary·Intro·Part I. AI 사이클 중반부",
+  "published": "2026-10-26",
+  "published_estimated": false,
+  "source_file": "processed/reports/20261026_신한_2027전망P1_AI사이클.pdf",
+  "topics": [
+    "us_alt_infra",
+    "us_corp_bond"
+  ],
+  "views": [
+    {
+      "topic_id": "us_alt_infra",
+      "variable": "us_dc_construction",
+      "direction": "하락",
+      "horizon": "장기",
+      "target": null,
+      "rationale": "2027년 데이터센터 공사의 60% 이상이 2026년 8월 이전 착공분이라 상반기는 기존 물량이 받치지만, 기존 착공분 비중이 1분기 87%에서 4분기 34%로 줄어 하반기는 신규 착공 속도에 좌우된다고 봄. 인근 주민 반대 확대·전력 요금제 최소청구 의무화로 착공 지연 위험이 커짐.",
+      "page_ref": "p.10, p.12",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "us_alt_infra",
+      "variable": "us_dc_equipment_demand",
+      "direction": "상승",
+      "horizon": "장기",
+      "target": "장비 설치 수요 2027년 4분기 정점, 2028년 고원",
+      "rationale": "신규 건설은 줄어도 대형 AI 데이터센터 계획 기준 장비 설치 수요는 2027년 4분기에 정점을 찍고 2028년에도 비슷한 수준을 유지할 것으로 봄. 하이퍼스케일러 CapEx의 절반 이상이 장비.",
+      "page_ref": "p.11",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "us_corp_bond",
+      "variable": "us_ig_oas",
+      "direction": "확대",
+      "horizon": "장기",
+      "target": null,
+      "rationale": "하이퍼스케일러 CapEx가 영업현금흐름을 넘어 2027년에도 외부 조달(부채 발행)이 이어질 것으로 봄. 투자 증분 대비 매출 증분이 0.3으로 회수 초기라 AI 관련 발행 부담이 크레딧에 부담.",
+      "page_ref": "p.8, p.14",
+      "conviction": "낮음"
+    }
+  ],
+  "key_risks": [
+    "공급 과잉·부채 부담으로 AI 투자 파급이 제한되는 경로(경로 B)",
+    "전력 부족·지역 반대에 따른 데이터센터 착공 지연",
+    "반도체 가격 급락에 따른 투자 축소"
+  ],
+  "notes": "성격: 연간 전망서 Summary·Intro·Part I(파일 19쪽, 파일 p.N = 원문 p.N). 핵심 프레임: AI 투자 증분은 정점 통과, 2027년은 생산성·소득 확산 여부를 가늠하는 분기점, 확산은 2028년 이후 조건부(p.7-8, p.19). Summary(p.3): 물가는 공급 충격의 점진적 되돌림, 인하 기대가 실제 인하로 이어지기까지 시간 필요, 달러 박스권, 원화 상반기 강세 후 하반기 되돌림. 한국은 투자 구간 최대 수혜국(2Q 실질 GNI +15.6% vs GDP +3.7%, p.13). Part VI(원자재)·VII(결론·경제지표)는 입수되지 않음."
+}
