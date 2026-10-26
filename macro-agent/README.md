@@ -84,6 +84,7 @@ python scripts/optimize_allocation.py --portfolio knowledge/portfolios/현대해
 python scripts/opt_sensitivity.py --portfolio ... --shocks ... --date {날짜}      # 가정 민감도
 python scripts/render_yield_strategy.py --company 현대해상 --date {날짜}            # 골격(표) 생성 → 서술 TODO 채움
 ```
+최적화 규칙: 익스포저 행에 `strategic: true`(계열사 지분 등)를 달면 매매 대상에서 빠지고 조정 한도는 매매 가능 자산 기준으로 금액화된다. 현금이 하한보다 이미 낮으면 늘리지 않고, `constraints.yaml` 한도를 이미 넘은 자산군은 더 늘리지 않는다. 듀레이션 갭 공시가 없고 공시 민감도상 금리 하락 시 자본이 줄면 자산 듀레이션을 줄이지 않는다. K-ICS 가용자본은 익스포저의 `key_metrics['K-ICS 지급여력금액']`(십억원)을 우선 쓴다.
 재무제표 요약(손익·보험손익 분해·재무상태표·영업지표): `python scripts/extract_ir_financials.py --xlsx processed/filings/{회사}_{기간}_IR데이터.xlsx --company {회사} --period 1H26 --avg-assets {평균 운용자산}` → `knowledge/portfolios/{회사}/financials_{기간}.json` (현대해상 IR Factsheet 양식 기준, 다른 양식은 라벨 조정 필요).
 가정은 `config/yield_assumptions.yaml`(신규 자금 기대수익·기대손실·K-ICS 계수 범위·연간 조정 한도·전략별 제약). 3년 경로는 `class_bounds_pp`를 3배로 한 사본을 `--assumptions`로 넘겨 계산합니다. 투자손익 분해는 `knowledge/portfolios/{회사}/income_{기간}.json`.
 

@@ -88,11 +88,17 @@ def class_returns(cfg: dict, shocks_doc: dict, date: str, entity: str) -> dict:
 
 def kics_capital(pf: dict, cfg: dict) -> dict:
     """가용·요구자본(십억원). 공시 K-ICS 비율이 있으면 요구자본 = 가용 ÷ 비율로 맞춘다(반올림 오차 제거)."""
-    fb = cfg["kics_capital_fallback"]
-    avail = fb["available_trn"] * 1000
+    km = pf.get("key_metrics") or {}
     ratio = next((c["value"] for c in pf.get("capital_ratios") or [] if c["name"].upper().startswith("K-ICS") and c.get("value")), None)
-    req = avail / (ratio / 100) if ratio else fb["required_trn"] * 1000
-    return {"available": avail, "required": round(req, 1), "source": fb["source"] + (f"; 요구자본 = 가용 ÷ 공시 K-ICS {ratio}%" if ratio else "")}
+    av_km = next((v for k, v in km.items() if k.startswith("K-ICS 지급여력금액") and v.get("value")), None)
+    if av_km:  # 회사 공시 가용자본(십억원) 우선
+        avail = float(av_km["value"])
+        src = f"portfolio key_metrics 'K-ICS 지급여력금액' ({av_km.get('page_ref') or '근거 미기재'})"
+    else:
+        fb = cfg["kics_capital_fallback"]
+        avail, src = fb["available_trn"] * 1000, fb["source"]
+    req = avail / (ratio / 100) if ratio else cfg["kics_capital_fallback"]["required_trn"] * 1000
+    return {"available": avail, "required": round(req, 1), "source": src + (f"; 요구자본 = 가용 ÷ 공시 K-ICS {ratio}%" if ratio else "")}
 
 
 def disclosed_gap_base(pf: dict) -> tuple[float | None, float | None]:
@@ -106,29 +112,64 @@ def disclosed_gap_base(pf: dict) -> tuple[float | None, float | None]:
     return gap, base
 
 
+def rate_down_hurts(pf: dict) -> bool:
+    """공시 금리 민감도에서 금리 하락 충격 시 가용자본(또는 자본비율)이 줄어드는지."""
+    for d in pf.get("rate_sensitivity_disclosed") or []:
+        if d.get("shock_bp", 0) < 0:
+            v = d.get("capital_chg_krw_bn")
+            v = v if v is not None else d.get("ratio_chg_pp")
+            if v is not None and v < 0:
+                return True
+    return False
+
+
+def breached_limits(pf: dict) -> list[dict]:
+    """config/constraints.yaml의 자산군 한도(지역·등급 조건 없는 것) 중 현재 비중이 max를 넘는 항목."""
+    cons = load_yaml(CONFIG_DIR / "constraints.yaml")
+    ent = pf.get("entity_type", "insurer")
+    cons = {**cons, **((cons.get("entity_overrides") or {}).get(ent) or {})}
+    T = float(pf["total_invested_assets_krw_bn"])
+    out = []
+    for lim in cons.get("limits", []):
+        if not lim.get("classes") or lim.get("regions") or lim.get("grades") or lim.get("max") is None:
+            continue
+        w = sum(float(a["mv_krw_bn"]) for a in pf["assets"] if a["class"] in lim["classes"]) / T
+        if w > lim["max"] + 1e-9:
+            out.append({**lim, "current": round(w, 4)})
+    return out
+
+
 def optimize(pf: dict, rets: dict, cfg: dict, strat: dict) -> dict:
     from scipy.optimize import linprog
 
     T = float(pf["total_invested_assets_krw_bn"])
     hold: dict[str, float] = {}
     for a in pf["assets"]:
+        if a.get("strategic"):  # 계열사 지분 등 전략적 보유분은 매매 대상에서 제외(비중 계산 분모에는 포함)
+            continue
         hold[a["class"]] = hold.get(a["class"], 0.0) + float(a["mv_krw_bn"])
     universe = [c for c in rets if c not in cfg["fixed_classes"]]
     n = len(universe)
     r = [rets[c]["total_pct"] / 100 for c in universe]
-    step = strat["step_pp"] / 100 * T
+    # 조정 한도(%p)는 매매 가능 자산(전략적 보유분 제외) 기준으로 금액화한다 — 딜 파이프라인·만기 규모는 매매 가능 자산에 비례
+    Tb = T - sum(float(a["mv_krw_bn"]) for a in pf["assets"] if a.get("strategic"))
+    step = strat["step_pp"] / 100 * Tb
     cb = cfg.get("class_bounds_pp") or {}
     bounds = []
     for c in universe:
         lo, hi = -min(hold.get(c, 0.0), step), step
         if c in cb:
-            lo, hi = max(lo, cb[c][0] / 100 * T), min(hi, cb[c][1] / 100 * T)
+            lo, hi = max(lo, cb[c][0] / 100 * Tb), min(hi, cb[c][1] / 100 * Tb)
         bounds.append((lo, hi))
     A_ub, b_ub = [], []
-    # 현금 하한: −x_cash ≤ hold_cash − cash_min·T
+    # 현금 하한: −x_cash ≤ hold_cash − min(cash_min·T, hold_cash)  (이미 하한 미만이면 현재 수준 유지, 억지로 늘리지 않음)
     if "현금예금" in universe:
         row = [0.0] * n; row[universe.index("현금예금")] = -1.0
-        A_ub.append(row); b_ub.append(hold.get("현금예금", 0.0) - strat["cash_min"] * T)
+        h = hold.get("현금예금", 0.0)
+        A_ub.append(row); b_ub.append(h - min(strat["cash_min"] * T, h))
+    # 회사 한도(constraints.yaml) 중 이미 초과한 자산군 묶음은 더 늘리지 않는다(전략적 보유분 포함 비중 기준)
+    for lim in breached_limits(pf):
+        A_ub.append([1.0 if c in lim["classes"] else 0.0 for c in universe]); b_ub.append(0.0)
     # 대체 상한
     alt = cfg["alt_classes"]
     A_ub.append([1.0 if c in alt else 0.0 for c in universe]); b_ub.append(strat["alt_cap"] * T - sum(hold.get(c, 0.0) for c in alt))
@@ -143,6 +184,9 @@ def optimize(pf: dict, rets: dict, cfg: dict, strat: dict) -> dict:
         dur = [rets[c]["duration"] / base for c in universe]
         A_ub.append(dur); b_ub.append(hi - gap0)
         A_ub.append([-d for d in dur]); b_ub.append(gap0 - lo)
+    elif rate_down_hurts(pf):
+        # 갭 공시가 없고 공시 민감도상 금리 하락 시 자본이 줄면(부채 듀레이션 > 자산) 자산 듀레이션을 줄이지 않는다: −Σ x·D ≤ 0
+        A_ub.append([-rets[c]["duration"] for c in universe]); b_ub.append(0.0)
     # Bear 손실 추가 허용: Σ x·bear_pct ≥ −extra·T  →  −Σ x·bear_pct ≤ extra·T
     A_ub.append([-rets[c]["bear_pct"] / 100 for c in universe]); b_ub.append(strat["bear_extra_bp"] / 1e4 * T)
     res = linprog(c=[-x for x in r], A_ub=A_ub, b_ub=b_ub, A_eq=[[1.0] * n], b_eq=[0.0], bounds=bounds, method="highs")
