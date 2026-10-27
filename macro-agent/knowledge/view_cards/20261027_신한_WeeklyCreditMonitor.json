@@ -1,0 +1,71 @@
+{
+  "card_id": "20261027_신한_WeeklyCreditMonitor",
+  "house": "신한투자증권",
+  "report_title": "Weekly Credit Monitor: 공적채권 발행기관 협의체 개최, 4분기 공급 부담 완화 기대",
+  "published": "2026-10-27",
+  "published_estimated": false,
+  "source_file": "processed/reports/20261027_신한_WeeklyCreditMonitor.pdf",
+  "topics": [
+    "kr_rate",
+    "kr_govt_bond",
+    "kr_corp_bond"
+  ],
+  "views": [
+    {
+      "topic_id": "kr_rate",
+      "variable": "kr_base_rate",
+      "direction": "상승",
+      "horizon": "단기",
+      "target": "2027년 최종금리 3.50%",
+      "rationale": "10월 만장일치 동결에도 금년·내년 성장률이 기존 전망을 상당폭 웃돌고 내년 물가 전망도 상향될 것으로 보여 최종금리 3.50% 전망 유지. 총재도 동결의 확장적 해석을 경계.",
+      "page_ref": "p.1",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "kr_govt_bond",
+      "variable": "ktb_3y",
+      "direction": "상승",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "최근 강세는 국고채 수급 개선 기대·안전자산 선호·대외 금리 하락이 겹친 결과로, 3분기 GDP·10월 CPI 발표 시 긴축 경계가 다시 커질 수 있다고 봄. 중단기 금리에 약세 압력이 남아 있음.",
+      "page_ref": "p.1, p.3",
+      "conviction": "낮음"
+    },
+    {
+      "topic_id": "kr_corp_bond",
+      "variable": "kr_aaa_public_bank_spread",
+      "direction": "축소",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "10월 국고채 발행 5조원 축소(추가 축소 검토), 4분기 공적채권 발행 59조원(3분기 실적 대비 −6조원)과 은행의 선제 조달로 초우량물 약세 압력이 둔화될 것으로 기대.",
+      "page_ref": "p.1, p.3",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "kr_corp_bond",
+      "variable": "kr_aa_spread",
+      "direction": "횡보",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "공급 부담으로 신용스프레드는 약보합(회사채 AA− 3년 주간 +0.1bp)이지만 운용사 중심 수요가 견조하고 연말 공급 부담 우려는 제한적이라고 판단. 수요예측은 2~3년물 강세, 5년물은 경쟁률 저조·밴드 상단 결정으로 만기별 차별화.",
+      "page_ref": "p.2-3, p.9",
+      "conviction": "중간"
+    },
+    {
+      "topic_id": "kr_corp_bond",
+      "variable": "kr_bank_delinquency",
+      "direction": "상승",
+      "horizon": "단기",
+      "target": null,
+      "rationale": "8월 국내은행 연체율 0.69%(+0.06%p), 중소기업 1.00%, 신용대출 등 0.91%로 취약 부문 중심 상승세가 이어질 가능성. 관리 가능한 수준이라는 평가.",
+      "page_ref": "p.1",
+      "conviction": "중간"
+    }
+  ],
+  "key_risks": [
+    "3분기 GDP·10월 CPI 호조에 따른 긴축 경계 재부각",
+    "4분기 은행채 만기 집중에 따른 공급 부담",
+    "중소기업·가계 신용대출 연체율 상승"
+  ],
+  "notes": "성격: 크레딧 주간. 금리·스프레드 표(p.2, 10월 23일 기준): 국고 1Y 3.57·2Y 3.76·3Y 3.81·5Y 3.96·10Y 4.11%, 회사채 AA− 2Y 4.43·3Y 4.49·5Y 4.60%(3Y 스프레드 68.0bp), AA+ 3Y 4.40%(59.0bp), 은행채 AAA 3Y 4.20%(39.1bp), 특수채 AAA 3Y 4.17%(36.4bp), 여전채 AA− 3Y 4.55%(74.4bp). 1·2년 스프레드는 통안채 대비. 표의 '월간 스프레드 변동' 열은 금리 수준이 반복 표기된 것으로 보여 사용하지 않음. 국고 월간 변동: 3Y −22.1bp, 10Y −33.7bp. 수급(p.7): 주간 외국인 국채 3.66조원 순매수, 보험 20년 이상 장기채 3,200억원 순매수, 운용사 은행채 2.7조원 순매수. 등급전망(p.12-13): 긍정 — LS일렉트릭(AA−, 3사), 한국항공우주·포스코인터내셔널(AA−), LG전자(AA); 부정 — 석유화학(LG화학 AA+, 롯데케미칼·한화솔루션·한화토탈·SK지오센트릭 AA−), KCC글라스(AA−), 호텔신라·롯데물산(AA−), 현대해상(AAA). 수요예측(p.9-10): 삼양홀딩스 2Y 8배·3Y 5.9배 vs 5Y 1.25배(민평 두 자릿수 오버), 하나금융 신종 4.730%(99NC5); 이번 주 KCC(AA−, 2Y 800·3Y 1,200억, 10/27), SK렌터카(A0, 배당 확대 모니터링)."
+}
