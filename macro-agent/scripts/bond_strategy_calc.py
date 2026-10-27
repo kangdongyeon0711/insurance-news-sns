@@ -122,6 +122,16 @@ def main(argv=None) -> int:
         cr[k] = {"extension": ext, "spread_3y_bp": s3, "spread_5y_bp": s5, "breakeven_widening_1y_bp": be,
                  **({"excess_vs_ktb_1y_bp": res, "ev_bp": round(sum(prob[n] * res[n] for n in names), 1)} if res else {})}
     out["credit"] = cr
+    # 4) 절대수익(RP 조달) 관점 3개월: 단기 충격(국고·AA 스프레드) 적용
+    ast = cb["short_term_factor_shocks"].get("kr_aa_spread_bp", 0.0)
+    out["abs_return_3m_short_term"] = {
+        "ktb_outright_bp": {f"{t}Y": round(carry_roll(ktb, t, 0.25, FUND_3M) * 100 - st[t] * DUR[t], 1) for t in (2, 3, 5, 10)},
+        "credit_hedged_bp": {k: round(SPREAD_3_5[k][0] * 0.25 - ast * DUR[3], 1) for k in ("회사채AA-", "회사채AA0", "회사채AA+")},
+        "credit_unhedged_bp": {k: round(carry_roll(c, 3, 0.25, FUND_3M) * 100 - (st[3] + ast) * DUR[3], 1)
+                               for k, c in CURVE.items() if k in ("회사채AA-", "회사채AA0", "회사채AA+")},
+        "note": "단기 충격: 국고 3년 +10·10년 +5bp(5년 보간), AA 스프레드 +3bp. 헤지 크레딧 = 국고 대비 스프레드 캐리 − 스프레드 변화×듀레이션(국채선물로 금리 헤지 가정)"}
+    # 5) 1년 RP 조달 아웃라이트 AA−3년 (국고 3년 초과수익 + 크레딧 초과수익)
+    out["abs_return_1y_aa_minus_3y_unhedged_bp"] = {n: round(outr["3Y"]["scenarios_bp"][n] + cr["회사채AA-"]["excess_vs_ktb_1y_bp"][n], 1) for n in names}
     p = Path(a.out) if a.out else TMP_REPORTS_DIR / f"{a.date}_kr_bond_strategy_calc.json"
     save_json(p, out)
     print(json.dumps(out, ensure_ascii=False, indent=1))
