@@ -56,5 +56,17 @@ for c in sorted(cards):
 out["cards"] = cinfo
 houses = sorted({c["house"] for c in cinfo})
 out["houses"] = houses
+# 같은 날짜 브리프가 있으면 '이번 주 핵심 변화' 항목(굵은 제목 + [판단] 문장)을 첫 장에 싣는다
+brief = ROOT / "reports" / f"{DATE}_macro_brief.md"
+out["changes"] = []
+if brief.exists():
+    bt = brief.read_text()
+    if "## 이번 주 핵심 변화" in bt:
+        sec = bt.split("## 이번 주 핵심 변화", 1)[1].split("\n## ", 1)[0]
+        for line in sec.splitlines():
+            m = re.match(r"^\d+\. \*\*(.+?)\*\*\s*—\s*(.*)$", line)
+            if m:
+                judge = m.group(2).split("[판단]", 1)[1].strip() if "[판단]" in m.group(2) else ""
+                out["changes"].append({"title": m.group(1), "text": sentences(judge, 220) if judge else ""})
 json.dump(out, open(ROOT / "reports/tmp" / f"{DATE}_summary_prep.json", "w"), ensure_ascii=False, indent=1)
 print("ok", sum(1 for x in out["topics"] if not x["missing"]), "topics")

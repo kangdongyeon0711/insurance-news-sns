@@ -1,0 +1,134 @@
+{
+  "topic_id": "us_alt_pd",
+  "as_of": "2026-10-31",
+  "current": {
+    "indicators": [
+      {
+        "series_id": "us_pc_default_fitch_ttm",
+        "name": "Fitch 미국 Private Credit 부도율(TTM, 부실교환 포함)",
+        "value": 6.3,
+        "unit": "%",
+        "as_of": "2026-08-31",
+        "value_flag": "웹확인",
+        "source": "https://www.fundssociety.com/en/news/alternatives/u-s-private-credit-default-rate-continues-to-climb/",
+        "stale": true,
+        "chg_1m": 0.2,
+        "chg_unit": "%p"
+      },
+      {
+        "series_id": "us_pc_default_proskauer",
+        "name": "Proskauer Private Credit Default Index(분기)",
+        "value": 2.51,
+        "unit": "%",
+        "as_of": "2026-06-30",
+        "value_flag": "웹확인",
+        "source": "https://www.proskauer.com/report/proskauers-private-credit-default-index-reveals-rate-of-251-for-q2-2026",
+        "stale": true
+      },
+      {
+        "series_id": "us_bdc_nonaccrual_top10",
+        "name": "상위 10개 BDC 비발생대출 비중",
+        "value": null,
+        "unit": "%",
+        "as_of": null,
+        "value_flag": "미확인",
+        "source": "https://angelinvestorsnetwork.com/market-analysis/bdc-non-accrual-rates-q2-2026-data"
+      },
+      {
+        "series_id": "us_bdc_pik_share_nmfc",
+        "name": "New Mountain Finance PIK 이자 비중(총투자수익 대비)",
+        "value": 8.81,
+        "unit": "%",
+        "as_of": "2026-06-30",
+        "value_flag": "웹확인",
+        "source": "https://altss.com/blog/nmfc-pik-interest-noncash-dividends-investment-income",
+        "stale": true
+      }
+    ],
+    "summary": "[사실] snapshot에 Private Credit API 데이터 없음(API 데이터 미수집). [사실] Fitch 미국 Private Credit 부도율(TTM) 6.3%(2026-08, 7월 6.1%, 사상 최고, 4월 이후 6%대) — 기준일 2026-08-31, 55일 경과(월별 45일 기준 초과, stale). [사실] Proskauer 지수 2.51%(2026 2Q, 1Q 2.73%) — 기준일 2026-06-30, 117일 경과(stale; 3Q 발표 임박). 두 지표는 정의 차이(Fitch는 부실교환·만기연장 포함)로 직접 비교 불가. [사실] Fed FSR(2026-05) 관련 보도: 영구형 BDC 환매가 2026 1Q 처음으로 신규 유입 초과(2차 출처). [사실] NMFC PIK 이자 비중 8.81%(PIK+비현금배당 16.75%, 2026 2Q). [판단] 표면 부도율은 완만하나 부실교환·PIK로 이연된 스트레스가 누적 — 고금리 장기화 시 실현 손실 확대 위험. [하우스] 미래에셋(2026-10-22)은 데이터센터 SPV 대출의 회수가 보증기업 신용에 의존하고 단기 임대–장기 채권 만기 미스매치가 부담이라고 지적(20261022_미래_EconMonthly_AI투자둔화리스크 p.5-6)."
+  },
+  "short_term": {
+    "horizon": "3-6M",
+    "direction": "부도율 소폭 상승",
+    "view": "[판단] FFR 3.75~4.00%(9월 인상 후)·매파적 동결로 변동금리 차주의 이자보상배율 압박 지속 → Fitch 기준 부도율 6%대 중반으로 소폭 상승, 부실교환·PIK 전환 증가. [판단] 은행권 복귀·스프레드 축소 경쟁은 신규 딜 조건 약화 요인이나 단기 부도에는 영향 제한. [갱신 2026-10-31] [판단] 연준 동결(10/28)로 변동금리 차주 부담은 그대로이고, AI 차입 기업 스트레스(하우스 HY 하향)가 더해져 부도율 소폭 상승 가정 유지.",
+    "drivers": [
+      "[사실] Fitch TTM 부도율 6.3%(2026-08), 7월 6.1%에서 상승; 12개월간 89개 발행사·109건 부도 이벤트",
+      "[사실] Proskauer 2.51%(2026 2Q) — EBITDA $25~49.9m 구간만 3.4%로 상승",
+      "[사실] 영구형 BDC 환매 > 유입(2026 1Q, Fed FSR 관련 2차 출처), 5% 분기 환매 한도 적용",
+      "[사실] Barings BDC 일부 대출 PIK분 비발생 처리 등 개별 BDC 스트레스(2026 2Q 10-Q)",
+      "[판단] 단기금리 고착(FFR 3.75~4.00%)이 변동금리 차주 부담의 핵심",
+      "[판단] BDC 업계 비발생대출 비중 공식 집계 미확인(2차 출처 3.95%는 검증 불가)"
+    ],
+    "confidence": "중간"
+  },
+  "long_term": {
+    "horizon": "1-3Y",
+    "scenarios": [
+      {
+        "name": "Base",
+        "prob": 0.55,
+        "headline": "이자 부담이 서서히 줄지만 2021~22 빈티지 부실 처리로 부도율이 0.3%p 더 오른 뒤 정체한다.",
+        "narrative": "[판단] 금리 완만 하락(UST10Y 가정 −25bp, 단기금리도 점진 인하)으로 이자부담이 서서히 완화되나, 2021~22 빈티지 부실 처리로 부도율은 고점 부근에서 소폭 추가 상승 후 정체.",
+        "factor_shocks": {
+          "us_pd_default_pp": 0.3
+        },
+        "shock_rationale": "단기금리 하락은 시차를 두고 반영, 부실 빈티지 소화로 Fitch 기준 +0.3%p(판단)"
+      },
+      {
+        "name": "Bull",
+        "prob": 0.2,
+        "headline": "연준 재인하와 리파이낸싱 재개로 부도율이 0.8%p 내린다.",
+        "narrative": "[판단] 연준 재인하·UST10Y −75bp(가정), 리파이낸싱 창구 재개로 부실교환 감소, 부도율 하락.",
+        "factor_shocks": {
+          "us_pd_default_pp": -0.8
+        },
+        "shock_rationale": "단기금리 −100bp 내외 가정 시 이자보상배율 개선 → −0.8%p(판단)"
+      },
+      {
+        "name": "Bear",
+        "prob": 0.25,
+        "headline": "금리 재상승과 경기 둔화로 변동금리 차주 부도가 급증해 부도율이 2.0%p 오르고 BDC 환매 압력이 커진다.",
+        "narrative": "[판단] 금리 재상승(UST10Y +50bp 가정)·경기 둔화로 변동금리 차주 부도 급증, BDC 환매 압력과 밸류에이션 마크다운 동반. [하우스] 삼성(20260528_삼성_2026하반기대체투자전망, p.28)은 BDC 구조상 시스템 위기 전이는 제한적이라고 봄 — 본 시나리오는 부도율 상승에 한정. [하우스] 미래에셋은 심각 시나리오에서 데이터센터 SPV 대출의 임대인·대출기관 손실 확대와 단기 임대 갱신–장기 채권 만기 미스매치에 따른 차환 위험을 지적(20261022_미래_EconMonthly_AI투자둔화리스크 p.5-6) — AI 인프라 대출 익스포저가 Bear의 추가 손실 경로.",
+        "factor_shocks": {
+          "us_pd_default_pp": 2.0
+        },
+        "shock_rationale": "금리 상승 + 경기 둔화 결합 시 Fitch 기준 8%대 → +2.0%p(판단); us-fixed-income Bear와 방향 일치; 데이터센터 SPV 차환 위험(20261022_미래_EconMonthly_AI투자둔화리스크 p.5-6)은 경로 보강만, 기준 시나리오 외부 손실 미미 판단에 따라 수치 변경 없음"
+      }
+    ]
+  },
+  "house_views": {
+    "consensus": "[갱신 2026-10-31] 신한 월간 자산전략: AI 기업 스프레드 확대·차입 의존 기업 중심 유동성 경색을 위험요인으로, HY는 코어위브 중심 신용위험 부각으로 비중축소(20261030_신한_BlueBook11월_자산전략 p.4-5). 연간 전망의 BDC 유동성 미스매치 시각(P3 p.14-15)과 같은 방향. [이전] [하우스] 미래에셋(2026-10-22, 동일 주간)과 삼성(2026-05, 구조적 참고) 공통: 시스템 위기로의 전이 가능성은 낮음 — 미래에셋은 데이터센터 SPV 대출이 기준 시나리오에선 외부 손실이 미미하다고 봄(중립, 확신 낮음, 20261022_미래_EconMonthly_AI투자둔화리스크 p.5-6), 삼성은 BDC 레버리지 상한·환매 한도·이자 쿠션으로 금융위기식 전이 가능성 낮음(확신 높음, 20260528_삼성_2026하반기대체투자전망 p.28). 삼성의 기타 구조적 뷰: AI·데이터센터·인프라 자금 수요로 사모대출 성장 추세적(p.37), 비직접대출 전략 분산(p.34-36), 부실 PIK의 선순위 전이 경계(p.33) — 모두 20260528_삼성_2026하반기대체투자전망, 당시 수치는 현재값으로 쓰지 않음. [갱신 2026-10-26] 신한 연간 전망: 사모대출 차주 레버리지 상승(소프트웨어·소비자서비스 8배 이상), BDC 환매 요청이 한도의 2배, 일부 BDC는 유동성 약정이 가용 유동성 초과 — 유동성 위험에 취약하나 전면적 신용 위험 확산 가능성은 낮음(부도율 상승, 확신 중간, 20261026_신한_2027전망P3_정책금융취약성 p.14-15). [판단] Base(+0.3%p)·Bear(+2.0%p, BDC 환매 압력) 서술과 일치 — 충격값 유지. 위험 전환점은 'AI 인프라 회수 차질 + 대주(은행·BDC) 여력 동반 약화'(같은 카드 p.16).",
+    "divergence": "[하우스] AI/데이터센터 대출을 보는 시각 차이: 삼성은 AI·데이터센터 파이낸싱 수요를 사모대출 성장 동력으로 평가(20260528_삼성_2026하반기대체투자전망 p.37), 미래에셋은 같은 익스포저의 회수가 보증기업 신용에 의존하고 심각 시나리오에선 대주 손실과 만기 미스매치가 커진다고 경고(20261022_미래_EconMonthly_AI투자둔화리스크 p.5-6). [판단] 현재 데이터(Fitch TTM 6.3%, 2026-08-31, stale)는 삼성 발간 시점보다 악화돼 신용 손실 측면은 보수적으로 봄; Bear(+2.0%p, 확률 0.25)는 부도율 상승에 한정하고 시스템 전이는 반영하지 않는 설계로 두 하우스와 정합 — 수치 변경 없음. [하우스] 맥락: 신한의 AI 인프라 기업 크레딧 스프레드 상승·자본조달 제약 우려(20261023_신한_WeeklyGuideBook p.2, us_corp_bond 매핑)는 AI 인프라 차주 신용의 하방 리스크.",
+    "cards_used": [
+      "20260528_삼성_2026하반기대체투자전망",
+      "20261022_미래_EconMonthly_AI투자둔화리스크",
+      "20261026_신한_2027전망P3_정책금융취약성",
+      "20261030_신한_BlueBook11월_자산전략"
+    ]
+  },
+  "short_term_factor_shocks": {
+    "us_pd_default_pp": 0.3
+  },
+  "short_term_shock_rationale": "FFR 3.75~4.00% 고착·매파적 동결로 이자부담 지속 → Fitch 기준 최근 월 +0.1~0.2%p 추세 연장 시 3~6개월 +0.3%p(판단)",
+  "data_gaps": [
+    "API 데이터 미수집 — snapshot에 Private Credit 지표 없음",
+    "하우스: 미래에셋(동일 주간) + 삼성(2026-05, 구조적 참고)",
+    "Fitch 9월·Proskauer 3Q 수치 미발표/미확인; Fitch 값은 언론 보도(보조 출처) — 기준일 2026-08-31(55일 경과, stale)",
+    "Proskauer 기준일 2026-06-30(117일 경과, stale)",
+    "BDC 업계 비발생대출·PIK 비중 공식 집계 미확인(개별 10-Q만)",
+    "직접대출 스프레드 수준 미확인",
+    "Fed FSR 원문 미확인(2차 출처 요약)"
+  ],
+  "sources": [
+    "https://www.fundssociety.com/en/news/alternatives/u-s-private-credit-default-rate-continues-to-climb/",
+    "https://cryptobriefing.com/us-private-debt-default-rate-record-fitch/",
+    "https://www.proskauer.com/report/proskauers-private-credit-default-index-reveals-rate-of-251-for-q2-2026",
+    "https://altss.com/blog/nmfc-pik-interest-noncash-dividends-investment-income",
+    "https://angelinvestorsnetwork.com/market-analysis/bdc-non-accrual-rates-q2-2026-data",
+    "https://infobytes.orrick.com/2026-05-22/fed-releases-its-semiannual-financial-stability-report/",
+    "20260528_삼성_2026하반기대체투자전망",
+    "20261022_미래_EconMonthly_AI투자둔화리스크",
+    "knowledge/view_cards/20261026_신한_2027전망P3_정책금융취약성.json",
+    "knowledge/view_cards/20261030_신한_BlueBook11월_자산전략.json"
+  ]
+}

@@ -42,6 +42,10 @@ body.push(para([run(`기준일 ${data.date}  ·  자료: ECOS 수기 입력(100�
 body.push(para([run("표기 ", { size: 17, color: C.sub, bold: true }),
   run("[사실] 데이터·공식 발표  [하우스] 증권사 리포트  [판단] 에이전트 판단  ·  값 플래그: 수기 = ECOS 홈페이지 값, 웹확인 = 웹 검색 값(공식 원문 대조 전), ⚠ = 기준일이 오래된 데이터", { size: 17, color: C.sub })], { after: 160 }));
 
+if (data.changes && data.changes.length) {
+  body.push(H1("이번 주 핵심 변화"));
+  data.changes.forEach(c => body.push(label(c.title, c.text ? "[판단] " + c.text : "")));
+}
 body.push(H1("한 장 요약"));
 const sw = [1850, 2350, 2050, 2628, 760];
 body.push(table(sw, ["항목", "현황 핵심 수치 (기준일)", "단기 방향 (3-6M)", "장기 Base (1-3Y)", "확신도"],

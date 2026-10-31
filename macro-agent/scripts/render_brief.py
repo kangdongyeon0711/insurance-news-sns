@@ -26,9 +26,13 @@ TOPIC_NAMES = {
     "us_alt_pd": "미국 대체투자 - PE (Debt) / Private Credit",
 }
 # 항목별 대표 지표 우선순위 (한 장 요약·워드 요약본 공용)
-PREF = {"fx_krwusd": ["krw_usd", "dxy_ice", "kr_us_policy_diff", "kr_current_account"],
+# `_web` = snapshot에 있는 시계열의 더 최근 웹확인 값(별도 series_id). 있으면 요약 표에서 먼저 보인다.
+PREF = {"fx_krwusd": ["krw_usd_close_web", "krw_usd", "dxy_ice", "kr_us_policy_diff", "kr_current_account"],
         "us_treasury": ["ust_10y", "ust_2y", "ust_30y", "ust_10y_2y"],
-        "kr_govt_bond": ["ktb_3y", "ktb_10y", "ktb_30y", "ktb_5y"],
+        "kr_govt_bond": ["ktb_3y_web", "ktb_3y", "ktb_10y", "ktb_30y", "ktb_5y_web", "ktb_5y"],
+        "kr_rate": ["kr_base_rate", "kr_gdp_qoq_web", "kr_gdp_yoy_web"],
+        "kr_alt_pe": ["kospi_web", "kospi"],
+        "kr_alt_infra": ["ktb_5y_web", "ktb_3y_web", "ktb_5y", "ktb_3y"],
         "kr_alt_re": ["kr_office_vacancy_national", "kr_retail_vacancy_national", "kr_pf_delinquency_rate", "kr_pf_exposure"],
         "us_corp_bond": ["us_ig_oas", "us_hy_oas"]}
 

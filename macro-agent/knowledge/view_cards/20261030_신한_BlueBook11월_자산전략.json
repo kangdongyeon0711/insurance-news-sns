@@ -1,0 +1,161 @@
+{
+ "card_id": "20261030_신한_BlueBook11월_자산전략",
+ "house": "신한투자증권",
+ "report_title": "the Blue Book 2026년 11월 참신한 자산전략: 금리 고원, 좁아진 선택지",
+ "published": "2026-10-30",
+ "published_estimated": false,
+ "source_file": "processed/reports/20261030_신한_BlueBook11월_자산전략.pdf",
+ "topics": [
+  "us_rate",
+  "us_treasury",
+  "kr_rate",
+  "kr_govt_bond",
+  "kr_corp_bond",
+  "us_corp_bond",
+  "oil",
+  "fx_krwusd",
+  "us_alt_infra",
+  "us_alt_pd",
+  "us_alt_re",
+  "kr_alt_pe"
+ ],
+ "views": [
+  {
+   "topic_id": "us_rate",
+   "variable": "us_ffr",
+   "direction": "횡보",
+   "horizon": "장기",
+   "target": "금리 고원",
+   "rationale": "주요국은 긴축 후반부에 들어섰지만 인상 종료까지 시차가 있고 금리 고원이 길어진다고 봄(2H26 긴축 후반부 진입 → 1H27 금리 고원 지속). 시장은 2~3차례 인상 가능성을 선반영했고 '보험성 금리 인하' 의심도 잔존.",
+   "page_ref": "p.4",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "us_treasury",
+   "variable": "ust_10y",
+   "direction": "횡보",
+   "horizon": "단기",
+   "target": "듀레이션 중립",
+   "rationale": "미국 국채 3M 의견 중립(0): 핵심 물가 안정까지 시차 vs 2~3차례 인상 가능성 선반영. 유럽 국채 급등 속 시장이 긴축을 대행하고, 재정발 국채 수급 부담으로 장기금리 하방이 경직적이라고 봄.",
+   "page_ref": "p.5",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "kr_govt_bond",
+   "variable": "ktb_10y",
+   "direction": "상승",
+   "horizon": "단기",
+   "target": "듀레이션 중립 이하",
+   "rationale": "한국 국채 3M 의견 (1)(6M 0): 수급 여건은 개선됐지만 수요 측 물가 압력의 불확실성 때문에 긴축 경계가 다시 부각될 수 있다고 보고 듀레이션 중립 이하를 권고. 위험선호 위축은 이미 반영.",
+   "page_ref": "p.5",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "kr_rate",
+   "variable": "kr_base_rate",
+   "direction": "상승",
+   "horizon": "단기",
+   "target": null,
+   "rationale": "한국 채권 전략에서 '긴축 경계 재부각 가능성'을 핵심으로 제시. 인플레이션은 공급 측 비용 전가가 확산되는 국면(2H26 물가 2차 파급)이며 핵심물가·수요 측 전이 여부가 관건이라고 봄. 인상 시점은 명시하지 않음.",
+   "page_ref": "p.3",
+   "conviction": "낮음"
+  },
+  {
+   "topic_id": "kr_corp_bond",
+   "variable": "kr_aa_spread",
+   "direction": "확대",
+   "horizon": "단기",
+   "target": null,
+   "rationale": "한국 크레딧 3M 의견 중립(0): 연말 완만한 약세를 전망하되, 내년 연초효과 기대로 선제적 포지셔닝 자금이 유입될 것으로 봄. 채권은 중·단기 국채 캐리 중심, 크레딧은 선별.",
+   "page_ref": "p.5",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "us_corp_bond",
+   "variable": "us_ig_oas",
+   "direction": "확대",
+   "horizon": "단기",
+   "target": null,
+   "rationale": "글로벌 IG 3M 중립(0): 금리 급등에 따른 하이퍼스케일러 투자심리 위축과 조달 환경 악화로 약세. 국채금리가 아니라 스프레드가 조달비용 상승을 견인하고, 차입 의존 AI 기업 중심으로 선별적 신용위험이 커진다고 봄.",
+   "page_ref": "p.5",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "us_corp_bond",
+   "variable": "us_hy_oas",
+   "direction": "확대",
+   "horizon": "단기",
+   "target": null,
+   "rationale": "글로벌 HY 3M 의견을 중립(0)에서 (1)로 하향: 코어위브 중심으로 HY 신용위험이 부각됐고 고금리 부담으로 추가 약세에 유의.",
+   "page_ref": "p.5",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "oil",
+   "variable": "brent",
+   "direction": "하락",
+   "horizon": "단기",
+   "target": null,
+   "rationale": "에너지 3M 중립(0), 6M (1): 중동 확전에도 수급 여건은 상대적으로 양호해 지정학 프리미엄의 되돌림을 예상. 원자재 중 에너지 열위, 구리 중심 산업금속 우위.",
+   "page_ref": "p.5",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "fx_krwusd",
+   "variable": "krw_usd",
+   "direction": "하락",
+   "horizon": "단기",
+   "target": "완만한 하락",
+   "rationale": "미국 성장 우위와 유럽 불안으로 대외 달러는 강세지만 원/달러는 완만하게 하락(원화 강세)할 것으로 봄('대외 강 달러에도 강한 원화').",
+   "page_ref": "p.3",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "us_alt_infra",
+   "variable": "us_dc_construction",
+   "direction": "하락",
+   "horizon": "장기",
+   "target": null,
+   "rationale": "AI 인프라 조달 부담으로 발주·착공이 지연되면 하드웨어 수출국 이익이 훼손될 위험. 1H27은 조달 부담이 성장을 제약하는 국면으로 봄. 조건부 위험 서술.",
+   "page_ref": "p.3",
+   "conviction": "낮음"
+  },
+  {
+   "topic_id": "us_alt_pd",
+   "variable": "us_pc_credit_stress",
+   "direction": "상승",
+   "horizon": "단기",
+   "target": null,
+   "rationale": "위험요인으로 AI 기업 스프레드 확대와 차입 의존 기업 중심의 유동성 경색을 제시. HY는 코어위브 중심 신용위험이 부각.",
+   "page_ref": "p.4",
+   "conviction": "낮음"
+  },
+  {
+   "topic_id": "us_alt_re",
+   "variable": "us_reit_discount_rate",
+   "direction": "상승",
+   "horizon": "단기",
+   "target": null,
+   "rationale": "상장 리츠 3M 중립(0), 6M 1: 양호한 실적에도 할인율 확대 부담이 불가피하며 가격 전가력이 높은 리츠가 유리하다고 봄.",
+   "page_ref": "p.5",
+   "conviction": "낮음"
+  },
+  {
+   "topic_id": "kr_alt_pe",
+   "variable": "kospi",
+   "direction": "횡보",
+   "horizon": "단기",
+   "target": null,
+   "rationale": "한국 주식 3M 의견을 1에서 중립(0)으로 하향: 자금 조달 리스크로 밸류에이션 압축이 진행 중이며 주주환원 구체화 이후 바닥 통과를 예상. 메모리 반도체에 조정 집중, 당분간 횡보.",
+   "page_ref": "p.5",
+   "conviction": "중간"
+  }
+ ],
+ "key_risks": [
+  "AI 인프라 발주·착공 지연과 AI 기업 스프레드 확대(p.3-4)",
+  "공급 측 비용 전가 확산에 따른 물가 2차 파급(p.4)",
+  "유럽 국채금리 급등과 재정발 국채 수급 부담(p.3)",
+  "차입 의존 기업 중심 유동성 경색(p.4)"
+ ],
+ "notes": "성격: 월간 자산전략 Blue Book 11월호 중 Summary 7쪽만 입수(본문 자산별 상세 p.10~29 미입수). 데이터 10월 29일 종가 기준. Global stance(p.3): 주식 중립(하향, 기대보상 우위 소멸), 채권 중립(상향, 캐리 중심 역할 확대), 대체 중립(유지), 현금 중립(유지). 구간별 대응(p.4): 4Q26 금리 고원·스프레드 확대로 전 자산 중립, 1Q27 공급 충격 완화 시 대체 축소·주식 확대. 투자의견 3M 척도 (3)~3(p.5): 미국·중국·한국 주식 1→0, 선진 0→(1), 한국 국채 (1), 미국 국채 0, 유럽·신흥 국채 (1), 한국 크레딧 0, 글로벌 IG 0, HY 0→(1), 에너지 0(6M (1)), 귀금속·농산물·산업금속 1, 리츠 0. 포트폴리오(p.6): SAA 주식 60·채권 30·대체 10, 채권 28.8%(TAA −1.2%p)."
+}

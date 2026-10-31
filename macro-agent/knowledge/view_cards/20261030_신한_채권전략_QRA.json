@@ -1,0 +1,114 @@
+{
+ "card_id": "20261030_신한_채권전략_QRA",
+ "house": "신한투자증권",
+ "report_title": "채권전략: 중간선거와 QRA, 주요 이벤트 소화 속 엇갈릴 대내외 금리",
+ "published": "2026-10-30",
+ "published_estimated": false,
+ "source_file": "processed/reports/20261030_신한_채권전략_QRA.pdf",
+ "topics": [
+  "us_treasury",
+  "us_rate",
+  "kr_govt_bond",
+  "kr_rate",
+  "oil"
+ ],
+ "views": [
+  {
+   "topic_id": "us_treasury",
+   "variable": "ust_10y",
+   "direction": "하락",
+   "horizon": "단기",
+   "target": "4.85~5.05%",
+   "rationale": "중간선거를 소화하며 불확실성이 후퇴하고, 미국-이란 합의가 구체화되면 강세 동력이 더해지며, 11월 QRA의 장기물 바이백 연장 기대도 우호적이라 미 국채의 완만한 강세 연장을 예상. 영향력 자체는 제한적이라고 봄.",
+   "page_ref": "p.1",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "us_treasury",
+   "variable": "ust_10y",
+   "direction": "하락",
+   "horizon": "단기",
+   "target": null,
+   "rationale": "1970년 이후 14차례 중간선거 직후 10년 금리는 20거래일 평균 20.9bp, 60거래일 23.1bp 하락(하락 비율 71%, 64%). 단일→분점 정부 전환은 2006·2018년 2차례뿐이고 60거래일 뒤 방향이 갈려 하방 우위로 단정하긴 어렵다고 봄.",
+   "page_ref": "p.2",
+   "conviction": "낮음"
+  },
+  {
+   "topic_id": "us_treasury",
+   "variable": "ust_term_premium",
+   "direction": "하락",
+   "horizon": "단기",
+   "target": "바이백 한도 확대 연장",
+   "rationale": "11월 4일 QRA의 기본 시나리오는 8월 긴급 확대한 장기물(10~30년) 바이백 한도의 연장. 회당 60억달러 이상 명시 시 추가 서프라이즈. 장기물 발행 축소는 가이던스상 11월보다 내년 가능성이 높다고 봄.",
+   "page_ref": "p.4",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "us_treasury",
+   "variable": "us_fiscal_impulse",
+   "direction": "축소",
+   "horizon": "장기",
+   "target": null,
+   "rationale": "하원은 민주당 과반 가능성이 높아 분점 정부 전환이 우세하고, 이는 재정정책 추진력을 약화시켜 재정발 금리 영향력을 제한할 근거로 봄. 공화당 양원 방어 시나리오만 재정 확대 위험(↑↑).",
+   "page_ref": "p.3",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "us_rate",
+   "variable": "us_ffr",
+   "direction": "횡보",
+   "horizon": "단기",
+   "target": "10월 동결",
+   "rationale": "10월 FOMC는 동결, 25bp 인상 소수의견 2명. 성명서 경기 평가는 상향됐으나 성명서·워시 의장 발언에서 인상을 서두르겠다는 뉘앙스가 빠져 비둘기파적으로 해석되며 직후 단기물 중심 강세.",
+   "page_ref": "p.6",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "kr_govt_bond",
+   "variable": "ktb_3y",
+   "direction": "횡보",
+   "horizon": "단기",
+   "target": "3.70~3.90%",
+   "rationale": "다양한 강세 재료가 이미 반영돼 남은 동력은 대외 금리 추가 안정 정도라 국고채 추가 강세는 제한적이라고 봄. 10월 수출입동향·소비자물가와 위험선호 개선이 잠재적 부담 요인.",
+   "page_ref": "p.6",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "kr_govt_bond",
+   "variable": "ktb_10y",
+   "direction": "횡보",
+   "horizon": "단기",
+   "target": "4.00~4.20%",
+   "rationale": "3년물과 같은 논리로 추가 강세 제한을 예상하며 10년 밴드 4.00~4.20%, 10년-3년 스프레드 25~35bp를 제시(10월 29일 31.5bp).",
+   "page_ref": "p.6",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "kr_rate",
+   "variable": "kr_gdp_qoq",
+   "direction": "상승",
+   "horizon": "단기",
+   "target": "3Q 전기대비 1.0%",
+   "rationale": "3분기 GDP는 전기대비 1.0%, 전년동기대비 3.4%로 예상 상회. 민간소비가 전기대비 0.2% 감소했지만 설비투자가 4.1% 늘어 성장을 뒷받침. 국고채는 외국인 선물 순매수로 강세.",
+   "page_ref": "p.6",
+   "conviction": "높음"
+  },
+  {
+   "topic_id": "oil",
+   "variable": "geopolitical_premium",
+   "direction": "축소",
+   "horizon": "단기",
+   "target": null,
+   "rationale": "9월 중동발 위험이 재고조된 이후 지정학 불확실성은 10월 말~11월 초 정점을 통과할 것으로 기대(이스라엘 총선 박빙, 11월 3일 미국 중간선거). 미국-이란 합의 구체화 가능성 언급. 유가 직접 전망은 아님.",
+   "page_ref": "p.2",
+   "conviction": "낮음"
+  }
+ ],
+ "key_risks": [
+  "공화당 양원 방어 시 재정 확대 위험(p.3)",
+  "QRA 바이백 미연장 또는 장기물 발행 확대",
+  "10월 수출입·소비자물가 상방 서프라이즈와 위험선호 회복(국고채 약세 요인)",
+  "2006년처럼 중간선거 60거래일 뒤 금리 반등"
+ ],
+ "notes": "성격: 주간 채권전략(14쪽). 시장 수치(10월 29일, p.6): 국고 3년 3.76%·10년 4.07%·10-3년 31.5bp, 미 국채 10년 4.94%. p.9 표(현재값): 국고 3년 3.766·5년 3.923·10년 4.081·30년 4.212%, 통안 1년 3.518%, 회사채 AA- 3년 스프레드 67.4bp(1주 −0.3bp), BBB- 648.5bp, 1개월 변화 3년 −31.0bp·10년 −39.5bp. 주간: 미 국채 2년 −8.4bp·10년 −5.8bp(불 스팁), 국고 3년 −8.2bp·10년 −7.7bp(p.6). 국고 3년 밴드는 p.1·p.6 표 3.70~3.90%, p.6 본문 3.65~3.85%로 불일치 — 표 기준 사용. 일정(p.8): 11/1 한국 10월 수출 예상 +89.4%, 11/3 한국 10월 CPI 예상 2.8%(이전 2.9%), 11/5 BOE 3.75→4.00% 예상, 11/6 미국 비농가 예상 65K, 유로존 10월 CPI 예상 3.9%. 입찰(p.8): 국고 5년 3.935%, 20년 4.155%, 미 국채 2년 4.708%, 5년 4.845%, 7년 4.894%. 영국 예산안 길트 15년 이상 비중 9.4→6.2%, 브라질 룰라 4선 후 10년물 +232bp(p.6)."
+}

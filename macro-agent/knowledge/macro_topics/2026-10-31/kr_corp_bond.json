@@ -1,0 +1,159 @@
+{
+  "topic_id": "kr_corp_bond",
+  "as_of": "2026-10-31",
+  "current": {
+    "indicators": [
+      {
+        "series_id": "kr_corp_aa_3y",
+        "name": "회사채 3년 AA-",
+        "value": 4.492,
+        "unit": "%",
+        "as_of": "2026-10-23",
+        "value_flag": "수기",
+        "source": "data/latest_snapshot.json (data/manual/ecos100_20261025.yaml, ECOS 100대 통계지표 수기 입력)",
+        "stale": true
+      },
+      {
+        "series_id": "kr_aa_spread",
+        "name": "회사채 AA- − 국고채 3Y 스프레드",
+        "value": 0.689,
+        "unit": "%p",
+        "as_of": "2026-10-23",
+        "value_flag": "수기",
+        "source": "data/latest_snapshot.json (data/manual/ecos100_20261025.yaml, ECOS 100대 통계지표 수기 입력)",
+        "stale": true
+      },
+      {
+        "series_id": "ktb_3y",
+        "name": "국고채 3년",
+        "value": 3.803,
+        "unit": "%",
+        "as_of": "2026-10-23",
+        "value_flag": "수기",
+        "source": "data/latest_snapshot.json (data/manual/ecos100_20261025.yaml, ECOS 100대 통계지표 수기 입력)",
+        "stale": true
+      },
+      {
+        "series_id": "kr_corp_bbb_3y",
+        "name": "회사채 3년 BBB-",
+        "value": 10.46,
+        "unit": "%",
+        "as_of": "2026-10-08",
+        "value_flag": "웹확인",
+        "source": "https://datacenter.hankyung.com/rates-bonds/krc3ybbb"
+      },
+      {
+        "series_id": "kr_bbb_spread",
+        "name": "회사채 BBB- − 국고채 3Y 스프레드 (웹확인 값으로 계산, 2026-10-08)",
+        "value": 6.477,
+        "unit": "%p",
+        "as_of": "2026-10-08",
+        "value_flag": "웹확인",
+        "source": "https://datacenter.hankyung.com/rates-bonds/krc3ybbb ; https://biz.sbs.co.kr/amp/article/20000339059"
+      },
+      {
+        "series_id": "ktb_3y_web",
+        "name": "국고채 3년 (10/30 마감, 웹확인)",
+        "value": 3.715,
+        "unit": "%",
+        "as_of": "2026-10-30",
+        "value_flag": "웹확인",
+        "source": "https://biz.sbs.co.kr/article/20000343377",
+        "stale": false
+      }
+    ],
+    "summary": "[사실] 회사채 AA- 3년 4.492%, AA- 스프레드 68.9bp(2026-10-23, 수기). 신한 집계로는 10/29 AA- 3년 스프레드 67.4bp(1주 −0.3bp), BBB- 648.5bp(20261030_신한_채권전략_QRA p.9). [사실] 지난주 공사채 순상환(−8,000억원)·은행채 순발행(+2.44조원)·카드채 7주 연속 순발행, 신용스프레드는 완만한 확대(20261027_신한_WeeklyCreditMonitor p.2, p.5). [사실] 8월 은행 연체율 0.69%(+0.06%p), 중소기업 1.00%(같은 리포트 p.1). 등급 변경 0건, 부정적 전망은 석유화학에 집중(p.11, p.13). [사실] 국고 3년 3.715%(2026-10-30, 웹확인) — 국고 강세 구간이라 스프레드가 다시 벌어질 여지."
+  },
+  "short_term": {
+    "horizon": "3-6M",
+    "direction": "AA- 횡보, BBB- 소폭 확대",
+    "view": "[하우스] 신한은 공급 부담으로 신용스프레드가 약보합이지만 운용사 중심 수요가 견조하고 연말 공급 부담 우려는 제한적이라고 본다. 수요예측은 2~3년물 강세, 5년물 차별화(20261027_신한_WeeklyCreditMonitor p.2-3, p.9). [하우스] 신한 월간 자산전략은 한국 크레딧 중립(0): 연말 완만한 약세, 내년 연초효과 기대로 선제적 포지셔닝 유입(20261030_신한_BlueBook11월_자산전략 p.5). [판단] AA-는 캐리 수요로 70bp 안팎 횡보, 연말 북클로징·국고 강세 시 소폭 확대. 연체율 상승·한계기업 증가로 BBB-·PF 연관 섹터는 차별화 확대.",
+    "drivers": [
+      "[사실] AA- 스프레드 68.9bp(2026-10-23) — 2024년 말 수준 상회",
+      "[하우스] 10월 수요예측 상위등급 10배 이상 주문, 이번 주 NH투자증권·롯데렌탈·하나금융지주 신종·삼양홀딩스 예정(20261020_신한_WeeklyCreditMonitor p.9-10)",
+      "[하우스] 4분기 공적채권 발행 축소·은행 선제 조달로 은행채 수급 완화 기대, 4분기 만기 부담은 잔존(20261023_신한_WeeklyGuideBook p.10)",
+      "[판단] 연말 계절성(기관 북클로징)으로 11~12월 발행 감소·유통 스프레드 소폭 확대 경향",
+      "[판단] 기준금리 추가 인상은 저등급·PF 연관 건설/증권/캐피탈 섹터 조달 비용 부담 요인",
+      "[사실] 2026년 10월 PF 관련 등급 하향 동향은 이번 검색으로 미확인"
+    ],
+    "confidence": "중간"
+  },
+  "long_term": {
+    "horizon": "1-3Y",
+    "scenarios": [
+      {
+        "name": "Base",
+        "prob": 0.45,
+        "headline": "캐리 수요로 AA- 스프레드는 5bp 줄고, 고금리 장기화로 BBB-는 10bp 넓어진다.",
+        "narrative": "[판단] 기준금리 3.50% 정점 이후 금리 안정과 높은 절대금리에 대한 캐리 수요로 AA- 스프레드는 60bp대 초중반으로 소폭 축소, BBB-는 고금리 장기화로 소폭 확대.",
+        "factor_shocks": {
+          "kr_aa_spread_bp": -5,
+          "kr_bbb_spread_bp": 10
+        },
+        "shock_rationale": "AA-는 정책금리 정점 통과 후 캐리 수요로 -5bp, BBB-는 고금리 장기화에 따른 이자부담으로 +10bp [확률 동기화 2026-10-25] kr_rate 시나리오 확률 변경(미래에셋 3.25% 최종금리 전망 반영, Base 0.55→0.45·Bull 0.20→0.30)에 맞춰 0.55→0.45. 충격값은 동일 금리 경로 전제라 유지."
+      },
+      {
+        "name": "Bull",
+        "prob": 0.3,
+        "headline": "인하 전환과 PF 정리 마무리로 AA- −15bp, BBB- −40bp로 크레딧 전반이 좁혀진다.",
+        "narrative": "[판단] 인하 전환과 경기 연착륙으로 크레딧 전반 축소, PF 구조조정 마무리로 저등급 리스크 프리미엄 하락.",
+        "factor_shocks": {
+          "kr_aa_spread_bp": -15,
+          "kr_bbb_spread_bp": -40
+        },
+        "shock_rationale": "금리 하락기 크레딧 수요 증가로 AA- -15bp, BBB-는 베타가 커 -40bp [확률 동기화 2026-10-25] kr_rate 시나리오 확률 변경(미래에셋 3.25% 최종금리 전망 반영, Base 0.55→0.45·Bull 0.20→0.30)에 맞춰 0.2→0.3. 충격값은 동일 금리 경로 전제라 유지."
+      },
+      {
+        "name": "Bear",
+        "prob": 0.25,
+        "headline": "인상 장기화와 PF 부실 재부각으로 AA- +30bp, BBB- +120bp로 크레딧 전반이 넓어진다.",
+        "narrative": "[판단] 인상 장기화(3.75% 이상)와 부동산 PF 부실 재부각·경기 둔화가 겹쳐 등급 하향과 미매각이 늘고 크레딧 전반 확대.",
+        "factor_shocks": {
+          "kr_aa_spread_bp": 30,
+          "kr_bbb_spread_bp": 120
+        },
+        "shock_rationale": "AA- 100bp 안팎으로 확대(+30bp), BBB-는 PF·차환 위험 집중으로 +120bp"
+      }
+    ]
+  },
+  "house_views": {
+    "consensus": "[갱신 2026-10-31] 신한 크레딧 주간: AA- 약보합·수요 견조, 4분기 공적채권 발행 축소(59조원, 3분기 대비 −6조원)로 초우량물 약세 압력 둔화 기대(20261027_신한_WeeklyCreditMonitor p.1-3). 신한 월간 자산전략: 한국 크레딧 연말 완만한 약세·연초효과 선제 포지셔닝, 크레딧 선별(20261030_신한_BlueBook11월_자산전략 p.4-5). 단기 충격(+3bp/+15bp) 유지. [이전] [하우스] 신한투자증권(단일): AA- 스프레드는 직전 주 소폭 확대됐으나 캐리 수요가 꾸준해 추가 확대보다 안정(20261020_신한_WeeklyCreditMonitor p.2-3), 우량물 발행시장 수요 견조(p.9-10), 은행채는 가계대출 순감·공적채권 발행 축소로 수급 부담 완화 기대(확신 낮음, p.1; 20261023_신한_WeeklyGuideBook p.10). [갱신 2026-10-26] 신한 연간 전망: 금리 인상기 한계기업 비중 20% 근접, 자영업자·가계 취약차주 연체율 높고 중소기업도 점진 상승(K자형, 확신 낮음, 20261026_신한_2027전망P4_주요국한국경제 p.18) — Base의 BBB- 소폭 확대와 일치, 충격값 유지.",
+    "divergence": "단일 하우스 — 비교 불가. 신한 내부 뉘앙스: 크레딧 리포트는 은행채 수급 개선 근거로 '가계대출 순감·증시 급락에 따른 대출 위축'을, 주간 가이드북은 '공적채권 발행 축소·은행 선제 조달'을 들며 4분기 만기 부담을 조건으로 남김. BBB- 등 저등급 직접 견해 없음.",
+    "cards_used": [
+      "20261020_신한_WeeklyCreditMonitor",
+      "20261023_신한_WeeklyGuideBook",
+      "20261026_신한_2027전망P4_주요국한국경제",
+      "20261027_신한_WeeklyCreditMonitor",
+      "20261030_신한_BlueBook11월_자산전략",
+      "20261030_신한_채권전략_QRA"
+    ]
+  },
+  "short_term_factor_shocks": {
+    "kr_aa_spread_bp": 3,
+    "kr_bbb_spread_bp": 15
+  },
+  "short_term_shock_rationale": "AA-는 하우스 '안정' 견해에 연말 계절성 +3bp만 반영, BBB-는 추가 인상·연말 조달 부담으로 +15bp",
+  "data_gaps": [
+    "하우스 뷰 부족(1곳: 신한투자증권)",
+    "kr_corp_bbb_3y는 snapshot 미수집 → 웹확인값(한국경제 데이터센터, 2026-10-08) 사용, 17일 경과·10/23 값 미확인",
+    "kr_bbb_spread는 웹확인 BBB- 금리와 SBS Biz 보도 국고 3년(10-08)으로 계산 — 공식 스프레드 아님",
+    "AA- 스프레드 1M/3M 변화(chg) 미산출(수기 입력 1개 시점)",
+    "2026년 10월 PF 관련 등급 하향·미매각 동향 미확인",
+    "AA- 3년 금리·스프레드 10/24 이후 수기값 없음(10/29 값은 리포트 수치) — ECOS 수기 입력 필요"
+  ],
+  "sources": [
+    "data/latest_snapshot.json (data/manual/ecos100_20261025.yaml, ECOS 100대 통계지표 수기 입력)",
+    "https://datacenter.hankyung.com/rates-bonds/krc3ybbb",
+    "https://biz.sbs.co.kr/amp/article/20000339059",
+    "https://www.fnnews.com/news/202610190849282835",
+    "https://m.news.nate.com/view/20260719n11548",
+    "https://www.etoday.co.kr/news/view/2628374",
+    "knowledge/view_cards/20261020_신한_WeeklyCreditMonitor.json",
+    "knowledge/view_cards/20261023_신한_WeeklyGuideBook.json",
+    "knowledge/view_cards/20261026_신한_2027전망P4_주요국한국경제.json",
+    "knowledge/view_cards/20261027_신한_WeeklyCreditMonitor.json",
+    "knowledge/view_cards/20261030_신한_BlueBook11월_자산전략.json",
+    "knowledge/view_cards/20261030_신한_채권전략_QRA.json",
+    "https://biz.sbs.co.kr/article/20000343377"
+  ]
+}

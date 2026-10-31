@@ -1,0 +1,155 @@
+{
+  "topic_id": "kr_alt_pd",
+  "as_of": "2026-10-31",
+  "current": {
+    "indicators": [
+      {
+        "series_id": "kr_pf_delinquency_rate",
+        "name": "금융권 PF대출 연체율(금융위·금감원)",
+        "value": 4.65,
+        "unit": "%",
+        "as_of": "2026-03-31",
+        "chg_1m": null,
+        "value_flag": "웹확인",
+        "source": "https://fsc.go.kr/no010101/87252"
+      },
+      {
+        "series_id": "kr_land_loan_delinquency_smallfin",
+        "name": "중소금융사 토지담보대출 연체율",
+        "value": 31.88,
+        "unit": "%",
+        "as_of": "2026-03-31",
+        "chg_1m": null,
+        "value_flag": "웹확인",
+        "source": "https://fsc.go.kr/no010101/87252"
+      },
+      {
+        "series_id": "kr_base_rate",
+        "name": "기준금리",
+        "value": 3.0,
+        "unit": "%",
+        "as_of": "2026-10-22",
+        "chg_1m": null,
+        "chg_unit": "bp",
+        "value_flag": "수기",
+        "source": "data/latest_snapshot.json (data/manual/ecos100_20261025.yaml, ECOS 사용자 수기 입력)",
+        "stale": false
+      },
+      {
+        "series_id": "ktb_3y",
+        "name": "국고채 3년",
+        "value": 3.803,
+        "unit": "%",
+        "as_of": "2026-10-23",
+        "chg_1m": null,
+        "chg_unit": "bp",
+        "value_flag": "수기",
+        "source": "data/latest_snapshot.json (data/manual/ecos100_20261025.yaml, ECOS 사용자 수기 입력)",
+        "stale": true
+      },
+      {
+        "series_id": "kr_acquisition_finance_rate",
+        "name": "국내 인수금융 금리(선순위)",
+        "value": null,
+        "unit": "%",
+        "as_of": null,
+        "value_flag": "미확인"
+      },
+      {
+        "series_id": "kr_pd_default_rate",
+        "name": "국내 사모대출 부도율",
+        "value": null,
+        "unit": "%",
+        "as_of": null,
+        "value_flag": "미확인"
+      },
+      {
+        "series_id": "ktb_3y_web",
+        "name": "국고채 3년 (10/30 마감, 웹확인)",
+        "value": 3.715,
+        "unit": "%",
+        "as_of": "2026-10-30",
+        "value_flag": "웹확인",
+        "source": "https://biz.sbs.co.kr/article/20000343377",
+        "stale": false
+      }
+    ],
+    "summary": "[사실] 금융위 기준 3월말 PF대출 연체율 4.65%(+0.77%p), 중소금융사 토담대 연체율 31.88%(2026-03-31, 웹확인). 기준금리 3.00%(2026-10-22, 수기), KTB 3Y 3.715%(2026-10-30, 웹확인). [하우스] 신한투자증권(20261020_신한_WeeklyCreditMonitor, p.1): 6월말 PF대출 연체율이 부실 정리 영향으로 하락하고 유의·부실우려 여신 감소, PF 시장 안정 국면 평가(경로 수치 없음, 확신도 낮음). [사실] PF 자기자본비율 2027년부터 단계 상향(2030년 20%) 계획 보도로 상업용 부동산 사모대출 수요 확대 전망(이지스 자체 추정 연 31~45조원, 보조 표기). [판단] 국내 사모대출 부도율·인수금융 금리는 공개 통계 부재로 미확인."
+  },
+  "short_term": {
+    "horizon": "3-6M",
+    "direction": "부도율 소폭 상승",
+    "view": "[하우스] PF 연체율은 하락 추세(20261020_신한_WeeklyCreditMonitor, p.1). [판단] 다만 기준금리 인상 재개(작업가정)는 변동금리 사모대출·LBO 차주의 이자부담을 키우고, 토담대 등 후순위·2금융권 부실이 남아 있어 사모대출 부도율은 소폭 상승 쪽. [판단] 은행·증권사 부동산 대출 여력 위축으로 사모대출 신규 공급 기회는 확대(금리 프리미엄 유지).",
+    "drivers": [
+      "기준금리 인상 재개와 변동금리 차주 이자부담",
+      "PF 연체율 하락(하우스) vs 토담대·브릿지론 잔여 부실",
+      "PF 자기자본비율 규제와 대체자금 수요",
+      "PEF LBO 규제 입법이 인수금융 공급에 미치는 영향",
+      "해외 사모대출 부실 사례의 국내 LP 심리 전이"
+    ],
+    "confidence": "낮음"
+  },
+  "long_term": {
+    "horizon": "1-3Y",
+    "scenarios": [
+      {
+        "name": "Base",
+        "prob": 0.45,
+        "headline": "사모대출 시장은 성장하지만 금리 부담으로 부도율이 0.3%p 오른다.",
+        "narrative": "[판단] 2회 인상 후 동결, PF 정리 마무리. 사모대출 시장은 규제 공백을 채우며 성장하되 부도율은 금리 부담으로 소폭 상승.",
+        "factor_shocks": {
+          "kr_pd_default_pp": 0.3
+        },
+        "shock_rationale": "KTB 3Y +20bp·기준금리 +50bp 작업가정에 따른 이자보상배율 저하를 부도율 +0.3%p로 번역(추정). [확률 동기화 2026-10-25] kr_rate 시나리오 확률 변경(미래에셋 3.25% 최종금리 전망 반영, Base 0.55→0.45·Bull 0.20→0.30)에 맞춰 0.55→0.45. 충격값은 동일 금리 경로 전제라 유지."
+      },
+      {
+        "name": "Bull",
+        "prob": 0.3,
+        "headline": "금리 안정과 PF 정상화로 부도율이 0.2%p 내린다.",
+        "narrative": "[판단] 금리 안정·조기 인하, PF 정상화 가속과 차주 재무 개선으로 부도율 하락.",
+        "factor_shocks": {
+          "kr_pd_default_pp": -0.2
+        },
+        "shock_rationale": "금리 하락(KTB 3Y -20bp 내외)과 PF 손실 축소를 부도율 -0.2%p로 번역(추정). [확률 동기화 2026-10-25] kr_rate 시나리오 확률 변경(미래에셋 3.25% 최종금리 전망 반영, Base 0.55→0.45·Bull 0.20→0.30)에 맞춰 0.2→0.3. 충격값은 동일 금리 경로 전제라 유지."
+      },
+      {
+        "name": "Bear",
+        "prob": 0.25,
+        "headline": "인상 폭 확대와 경기 둔화로 LBO·부동산 담보 대출 부실이 커져 부도율이 1.5%p 오른다.",
+        "narrative": "[판단] 인상 폭 확대와 경기 둔화로 LBO·부동산 담보 사모대출 부실 확대, 2금융권 토담대 부실 전이.",
+        "factor_shocks": {
+          "kr_pd_default_pp": 1.5
+        },
+        "shock_rationale": "KTB 3Y +50bp 이상·경기 둔화 동반 가정에 토담대 부실 전이를 더해 부도율 +1.5%p(추정)."
+      }
+    ]
+  },
+  "house_views": {
+    "consensus": "[하우스] 신한투자증권 1곳(20261020_신한_WeeklyCreditMonitor, p.1): PF대출 연체율 하락, PF 시장 안정 국면(방향 하락, 확신도 낮음, 목표치 없음). 사모대출 직접 뷰 없음. [갱신 2026-10-26] 신한 연간 전망: 고금리 부담이 한계기업·자영업자·중소기업에 누적(확신 낮음, 20261026_신한_2027전망P4_주요국한국경제 p.18) — Base 부도율 소폭 상승과 일치, 충격값 유지.",
+    "divergence": "비교 가능한 하우스 뷰가 1곳뿐이라 이견 판단 불가.",
+    "cards_used": [
+      "20261020_신한_WeeklyCreditMonitor",
+      "20261026_신한_2027전망P4_주요국한국경제"
+    ]
+  },
+  "short_term_factor_shocks": {
+    "kr_pd_default_pp": 0.2
+  },
+  "short_term_shock_rationale": "단기 기준금리 +25bp·KTB 3Y +10bp 작업가정의 이자부담 증가를 +0.2%p로, 하우스 PF 연체율 하락 뷰는 부동산 담보분 상쇄 요인으로 반영(추정).",
+  "data_gaps": [
+    "하우스 뷰 부족(1곳: 신한투자증권)",
+    "국내 사모대출 부도율·인수금융 금리 공개 통계 미확인",
+    "6월말 PF 공식 수치(금융위·금감원) 웹 미확인 — 하우스 카드 인용분만 존재",
+    "국고채 경로는 kr-fixed-income 확정 전 작업가정"
+  ],
+  "sources": [
+    "data/latest_snapshot.json",
+    "knowledge/view_cards/20261020_신한_WeeklyCreditMonitor.json (p.1)",
+    "https://fsc.go.kr/no010101/87252",
+    "https://www.dailian.co.kr/news/view/1679056/%EA%B8%88%EC%9C%B5%EA%B6%8C-PF-%EC%97%B0%EC%B2%B4%EC%9C%A8-10%EB%85%84-%EB%A7%8C%EC%97%90-%EC%B5%9C%EA%B3%A0-2026",
+    "https://www.heraldk.com/article/2026062122251078491",
+    "https://www.newsis.com/view/NISX20260722_0003718732",
+    "knowledge/view_cards/20261026_신한_2027전망P4_주요국한국경제.json",
+    "https://biz.sbs.co.kr/article/20000343377"
+  ]
+}
