@@ -1,0 +1,437 @@
+{
+ "company": "KB손해보험",
+ "entity_type": "insurer",
+ "period": "2026Q2",
+ "as_of": "2026-06-30",
+ "source_files": [
+  "processed/filings/KB손해보험_2026Q2_경영공시.pdf"
+ ],
+ "accounting_basis": "IFRS17/IFRS9 별도 요약반기재무제표(검토) — 장부가. 운용자산 = 현금·FVPL·FVOCI·상각후원가 유가증권·대출채권·관계종속기업투자·투자부동산(기타수취채권·파생 제외)",
+ "total_invested_assets_krw_bn": 41596.5,
+ "total_flag": "추정",
+ "total_page_ref": "p.6 재무상태표 계정 합산",
+ "assets": [
+  {
+   "class": "현금예금",
+   "label": "현금및현금성자산",
+   "region": "KR",
+   "currency": "KRW",
+   "mv_krw_bn": 1361.0,
+   "weight": 0.0327,
+   "value_flag": "공시",
+   "page_ref": "p.6; p.25 주석 6"
+  },
+  {
+   "class": "국공채",
+   "label": "원화 국공채(FVOCI+FVPL)",
+   "region": "KR",
+   "currency": "KRW",
+   "mv_krw_bn": 10303.3,
+   "weight": 0.2477,
+   "value_flag": "공시",
+   "page_ref": "p.6 재무상태표; p.26-28 주석 7·8·9"
+  },
+  {
+   "class": "특수채",
+   "label": "원화 특수채(FVOCI+FVPL+상각후원가)",
+   "region": "KR",
+   "currency": "KRW",
+   "mv_krw_bn": 2075.6,
+   "weight": 0.0499,
+   "value_flag": "공시",
+   "page_ref": "p.6 재무상태표; p.26-28 주석 7·8·9"
+  },
+  {
+   "class": "금융채",
+   "label": "원화 금융채(FVOCI+FVPL)",
+   "region": "KR",
+   "currency": "KRW",
+   "mv_krw_bn": 772.4,
+   "weight": 0.0186,
+   "value_flag": "공시",
+   "page_ref": "p.6 재무상태표; p.26-28 주석 7·8·9"
+  },
+  {
+   "class": "회사채",
+   "label": "원화 회사채(FVOCI+FVPL)",
+   "region": "KR",
+   "currency": "KRW",
+   "mv_krw_bn": 2906.2,
+   "weight": 0.0699,
+   "value_flag": "공시",
+   "page_ref": "p.6 재무상태표; p.26-28 주석 7·8·9",
+   "credit_grade": "AA",
+   "field_flags": {
+    "credit_grade": "추정"
+   }
+  },
+  {
+   "class": "회사채",
+   "label": "FVOCI 지분상품-기타(신종자본증권 등으로 추정, 콜 기준 듀레이션)",
+   "region": "KR",
+   "currency": "KRW",
+   "mv_krw_bn": 1954.9,
+   "weight": 0.047,
+   "value_flag": "공시",
+   "page_ref": "p.27 주석 8",
+   "mod_duration": 4.5,
+   "credit_grade": "AA",
+   "field_flags": {
+    "mod_duration": "추정",
+    "credit_grade": "추정",
+    "class": "추정"
+   }
+  },
+  {
+   "class": "주식",
+   "label": "주식(FVPL 상장 + FVOCI 비상장)",
+   "region": "KR",
+   "currency": "KRW",
+   "mv_krw_bn": 29.6,
+   "weight": 0.0007,
+   "value_flag": "공시",
+   "page_ref": "p.6 재무상태표; p.26-28 주석 7·8·9"
+  },
+  {
+   "class": "수익증권",
+   "label": "원화 수익증권(FVPL, 수준3 위주 — 대체투자 펀드로 추정, 유형별 구성 미공시)",
+   "region": "KR",
+   "currency": "KRW",
+   "mv_krw_bn": 7198.6,
+   "weight": 0.1731,
+   "value_flag": "공시",
+   "page_ref": "p.26 주석 7; p.19 공정가치 수준"
+  },
+  {
+   "class": "수익증권",
+   "label": "외화 수익증권·기타(FVPL, 해외 펀드 — 유형 미공시)",
+   "region": "혼합",
+   "currency": "USD",
+   "mv_krw_bn": 1329.0,
+   "weight": 0.0319,
+   "value_flag": "공시",
+   "page_ref": "p.26 주석 7",
+   "fx_hedge_ratio": 1.0,
+   "field_flags": {
+    "fx_hedge_ratio": "추정",
+    "currency": "추정"
+   }
+  },
+  {
+   "class": "해외채",
+   "label": "외화 채권(FVOCI+FVPL)",
+   "region": "혼합",
+   "currency": "USD",
+   "mv_krw_bn": 2464.9,
+   "weight": 0.0593,
+   "value_flag": "공시",
+   "page_ref": "p.6 재무상태표; p.26-28 주석 7·8·9",
+   "fx_hedge_ratio": 1.0,
+   "credit_grade": "IG",
+   "field_flags": {
+    "fx_hedge_ratio": "추정",
+    "credit_grade": "추정",
+    "currency": "추정"
+   }
+  },
+  {
+   "class": "기타",
+   "label": "출자금·기타 유가증권(원화·외화)",
+   "region": "혼합",
+   "currency": "KRW",
+   "mv_krw_bn": 90.4,
+   "weight": 0.0022,
+   "value_flag": "공시",
+   "page_ref": "p.6 재무상태표; p.26-28 주석 7·8·9"
+  },
+  {
+   "class": "대출-부동산담보",
+   "label": "부동산담보대출금(가계·기업 구분 미공시)",
+   "region": "KR",
+   "currency": "KRW",
+   "mv_krw_bn": 3307.5,
+   "weight": 0.0795,
+   "value_flag": "공시",
+   "page_ref": "p.28 주석 10"
+  },
+  {
+   "class": "대출-기업",
+   "label": "기타대출금·지급보증대출(기업대출 추정, PF 포함 여부 미공시; 충당금·이연손익 차감 반영)",
+   "region": "KR",
+   "currency": "KRW",
+   "mv_krw_bn": 5175.0,
+   "weight": 0.1244,
+   "value_flag": "공시",
+   "page_ref": "p.28 주석 10",
+   "field_flags": {
+    "class": "추정"
+   }
+  },
+  {
+   "class": "대출-기업",
+   "label": "원화대출채권-사모사채(FVOCI)",
+   "region": "KR",
+   "currency": "KRW",
+   "mv_krw_bn": 1805.7,
+   "weight": 0.0434,
+   "value_flag": "공시",
+   "page_ref": "p.27 주석 8"
+  },
+  {
+   "class": "대출-신용/약관",
+   "label": "신용·유가증권담보대출",
+   "region": "KR",
+   "currency": "KRW",
+   "mv_krw_bn": 56.8,
+   "weight": 0.0014,
+   "value_flag": "공시",
+   "page_ref": "p.28 주석 10"
+  },
+  {
+   "class": "부동산",
+   "label": "투자부동산",
+   "region": "KR",
+   "currency": "KRW",
+   "mv_krw_bn": 10.8,
+   "weight": 0.0003,
+   "value_flag": "공시",
+   "page_ref": "p.6"
+  },
+  {
+   "class": "기타",
+   "label": "관계·종속기업투자-보험·사업 자회사(Leading·중국·인니·손해사정·CNS·헬스케어)",
+   "region": "혼합",
+   "currency": "KRW",
+   "mv_krw_bn": 175.2,
+   "weight": 0.0042,
+   "value_flag": "공시",
+   "page_ref": "p.31-32 주석 11",
+   "strategic": true,
+   "field_flags": {
+    "currency": "추정",
+    "fx_hedge_ratio": "미확인"
+   }
+  },
+  {
+   "class": "대체-인프라",
+   "label": "관계·종속기업투자-인프라 펀드(현대파워4호·현대인프라5호)",
+   "region": "KR",
+   "currency": "KRW",
+   "mv_krw_bn": 42.7,
+   "weight": 0.001,
+   "value_flag": "공시",
+   "page_ref": "p.31-32 주석 11"
+  },
+  {
+   "class": "대체-인프라",
+   "label": "관계·종속기업투자-해외 인프라 펀드(칠레 태양광·페루 송전)",
+   "region": "기타",
+   "currency": "KRW",
+   "mv_krw_bn": 104.2,
+   "weight": 0.0025,
+   "value_flag": "공시",
+   "page_ref": "p.31-32 주석 11",
+   "field_flags": {
+    "currency": "추정",
+    "fx_hedge_ratio": "미확인"
+   }
+  },
+  {
+   "class": "대체-인프라",
+   "label": "관계·종속기업투자-특별자산 펀드(KB 아시아 KKR 2호, 유형 미확인)",
+   "region": "기타",
+   "currency": "KRW",
+   "mv_krw_bn": 8.2,
+   "weight": 0.0002,
+   "value_flag": "공시",
+   "page_ref": "p.31-32 주석 11",
+   "field_flags": {
+    "currency": "추정",
+    "fx_hedge_ratio": "미확인"
+   }
+  },
+  {
+   "class": "부동산",
+   "label": "관계·종속기업투자-부동산 펀드(하나58호·메리츠8호)",
+   "region": "KR",
+   "currency": "KRW",
+   "mv_krw_bn": 8.9,
+   "weight": 0.0002,
+   "value_flag": "공시",
+   "page_ref": "p.31-32 주석 11"
+  },
+  {
+   "class": "대체-사모대출",
+   "label": "관계·종속기업투자-사모대출·크레딧(글랜우드크레딧·Crescent 선순위·보고 Debt 7호)",
+   "region": "혼합",
+   "currency": "KRW",
+   "mv_krw_bn": 52.2,
+   "weight": 0.0013,
+   "value_flag": "공시",
+   "page_ref": "p.31-32 주석 11",
+   "field_flags": {
+    "currency": "추정",
+    "fx_hedge_ratio": "미확인"
+   }
+  },
+  {
+   "class": "대체-PE",
+   "label": "관계·종속기업투자-PE·투자조합(디지털혁신·솔리더스헬스케어·데일리파운틴헤드)",
+   "region": "KR",
+   "currency": "KRW",
+   "mv_krw_bn": 35.2,
+   "weight": 0.0008,
+   "value_flag": "공시",
+   "page_ref": "p.31-32 주석 11"
+  },
+  {
+   "class": "수익증권",
+   "label": "관계·종속기업투자-LDI 대체투자·알파타겟 펀드(국내, 구성 미공시)",
+   "region": "KR",
+   "currency": "KRW",
+   "mv_krw_bn": 163.3,
+   "weight": 0.0039,
+   "value_flag": "공시",
+   "page_ref": "p.31-32 주석 11"
+  },
+  {
+   "class": "수익증권",
+   "label": "관계·종속기업투자-LDI 글로벌재간접 특별자산 펀드(구성 미공시)",
+   "region": "혼합",
+   "currency": "KRW",
+   "mv_krw_bn": 164.9,
+   "weight": 0.004,
+   "value_flag": "공시",
+   "page_ref": "p.31-32 주석 11",
+   "field_flags": {
+    "currency": "추정",
+    "fx_hedge_ratio": "미확인"
+   }
+  }
+ ],
+ "notes": "요약반기재무제표(검토보고서)라 운용자산 비중표·자산 듀레이션·금리민감도·K-ICS 상세는 없음. 자산군은 재무상태표와 주석 6~11에서 재구성. 원화 수익증권(7.2조)은 공정가치 수준3이 FVPL 7.8조로 대부분이라 대체투자 펀드로 추정하나 부동산·인프라·사모대출·PE 구성은 미공시 → 엔진은 '수익증권'(주식 노출 30% 가정)으로 계산. FVOCI 지분상품 '기타'(1.95조)는 신종자본증권 등으로 추정해 회사채(콜 기준 듀레이션 4.5년)로 계산. 외화 헤지 명목 3919.6십억원이 외화유가증권 3815.9십억원의 1.027배 → 헤지비율 100% 가정. 채권선도 명목 5.27조(원화채 매입 선도, 금리 하락 위험 헤지)는 엔진 행에 넣지 않고 리포트에서 별도 계산.",
+ "liabilities": {
+  "duration": null,
+  "pv_krw_bn": 23249.0,
+  "value_flag": "미확인",
+  "pv_flag": "공시",
+  "page_ref": "p.6",
+  "basis": "보험계약부채 장부가(배당요소 없는 19,877.5 + 있는 3,371.6십억). 부채 듀레이션·금리민감도는 요약반기재무제표에 없음(미확인)"
+ },
+ "kics_ratio": 187.5,
+ "capital_ratios": [
+  {
+   "name": "K-ICS",
+   "value": 187.5,
+   "unit": "%",
+   "as_of": "2026-06-30",
+   "value_flag": "공시",
+   "page_ref": "웹확인 — 금감원 2026-09 발표 보도(디지털타임스·딜사이트); 3월 말 185.9%, 1년 전 191.5%"
+  }
+ ],
+ "key_metrics": {
+  "K-ICS 요구자본": {
+   "value": 7218.7,
+   "unit": "십억원",
+   "value_flag": "공시",
+   "page_ref": "웹확인 — 딜사이트 보도(2026-06말, 전년 동기 대비 +13.7%)"
+  },
+  "K-ICS 지급여력금액": {
+   "value": 13535.1,
+   "unit": "십억원",
+   "value_flag": "추정",
+   "page_ref": "요구자본 7,218.7(웹확인) × K-ICS 187.5%로 역산"
+  },
+  "자본총계": {
+   "value": 6329.3,
+   "unit": "십억원",
+   "value_flag": "공시",
+   "page_ref": "p.99-100"
+  },
+  "보험계약마진(전체)": {
+   "value": 9285.0,
+   "unit": "십억원",
+   "value_flag": "공시",
+   "page_ref": "p.99"
+  },
+  "장기원수 잔여보장 CSM": {
+   "value": 10700.0,
+   "unit": "십억원",
+   "value_flag": "공시",
+   "page_ref": "p.99 (조원 반올림)"
+  },
+  "투자손익(1H26, 보험금융손익 포함)": {
+   "value": 253.3,
+   "unit": "십억원",
+   "value_flag": "공시",
+   "page_ref": "p.99"
+  },
+  "보험금융손익(1H26)": {
+   "value": -340.5,
+   "unit": "십억원",
+   "value_flag": "공시",
+   "page_ref": "p.99"
+  },
+  "이자손익(1H26)": {
+   "value": 353.3,
+   "unit": "십억원",
+   "value_flag": "공시",
+   "page_ref": "p.99"
+  },
+  "배당·분배금 수익(1H26)": {
+   "value": 276.1,
+   "unit": "십억원",
+   "value_flag": "공시",
+   "page_ref": "p.99"
+  },
+  "운용자산 평가손익(1H26)": {
+   "value": 10.4,
+   "unit": "십억원",
+   "value_flag": "공시",
+   "page_ref": "p.99"
+  },
+  "기타투자손익(1H26)": {
+   "value": -46.4,
+   "unit": "십억원",
+   "value_flag": "공시",
+   "page_ref": "p.99"
+  },
+  "반기순이익(별도, 1H26)": {
+   "value": 499.0,
+   "unit": "십억원",
+   "value_flag": "공시",
+   "page_ref": "p.99 (1H25 566.1)"
+  },
+  "채권선도 명목(현금흐름 헤지, 원화채 금리 하락 대비)": {
+   "value": 5273.7,
+   "unit": "십억원",
+   "value_flag": "공시",
+   "page_ref": "p.37 (전기말 4,998.8)"
+  },
+  "채권선도 공정가치(부채)": {
+   "value": -1102.1,
+   "unit": "십억원",
+   "value_flag": "공시",
+   "page_ref": "p.37 (상반기 공정가치 변동 −880.9)"
+  },
+  "외화 헤지 명목(통화선도+통화스왑)": {
+   "value": 3919.6,
+   "unit": "십억원",
+   "value_flag": "공시",
+   "page_ref": "p.34-37"
+  },
+  "외화 헤지 명목/외화유가증권": {
+   "value": 1.027,
+   "unit": "배",
+   "value_flag": "추정",
+   "page_ref": "p.26-27, p.34-37 계산"
+  },
+  "MD&A 운용자산(회사 기준)": {
+   "value": 39500.0,
+   "unit": "십억원",
+   "value_flag": "공시",
+   "page_ref": "p.99 — 원화채무 23.3·원화지분 2.0·외화채무 3.8·대출 10.3조"
+  }
+ },
+ "rate_sensitivity_disclosed": []
+}

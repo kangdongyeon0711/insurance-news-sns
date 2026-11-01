@@ -24,17 +24,26 @@ from common import CONFIG_DIR, KNOWLEDGE_DIR, SNAPSHOT_PATH, TMP_REPORTS_DIR, lo
 import calc_impact as ci
 
 
+def topics_dir(date: str) -> Path | None:
+    """기준일 이하에서 가장 최근 macro_topics 날짜 폴더."""
+    root = KNOWLEDGE_DIR / "macro_topics"
+    ds = sorted(p for p in root.iterdir() if p.is_dir() and p.name[:2] == "20" and p.name <= date) if root.exists() else []
+    return ds[-1] if ds else None
+
+
 def market_value(series_id: str, date: str) -> dict | None:
-    """snapshot 우선, 없으면 macro_topics indicators에서 시계열 값 조회 → {value, as_of, flag}."""
+    """snapshot 값과 최신 macro_topics indicators(같은 id 또는 `_web` 웹확인 id) 중 기준일이 가장 최근인 값 → {value, as_of, flag}."""
+    cands = []
     if SNAPSHOT_PATH.exists():
         s = load_json(SNAPSHOT_PATH)["series"].get(series_id)
-        if s:
-            return {"value": s["last_value"], "as_of": s["as_of"], "flag": s.get("value_flag", "API")}
-    for f in sorted(glob.glob(str(KNOWLEDGE_DIR / "macro_topics" / date / "*.json"))):
+        if s and s.get("last_value") is not None:
+            cands.append({"value": s["last_value"], "as_of": s["as_of"], "flag": s.get("value_flag", "API")})
+    tdir = topics_dir(date)
+    for f in sorted(glob.glob(str(tdir / "*.json"))) if tdir else []:
         for i in load_json(Path(f))["current"]["indicators"]:
-            if i["series_id"] == series_id and i.get("value") is not None:
-                return {"value": i["value"], "as_of": i.get("as_of"), "flag": i.get("value_flag", "웹확인")}
-    return None
+            if i["series_id"] in (series_id, series_id + "_web") and i.get("value") is not None:
+                cands.append({"value": i["value"], "as_of": i.get("as_of"), "flag": i.get("value_flag", "웹확인")})
+    return max(cands, key=lambda c: c["as_of"] or "") if cands else None
 
 
 def hedge_cost_pct(cfg: dict, date: str) -> dict:
