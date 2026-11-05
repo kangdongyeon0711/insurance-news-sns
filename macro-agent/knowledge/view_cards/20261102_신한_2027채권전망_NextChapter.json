@@ -1,0 +1,199 @@
+{
+ "card_id": "20261102_신한_2027채권전망_NextChapter",
+ "house": "신한투자증권",
+ "report_title": "2027년 채권시장 전망: Next Chapter (미국 — 생산성으로 옮겨갈 초점 / 한국 — 금융경로로 전이될 AI Capex 낙수효과)",
+ "published": "2026-11-02",
+ "published_estimated": false,
+ "source_file": "processed/reports/20261102_신한_2027채권전망_NextChapter.pdf",
+ "topics": [
+  "us_rate",
+  "us_treasury",
+  "us_corp_bond",
+  "us_alt_pd",
+  "us_alt_infra",
+  "kr_rate",
+  "kr_govt_bond",
+  "kr_corp_bond",
+  "fx_krwusd"
+ ],
+ "views": [
+  {
+   "topic_id": "us_rate",
+   "variable": "us_ffr",
+   "direction": "상승",
+   "horizon": "단기",
+   "target": "연말 4.00~4.25%",
+   "rationale": "공급 측 물가 충격과 기대인플레이션을 억제하기 위한 보험성 인상 국면으로 보고 연말 25bp 인상 후 2027년 동결을 기본 경로로 제시. 고용·실질소득 확장이 제한돼 수요발 물가 누적 여지는 작다고 봄. 최대 3차례 추가 인상을 반영한 선물시장과의 괴리가 줄어들 것으로 예상.",
+   "page_ref": "p.10",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "us_rate",
+   "variable": "us_ffr",
+   "direction": "횡보",
+   "horizon": "장기",
+   "target": "2027년 4.25% 동결",
+   "rationale": "분기별 전망표에서 기준금리(상단)를 4Q26 4.25% 이후 2027년 내내 4.25%로 유지. 생산성 확산이 확인되면 점진적 인하·고금리 하향 안정 경로(시나리오 1·3)도 열어 둠.",
+   "page_ref": "p.45",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "us_treasury",
+   "variable": "ust_10y",
+   "direction": "상승",
+   "horizon": "단기",
+   "target": "4Q26 5.00% → 1Q27 5.10%",
+   "rationale": "내년 초까지 비용발 인플레이션을 소화하는 과정에서 긴축 본격화 vs 보험성 인상 논쟁이 이어져 금리 상방 변동성이 커질 것으로 보고, 이를 매수 기회로 활용하라고 권고(분기 전망표 기준).",
+   "page_ref": "p.45",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "us_treasury",
+   "variable": "ust_10y",
+   "direction": "하락",
+   "horizon": "장기",
+   "target": "2027년 4.50~5.30%, 4Q27 4.70%",
+   "rationale": "생산성 확산이 2027년 상반기 이후 점진적으로 반영되며 중장기 금리 하방 요인으로 평가될 것으로 보고 듀레이션 중립 이상을 권고. 다만 생산성 개선 낙수효과가 소수에 집중돼 금리 안정 기여 정도로 제한.",
+   "page_ref": "p.3, p.45",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "us_treasury",
+   "variable": "ust_2y",
+   "direction": "하락",
+   "horizon": "장기",
+   "target": "2027년 4.20~4.90%, 4Q27 4.40%",
+   "rationale": "1Q27 4.70%를 고점으로 2027년 하반기 4.40%까지 하락하는 경로 제시. 동결 장기화 속 인상 기대가 되돌려지는 구간.",
+   "page_ref": "p.45",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "us_treasury",
+   "variable": "ust_2s10s",
+   "direction": "축소",
+   "horizon": "장기",
+   "target": "2/10년 20~50bp, 4Q27 30bp",
+   "rationale": "2/10년 스프레드 4Q26 40bp에서 4Q27 30bp로 완만한 축소를 제시.",
+   "page_ref": "p.3, p.45",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "us_treasury",
+   "variable": "ust_term_premium",
+   "direction": "상승",
+   "horizon": "장기",
+   "target": null,
+   "rationale": "순이자 지출이 금리에 따라 자기강화적으로 늘고 2027년 상반기 부채한도 X-date가 도래할 수 있으며, 외국인 공공자금 이탈·민간자금의 높은 금리 민감도가 수급 부담. 쿠폰채 공급 조절(단기채 흡수)·바이백·연준 공조가 안전장치로 유효하다고 봄.",
+   "page_ref": "p.27-29",
+   "conviction": "낮음"
+  },
+  {
+   "topic_id": "us_corp_bond",
+   "variable": "us_ig_oas",
+   "direction": "횡보",
+   "horizon": "장기",
+   "target": "우량물 중심 캐리",
+   "rationale": "기본 경로는 '선별·재편 속 성장 유지'(차환 성사·비AI 수요 양호): 금리 박스권에서 우량물 중심 캐리. 하이퍼스케일러 스프레드는 안정적이고 Baa 스프레드·초과채권프리미엄(EBP)은 10월까지 장기 평균 이하.",
+   "page_ref": "p.40, p.42, p.44",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "us_corp_bond",
+   "variable": "us_hy_oas",
+   "direction": "확대",
+   "horizon": "장기",
+   "target": null,
+   "rationale": "오라클·코어위브 등 외부자금 의존 비우량 AI 기업의 조달비용 상승. AI 투자 조정 시 등급별 차별화 심화(시나리오 2), 투자 둔화가 신용경색으로 번지면 2001년 IT 버블형 동반 확대(시나리오 3, 국채·유동성 우선).",
+   "page_ref": "p.40, p.42, p.44",
+   "conviction": "낮음"
+  },
+  {
+   "topic_id": "us_alt_pd",
+   "variable": "us_pc_default",
+   "direction": "상승",
+   "horizon": "장기",
+   "target": null,
+   "rationale": "개별 AI 프로젝트 부실이 임대수입 하락·원가 상승 → 담보가치 하락·차환 실패 → 펀드 손실·일반대출 긴축(금융경로)과 발주·고용 감소(실물경로)로 번질 수 있다고 봄. 오라클·네오클라우드는 Capex와 FCF 간극이 커 외부 조달 지속성이 관건.",
+   "page_ref": "p.41, p.43",
+   "conviction": "낮음"
+  },
+  {
+   "topic_id": "us_alt_infra",
+   "variable": "us_ai_capex_growth",
+   "direction": "하락",
+   "horizon": "장기",
+   "target": "증가 속도 2026년 고점",
+   "rationale": "AI Capex 총량은 2027년 이후에도 확장되지만 증가 속도는 2026년을 고점으로 피크아웃할 것으로 예상. GPU 임대가격·신규 계약을 선행 지표로 추적.",
+   "page_ref": "p.6, p.43",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "kr_rate",
+   "variable": "kr_base_rate",
+   "direction": "상승",
+   "horizon": "단기",
+   "target": "최종 3.50%(4Q26 3.25% → 1Q27 3.50%)",
+   "rationale": "내년 상반기 공급 차질 시차·성과급·재정 조기집행으로 수요 측 인플레이션이 집중되나 2021~22년보다 제한적. 최종금리 3.50%, 3.75%·4.00% 가능성은 상대적으로 낮다고 판단. 취약 부문 고금리 타격은 1년 시차.",
+   "page_ref": "p.52, p.66",
+   "conviction": "높음"
+  },
+  {
+   "topic_id": "kr_govt_bond",
+   "variable": "ktb_3y",
+   "direction": "상승",
+   "horizon": "단기",
+   "target": "4Q26 3.90% → 1Q27 4.00%",
+   "rationale": "내년 초까지 비용발 인플레이션 반영과 긴축 경계 재부각으로 금리 반등 구간이 온다고 보고, 이를 바닥 형성 구간으로 활용한 적극 매입을 권고.",
+   "page_ref": "p.3, p.66",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "kr_govt_bond",
+   "variable": "ktb_10y",
+   "direction": "하락",
+   "horizon": "장기",
+   "target": "2027년 3.70~4.50%, 4Q27 3.90%",
+   "rationale": "수요 측 물가를 소화한 뒤 우호적 수급이 발현: 미래대응기금 10~30조원 단기물 중심 유입, 가계·기업 자금의 채권 이동, WGBI 이후 외국인 안착. 대외 기간 프리미엄 상방이 대내 기간 프리미엄 하락을 일부 제약.",
+   "page_ref": "p.3, p.55-61, p.66",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "kr_govt_bond",
+   "variable": "ktb_10y_3y",
+   "direction": "축소",
+   "horizon": "장기",
+   "target": "3/10년 15~40bp, 4Q27 20bp",
+   "rationale": "3/10년 스프레드가 4Q26 30bp에서 4Q27 20bp로 축소되는 경로 제시(분기 전망표).",
+   "page_ref": "p.3, p.66",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "kr_corp_bond",
+   "variable": "kr_aa_spread",
+   "direction": "축소",
+   "horizon": "장기",
+   "target": null,
+   "rationale": "기업의 대규모 현금성 자산이 CP·회사채·금융채 등 채권형 자산으로 이동(2022년 순증 48조원 중 45조원이 국채 외)하고, 가계도 고금리 안착 구간에서 채권 선호가 강해질 것으로 봄 — 크레딧 수요 우호 요인.",
+   "page_ref": "p.58-59",
+   "conviction": "낮음"
+  },
+  {
+   "topic_id": "fx_krwusd",
+   "variable": "krw_usd",
+   "direction": "횡보",
+   "horizon": "단기",
+   "target": "1,300원대",
+   "rationale": "대규모 경상흑자 중 상당 부분이 세금 납부·성과급·투자 목적으로 유입돼 연준 긴축 경계에도 수급이 지배하는 국면. 원/달러는 1,300원대에서 상방 경직적인 흐름을 예상.",
+   "page_ref": "p.54",
+   "conviction": "중간"
+  }
+ ],
+ "key_risks": [
+  "AI 투자 둔화가 신용경색으로 번지는 2001년형 시나리오(p.42, p.44)",
+  "2027년 상반기 미국 부채한도 X-date·순이자 부담(p.27)",
+  "프랑스 신용등급 강등 등 유럽 재정 충격 전이(p.32)",
+  "외국인 공공자금 이탈과 민간자금의 높은 금리 민감도(p.29)",
+  "한국 근원물가 상방(성과급·재정 조기집행)과 금융취약성(p.49-53)"
+ ],
+ "notes": "성격: 연간 채권시장 전망(67쪽, 발행일 2026-11-02 — p.67 Compliance; 사용자 파일명은 20261105). 미국 분기 전망(p.45): 기준금리 3Q26 4.00·4Q26 4.25·2027 4.25%, 2년 4.36·4.60·4.70·4.50·4.40·4.40%, 10년 4.75·5.00·5.10·4.85·4.70·4.70%, 2/10년 0.39·0.40·0.40·0.35·0.30·0.30%p. 한국 분기 전망(p.66): 기준금리 3.00·3.25·3.50·3.50·3.50·3.50%, 3년 3.87·3.90·4.00·3.80·3.70·3.70%, 10년 4.34·4.20·4.30·4.10·3.90·3.90%, 3/10년 0.47·0.30·0.30·0.30·0.20·0.20%p. 생산성 확산 시나리오(p.18): ① 생산성 개선 편중(점진 인하·고금리 하향 안정) ② 확산(기준금리 정상화) ③ 투자 조정(인하·금리 안정 가속). 워시 의장 5대 TF(p.19-26): 커뮤니케이션(포워드가이던스 축소), 대차대조표(MBS 상환금 T-bill 재투자·보유 국채 만기 축소 — 민간 듀레이션 부담), 민간 고빈도 데이터, 생산성·고용, 물가 체계(PCE 2% 유지·보완지표). 과거 신용위기 Baa 스프레드/EBP(p.42): 2001년 390/169bp, 2008년 616/341bp, 2016년 363/96bp, 2020년 431/119bp. 국채금리 탄력성: 가계·헤지펀드 40.5% vs 해외 민간 9.6%, 해외 공공 2.1%(p.29). BOJ 최종 1.75%(2Q27, p.38). 미래대응기금 162.3조원, 국고채 매수 여력 10~30조원(p.60-61)."
+}
