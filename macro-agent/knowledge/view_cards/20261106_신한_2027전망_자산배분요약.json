@@ -1,0 +1,49 @@
+{
+ "card_id": "20261106_신한_2027전망_자산배분요약",
+ "house": "신한투자증권",
+ "report_title": "[2027년 자산배분 전망] 자산배분에서 위험배분으로(요약)",
+ "published": "2026-11-06",
+ "published_estimated": false,
+ "source_file": "processed/reports/20261106_신한_2027전망_자산배분요약.txt",
+ "topics": [
+  "us_treasury",
+  "kr_govt_bond",
+  "fx_krwusd"
+ ],
+ "views": [
+  {
+   "topic_id": "us_treasury",
+   "variable": "ust_10y",
+   "direction": "하락",
+   "horizon": "장기",
+   "target": "7~10년물은 1Q 인상 기대 정점 확인 후 확대",
+   "rationale": "기본 시나리오: 성장·물가 완만한 정상화, 한미 정책금리 고점 유지. 단·중기채는 지금부터 보유, 미국 7~10년물은 1분기 인상 기대 정점 확인 후 비중 확대. 주식-채권 양의 상관(2022~23 +0.69)으로 위험배분 필요.",
+   "page_ref": "p.1",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "kr_govt_bond",
+   "variable": "ktb_10y",
+   "direction": "하락",
+   "horizon": "장기",
+   "target": "국내 장기물은 시장금리 재반등 이후 확대",
+   "rationale": "국내 장기채는 시장금리 재반등 이후 비중 확대. 2026년 한국 국채 30년 수익률 −18.1%. 물가 위험은 단기 물가연동채와 금으로 헤지.",
+   "page_ref": "p.1",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "fx_krwusd",
+   "variable": "fx_hedge_ratio",
+   "direction": "축소",
+   "horizon": "단기",
+   "target": "상반기 축소 → 하반기 확대",
+   "rationale": "원/달러 상저하고 경로에 맞춰 환헤지는 상반기에 줄이고 하반기에 늘린다. 충격별 방어 분산으로 최대 하락폭 −9.9% → −5.8%, 위험 대비 수익 0.79 → 1.05(백테스트).",
+   "page_ref": "p.1",
+   "conviction": "중간"
+  }
+ ],
+ "key_risks": [
+  "AI 투자 둔화·재정 부담·물가 재상승의 다자산 중첩"
+ ],
+ "notes": "출처: 사용자가 대화에 붙여넣은 웹 요약문(원문 PDF 미입수) — 1쪽 요약이라 p.1로 표기, 수치는 요약문 기준."
+}

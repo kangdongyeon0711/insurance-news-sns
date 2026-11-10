@@ -1,0 +1,72 @@
+{
+ "card_id": "20261106_신한_채권전략_블루웨이브이후금리경로",
+ "house": "신한투자증권",
+ "report_title": "채권전략: 블루 웨이브 이후 금리 경로 / 중간선거 후폭풍과 미국 10월 CPI",
+ "published": "2026-11-06",
+ "published_estimated": false,
+ "source_file": "processed/reports/20261106_신한_채권전략_블루웨이브이후금리경로.pdf",
+ "topics": [
+  "us_treasury",
+  "kr_govt_bond",
+  "oil",
+  "us_alt_infra"
+ ],
+ "views": [
+  {
+   "topic_id": "us_treasury",
+   "variable": "ust_10y",
+   "direction": "횡보",
+   "horizon": "단기",
+   "target": "4.75~4.95%",
+   "rationale": "중간선거 후 AI Capex 속도 조절·지정학 위험 완화 기대가 연말까지 완만한 금리 안정을 지지하나 강세 속도 조절. 10월 CPI가 에너지발 비용 인플레로 긴축 경계를 재부각할 트리거.",
+   "page_ref": "p.1, p.6",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "us_treasury",
+   "variable": "ust_term_premium",
+   "direction": "상승",
+   "horizon": "단기",
+   "target": null,
+   "rationale": "민주당 양원 장악으로 행정부-의회 대립: 12/11 임시예산 시한·셧다운 위험, 부채한도 1분기 도달 가능(잔여 7,540억달러). 다만 2023년처럼 기간프리미엄 추세 상승은 제한(QT·이표채 확대 부재).",
+   "page_ref": "p.4-5",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "kr_govt_bond",
+   "variable": "ktb_3y",
+   "direction": "횡보",
+   "horizon": "단기",
+   "target": "3Y 3.55~3.75%, 10Y 3.75~3.95%",
+   "rationale": "중간선거 충격이 AI 민감도 높은 한국에서 극대화돼 안전자산 쏠림. 모멘텀 지속 가능성 우세하나 10월 이후 가파른 하락으로 레벨 부담 공존 — 강세 속도 조절.",
+   "page_ref": "p.1, p.6",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "oil",
+   "variable": "wti",
+   "direction": "하락",
+   "horizon": "단기",
+   "target": "WTI 90달러 하회",
+   "rationale": "전쟁에 부정적인 민주당 득세로 이란 전쟁 외교적 해결 가능성 확대, WTI 하루 8% 넘게 급락. 지정학 위험 점진 완화로 유가 하향 안정 기대.",
+   "page_ref": "p.2",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "us_alt_infra",
+   "variable": "us_dc_construction",
+   "direction": "하락",
+   "horizon": "장기",
+   "target": "규제 노출 약 5.7GW",
+   "rationale": "텍사스·오하이오 등 데이터센터 규제 공약 후보 당선. 상위 20개 주 예정 용량 75%는 인허가 확보 — 내년 영향 미미, 2028년 프로젝트(약 62GW 중 착공 전)부터 부분 영향. 비용·지연 증가형.",
+   "page_ref": "p.2-3",
+   "conviction": "중간"
+  }
+ ],
+ "key_risks": [
+  "12/11 임시예산 시한 셧다운",
+  "부채한도 1분기 도달",
+  "미 10월 CPI 상방"
+ ],
+ "notes": "성격: 주간 채권전략(14쪽). 11/5 기준(p.6): 국고3Y 3.66%·10Y 3.87%·10-3 21.5bp, UST10Y 4.55%. 주간: UST 2Y −12.5bp·10Y −9.2bp, 국고 3Y −9.5·10Y −19.5·30Y −21.2bp(p.6). 중간선거 상원 54·하원 239~240석(p.2, p.6). SOX 주간 −15% 이상. 11월 QRA 'at least' 삭제, 장기물 바이백 회당 60억달러 유지(p.6). 유로존 10월 CPI 4.0%·근원 2.5%, RBA·BOE 25bp 인상(p.6). p.9 표: 국고30Y 3.998%, AA- 3Y 스프레드 66.9bp, BBB- 648.1bp."
+}

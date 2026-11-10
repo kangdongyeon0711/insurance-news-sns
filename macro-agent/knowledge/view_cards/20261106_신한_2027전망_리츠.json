@@ -1,0 +1,50 @@
+{
+ "card_id": "20261106_신한_2027전망_리츠",
+ "house": "신한투자증권",
+ "report_title": "2027년 전망 리츠: 리츠, 금리보다 성장",
+ "published": "2026-11-06",
+ "published_estimated": false,
+ "source_file": "processed/reports/20261106_신한_2027전망_리츠.pdf",
+ "topics": [
+  "us_alt_re",
+  "kr_alt_re"
+ ],
+ "views": [
+  {
+   "topic_id": "us_alt_re",
+   "variable": "us_reit_discount_rate",
+   "direction": "상승",
+   "horizon": "장기",
+   "target": null,
+   "rationale": "고금리 장기화로 배당 스프레드 축소·할인율 확대 — 밸류에이션 회복보다 배당 성장이 성과 결정. 헬스케어·산업물류 선호, 데이터센터(P/FFO 30~40배)·오피스(차환 금리 갭 1.7%p)는 주의. 상저하고, 비중확대 유지.",
+   "page_ref": "p.1, p.4-9, p.15",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "us_alt_re",
+   "variable": "us_cre_supply",
+   "direction": "축소",
+   "horizon": "장기",
+   "target": "2026~28 재고증가율 50%+ 급감",
+   "rationale": "2023~25 신규건설 위축으로 2026~28년 상업용 부동산 재고 증가율이 2022~25년 대비 50% 이상 급감 — 금리 안정 시 자산가치 재평가 가능. 3Q26 미국 오피스 공실률 18.2%.",
+   "page_ref": "p.9, p.12",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "kr_alt_re",
+   "variable": "kr_cre_cap_rate",
+   "direction": "상승",
+   "horizon": "장기",
+   "target": null,
+   "rationale": "국내 리츠는 짧은 차입만기·높은 금리 민감도, CBD 오피스 공급 확대(2026~27 연 60만㎡ → 2028년 120만㎡), 제이알글로벌리츠 회생 신청에 따른 신뢰 훼손으로 미국 대비 매력 약함.",
+   "page_ref": "p.2, p.13",
+   "conviction": "중간"
+  }
+ ],
+ "key_risks": [
+  "데이터센터 개발 지연·조달 부담",
+  "오피스 차환 시 대출가능액 축소",
+  "국내 리츠 차환·신뢰 훼손"
+ ],
+ "notes": "성격: 2027 연간 전망 리츠 파트(15쪽). 미국 상장 리츠 평균 잔존 차입만기 89개월(2021말) → 70개월(2Q26), 평균 조달금리 4.2%(p.5). 헬스케어 NOI +15%, SSNOI 6%대(p.6). 산업물류 LTV 26.8%(p.7). 오피스 리츠 NOI 대비 금융비용 35%(p.9). 기관 부동산 목표 배분 10.7% vs 실제 9.8%(p.10). Top pick DFAR ETF, ESR켄달스퀘어리츠(p.15)."
+}

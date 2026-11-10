@@ -1,0 +1,47 @@
+{
+ "card_id": "20261106_신한_2027전망_외환요약",
+ "house": "신한투자증권",
+ "report_title": "[2027년 외환시장 전망] 금리차에서 AI 자금 흐름으로(요약)",
+ "published": "2026-11-06",
+ "published_estimated": false,
+ "source_file": "processed/reports/20261106_신한_2027전망_외환요약.txt",
+ "topics": [
+  "fx_krwusd"
+ ],
+ "views": [
+  {
+   "topic_id": "fx_krwusd",
+   "variable": "krw_usd",
+   "direction": "하락",
+   "horizon": "단기",
+   "target": "상반기 1,300원 내외 원화 강세 정점",
+   "rationale": "반도체 성과급·법인세 납부 등 환전 대기 물량과 한은 인상 효과가 겹쳐 상반기 1,300원 내외에서 원화 강세 정점. 상반기 미 금리 인상 경계 완화로 달러 숨고르기.",
+   "page_ref": "p.1",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "fx_krwusd",
+   "variable": "krw_usd",
+   "direction": "상승",
+   "horizon": "장기",
+   "target": "연말 1,300원 중후반, 균형 1,400원 초반 우상향",
+   "rationale": "하반기 한-미 이익 모멘텀 역전 속 미국으로 자금 이탈 확대, 연말 1,300원 중후반 반등. 환율은 금리차보다 AI 밸류체인 교역 대금 환전·주식 자금 배분 증분에 반응.",
+   "page_ref": "p.1",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "fx_krwusd",
+   "variable": "dxy",
+   "direction": "횡보",
+   "horizon": "장기",
+   "target": "연간 보합, 하반기 상대 강세",
+   "rationale": "달러지수 연간 보합, 하반기 AI 수익화 기대에 선택적 달러 강세. 연평균 달러/유로 1.13(2Q 1.15 정점 → 연말 1.10 초반), 엔/달러 149, 위안/달러 6.68.",
+   "page_ref": "p.1",
+   "conviction": "중간"
+  }
+ ],
+ "key_risks": [
+  "한-미 이익 모멘텀 역전 속 해외투자 확대"
+ ],
+ "notes": "출처: 사용자가 대화에 붙여넣은 웹 요약문(원문 PDF 미입수) — 1쪽 요약이라 p.1로 표기, 수치는 요약문 기준. 10/26 연간전망 P5 외환(연말 1,390원)과 같은 하우스·같은 저자의 갱신판 — 연말 '1,300원 중후반'으로 표현."
+}

@@ -1,0 +1,167 @@
+{
+  "topic_id": "oil",
+  "as_of": "2026-11-10",
+  "current": {
+    "indicators": [
+      {
+        "series_id": "brent",
+        "name": "Brent 선물 종가(웹)",
+        "value": 93.9,
+        "unit": "USD/bbl",
+        "as_of": "2026-11-09",
+        "value_flag": "웹확인",
+        "source": "https://tradingeconomics.com/commodity/brent-crude-oil (장중 93.22 2개월 최저, Reuters 인용)",
+        "stale": false
+      },
+      {
+        "series_id": "wti",
+        "name": "WTI 선물 종가(웹)",
+        "value": 86.7,
+        "unit": "USD/bbl",
+        "as_of": "2026-11-09",
+        "value_flag": "웹확인",
+        "source": "https://www.thenationalnews.com/business/energy/2026/11/09/oil-edges-lower-as-trump-plays-down-prospect-of-new-us-attacks-on-iran/",
+        "stale": false
+      },
+      {
+        "series_id": "dubai",
+        "name": "Dubai유(현물, 월평균)",
+        "value": 111.83,
+        "unit": "달러/배럴",
+        "as_of": "2026-09-30",
+        "value_flag": "수기",
+        "stale": false
+      },
+      {
+        "series_id": "us_crude_stocks",
+        "name": "미국 상업용 원유재고(SPR 제외, 웹)",
+        "value": 412.5,
+        "unit": "백만배럴",
+        "as_of": "2026-10-16",
+        "value_flag": "웹확인",
+        "source": "https://www.rigzone.com/news/usa_crude_oil_stocks_drop_3mm_barrels_wow-22-oct-2026-184911-article/ (EIA 주간 발표 10/21 보도, 주간 −3.1백만배럴, 5년 평균 대비 −3%; 보조: https://www.oilandgas360.com/crude-inventories-10-16/)"
+      },
+      {
+        "series_id": "kr_import_price",
+        "name": "수입물가지수",
+        "value": 159.37,
+        "unit": "2020=100",
+        "as_of": "2026-09-30",
+        "value_flag": "수기",
+        "stale": false
+      },
+      {
+        "series_id": "kr_terms_of_trade",
+        "name": "순상품교역조건지수",
+        "value": 119.52,
+        "unit": "2020=100",
+        "as_of": "2026-09-30",
+        "value_flag": "수기",
+        "stale": false
+      }
+    ],
+    "summary": "[사실] Brent 93.9달러·WTI 86.7달러(2026-11-09, 웹확인) — 10/30 Brent 112.33달러 대비 -16.4%. 지난주 2020년 4월 이후 최대 주간 낙폭에 이어 11/9에도 4~5% 하락했다. 트럼프가 협상이 진행되는 한 추가 공격 가능성이 낮다고 밝혔고, 카타르 중재 합의(호르무즈 재개·동결자금 80억달러 해제) 보도가 있으나 미확정이다. 호르무즈 유조선 피격은 계속(웹확인). [하우스] 신한: 민주당 득세로 이란 전쟁 외교적 해결 가능성 확대, WTI 하루 8% 넘게 급락(블루웨이브 주간 p.2). 2027 원자재 전망: WTI 1Q27 92 → 4Q27 76달러, 연평균 83달러, 재고 복원 5.1억배럴이 하락 속도를 늦춤(사용자 제공 요약)."
+  },
+  "short_term": {
+    "horizon": "3-6M",
+    "direction": "급락 후 되돌림 위험(협상 결렬 시 반등), 1분기 WTI 90달러 안팎",
+    "view": "[하우스] 신한 2027 원자재: 1분기부터 공급 우위 전환이나 재고 복원 수요로 1Q27 WTI 평균 92달러. 주간 전략: 지정학 위험 점진 완화로 하향 안정 기대. [판단] 현재 WTI 86.7달러는 하우스 1Q27 평균보다 낮다. 합의가 미확정이고 유조선 피격이 이어져 협상 지연 시 반등 위험(도이체방크)이 크다. 단기 충격을 −5% → +3%로 바꾼다(1분기 평균 회귀).",
+    "drivers": [
+      "[사실] 호르무즈 해협 사실상 통행 중단, 10월 선박 피격 다수(웹, Gulf News 등)",
+      "[사실] OPEC+ 11월 목표 동결, 2027년 전까지 정책 변경 없을 전망·차기 회의 11/29(웹확인)",
+      "[사실] 미 원유재고 5년 평균 대비 −3%, 3주 연속 감소(2026-10-16 주)",
+      "[사실] 미국 SPR 약 282.7백만배럴로 1982년 이후 최저(웹 보도, 단일 출처 — 보조)",
+      "[판단] 고유가·Fed 긴축에 따른 수요 둔화가 상단 제한",
+      "[판단] 유가 → 수입물가 → CPI → 한은 인상 경로(kr_rate와 일관)"
+    ],
+    "confidence": "낮음"
+  },
+  "long_term": {
+    "horizon": "1-3Y",
+    "scenarios": [
+      {
+        "name": "Base",
+        "prob": 0.5,
+        "headline": "공급 복원과 재고 재축적 속에 Brent가 2027년 말 80달러 안팎(현재 대비 −15%)으로 내려온다.",
+        "narrative": "[판단] 2027년 중 호르무즈 통행이 점진적으로 회복되고 OPEC+가 2027년 쿼터 재조정으로 공급을 늘리며 위험 프리미엄이 상당 부분 해소. Brent 90달러 초반대로 하향 안정(추정). [하우스] NH의 4Q 공급 우위·2027년 역기저 안정 시각(20260526_NH_2026하반기FICC채권전망 p.6, 2026-05 발간)과 방향 일치 — 수치 근거는 아니어서 충격값·확률 유지. [갱신 2026-11-10] 현물 급락(Brent 93.9달러)으로 −20% → −15% 재기준화. 신한 WTI 4Q27 76달러(Brent 약 80달러, 추정)와 정합.",
+        "factor_shocks": {
+          "brent_pct": -15.0
+        },
+        "shock_rationale": "116.72달러 대비 −20% ≈ 93달러(추정): 공급 차질 해소 + 고유가 수요 파괴, 다만 재고 재축적 수요로 위기 이전 수준까지는 미복귀."
+      },
+      {
+        "name": "Bull",
+        "prob": 0.25,
+        "headline": "조기 합의와 증산 경쟁으로 Brent가 70달러 안팎(−25%)까지 내린다.",
+        "narrative": "[판단] 조기 휴전·항로 정상화와 걸프 수출 완전 회복, OPEC+ 증산 경쟁·미국 셰일 증산이 겹쳐 공급 과잉 전환. 수입국(한국) 관점의 Bull(유가 하락). [갱신 2026-11-10] 목표 70달러대 유지로 −35% → −25%.",
+        "factor_shocks": {
+          "brent_pct": -25.0
+        },
+        "shock_rationale": "116.72달러 대비 −35% ≈ 76달러(추정): 지정학 프리미엄 전액 소멸 + 공급 과잉."
+      },
+      {
+        "name": "Bear",
+        "prob": 0.25,
+        "headline": "협상 결렬과 호르무즈 재봉쇄로 Brent가 130달러대(+40%)로 되돌아간다.",
+        "narrative": "[판단] 미·이란 충돌 확대, 사우디 동서 파이프라인·홍해 우회로까지 차질이 장기화되며 구조적 공급 부족. 수입국 관점의 Bear(유가 상승)로 국내 물가·교역조건 악화. [갱신 2026-11-10] 현물 하락으로 같은 Bear 레벨(130달러대)이 +40%. 합의 진전으로 확률 0.30 → 0.25.",
+        "factor_shocks": {
+          "brent_pct": 40.0
+        },
+        "shock_rationale": "116.72달러 대비 +25% ≈ 146달러(추정): 우회 수송로 차질 + SPR 저수준으로 완충 여력 부족."
+      }
+    ]
+  },
+  "house_views": {
+    "consensus": "[갱신 2026-11-10] 신한 2027 원자재(11/6, 요약): WTI 1Q27 92 → 4Q27 76달러(연평균 83), 경유 정상화 지연. 주간 채권전략: 이란 전쟁 외교 해결 가능성 확대(p.2). Econ Check-up: ISM 지불가격 높은 수준, 비용 전가 위험 잔존(p.1). [이전] [갱신 2026-10-31] 신한 월간 자산전략은 원자재 중 에너지 열위(지정학 프리미엄 반납), 구리 중심 산업금속 우위(20261030_신한_BlueBook11월_자산전략 p.3, p.5). 채권전략은 지정학 불확실성 정점 통과를 기대(20261030_신한_채권전략_QRA p.2). [이전] [하우스] 2곳 공통: 지정학 위험 프리미엄이 해소되면 유가가 하향 안정될 수 있다는 조건부 방향에는 일치. 신한(2026-10-23): WTI 횡보·하방 경직, 협상 진전 시 위험 프리미엄 축소 가능(확신 중간, 20261023_신한_WeeklyGuideBook p.12), 지정학 불확실성을 유가·물가 상방 요인으로 부수 언급(확신 낮음, 20261023_신한_EconCheckup p.1). NH(2026-05-26, 약 5개월 전): 전쟁 여파 이후 하향 안정(20260526_NH_2026하반기FICC채권전망 p.6). 두 하우스 모두 목표가 없음. [갱신 2026-10-26] 신한 연간 전망: 미·이란 대규모 충돌이 재개되지 않으면 2027년부터 WTI 80달러대(확신 중간, 20261026_신한_2027전망P2_물가 p.6), 디젤 격차는 2027년 1분기 정상화(확신 낮음, 같은 카드 p.7, p.10). [판단] WTI 103.27달러(2026-10-23, 웹확인) → 80달러대 중반이면 약 −18%로 Base(Brent −20%)와 정합 — 충격값 유지.",
+    "divergence": "[하우스] 단기 강도·시점 이견: NH(2026-05 발간, 약 5개월 시차)는 EIA 수급상 4Q26부터 공급 우위 전환·백워데이션으로 하향 안정, 연말에는 2027년 역기저가 반영돼 물가·금리 안정의 전제가 된다고 봄(20260526_NH_2026하반기FICC채권전망 p.6). 신한은 중동 군사 긴장·해상운송 차질로 하방 경직을 강조(20261023_신한_WeeklyGuideBook p.12). [사실] 10월 현재 Brent 116.72달러(2026-10-23, 웹확인)·3주 연속 상승, 호르무즈 통행 사실상 중단으로 NH의 '4분기 공급 우위' 전제는 아직 확인되지 않음. [판단] NH의 2027년 역기저·공급 정상화 시각은 장기 Base(−20%)·Bull(−35%) 방향과 정합해 장기 고려사항으로 유지하되, 단기에는 신한 뷰에 더 무게.",
+    "cards_used": [
+      "20261023_신한_WeeklyGuideBook",
+      "20261023_신한_EconCheckup",
+      "20260526_NH_2026하반기FICC채권전망",
+      "20261026_신한_2027전망P2_물가",
+      "20261030_신한_BlueBook11월_자산전략",
+      "20261030_신한_채권전략_QRA",
+      "20261106_신한_2027전망_원자재요약",
+      "20261106_신한_채권전략_블루웨이브이후금리경로",
+      "20261106_신한_EconCheckup"
+    ]
+  },
+  "short_term_factor_shocks": {
+    "brent_pct": 3.0
+  },
+  "short_term_shock_rationale": "[갱신 2026-11-10] Brent 93.9달러(11/9). 하우스 1Q27 WTI 92달러(현 86.7달러 대비 +6%)와 합의 미확정을 감안해 +3%.",
+  "data_gaps": [
+    "하우스 2곳(신한 2026-10, NH 2026-05 — 발간 시차 약 5개월, 동일 시점 비교 아님)",
+    "API 데이터 미수집(FRED/EIA): brent·wti·us_crude_stocks는 웹확인 값으로 대체",
+    "미 원유재고는 EIA WPSR 원문 미확인(업계 언론 보도 기준), 2026-10-23 주 재고 미확인",
+    "Dubai유는 9월 월평균(2026-09-30)만 있어 10월 수준 미확인",
+    "후티의 사우디 시설 공격 피해 규모 미확인(사우디·아람코 미확인 상태)",
+    "하우스의 유가 목표치 없음 — 충격 크기는 에이전트 판단(추정)",
+    "Brent·WTI 10/30 종가 출처 간 약 1달러 차이 — ICE·NYMEX 정산가 원문 미확인",
+    "11/9 종가는 출처 간 차이 — ICE·NYMEX 정산가 미확인",
+    "카타르 중재 합의 내용은 보도 기준 미확정"
+  ],
+  "sources": [
+    "data/latest_snapshot.json (generated 2026-10-25T03:01:57; data/manual/ecos100_20261025.yaml)",
+    "https://www.cnbc.com/2026/10/23/oil-price-brent-wti-iran-war-saudi-arabia.html",
+    "https://fortune.com/article/price-of-oil-10-23-2026/",
+    "https://www.rigzone.com/news/usa_crude_oil_stocks_drop_3mm_barrels_wow-22-oct-2026-184911-article/",
+    "https://www.oilandgas360.com/crude-inventories-10-16/",
+    "https://www.enerdata.net/publications/daily-energy-news/opec-keeps-november-2026-production-targets-unchanged-amid-supply-disruptions.html",
+    "https://ca.finance.yahoo.com/news/opec-agrees-principle-keep-november-102508006.html",
+    "https://gulfnews.com/world/mena/middle-east-war-houthi-missile-targets-riyadh-tankers-hit-mines-near-hormuz-1.500721804",
+    "knowledge/view_cards/20261023_신한_WeeklyGuideBook.json",
+    "knowledge/view_cards/20261023_신한_EconCheckup.json",
+    "knowledge/view_cards/20260526_NH_2026하반기FICC채권전망.json",
+    "knowledge/view_cards/20261026_신한_2027전망P2_물가.json",
+    "knowledge/view_cards/20261030_신한_BlueBook11월_자산전략.json",
+    "knowledge/view_cards/20261030_신한_채권전략_QRA.json",
+    "https://tradingeconomics.com/commodity/brent-crude-oil",
+    "https://finance.yahoo.com/quote/CL=F/history/",
+    "https://www.investing.com/commodities/brent-oil-historical-data",
+    "knowledge/view_cards/20261106_신한_2027전망_원자재요약.json",
+    "knowledge/view_cards/20261106_신한_채권전략_블루웨이브이후금리경로.json",
+    "knowledge/view_cards/20261106_신한_EconCheckup.json",
+    "https://www.thenationalnews.com/business/energy/2026/11/09/oil-edges-lower-as-trump-plays-down-prospect-of-new-us-attacks-on-iran/"
+  ]
+}

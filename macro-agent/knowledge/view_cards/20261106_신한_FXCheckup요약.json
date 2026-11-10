@@ -1,0 +1,37 @@
+{
+ "card_id": "20261106_신한_FXCheckup요약",
+ "house": "신한투자증권",
+ "report_title": "신한 FX Check-up: AI 투자 심리에 좌우될 원/달러(요약)",
+ "published": "2026-11-06",
+ "published_estimated": false,
+ "source_file": "processed/reports/20261106_신한_FXCheckup요약.txt",
+ "topics": [
+  "fx_krwusd"
+ ],
+ "views": [
+  {
+   "topic_id": "fx_krwusd",
+   "variable": "krw_usd",
+   "direction": "횡보",
+   "horizon": "단기",
+   "target": "상방 경직적",
+   "rationale": "원/달러는 주중 1,340원대에서 AI·반도체주 급락·외국인 주식 매도로 1,350원 후반까지 상승. AI 투자심리·외국인 주식 수급이 단기 좌우하나 상단에서 수출 네고 유입으로 상방 경직적.",
+   "page_ref": "p.1",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "fx_krwusd",
+   "variable": "dxy",
+   "direction": "상승",
+   "horizon": "단기",
+   "target": "101p 초중반에서 완만한 반등 시도",
+   "rationale": "중간선거 후 데이터센터 규제 가능성·미 금리 하락으로 101p 초반까지 하락했으나 하단 지지 속 완만한 반등 시도. 정책 불안이 반등 강도 제한. 엔/달러 157~158엔.",
+   "page_ref": "p.1",
+   "conviction": "중간"
+  }
+ ],
+ "key_risks": [
+  "외국인 주식 자금 이탈 지속"
+ ],
+ "notes": "출처: 사용자가 대화에 붙여넣은 웹 요약문(원문 PDF 미입수) — 1쪽 요약이라 p.1로 표기, 수치는 요약문 기준."
+}

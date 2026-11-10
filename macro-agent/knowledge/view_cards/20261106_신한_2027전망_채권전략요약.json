@@ -1,0 +1,72 @@
+{
+ "card_id": "20261106_신한_2027전망_채권전략요약",
+ "house": "신한투자증권",
+ "report_title": "2027년 전망 채권 전략: Next Chapter(요약판)",
+ "published": "2026-11-06",
+ "published_estimated": false,
+ "source_file": "processed/reports/20261106_신한_2027전망_채권전략요약.pdf",
+ "topics": [
+  "us_rate",
+  "us_treasury",
+  "kr_rate",
+  "kr_govt_bond",
+  "fx_krwusd"
+ ],
+ "views": [
+  {
+   "topic_id": "us_rate",
+   "variable": "us_ffr",
+   "direction": "상승",
+   "horizon": "단기",
+   "target": "12월 25bp 후 4.00~4.25% 동결",
+   "rationale": "비용발 물가에 대응한 보험성 인상, 수요 확장 인플레이션은 미미해 인상 사이클로 이어질 가능성은 제한. 12월 25bp 인상 후 동결 전망.",
+   "page_ref": "p.2",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "us_treasury",
+   "variable": "ust_10y",
+   "direction": "하락",
+   "horizon": "장기",
+   "target": "2Y 4.20~4.90%, 10Y 4.50~5.30%, 2/10 20~50bp",
+   "rationale": "연말~연초 비용발 인플레 반영 구간의 단기 반등 후 안정. 커브는 상반기→하반기 완만한 불 플랫. 연말~연초는 5년 이하로 캐리, 금리 상승 확대 구간에 7년 이상으로 듀레이션 확대.",
+   "page_ref": "p.7",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "kr_rate",
+   "variable": "kr_base_rate",
+   "direction": "상승",
+   "horizon": "단기",
+   "target": "상반기 3.50% 후 동결",
+   "rationale": "상반기 성과급·재정 조기집행으로 수요 측 물가가 집중되나 확산 확인 후 동결. 3.75~4.00% 추가 긴축은 낮은 확률. 고금리 부담은 1년 시차로 취약 부문 확산.",
+   "page_ref": "p.8-9",
+   "conviction": "높음"
+  },
+  {
+   "topic_id": "kr_govt_bond",
+   "variable": "ktb_10y",
+   "direction": "하락",
+   "horizon": "장기",
+   "target": "3Y 3.50~4.20%, 10Y 3.70~4.50%, 3/10 15~40bp",
+   "rationale": "1분기 수요 측 물가 소화 구간 상승 후 축적 자금(미래대응기금 10~30조, 기업·가계 채권 배분, 외국인 안착) 유입으로 안정. 1분기까지 3년 이하 캐리, 상승 확대 구간에 5년 이상으로 확대.",
+   "page_ref": "p.10-13",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "fx_krwusd",
+   "variable": "krw_usd",
+   "direction": "횡보",
+   "horizon": "단기",
+   "target": "1,300원대 상방 경직",
+   "rationale": "반도체 수출 외화수익의 세금·성과급·국내투자 환류로 현물 달러 공급이 이어져 1,300원대에서 상방 경직.",
+   "page_ref": "p.9",
+   "conviction": "중간"
+  }
+ ],
+ "key_risks": [
+  "확장 재정·외국인 자금 이탈(미국 수급, p.5-6)",
+  "워시 체제 소통 변화 과도기 기간프리미엄 확대(p.5)"
+ ],
+ "notes": "성격: 11/2 발행 67쪽 'Next Chapter'의 연간전망 책자 수록 요약판(13쪽). 수치는 원본 카드(20261102_신한_2027채권전망_NextChapter)와 같음 — 이중 집계하지 않도록 하우스 뷰 근거로만 보강. 신규 정보: AI Capex 증가율 2026년 100% 내외 → 2027년 40% → 2028년 10%(p.2), 국고채 순발행 2026년 99조 → 2027년 95조(p.11), NBIM 미 국채 벤치마크 34.1→21.9% 제안·ABP 보유 축소(p.6)."
+}

@@ -1,0 +1,61 @@
+{
+ "card_id": "20261106_신한_EconCheckup",
+ "house": "신한투자증권",
+ "report_title": "Shinhan Econ Check-up: 가중되는 비용과 정책 부담",
+ "published": "2026-11-06",
+ "published_estimated": false,
+ "source_file": "processed/reports/20261106_신한_EconCheckup.pdf",
+ "topics": [
+  "us_rate",
+  "kr_rate",
+  "us_alt_infra",
+  "oil"
+ ],
+ "views": [
+  {
+   "topic_id": "us_rate",
+   "variable": "us_core_inflation",
+   "direction": "횡보",
+   "horizon": "단기",
+   "target": "10월 CPI MoM 0.3%, 근원 0.2% 예상",
+   "rationale": "10월 CPI·PPI는 에너지 장기화에 따른 운송·공급망 비용 반영. 다만 인건비·주거비 안정이 전가 속도 제어. 3Q 생산성 +3.6%(연율)이 시간당 보상(2.9%) 상회, 단위노동비용 −0.7% — 노동비용발 물가 압력 미미.",
+   "page_ref": "p.1-2, p.4",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "us_alt_infra",
+   "variable": "us_dc_construction",
+   "direction": "하락",
+   "horizon": "단기",
+   "target": null,
+   "rationale": "민주당 양원 장악으로 데이터센터 규제 가능성 — AI 투자 방향 전환보다 인허가·전력비 부담에 따른 집행 속도 조절. 투자 회수·수익화 시차가 길어져 데이터센터 중심 성장 지속성 의구심.",
+   "page_ref": "p.1",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "kr_rate",
+   "variable": "kr_cpi",
+   "direction": "횡보",
+   "horizon": "단기",
+   "target": "10월 CPI 2.8%",
+   "rationale": "한국 10월 수출 +93.7%(일평균 +76.0%) — 반도체·데이터센터 품목 중심, 그 외 부진. CPI 2.8%로 신선식품 안정에 둔화했으나 핵심물가 오름세 유지.",
+   "page_ref": "p.1, p.3",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "oil",
+   "variable": "brent",
+   "direction": "횡보",
+   "horizon": "단기",
+   "target": null,
+   "rationale": "ISM 지불가격 제조업 75.2·비제조업 73.0으로 둔화했지만 높은 수준 — 서비스업 납기 지연·연료비 상승으로 중동 사태 장기화의 비용 부담·가격 전가 위험 잔존.",
+   "page_ref": "p.1",
+   "conviction": "낮음"
+  }
+ ],
+ "key_risks": [
+  "미국의 중국산 178개 품목 301조 관세 예외 11/9 종료 여부",
+  "AI 설비투자 둔화의 성장 하방"
+ ],
+ "notes": "성격: 주간 경제(5쪽). 10월 ISM 제조업 55.5(54.5), 서비스 54.5(54.9), ADP +8.6만, 9월 JOLTs 7,523K, 시간당 임금 +3.2%(p.1-2). 한국 9월 경상수지 614.6억달러(p.2). BOE 4.00%로 인상(p.2). 10월 NFP 예상 65K(p.2)."
+}
