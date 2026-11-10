@@ -1,0 +1,95 @@
+{
+ "card_id": "20261109_미래_2027채권전망_TrojanHorse",
+ "house": "미래에셋증권",
+ "report_title": "2027 전망 채권: The Trojan Horse — 성장의 이면에 진입",
+ "published": "2026-11-09",
+ "published_estimated": false,
+ "source_file": "processed/reports/20261109_미래_2027채권전망_TrojanHorse.pdf",
+ "topics": [
+  "us_rate",
+  "us_treasury",
+  "us_corp_bond",
+  "kr_rate",
+  "kr_govt_bond",
+  "oil",
+  "us_alt_infra"
+ ],
+ "views": [
+  {
+   "topic_id": "us_rate",
+   "variable": "us_ffr",
+   "direction": "상승",
+   "horizon": "단기",
+   "target": "12월 1회 인상 후 2027년 연내 동결",
+   "rationale": "2027년 미국 2% 초반 성장, 코어 PCE 2% 후반. 유가 안정을 전제로 12월 1회 인상 후 연내 동결이 베이스. 중동 리스크 지속·기대 인플레 고착화가 상방 위험.",
+   "page_ref": "p.3, p.28",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "us_treasury",
+   "variable": "ust_10y",
+   "direction": "하락",
+   "horizon": "장기",
+   "target": "5% 부근에서 상승 속도 제한, 연말로 갈수록 하락",
+   "rationale": "AI 기업 CAPEX 증가세 둔화·유가 안정으로 인플레 경계 완화되며 10년 금리 연말로 갈수록 하락. 금리 상승할수록 증시 저항·빅테크 조달 부담이 커져 5% 부근에서 상승 속도 제한. 2~5년물 이자수익 전략.",
+   "page_ref": "p.4, p.28",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "us_corp_bond",
+   "variable": "us_ig_oas",
+   "direction": "확대",
+   "horizon": "장기",
+   "target": null,
+   "rationale": "하이퍼스케일러 회사채 발행 확대(평균 만기 16.7년)로 장기 크레딧 공급 부담. 27년 만기 도래 280억달러는 잔액 대비 0.2%로 차환 부담은 작으나, 실적이 컨센서스 대비 −40% 이상 빗나가면 MS 외 빅테크 FCF 적자가 28년까지 지속될 위험. 오라클 스프레드 +90bp 확대.",
+   "page_ref": "p.13",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "kr_rate",
+   "variable": "kr_base_rate",
+   "direction": "상승",
+   "horizon": "단기",
+   "target": "11월 포함 1~2회 추가 인상 후 동결, 연말 인하 전환",
+   "rationale": "반도체 외 수출 증가율 둔화, 헤드라인 양호로 대규모 재정 내수 부양 가능성 낮음. 한은 1~2회 추가 인상 후 동결, 2027년 연말 인하 전환. 코어 CPI 1Q 고점 후 하반기 2% 초반 둔화(연간 2.3~2.4%).",
+   "page_ref": "p.35, p.38",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "kr_govt_bond",
+   "variable": "ktb_10y",
+   "direction": "하락",
+   "horizon": "장기",
+   "target": "3Y 3.0~3.7%, 10Y 3.1~4.0%",
+   "rationale": "상반기 긴축 후반부 커브 플랫, 연말로 갈수록 인하 기대 반영하며 스팁 전환. 인상 후반부~동결기 경기 모멘텀 둔화로 국고채 금리 하락. 2027년 성장률 2.8%.",
+   "page_ref": "p.30, p.38",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "kr_govt_bond",
+   "variable": "ktb_30y",
+   "direction": "하락",
+   "horizon": "장기",
+   "target": "10년 대비 30년 상대 강세",
+   "rationale": "장기물 발행 비중 27~28% 유지·30년물 월 발행 최대 1조원 감소, 27년 국고채 순발행 13.1조원 감소. 보험사 수요는 약화됐으나 장기채 투자 기조 반전은 어렵다. 미래대응기금(국채 수요 40조원 내외)은 27년 중반 집행 본격화.",
+   "page_ref": "p.36-37",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "oil",
+   "variable": "wti",
+   "direction": "하락",
+   "horizon": "장기",
+   "target": null,
+   "rationale": "베이스 시나리오는 유가 안정. 미-이란 협상 가능성이 크다고 판단하며 중동 리스크 지속은 금리 상방 위험 시나리오로 분리.",
+   "page_ref": "p.5, p.28",
+   "conviction": "낮음"
+  }
+ ],
+ "key_risks": [
+  "중동 리스크 지속·기대 인플레 고착화로 10년 5%대 중반 상승(p.28)",
+  "빅테크 FCF 적자 확대 시 회사채 발행 급증(p.13, p.28)",
+  "반도체 성과급의 소비 파급 제한·체감 경기 부진(p.33-35)"
+ ],
+ "notes": "성격: 2027 연간 채권 전망(42쪽, 이미지 슬라이드라 텍스트 추출 불가 — 페이지 이미지 판독). 분기별 수치 표는 없고 연간 밴드·차트 경로만 제시. 한국: 2027 성장 2.8%(한은 8월 2.9%, p.30), 반도체 성과급 민간소비 +1.3~1.8조원(p.35), 삼성전자 메모리 1인당 7.5억원·SK하이닉스 7.0억원 예상(p.35), 26년 장기물 발행 비중 28%(p.36), 미래대응기금 162.3조원 중 104.4조원 여유자금(p.37). 미국: 하이퍼스케일러 27년 만기 AMZN 8.8·META 8.2·MS 5.1·ORCL 5.0·GOOGL 1.0십억달러(p.13)."
+}

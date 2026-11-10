@@ -6,26 +6,26 @@
       {
         "series_id": "ktb_5y",
         "name": "국고채 5년(할인율 기준금리 참고)",
-        "value": 3.948,
+        "value": 3.731,
         "unit": "%",
-        "as_of": "2026-10-23",
-        "chg_1m": null,
+        "as_of": "2026-11-09",
+        "chg_1m": -42.7,
         "chg_unit": "bp",
         "value_flag": "수기",
-        "source": "data/latest_snapshot.json (data/manual/ecos100_20261025.yaml, ECOS 사용자 수기 입력)",
-        "stale": true
+        "source": "data/latest_snapshot.json (data/manual/user_20261110.yaml, 사용자 제공 파일 수기 입력)",
+        "stale": false
       },
       {
         "series_id": "ktb_3y",
         "name": "국고채 3년",
-        "value": 3.803,
+        "value": 3.639,
         "unit": "%",
-        "as_of": "2026-10-23",
-        "chg_1m": null,
+        "as_of": "2026-11-09",
+        "chg_1m": -34.4,
         "chg_unit": "bp",
         "value_flag": "수기",
-        "source": "data/latest_snapshot.json (data/manual/ecos100_20261025.yaml, ECOS 사용자 수기 입력)",
-        "stale": true
+        "source": "data/latest_snapshot.json (data/manual/user_20261110.yaml, 사용자 제공 파일 수기 입력)",
+        "stale": false
       },
       {
         "series_id": "kr_base_rate",
@@ -54,29 +54,9 @@
         "unit": "%",
         "as_of": null,
         "value_flag": "미확인"
-      },
-      {
-        "series_id": "ktb_3y_web",
-        "name": "국고채 3년 (10/30 마감, 웹확인)",
-        "value": 3.715,
-        "unit": "%",
-        "as_of": "2026-10-30",
-        "value_flag": "웹확인",
-        "source": "https://biz.sbs.co.kr/article/20000343377",
-        "stale": false
-      },
-      {
-        "series_id": "ktb_5y_web",
-        "name": "국고채 5년 (10/30 마감, 웹확인)",
-        "value": 3.865,
-        "unit": "%",
-        "as_of": "2026-10-30",
-        "value_flag": "웹확인",
-        "source": "https://biz.sbs.co.kr/article/20000343377",
-        "stale": false
       }
     ],
-    "summary": "[사실] 할인율 기준인 KTB 5Y 3.865%·3Y 3.715%(2026-10-30, 웹확인), 기준금리 3.00%(2026-10-22, 수기). [사실] 정부는 2026-02-11 민간투자사업심의위원회에서 향후 5년 신규 민자사업 100조원 발굴 목표, AI 데이터센터·국가 송전망(에너지 고속도로)·철도복합시설 등 신규 분야, 국민참여 공모 인프라펀드(차입한도 30%→100%, 분리과세 연장) 도입을 담은 활성화 방안을 의결(웹확인, 언론 보도). [사실] KDI PIMAC은 공모펀드 참여 사업에 우협 심의 최대 10점 우대 표준안 개정(2026-06 보도), 10월에는 지방 민자사업 부진 보완을 위한 지방정부 권한 확대 논의 보도. [판단] 신규 물량 확대는 보험사에 장기 듀레이션·물가연동 자산 공급 증가 요인이나, 실제 고시·협약 규모 통계는 미확인. 국내 인프라 관련 하우스 뷰 없음."
+    "summary": "[사실] 할인율 기준인 KTB 5Y 3.731%·3Y 3.639%(2026-11-09, 수기), 기준금리 3.00%(2026-10-22, 수기). [사실] 정부는 2026-02-11 민간투자사업심의위원회에서 향후 5년 신규 민자사업 100조원 발굴 목표, AI 데이터센터·국가 송전망(에너지 고속도로)·철도복합시설 등 신규 분야, 국민참여 공모 인프라펀드(차입한도 30%→100%, 분리과세 연장) 도입을 담은 활성화 방안을 의결(웹확인, 언론 보도). [사실] KDI PIMAC은 공모펀드 참여 사업에 우협 심의 최대 10점 우대 표준안 개정(2026-06 보도), 10월에는 지방 민자사업 부진 보완을 위한 지방정부 권한 확대 논의 보도. [판단] 신규 물량 확대는 보험사에 장기 듀레이션·물가연동 자산 공급 증가 요인이나, 실제 고시·협약 규모 통계는 미확인. 국내 인프라 관련 하우스 뷰 없음."
   },
   "short_term": {
     "horizon": "3-6M",
