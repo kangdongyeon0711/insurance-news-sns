@@ -17,3 +17,5 @@ processed/filings/*
 processed/manifest.json
 reports/tmp/*
 !reports/tmp/.gitkeep
+processed/regulation/*
+!processed/regulation/.gitkeep
