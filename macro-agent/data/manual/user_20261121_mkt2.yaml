@@ -1,0 +1,53 @@
+# 수기 입력 — 사용자가 2026-11-21 대화에 첨부한 미국채 10년·KOSPI 일별 종가 csv(최근 1개월).
+# priority 4: 미국채 10년은 2년·30년과 같은 시장 종가 기준으로 맞추기 위해 같은 날짜의 FRED DGS10(user_20261121_fred.yaml)보다 우선. 10/20 이전은 FRED 값.
+source: 사용자 제공 일별 종가 csv(미국채 10년·KOSPI, 2026-10-21~11-20)
+retrieved: '2026-11-21'
+priority: 4
+raw_file: data/manual/user_20261121_ust10y.csv, data/manual/user_20261121_kospi.csv
+points:
+- {series_id: ust_10y, value: 4.912, as_of: '2026-11-20', period_label: 일별 종가, raw_label: 미국채 10년}
+- {series_id: ust_10y, value: 5.052, as_of: '2026-11-19', period_label: 일별 종가, raw_label: 미국채 10년}
+- {series_id: ust_10y, value: 5.066, as_of: '2026-11-18', period_label: 일별 종가, raw_label: 미국채 10년}
+- {series_id: ust_10y, value: 5.103, as_of: '2026-11-17', period_label: 일별 종가, raw_label: 미국채 10년}
+- {series_id: ust_10y, value: 5.121, as_of: '2026-11-16', period_label: 일별 종가, raw_label: 미국채 10년}
+- {series_id: ust_10y, value: 5.153, as_of: '2026-11-13', period_label: 일별 종가, raw_label: 미국채 10년}
+- {series_id: ust_10y, value: 5.103, as_of: '2026-11-12', period_label: 일별 종가, raw_label: 미국채 10년}
+- {series_id: ust_10y, value: 4.984, as_of: '2026-11-11', period_label: 일별 종가, raw_label: 미국채 10년}
+- {series_id: ust_10y, value: 4.983, as_of: '2026-11-10', period_label: 일별 종가, raw_label: 미국채 10년}
+- {series_id: ust_10y, value: 4.862, as_of: '2026-11-09', period_label: 일별 종가, raw_label: 미국채 10년}
+- {series_id: ust_10y, value: 4.859, as_of: '2026-11-06', period_label: 일별 종가, raw_label: 미국채 10년}
+- {series_id: ust_10y, value: 4.837, as_of: '2026-11-05', period_label: 일별 종가, raw_label: 미국채 10년}
+- {series_id: ust_10y, value: 4.892, as_of: '2026-11-04', period_label: 일별 종가, raw_label: 미국채 10년}
+- {series_id: ust_10y, value: 4.95, as_of: '2026-11-03', period_label: 일별 종가, raw_label: 미국채 10년}
+- {series_id: ust_10y, value: 4.894, as_of: '2026-11-02', period_label: 일별 종가, raw_label: 미국채 10년}
+- {series_id: ust_10y, value: 4.929, as_of: '2026-10-30', period_label: 일별 종가, raw_label: 미국채 10년}
+- {series_id: ust_10y, value: 4.989, as_of: '2026-10-29', period_label: 일별 종가, raw_label: 미국채 10년}
+- {series_id: ust_10y, value: 5.045, as_of: '2026-10-28', period_label: 일별 종가, raw_label: 미국채 10년}
+- {series_id: ust_10y, value: 4.993, as_of: '2026-10-27', period_label: 일별 종가, raw_label: 미국채 10년}
+- {series_id: ust_10y, value: 4.986, as_of: '2026-10-26', period_label: 일별 종가, raw_label: 미국채 10년}
+- {series_id: ust_10y, value: 4.988, as_of: '2026-10-23', period_label: 일별 종가, raw_label: 미국채 10년}
+- {series_id: ust_10y, value: 4.953, as_of: '2026-10-22', period_label: 일별 종가, raw_label: 미국채 10년}
+- {series_id: ust_10y, value: 5.146, as_of: '2026-10-21', period_label: 일별 종가, raw_label: 미국채 10년}
+- {series_id: kospi, value: 4869.96, as_of: '2026-11-20', period_label: 일별 종가, raw_label: KOSPI}
+- {series_id: kospi, value: 5137.89, as_of: '2026-11-19', period_label: 일별 종가, raw_label: KOSPI}
+- {series_id: kospi, value: 5067.44, as_of: '2026-11-18', period_label: 일별 종가, raw_label: KOSPI}
+- {series_id: kospi, value: 4968.48, as_of: '2026-11-17', period_label: 일별 종가, raw_label: KOSPI}
+- {series_id: kospi, value: 5100.5, as_of: '2026-11-16', period_label: 일별 종가, raw_label: KOSPI}
+- {series_id: kospi, value: 5290.53, as_of: '2026-11-13', period_label: 일별 종가, raw_label: KOSPI}
+- {series_id: kospi, value: 5342.73, as_of: '2026-11-12', period_label: 일별 종가, raw_label: KOSPI}
+- {series_id: kospi, value: 5375.36, as_of: '2026-11-11', period_label: 일별 종가, raw_label: KOSPI}
+- {series_id: kospi, value: 5239.13, as_of: '2026-11-10', period_label: 일별 종가, raw_label: KOSPI}
+- {series_id: kospi, value: 5018.85, as_of: '2026-11-09', period_label: 일별 종가, raw_label: KOSPI}
+- {series_id: kospi, value: 5059.69, as_of: '2026-11-06', period_label: 일별 종가, raw_label: KOSPI}
+- {series_id: kospi, value: 5383.8, as_of: '2026-11-05', period_label: 일별 종가, raw_label: KOSPI}
+- {series_id: kospi, value: 5683.8, as_of: '2026-11-04', period_label: 일별 종가, raw_label: KOSPI}
+- {series_id: kospi, value: 5648.79, as_of: '2026-11-03', period_label: 일별 종가, raw_label: KOSPI}
+- {series_id: kospi, value: 5859.08, as_of: '2026-11-02', period_label: 일별 종가, raw_label: KOSPI}
+- {series_id: kospi, value: 5730.74, as_of: '2026-10-30', period_label: 일별 종가, raw_label: KOSPI}
+- {series_id: kospi, value: 5937.66, as_of: '2026-10-29', period_label: 일별 종가, raw_label: KOSPI}
+- {series_id: kospi, value: 6012.44, as_of: '2026-10-28', period_label: 일별 종가, raw_label: KOSPI}
+- {series_id: kospi, value: 5638.34, as_of: '2026-10-27', period_label: 일별 종가, raw_label: KOSPI}
+- {series_id: kospi, value: 5469.47, as_of: '2026-10-26', period_label: 일별 종가, raw_label: KOSPI}
+- {series_id: kospi, value: 5550.3, as_of: '2026-10-23', period_label: 일별 종가, raw_label: KOSPI}
+- {series_id: kospi, value: 5533.77, as_of: '2026-10-22', period_label: 일별 종가, raw_label: KOSPI}
+- {series_id: kospi, value: 5735.66, as_of: '2026-10-21', period_label: 일별 종가, raw_label: KOSPI}
