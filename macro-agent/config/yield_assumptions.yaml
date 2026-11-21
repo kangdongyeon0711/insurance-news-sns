@@ -6,7 +6,7 @@
 # 기대 총수익(연) = base + spread − el(기대손실) − hedge_cost(외화·헤지분) + 확률가중 평가변화 ÷ horizon_years
 #   확률가중 평가변화는 calc_impact의 장기 Base/Bull/Bear 결과(자산군별 %)를 사용 → 매크로 전망이 배분에 반영됨.
 # K-ICS 추가 요구자본(근사) = Σ 증가 익스포저 × charge × diversification (감소분은 같은 방식으로 차감)
-#   charge 출처: 주식 35%(선진 상장)·48%(기타)·부동산 25%는 웹확인(2차 출처, 감독규정 원문 미대조).
+#   charge 출처: 주식 35%(선진 상장)·49%(기타)·인프라 20%·부동산 25%는 보험연구원 2024-14 요약으로 확인(knowledge/regulation/kics_rules.md).
 #   신용·스프레드·대체(대출형) 계수는 미확인 → 범위(low/high)로 두고 결과도 범위로 낸다.
 
 horizon_years: 2.0          # 장기 시나리오(1~3년)의 평가 변화를 연 단위로 환산할 때 쓰는 기간 (가정)
@@ -27,7 +27,7 @@ classes:
   대체-사모대출:  {base: kr_cd_91d,     spread_bp: 300, el_pct: 0.60, charge: [0.06, 0.15], duration: 1.0,  region: KR, note: "부동산 대출형 사모펀드(선순위 중심, 변동금리) — 기사의 '중위험·중수익'. PF·브릿지 제외 가정"}
   대체-인프라:    {base: ktb_10y,       spread_bp: 150, el_pct: 0.20, charge: [0.05, 0.20], duration: 8.0,  note: "국내 인프라 대출·지분 혼합 펀드 — 장기 ALM 매칭 기여"}
   부동산:         {base: null, fixed_pct: 4.5, el_pct: 0.00, charge: [0.25, 0.25], duration: 0.0, note: "코어 오피스·물류 인컴수익률 ≈ 캡레이트 4.5%(assumptions.cap_rate.KR). 시니어하우징 등 개발형은 PF 성격으로 별도"}
-  대체-PE:        {base: null, fixed_pct: 9.0, el_pct: 0.00, charge: [0.48, 0.48], duration: 0.0, note: "기대 IRR 9% (가정), 기타 주식 48% 충격 근사"}
+  대체-PE:        {base: null, fixed_pct: 9.0, el_pct: 0.00, charge: [0.49, 0.49], duration: 0.0, note: "기대 IRR 9% (가정), 기타 주식 49% 충격(K-ICS, knowledge/regulation/kics_rules.md)"}
   해외채:         {base: ust_10y, spread_series: us_ig_oas, el_pct: 0.10, charge: [0.03, 0.06], duration: 7.5, hedged: true, region: US, currency: USD, note: "UST 10년 + IG OAS, 100% 헤지(사용자 가정)"}
   주식:           {base: null, fixed_pct: 7.0, el_pct: 0.00, charge: [0.35, 0.35], duration: 0.0, note: "KOSPI 기대수익 7%(배당 포함, 가정)"}
   수익증권:       {base: null, fixed_pct: 5.0, el_pct: 0.20, charge: [0.15, 0.30], duration: 0.0, note: "기타 혼합형 펀드 (가정)"}

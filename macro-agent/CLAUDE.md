@@ -32,6 +32,7 @@
 | `knowledge/view_cards/` | 리포트 1개 = 카드 1개 |
 | `knowledge/macro_topics/{날짜}/` | topic별 주간 분석 16개 |
 | `knowledge/portfolios/{회사}/{기간}.json` | 익스포저 |
+| `knowledge/regulation/` | 규제 요약(K-ICS 규칙 등) — 보험사 자본 영향·리밸런싱 판단 근거 |
 | `reports/` | 최종 Markdown 산출물 (`reports/tmp/`는 계산 중간물) |
 
 ## 명령

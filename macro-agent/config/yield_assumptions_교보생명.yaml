@@ -100,10 +100,10 @@ classes:
     fixed_pct: 9.0
     el_pct: 0.0
     charge:
-    - 0.48
-    - 0.48
+    - 0.49
+    - 0.49
     duration: 0.0
-    note: 기대 IRR 9% (가정), 기타 주식 48% 충격 근사
+    note: 기대 IRR 9% (가정), 기타 주식 49% 충격(K-ICS, knowledge/regulation/kics_rules.md)
   해외채:
     base: ust_10y
     spread_series: us_ig_oas

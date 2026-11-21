@@ -19,8 +19,8 @@ CLAUDE.md의 원칙 9개를 따른다. 기준일 `AS_OF` = 오늘. 회사 = 인�
 4-1. **캘리브레이션**: 익스포저에 `rate_sensitivity_disclosed`가 있으면 calc_impact 출력의 `calibration`(엔진 vs 공시 금리 민감도)을 확인한다. 엔진/공시 비율이 0.8~1.2를 벗어나면 portfolio-analyst에 듀레이션 가정·분류 재점검을 요청하고, 조정 내역을 notes에 남긴 뒤 다시 계산한다.
 5. **영향 계산**: `python scripts/calc_impact.py --portfolio knowledge/portfolios/{회사}/{최신기간}.json --shocks reports/tmp/{macro_date}_factor_shocks.json --out reports/tmp/{AS_OF}_{회사}_impact`
    → `_impact.json`, `_impact.csv`, 콘솔 표. 숫자는 이 출력에서만 인용한다.
-6. **정성 보완**: `.claude/skills/impact-mapping/SKILL.md`와 `sensitivity_matrix.md`를 읽고, 계산이 단순화한 경로(PF 충당금, 대체투자 평가 지연, 부채 할인율, K-ICS)를 서술로 보완한다.
-7. **리밸런싱 제안**: `config/constraints.yaml`을 읽어 자산군별 방향(확대/축소/유지)과 폭(%p 범위)을 제안하고, 제약 충족 여부를 점검한다: `python scripts/calc_impact.py ... --check-constraints` 출력 활용.
+6. **정성 보완**: `.claude/skills/impact-mapping/SKILL.md`와 `sensitivity_matrix.md`, 보험사면 `knowledge/regulation/kics_rules.md`(K-ICS 충격·상관계수·자산집중·경과조치)를 읽고, 계산이 단순화한 경로(PF 충당금, 대체투자 평가 지연, 부채 할인율, K-ICS)를 서술로 보완한다.
+7. **리밸런싱 제안**: 보험사는 K-ICS 하한을 경과조치 **전** 비율로 보고(경과조치 인식비율이 매년 올라 경과 후 비율은 자연 하락 — kics_rules.md §7), 자산집중 한도(§5)와 금리 시나리오 현금흐름 매칭(§5)을 점검한다. `config/constraints.yaml`을 읽어 자산군별 방향(확대/축소/유지)과 폭(%p 범위)을 제안하고, 제약 충족 여부를 점검한다: `python scripts/calc_impact.py ... --check-constraints` 출력 활용.
 8. **리포트 작성**: `python scripts/render_portfolio.py --impact reports/tmp/{AS_OF}_{회사}_impact.json --portfolio-dir knowledge/portfolios/{회사}/` 로 골격(`reports/{AS_OF}_{회사}_portfolio_impact.md`)을 만들고, `<!-- TODO -->` 섹션(운용 전략 해석, 영향 경로 설명, 리밸런싱 제안 근거·리스크)을 직접 채운다.
 9. **팩트체크**: fact-checker에 리포트 경로 전달 → 불일치 수정 → `python scripts/check_report.py reports/{AS_OF}_{회사}_portfolio_impact.md --kind portfolio --impact reports/tmp/{AS_OF}_{회사}_impact.json` 재확인.
 10. 사용자에게 요약(시나리오별 손익 합계, 취약 자산군 3개, 핵심 제안 3개)과 경로 보고.
