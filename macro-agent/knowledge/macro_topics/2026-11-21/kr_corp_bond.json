@@ -26,13 +26,12 @@
       {
         "series_id": "ktb_3y",
         "name": "국고채 3년",
-        "value": 3.639,
+        "value": 3.642,
         "unit": "%",
-        "as_of": "2026-11-09",
+        "as_of": "2026-11-20",
         "value_flag": "수기",
-        "source": "data/latest_snapshot.json (data/manual/user_20261110.yaml, 사용자 제공 파일 수기 입력)",
-        "stale": true,
-        "chg_1m": -34.4,
+        "source": "data/latest_snapshot.json (data/manual/user_20261121_ktb.yaml, 사용자 제공 금투협·ECOS 최종호가 엑셀)",
+        "stale": false,
         "chg_unit": "bp"
       },
       {
@@ -52,16 +51,6 @@
         "as_of": "2026-10-08",
         "value_flag": "웹확인",
         "source": "https://datacenter.hankyung.com/rates-bonds/krc3ybbb ; https://biz.sbs.co.kr/amp/article/20000339059"
-      },
-      {
-        "series_id": "ktb_3y_web",
-        "name": "국고채 3년 (11/19, 리포트 시장표)",
-        "value": 3.716,
-        "unit": "%",
-        "as_of": "2026-11-19",
-        "value_flag": "추정",
-        "source": "신한 11/20 금통위 Preview p.8 금리표(인포맥스 집계, 11/19) — 리포트 인용, 공식 원자료 미대조",
-        "stale": false
       },
       {
         "series_id": "kr_aa_spread_web",
