@@ -6,42 +6,43 @@
       {
         "series_id": "us_ig_oas",
         "name": "ICE BofA US IG OAS",
-        "value": 0.93,
+        "value": 0.94,
         "unit": "%",
-        "as_of": "2026-11-06",
-        "source": "data/latest_snapshot.json (data/manual/user_20261110.yaml, 사용자 제공 파일 수기 입력)",
+        "as_of": "2026-11-19",
+        "source": "data/latest_snapshot.json (data/manual/user_20261121_fred.yaml, 사용자 제공 FRED 엑셀)",
         "value_flag": "수기",
-        "stale": true,
-        "chg_1m": 10.0,
+        "stale": false,
         "chg_unit": "bp"
       },
       {
         "series_id": "us_hy_oas",
         "name": "ICE BofA US HY OAS",
-        "value": 3.34,
+        "value": 3.52,
         "unit": "%",
-        "as_of": "2026-11-09",
-        "source": "https://fred.stlouisfed.org/graph/?g=1tnkr (FRED BAMLH0A0HYM2, 검색 결과 기준)",
-        "value_flag": "웹확인",
+        "as_of": "2026-11-19",
+        "source": "data/latest_snapshot.json (data/manual/user_20261121_fred.yaml, 사용자 제공 FRED 엑셀)",
+        "value_flag": "수기",
         "stale": false
       },
       {
         "series_id": "us_ig_oas_pct_rank_5y",
         "name": "IG OAS 백분위(3년 이력 기준 — 5년 대체)",
-        "value": 75.9,
+        "value": 78.0,
         "unit": "%",
-        "as_of": "2026-11-06",
+        "as_of": "2026-11-19",
         "value_flag": "추정",
-        "source": "사용자 제공 FRED BAMLC0A0CM(2023-11~2026-11) 3년 이력으로 계산 — 5년 아님",
+        "source": "사용자 제공 FRED BAMLC0A0CM 2023-11~2026-11 이력으로 계산",
         "stale": false
       },
       {
         "series_id": "us_hy_oas_pct_rank_5y",
-        "name": "HY OAS 5년 백분위",
-        "value": null,
+        "name": "HY OAS 백분위(1년 이력 기준 — 5년 대체)",
+        "value": 100.0,
         "unit": "%",
-        "as_of": null,
-        "value_flag": "미확인"
+        "as_of": "2026-11-19",
+        "value_flag": "추정",
+        "source": "사용자 제공 FRED BAMLH0A0HYM2 2025-11~2026-11 이력으로 계산",
+        "stale": false
       },
       {
         "series_id": "us_spec_default_rate",
@@ -65,12 +66,12 @@
         "stale": false
       }
     ],
-    "summary": "[사실] HY OAS 3.34%(11/9, FRED 경유 웹확인; 11/5 3.48% 고점), IG OAS 0.93%(11/6, 수기). 11/9 이후 OAS 공식값 미확인. [사실] 11/20 주간: 미국 IG −1.0%(1M)·HY −0.4%(1W) 수익률, S&P 500 −5.5%·200일선 붕괴 — 젠슨 황 퇴진 후 AI 순환금융 우려·앤트로픽 IPO 수급 쏠림(20261120_신한_WeeklyGuideBook p.5, p.8). [사실] HY OAS 3.42%(11/6, FRED 경유 웹확인) — 반도체 급락일(11/5) 3.32→3.48%로 16bp 급등 후 소폭 축소. 필라델피아 반도체지수는 11/5 하루 −12.2%. IG OAS 0.93%(11/6, FRED 엑셀 사용자 제공·수기): 10/30 0.94% 이후 0.91~0.94% 횡보, 1개월 +10.0bp(10/6 0.83%). 3년 범위 0.73%(2026-01-22)~1.26%(2023-11-10)에서 하위 75% 지점. [하우스] 신한 2027 크레딧: 하이퍼스케일러 외부차입 폭증과 고금리로 미국 크레딧의 신용위험이 일깨워지는 중(p.2). 2027 채권전망: 기본 경로는 선별·재편(우량물 캐리)."
+    "summary": "[사실] HY OAS 3.52%(11/19, FRED — 사용자 제공·수기)로 최근 1년 최고(저점 2.60%, 8/28). 11/12 3.20%에서 1주 만에 +32bp, 3개월 +79bp. IG OAS 0.94%(11/19): 1주 +5·1개월 +7bp, 3년 범위 0.73~1.26%의 상위 78% 지점. [사실] 11/20 주간: S&P 500 −5.5%·200일선 붕괴 — 젠슨 황 퇴진 후 AI 순환금융 우려·앤트로픽 IPO 수급 쏠림, 미국 IG −1.0%(1M)·HY −0.4%(1W) 수익률(20261120_신한_WeeklyGuideBook p.5, p.8). [사실] HY OAS 3.42%(11/6, FRED 경유 웹확인) — 반도체 급락일(11/5) 3.32→3.48%로 16bp 급등 후 소폭 축소. 필라델피아 반도체지수는 11/5 하루 −12.2%. IG OAS 0.93%(11/6, FRED 엑셀 사용자 제공·수기): 10/30 0.94% 이후 0.91~0.94% 횡보, 1개월 +10.0bp(10/6 0.83%). 3년 범위 0.73%(2026-01-22)~1.26%(2023-11-10)에서 하위 75% 지점. [하우스] 신한 2027 크레딧: 하이퍼스케일러 외부차입 폭증과 고금리로 미국 크레딧의 신용위험이 일깨워지는 중(p.2). 2027 채권전망: 기본 경로는 선별·재편(우량물 캐리)."
   },
   "short_term": {
     "horizon": "3-6M",
     "direction": "완만한 확대",
-    "view": "[판단] IG +10bp, HY +40bp 완만한 확대를 유지한다. 근거: 1분기까지 미 금리 상방 변동성과 AI 인프라 발행 부담, 비우량 AI 차주(오라클·코어위브)의 조달비용 상승이다. [하우스] 신한 2027 전망의 기본 경로(선별·재편, 우량물 중심 캐리, 비우량물 차환·회수율 개별 점검, p.44)와 같은 방향이다. 월간 자산전략은 HY를 비중축소로 낮췄다(20261030_신한_BlueBook11월_자산전략 p.5). [판단] 확대가 '등급별 차별화'에 그칠지, 신용공급 위축(2001년형)으로 번질지는 Baa 스프레드·EBP와 GPU 임대가격, 네오클라우드 차환이 가른다. [갱신 2026-11-10 2차] [사실] IG는 10월 +10bp 확대 후 11월 첫 주 0.91~0.94%에서 멈췄다. [하우스] 미래에셋(11/9): 하이퍼스케일러 회사채 발행 확대(평균 만기 16.7년)·실적 충격 시 빅테크 FCF 적자 위험, 27년 만기 280억달러는 잔액의 0.2%로 차환 부담은 작다(p.13). [판단] 단기 IG +10bp 유지. [갱신 2026-11-21] [판단] 11/9 이후 OAS 미확인이나 S&P −5.5% 주간 급락·AI 순환금융 우려로 HY 재확대 가능성. 단기 IG +10·HY +40bp 유지.",
+    "view": "[판단] IG +10bp, HY +40bp 완만한 확대를 유지한다. 근거: 1분기까지 미 금리 상방 변동성과 AI 인프라 발행 부담, 비우량 AI 차주(오라클·코어위브)의 조달비용 상승이다. [하우스] 신한 2027 전망의 기본 경로(선별·재편, 우량물 중심 캐리, 비우량물 차환·회수율 개별 점검, p.44)와 같은 방향이다. 월간 자산전략은 HY를 비중축소로 낮췄다(20261030_신한_BlueBook11월_자산전략 p.5). [판단] 확대가 '등급별 차별화'에 그칠지, 신용공급 위축(2001년형)으로 번질지는 Baa 스프레드·EBP와 GPU 임대가격, 네오클라우드 차환이 가른다. [갱신 2026-11-10 2차] [사실] IG는 10월 +10bp 확대 후 11월 첫 주 0.91~0.94%에서 멈췄다. [하우스] 미래에셋(11/9): 하이퍼스케일러 회사채 발행 확대(평균 만기 16.7년)·실적 충격 시 빅테크 FCF 적자 위험, 27년 만기 280억달러는 잔액의 0.2%로 차환 부담은 작다(p.13). [판단] 단기 IG +10bp 유지. [갱신 2026-11-21] [판단] HY가 11/12 이후 +32bp 재확대해 이미 3.52%(1년 최고)다. 단기 HY 충격을 +40 → +30bp(약 3.82%)로 낮추고, 장기 Base는 목표(약 3.9%) 유지를 위해 +50 → +40bp로 재기준화. IG는 0.94%로 +10bp 유지(약 1.04%).",
     "drivers": [
       "[사실] IG OAS 0.85%→0.89%, HY OAS 3.27%→3.40%(10월 중순~10/22)",
       "[사실] 투기등급 부도율 8월 5.3%로 상승",
@@ -87,11 +88,11 @@
       {
         "name": "Base",
         "prob": 0.5,
-        "headline": "AI 인프라 섹터 중심으로 IG +10bp(1.0% 내외), HY +50bp(3.9% 내외) 점진 확대된다.",
-        "narrative": "[판단] FFR 4.25% 정점 후 4.00% 복귀(us_rate Base), 성장 둔화 속 AI 인프라 섹터 중심 점진 확대: IG 1.0%, HY 3.9% 내외.",
+        "headline": "AI 인프라 섹터 중심으로 IG +10bp(1.0% 내외), HY +40bp(3.9% 내외)로 점진 확대되나 신용경색으로 번지지는 않는다.",
+        "narrative": "[판단] FFR 4.25% 정점 후 4.00% 복귀(us_rate Base), 성장 둔화 속 AI 인프라 섹터 중심 점진 확대: IG 1.0%, HY 3.9% 내외. [갱신 2026-11-21] HY 현물 3.52%(11/19)로 목표 3.9% 유지 위해 +50 → +40bp.",
         "factor_shocks": {
           "us_ig_oas_bp": 10,
-          "us_hy_oas_bp": 50
+          "us_hy_oas_bp": 40
         },
         "shock_rationale": "타이트한 출발점에서 완만한 정상화: IG +10bp, HY +50bp"
       },
@@ -137,18 +138,16 @@
   },
   "short_term_factor_shocks": {
     "us_ig_oas_bp": 10,
-    "us_hy_oas_bp": 40
+    "us_hy_oas_bp": 30
   },
-  "short_term_shock_rationale": "AI 인프라 섹터 리프라이싱(IG)과 고용 둔화·부도율 상승(HY) 반영: IG +10bp, HY +40bp",
+  "short_term_shock_rationale": "AI 인프라 섹터 리프라이싱(IG)과 고용 둔화·부도율 상승(HY) 반영: IG +10bp, HY +40bp [갱신 2026-11-21] HY 현물 3.52%(11/19)로 일부 실현 → HY +30bp, IG +10bp 유지.",
   "data_gaps": [
     "API 데이터 미수집 (FRED API 차단으로 latest_snapshot.json에 미국 시계열 없음) — 현황은 웹확인 값(UST 2년·IG OAS는 사용자 제공 파일 수기 입력)",
     "하우스 2곳 동일 주간(신한·미래에셋) — 둘 다 명시적 스프레드 목표치 없음(리스크 진단 성격)",
     "9월 부도율(Moody's/S&P) 미확인, 8월 값도 2차 인용",
     "IG·HY 월간 발행량, Senior Loan Officer Survey 최신값 미확인",
     "Baa 스프레드·EBP 수준은 리포트 차트로만 확인(수치 미확인)",
-    "IG OAS 백분위는 3년 이력 기준(사용자 제공 엑셀 범위) — 5년 백분위·HY 백분위 미확인",
-    "HY OAS는 웹확인(11/6) — FRED 원자료 미입수",
-    "IG·HY OAS 11/10 이후 값 미확인 — FRED 엑셀 수기 입력 필요"
+    "IG·HY OAS 백분위는 사용자 제공 이력 기간(IG 3년·HY 1년) 기준 — 5년 백분위 미확인"
   ],
   "sources": [
     "data/latest_snapshot.json (미국 시계열 없음)",
@@ -169,7 +168,6 @@
     "knowledge/view_cards/20261106_신한_2027전망_리츠.json",
     "knowledge/view_cards/20261109_미래_2027채권전망_TrojanHorse.json",
     "data/manual/user_20261110.yaml (사용자 제공 FRED BAMLC0A0CM 엑셀)",
-    "knowledge/view_cards/20261120_신한_WeeklyGuideBook.json",
-    "https://fred.stlouisfed.org/graph/?g=1tnkr"
+    "knowledge/view_cards/20261120_신한_WeeklyGuideBook.json"
   ]
 }
