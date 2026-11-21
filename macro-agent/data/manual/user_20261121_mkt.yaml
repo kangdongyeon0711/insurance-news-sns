@@ -1,0 +1,337 @@
+# 수기 입력 — 사용자가 2026-11-21 대화에 첨부한 달러지수·미국채 2년·30년(csv, 최근 1개월)과 FRED SP500(최근 1년).
+source: 사용자 제공 파일(달러지수·미국채 2년·30년 일별 종가 csv 2026-10-21~11-20, FRED SP500 엑셀 2025-11~2026-11-19)
+retrieved: '2026-11-21'
+priority: 3
+raw_file: data/manual/user_20261121_dxy.csv, data/manual/user_20261121_ust2y.csv, data/manual/user_20261121_ust30y.csv, data/manual/user_20261121_fred_SP500.xlsx
+points:
+- series_id: dxy_ice
+  value: 103.745
+  as_of: '2026-11-20'
+  period_label: 일별 종가
+  raw_label: 달러지수
+  meta: {name: 달러지수(ICE DXY), unit: pt, cycle: D, chg_type: pct, topic_id: fx_krwusd}
+- {series_id: dxy_ice, value: 103.839, as_of: '2026-11-19', period_label: 일별 종가, raw_label: 달러지수}
+- {series_id: dxy_ice, value: 103.788, as_of: '2026-11-18', period_label: 일별 종가, raw_label: 달러지수}
+- {series_id: dxy_ice, value: 103.406, as_of: '2026-11-17', period_label: 일별 종가, raw_label: 달러지수}
+- {series_id: dxy_ice, value: 103.47, as_of: '2026-11-16', period_label: 일별 종가, raw_label: 달러지수}
+- {series_id: dxy_ice, value: 103.323, as_of: '2026-11-13', period_label: 일별 종가, raw_label: 달러지수}
+- {series_id: dxy_ice, value: 103.094, as_of: '2026-11-12', period_label: 일별 종가, raw_label: 달러지수}
+- {series_id: dxy_ice, value: 102.82, as_of: '2026-11-11', period_label: 일별 종가, raw_label: 달러지수}
+- {series_id: dxy_ice, value: 102.13, as_of: '2026-11-10', period_label: 일별 종가, raw_label: 달러지수}
+- {series_id: dxy_ice, value: 101.535, as_of: '2026-11-09', period_label: 일별 종가, raw_label: 달러지수}
+- {series_id: dxy_ice, value: 102.179, as_of: '2026-11-06', period_label: 일별 종가, raw_label: 달러지수}
+- {series_id: dxy_ice, value: 101.426, as_of: '2026-11-05', period_label: 일별 종가, raw_label: 달러지수}
+- {series_id: dxy_ice, value: 101.425, as_of: '2026-11-04', period_label: 일별 종가, raw_label: 달러지수}
+- {series_id: dxy_ice, value: 101.726, as_of: '2026-11-03', period_label: 일별 종가, raw_label: 달러지수}
+- {series_id: dxy_ice, value: 101.624, as_of: '2026-11-02', period_label: 일별 종가, raw_label: 달러지수}
+- {series_id: dxy_ice, value: 101.745, as_of: '2026-10-30', period_label: 일별 종가, raw_label: 달러지수}
+- {series_id: dxy_ice, value: 101.891, as_of: '2026-10-29', period_label: 일별 종가, raw_label: 달러지수}
+- {series_id: dxy_ice, value: 102.031, as_of: '2026-10-28', period_label: 일별 종가, raw_label: 달러지수}
+- {series_id: dxy_ice, value: 102.162, as_of: '2026-10-27', period_label: 일별 종가, raw_label: 달러지수}
+- {series_id: dxy_ice, value: 101.8, as_of: '2026-10-26', period_label: 일별 종가, raw_label: 달러지수}
+- {series_id: dxy_ice, value: 101.648, as_of: '2026-10-23', period_label: 일별 종가, raw_label: 달러지수}
+- {series_id: dxy_ice, value: 101.442, as_of: '2026-10-22', period_label: 일별 종가, raw_label: 달러지수}
+- {series_id: dxy_ice, value: 101.603, as_of: '2026-10-21', period_label: 일별 종가, raw_label: 달러지수}
+- {series_id: ust_2y, value: 4.613, as_of: '2026-11-20', period_label: 일별 종가, raw_label: 미국채 2년}
+- {series_id: ust_2y, value: 4.779, as_of: '2026-11-19', period_label: 일별 종가, raw_label: 미국채 2년}
+- {series_id: ust_2y, value: 4.8, as_of: '2026-11-18', period_label: 일별 종가, raw_label: 미국채 2년}
+- {series_id: ust_2y, value: 4.789, as_of: '2026-11-17', period_label: 일별 종가, raw_label: 미국채 2년}
+- {series_id: ust_2y, value: 4.827, as_of: '2026-11-16', period_label: 일별 종가, raw_label: 미국채 2년}
+- {series_id: ust_2y, value: 4.874, as_of: '2026-11-13', period_label: 일별 종가, raw_label: 미국채 2년}
+- {series_id: ust_2y, value: 4.864, as_of: '2026-11-12', period_label: 일별 종가, raw_label: 미국채 2년}
+- {series_id: ust_2y, value: 4.773, as_of: '2026-11-11', period_label: 일별 종가, raw_label: 미국채 2년}
+- {series_id: ust_2y, value: 4.727, as_of: '2026-11-10', period_label: 일별 종가, raw_label: 미국채 2년}
+- {series_id: ust_2y, value: 4.547, as_of: '2026-11-09', period_label: 일별 종가, raw_label: 미국채 2년}
+- {series_id: ust_2y, value: 4.522, as_of: '2026-11-06', period_label: 일별 종가, raw_label: 미국채 2년}
+- {series_id: ust_2y, value: 4.477, as_of: '2026-11-05', period_label: 일별 종가, raw_label: 미국채 2년}
+- {series_id: ust_2y, value: 4.581, as_of: '2026-11-04', period_label: 일별 종가, raw_label: 미국채 2년}
+- {series_id: ust_2y, value: 4.614, as_of: '2026-11-03', period_label: 일별 종가, raw_label: 미국채 2년}
+- {series_id: ust_2y, value: 4.583, as_of: '2026-11-02', period_label: 일별 종가, raw_label: 미국채 2년}
+- {series_id: ust_2y, value: 4.581, as_of: '2026-10-30', period_label: 일별 종가, raw_label: 미국채 2년}
+- {series_id: ust_2y, value: 4.656, as_of: '2026-10-29', period_label: 일별 종가, raw_label: 미국채 2년}
+- {series_id: ust_2y, value: 4.735, as_of: '2026-10-28', period_label: 일별 종가, raw_label: 미국채 2년}
+- {series_id: ust_2y, value: 4.737, as_of: '2026-10-27', period_label: 일별 종가, raw_label: 미국채 2년}
+- {series_id: ust_2y, value: 4.714, as_of: '2026-10-26', period_label: 일별 종가, raw_label: 미국채 2년}
+- {series_id: ust_2y, value: 4.682, as_of: '2026-10-23', period_label: 일별 종가, raw_label: 미국채 2년}
+- {series_id: ust_2y, value: 4.635, as_of: '2026-10-22', period_label: 일별 종가, raw_label: 미국채 2년}
+- {series_id: ust_2y, value: 4.823, as_of: '2026-10-21', period_label: 일별 종가, raw_label: 미국채 2년}
+- {series_id: ust_30y, value: 5.302, as_of: '2026-11-20', period_label: 일별 종가, raw_label: 미국채 30년}
+- {series_id: ust_30y, value: 5.401, as_of: '2026-11-19', period_label: 일별 종가, raw_label: 미국채 30년}
+- {series_id: ust_30y, value: 5.412, as_of: '2026-11-18', period_label: 일별 종가, raw_label: 미국채 30년}
+- {series_id: ust_30y, value: 5.459, as_of: '2026-11-17', period_label: 일별 종가, raw_label: 미국채 30년}
+- {series_id: ust_30y, value: 5.468, as_of: '2026-11-16', period_label: 일별 종가, raw_label: 미국채 30년}
+- {series_id: ust_30y, value: 5.481, as_of: '2026-11-13', period_label: 일별 종가, raw_label: 미국채 30년}
+- {series_id: ust_30y, value: 5.433, as_of: '2026-11-12', period_label: 일별 종가, raw_label: 미국채 30년}
+- {series_id: ust_30y, value: 5.33, as_of: '2026-11-11', period_label: 일별 종가, raw_label: 미국채 30년}
+- {series_id: ust_30y, value: 5.349, as_of: '2026-11-10', period_label: 일별 종가, raw_label: 미국채 30년}
+- {series_id: ust_30y, value: 5.256, as_of: '2026-11-09', period_label: 일별 종가, raw_label: 미국채 30년}
+- {series_id: ust_30y, value: 5.26, as_of: '2026-11-06', period_label: 일별 종가, raw_label: 미국채 30년}
+- {series_id: ust_30y, value: 5.251, as_of: '2026-11-05', period_label: 일별 종가, raw_label: 미국채 30년}
+- {series_id: ust_30y, value: 5.28, as_of: '2026-11-04', period_label: 일별 종가, raw_label: 미국채 30년}
+- {series_id: ust_30y, value: 5.324, as_of: '2026-11-03', period_label: 일별 종가, raw_label: 미국채 30년}
+- {series_id: ust_30y, value: 5.269, as_of: '2026-11-02', period_label: 일별 종가, raw_label: 미국채 30년}
+- {series_id: ust_30y, value: 5.309, as_of: '2026-10-30', period_label: 일별 종가, raw_label: 미국채 30년}
+- {series_id: ust_30y, value: 5.329, as_of: '2026-10-29', period_label: 일별 종가, raw_label: 미국채 30년}
+- {series_id: ust_30y, value: 5.361, as_of: '2026-10-28', period_label: 일별 종가, raw_label: 미국채 30년}
+- {series_id: ust_30y, value: 5.305, as_of: '2026-10-27', period_label: 일별 종가, raw_label: 미국채 30년}
+- {series_id: ust_30y, value: 5.301, as_of: '2026-10-26', period_label: 일별 종가, raw_label: 미국채 30년}
+- {series_id: ust_30y, value: 5.315, as_of: '2026-10-23', period_label: 일별 종가, raw_label: 미국채 30년}
+- {series_id: ust_30y, value: 5.287, as_of: '2026-10-22', period_label: 일별 종가, raw_label: 미국채 30년}
+- {series_id: ust_30y, value: 5.437, as_of: '2026-10-21', period_label: 일별 종가, raw_label: 미국채 30년}
+- series_id: spx
+  value: 6642.16
+  as_of: '2025-11-19'
+  period_label: FRED 일별
+  raw_label: SP500
+  meta: {name: S&P 500, unit: pt, cycle: D, chg_type: pct, topic_id: us_alt_pe}
+- {series_id: spx, value: 6538.76, as_of: '2025-11-20', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6602.99, as_of: '2025-11-21', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6705.12, as_of: '2025-11-24', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6765.88, as_of: '2025-11-25', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6812.61, as_of: '2025-11-26', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6849.09, as_of: '2025-11-28', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6812.63, as_of: '2025-12-01', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6829.37, as_of: '2025-12-02', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6849.72, as_of: '2025-12-03', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6857.12, as_of: '2025-12-04', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6870.4, as_of: '2025-12-05', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6846.51, as_of: '2025-12-08', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6840.51, as_of: '2025-12-09', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6886.68, as_of: '2025-12-10', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6901.0, as_of: '2025-12-11', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6827.41, as_of: '2025-12-12', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6816.51, as_of: '2025-12-15', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6800.26, as_of: '2025-12-16', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6721.43, as_of: '2025-12-17', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6774.76, as_of: '2025-12-18', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6834.5, as_of: '2025-12-19', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6878.49, as_of: '2025-12-22', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6909.79, as_of: '2025-12-23', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6932.05, as_of: '2025-12-24', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6929.94, as_of: '2025-12-26', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6905.74, as_of: '2025-12-29', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6896.24, as_of: '2025-12-30', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6845.5, as_of: '2025-12-31', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6858.47, as_of: '2026-01-02', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6902.05, as_of: '2026-01-05', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6944.82, as_of: '2026-01-06', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6920.93, as_of: '2026-01-07', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6921.46, as_of: '2026-01-08', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6966.28, as_of: '2026-01-09', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6977.27, as_of: '2026-01-12', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6963.74, as_of: '2026-01-13', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6926.6, as_of: '2026-01-14', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6944.47, as_of: '2026-01-15', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6940.01, as_of: '2026-01-16', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6796.86, as_of: '2026-01-20', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6875.62, as_of: '2026-01-21', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6913.35, as_of: '2026-01-22', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6915.61, as_of: '2026-01-23', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6950.23, as_of: '2026-01-26', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6978.6, as_of: '2026-01-27', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6978.03, as_of: '2026-01-28', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6969.01, as_of: '2026-01-29', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6939.03, as_of: '2026-01-30', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6976.44, as_of: '2026-02-02', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6917.81, as_of: '2026-02-03', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6882.72, as_of: '2026-02-04', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6798.4, as_of: '2026-02-05', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6932.3, as_of: '2026-02-06', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6964.82, as_of: '2026-02-09', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6941.81, as_of: '2026-02-10', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6941.47, as_of: '2026-02-11', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6832.76, as_of: '2026-02-12', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6836.17, as_of: '2026-02-13', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6843.22, as_of: '2026-02-17', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6881.31, as_of: '2026-02-18', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6861.89, as_of: '2026-02-19', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6909.51, as_of: '2026-02-20', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6837.75, as_of: '2026-02-23', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6890.07, as_of: '2026-02-24', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6946.13, as_of: '2026-02-25', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6908.86, as_of: '2026-02-26', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6878.88, as_of: '2026-02-27', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6881.62, as_of: '2026-03-02', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6816.63, as_of: '2026-03-03', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6869.5, as_of: '2026-03-04', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6830.71, as_of: '2026-03-05', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6740.02, as_of: '2026-03-06', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6795.99, as_of: '2026-03-09', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6781.48, as_of: '2026-03-10', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6775.8, as_of: '2026-03-11', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6672.62, as_of: '2026-03-12', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6632.19, as_of: '2026-03-13', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6699.38, as_of: '2026-03-16', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6716.09, as_of: '2026-03-17', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6624.7, as_of: '2026-03-18', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6606.49, as_of: '2026-03-19', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6506.48, as_of: '2026-03-20', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6581.0, as_of: '2026-03-23', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6556.37, as_of: '2026-03-24', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6591.9, as_of: '2026-03-25', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6477.16, as_of: '2026-03-26', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6368.85, as_of: '2026-03-27', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6343.72, as_of: '2026-03-30', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6528.52, as_of: '2026-03-31', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6575.32, as_of: '2026-04-01', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6582.69, as_of: '2026-04-02', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6611.83, as_of: '2026-04-06', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6616.85, as_of: '2026-04-07', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6782.81, as_of: '2026-04-08', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6824.66, as_of: '2026-04-09', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6816.89, as_of: '2026-04-10', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6886.24, as_of: '2026-04-13', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 6967.38, as_of: '2026-04-14', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7022.95, as_of: '2026-04-15', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7041.28, as_of: '2026-04-16', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7126.06, as_of: '2026-04-17', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7109.14, as_of: '2026-04-20', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7064.01, as_of: '2026-04-21', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7137.9, as_of: '2026-04-22', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7108.4, as_of: '2026-04-23', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7165.08, as_of: '2026-04-24', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7173.91, as_of: '2026-04-27', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7138.8, as_of: '2026-04-28', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7135.95, as_of: '2026-04-29', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7209.01, as_of: '2026-04-30', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7230.12, as_of: '2026-05-01', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7200.75, as_of: '2026-05-04', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7259.22, as_of: '2026-05-05', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7365.12, as_of: '2026-05-06', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7337.11, as_of: '2026-05-07', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7398.93, as_of: '2026-05-08', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7412.84, as_of: '2026-05-11', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7400.96, as_of: '2026-05-12', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7444.25, as_of: '2026-05-13', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7501.24, as_of: '2026-05-14', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7408.5, as_of: '2026-05-15', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7403.05, as_of: '2026-05-18', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7353.61, as_of: '2026-05-19', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7432.97, as_of: '2026-05-20', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7445.72, as_of: '2026-05-21', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7473.47, as_of: '2026-05-22', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7519.12, as_of: '2026-05-26', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7520.36, as_of: '2026-05-27', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7563.63, as_of: '2026-05-28', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7580.06, as_of: '2026-05-29', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7599.96, as_of: '2026-06-01', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7609.78, as_of: '2026-06-02', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7553.68, as_of: '2026-06-03', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7584.31, as_of: '2026-06-04', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7383.74, as_of: '2026-06-05', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7405.73, as_of: '2026-06-08', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7386.65, as_of: '2026-06-09', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7266.99, as_of: '2026-06-10', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7394.3, as_of: '2026-06-11', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7431.46, as_of: '2026-06-12', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7554.29, as_of: '2026-06-15', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7511.35, as_of: '2026-06-16', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7420.1, as_of: '2026-06-17', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7500.58, as_of: '2026-06-18', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7472.79, as_of: '2026-06-22', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7365.46, as_of: '2026-06-23', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7358.22, as_of: '2026-06-24', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7357.49, as_of: '2026-06-25', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7354.02, as_of: '2026-06-26', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7440.43, as_of: '2026-06-29', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7499.36, as_of: '2026-06-30', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7483.23, as_of: '2026-07-01', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7483.24, as_of: '2026-07-02', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7537.43, as_of: '2026-07-06', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7503.85, as_of: '2026-07-07', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7482.71, as_of: '2026-07-08', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7543.64, as_of: '2026-07-09', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7575.39, as_of: '2026-07-10', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7515.34, as_of: '2026-07-13', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7543.59, as_of: '2026-07-14', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7572.4, as_of: '2026-07-15', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7533.77, as_of: '2026-07-16', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7457.69, as_of: '2026-07-17', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7443.28, as_of: '2026-07-20', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7509.2, as_of: '2026-07-21', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7498.96, as_of: '2026-07-22', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7408.3, as_of: '2026-07-23', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7411.98, as_of: '2026-07-24', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7413.18, as_of: '2026-07-27', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7428.78, as_of: '2026-07-28', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7316.15, as_of: '2026-07-29', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7437.63, as_of: '2026-07-30', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7489.72, as_of: '2026-07-31', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7600.5, as_of: '2026-08-03', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7736.52, as_of: '2026-08-04', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7723.55, as_of: '2026-08-05', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7709.96, as_of: '2026-08-06', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7757.64, as_of: '2026-08-07', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7753.11, as_of: '2026-08-10', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7728.2, as_of: '2026-08-11', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7748.5, as_of: '2026-08-12', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7798.99, as_of: '2026-08-13', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7785.76, as_of: '2026-08-14', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7745.06, as_of: '2026-08-17', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7691.76, as_of: '2026-08-18', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7707.98, as_of: '2026-08-19', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7641.16, as_of: '2026-08-20', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7674.37, as_of: '2026-08-21', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7652.86, as_of: '2026-08-24', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7677.28, as_of: '2026-08-25', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7675.7, as_of: '2026-08-26', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7730.99, as_of: '2026-08-27', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7711.76, as_of: '2026-08-28', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7686.14, as_of: '2026-08-31', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7631.47, as_of: '2026-09-01', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7666.6, as_of: '2026-09-02', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7747.71, as_of: '2026-09-03', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7718.6, as_of: '2026-09-04', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7673.52, as_of: '2026-09-08', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7636.36, as_of: '2026-09-09', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7591.7, as_of: '2026-09-10', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7656.98, as_of: '2026-09-11', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7619.98, as_of: '2026-09-14', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7585.73, as_of: '2026-09-15', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7551.81, as_of: '2026-09-16', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7637.76, as_of: '2026-09-17', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7650.5, as_of: '2026-09-18', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7764.7, as_of: '2026-09-21', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7764.64, as_of: '2026-09-22', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7706.03, as_of: '2026-09-23', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7704.13, as_of: '2026-09-24', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7743.41, as_of: '2026-09-25', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7683.69, as_of: '2026-09-28', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7670.84, as_of: '2026-09-29', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7651.54, as_of: '2026-09-30', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7666.45, as_of: '2026-10-01', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7722.72, as_of: '2026-10-02', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7773.95, as_of: '2026-10-05', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7818.93, as_of: '2026-10-06', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7801.77, as_of: '2026-10-07', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7765.36, as_of: '2026-10-08', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7811.54, as_of: '2026-10-09', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7807.24, as_of: '2026-10-12', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7805.45, as_of: '2026-10-13', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7718.94, as_of: '2026-10-14', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7744.06, as_of: '2026-10-15', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7659.44, as_of: '2026-10-16', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7690.73, as_of: '2026-10-19', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7712.57, as_of: '2026-10-20', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7757.17, as_of: '2026-10-21', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7663.43, as_of: '2026-10-22', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7623.68, as_of: '2026-10-23', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7676.77, as_of: '2026-10-26', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7722.6, as_of: '2026-10-27', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7743.98, as_of: '2026-10-28', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7720.39, as_of: '2026-10-29', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7580.07, as_of: '2026-10-30', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7541.4, as_of: '2026-11-02', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7568.92, as_of: '2026-11-03', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7688.62, as_of: '2026-11-04', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7353.73, as_of: '2026-11-05', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7376.86, as_of: '2026-11-06', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7549.94, as_of: '2026-11-09', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7520.93, as_of: '2026-11-10', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7619.38, as_of: '2026-11-11', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7592.4, as_of: '2026-11-12', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7561.67, as_of: '2026-11-13', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7416.59, as_of: '2026-11-16', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7340.53, as_of: '2026-11-17', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7323.63, as_of: '2026-11-18', period_label: FRED 일별, raw_label: SP500}
+- {series_id: spx, value: 7175.83, as_of: '2026-11-19', period_label: FRED 일별, raw_label: SP500}
