@@ -1,0 +1,62 @@
+{
+ "card_id": "20261120_신한_11월금통위Preview",
+ "house": "신한투자증권",
+ "report_title": "채권전략: 11월 금통위 Preview — 금리 하단 확인",
+ "published": "2026-11-20",
+ "published_estimated": false,
+ "source_file": "processed/reports/20261120_신한_11월금통위Preview.pdf",
+ "topics": [
+  "kr_rate",
+  "kr_govt_bond",
+  "us_treasury",
+  "oil"
+ ],
+ "views": [
+  {
+   "topic_id": "kr_rate",
+   "variable": "kr_base_rate",
+   "direction": "상승",
+   "horizon": "단기",
+   "target": "11/26 25bp 인상 3.25%(만장일치), 점도표 최빈값 3.50%",
+   "rationale": "3분기 GDP 서프라이즈로 성장·물가 눈높이 상향. 한은 전망 2026년 3.8~3.9%·2027년 3.3~3.5%, 2027 물가 2.4~2.5%·근원 2.6~2.7% 예상. 점도표 나머지는 3.25%보다 3.75%가 우세할 전망. 기자회견은 증시 급락을 감안해 중립.",
+   "page_ref": "p.2-3",
+   "conviction": "높음"
+  },
+  {
+   "topic_id": "kr_govt_bond",
+   "variable": "ktb_3y",
+   "direction": "상승",
+   "horizon": "단기",
+   "target": "3Y 3.65~3.80%, 10Y 3.85~4.00%(주간)",
+   "rationale": "금통위가 최종금리 3.25% 기대·내년 말 인하 사이클 진입 같은 낙관론을 희석시킬 이벤트. 긴축 경계 선반영·외국인 선물 유입 정점 통과로 국고채 금리는 단기 바닥 확인 가능성 높음. 추격 매수보다 1Q까지 반등 구간을 염두에 두고 듀레이션 확대 시점 조율.",
+   "page_ref": "p.1, p.4-5",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "us_treasury",
+   "variable": "ust_10y",
+   "direction": "횡보",
+   "horizon": "단기",
+   "target": "10Y 4.95~5.15%",
+   "rationale": "12월 FOMC 25bp 인상이 강한 컨센서스로 자리 잡아 PCE·연준 인사 발언의 추가 영향력은 약화. 지난주 급등을 완만히 되돌리는 강보합. 월러 이사의 12월 50bp 언급이 강세 제한.",
+   "page_ref": "p.1, p.5",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "oil",
+   "variable": "brent",
+   "direction": "하락",
+   "horizon": "단기",
+   "target": null,
+   "rationale": "브렌트 90달러 중후반 → 초반, 한 달 −12.5%. IEA는 중동 생산 회복으로 2027년 공급 초과 하루 약 380만배럴 전망.",
+   "page_ref": "p.5",
+   "conviction": "중간"
+  }
+ ],
+ "key_risks": [
+  "점도표 3.75% 우세 시 3년물 레벨 부담",
+  "12월 국고채 발행계획(11/26)",
+  "주가지수와의 상관관계"
+ ],
+ "notes": "성격: 주간 채권전략(12쪽). 11/19 기준 금리 표(p.8, 인포맥스): 통안 1년 3.565·국고 3년 3.716·5년 3.812·10년 3.942·20년 4.06·30년 4.031%; 1개월 변화 3년 −16.1·10년 −26.3·30년 −24.5bp; 회사채 AA- 3년 스프레드 66.1bp, BBB- 647.4bp. 미 국채 10년 5.04%(11/19, p.5). IMF 한국 성장 2026 3.3→3.9%, 2027 2.8→3.3%; KDI 2027 2.2→3.9%(p.5)."
+}

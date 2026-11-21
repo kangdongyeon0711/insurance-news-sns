@@ -1,0 +1,50 @@
+{
+ "card_id": "20261119_신한_국내크레딧_간접에서직접으로",
+ "house": "신한투자증권",
+ "report_title": "국내크레딧: 간접에서 직접으로, 단기에서 장기로",
+ "published": "2026-11-19",
+ "published_estimated": false,
+ "source_file": "processed/reports/20261119_신한_국내크레딧_간접에서직접으로.pdf",
+ "topics": [
+  "kr_corp_bond",
+  "kr_alt_pd"
+ ],
+ "views": [
+  {
+   "topic_id": "kr_corp_bond",
+   "variable": "kr_corp_issuance",
+   "direction": "확대",
+   "horizon": "장기",
+   "target": "회사채 순발행 전환·중장기물 발행 증가",
+   "rationale": "올해 금리 급등 속 회사채 순상환, 기업은 은행 단기차입으로 대체 — 등급 보유 284개사 만기도래차입금 상반기 69조원 급증. 기준금리 상방 불확실성 완화로 상위등급 회사채 금리가 대기업 대출금리를 하회하기 시작, 내년 장기 회사채 조달로 치환 전망.",
+   "page_ref": "p.1-3",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "kr_corp_bond",
+   "variable": "kr_bbb_spread",
+   "direction": "확대",
+   "horizon": "장기",
+   "target": null,
+   "rationale": "하위등급 실적·현금흐름 개선으로 유동성 위험은 제한되나 BBB급은 중앙그룹 퇴출로 시장 위축, 수요 우량물 쏠림. 증권사 A1 CP 급증이 BBB의 단기시장 접근성을 낮춰 유동성 부담. 하위등급 회복은 상위 대비 저조.",
+   "page_ref": "p.5",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "kr_alt_pd",
+   "variable": "kr_pd_default",
+   "direction": "횡보",
+   "horizon": "장기",
+   "target": null,
+   "rationale": "은행이 대기업 자금줄 역할을 강화해 유동성·신용 위험 전이를 방어. 금리 상방 위험이 크지 않아 조달비용 급증에 따른 신용 위험 전이 가능성은 낮음. 다만 단기 차입 구조로 차환 주기 단축 — 부채 만기 구조·유동성 다소 저하.",
+   "page_ref": "p.1, p.3",
+   "conviction": "중간"
+  }
+ ],
+ "key_risks": [
+  "단기차입 돌려막기 지속 시 유동성 위험",
+  "은행 대출금리 상승(수신 불안정)",
+  "국민성장펀드와의 경쟁"
+ ],
+ "notes": "성격: 국내 크레딧 이슈(약 8쪽). 시설·운영자금 목적 회사채 9월 누적 8.4조원(−4.0%), 차환 목적 22.3조원(−42.3%, p.2). 1년 CP와 회사채 금리 갭 축소, 3년물 조달 매력 회복(p.4). 발행어음·IMA 수요가 A급 이하 수요 기반 확대 전망(p.5)."
+}

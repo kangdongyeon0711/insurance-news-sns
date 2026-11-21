@@ -1,0 +1,8 @@
+# 수기 입력 데이터 — 사용자가 2026-11-21 대화에서 직접 알려준 값(기준 시점 미기재 → 대화일 2026-11-21로 기록).
+source: 사용자 제공(대화 입력, 2026-11-21) — 원자료·기준 시각 미기재
+retrieved: '2026-11-21'
+priority: 3
+points:
+  - {series_id: krw_usd, value: 1346.16, as_of: 2026-11-21, period_label: "사용자 제공(시점 미기재)", raw_label: "환율 $1당 원"}
+  - {series_id: wti, value: 82.40, as_of: 2026-11-21, period_label: "사용자 제공(시점 미기재)", raw_label: "WTI"}
+  - {series_id: brent, value: 92.49, as_of: 2026-11-21, period_label: "사용자 제공(시점 미기재)", raw_label: "Brent"}

@@ -1,0 +1,86 @@
+{
+ "card_id": "20261120_신한_WeeklyGuideBook",
+ "house": "신한투자증권",
+ "report_title": "Weekly Guide Book: 커져가는 긴축 경계와 AI 불안",
+ "published": "2026-11-20",
+ "published_estimated": false,
+ "source_file": "processed/reports/20261120_신한_WeeklyGuideBook.pdf",
+ "topics": [
+  "us_rate",
+  "us_treasury",
+  "fx_krwusd",
+  "oil",
+  "kr_corp_bond",
+  "kr_alt_pe",
+  "us_alt_pe",
+  "us_alt_re"
+ ],
+ "views": [
+  {
+   "topic_id": "us_rate",
+   "variable": "us_ffr",
+   "direction": "상승",
+   "horizon": "단기",
+   "target": "12월 25bp 선반영, 50bp는 회의 직전 물가·금융여건 확인",
+   "rationale": "10월 FOMC 의사록은 금융여건 악화에도 추가 인상 기조 유효 재확인. 월러는 서비스 물가 확산·가격설정 고착화 경고하며 연속 인상 또는 50bp 필요 강조. 다만 석유제품 가격 안정 감안 시 연속·50bp 여부는 회의 직전 결정.",
+   "page_ref": "p.2",
+   "conviction": "높음"
+  },
+  {
+   "topic_id": "us_alt_pe",
+   "variable": "equity_spx",
+   "direction": "하락",
+   "horizon": "단기",
+   "target": null,
+   "rationale": "S&P 500 주간 −5.5%, 200일선 붕괴. 젠슨 황 퇴진 이후 AI 순환금융 우려·대중 수출 제재 위반 리스크, 앤트로픽 IPO 후 sell-on으로 가치주까지 투매. 연말 북클로징 속 유동성 악화로 연말연초 변동성 지속.",
+   "page_ref": "p.5",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "kr_alt_pe",
+   "variable": "equity_kospi",
+   "direction": "하락",
+   "horizon": "단기",
+   "target": null,
+   "rationale": "KOSPI 주간 −3.8%, 9개월 만에 5,000p 하회. 엔비디아 리더십 공백이 AI 자금 순환구조 전반의 자본비용 문제로 확산. 선행 PER 3배대로 가격 매력은 있으나 60일 실현변동성 연율 44%(2008년 39% 상회) — 배당으로 대응, 금리 안정·외국인 매도 진정 확인 시 비중 확대.",
+   "page_ref": "p.6",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "oil",
+   "variable": "wti",
+   "direction": "하락",
+   "horizon": "단기",
+   "target": "WTI 80달러 내외 하단 탐색",
+   "rationale": "걸프 충돌에도 미국 공습 자제·미-중-러 에너지 공급 안정 선언에 지정학 프리미엄 축소, 미국 재고 증가. 29일 OPEC+ 회의와 호르무즈 위험이 낙폭 제약. 금은 3,600달러대로 14개월 최저.",
+   "page_ref": "p.12",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "us_alt_re",
+   "variable": "us_reit_discount_rate",
+   "direction": "상승",
+   "horizon": "단기",
+   "target": null,
+   "rationale": "글로벌 리츠 주간 −2.5%: 추가 인상 전망 강화로 부진, AI 프리미엄 축소로 데이터센터·산업물류 약세. 주거·헬스케어 견조 — 비용 전가력·낮은 부채비율 중요, 헬스케어 상대 우위 지속.",
+   "page_ref": "p.12",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "kr_corp_bond",
+   "variable": "kr_aa_spread",
+   "direction": "축소",
+   "horizon": "단기",
+   "target": null,
+   "rationale": "연초효과 노린 선제 포지셔닝으로 신용 스프레드 전 섹터 축소: 공사채 −1.3·은행채 −1.2·여전 AA− −2.0·회사채 −0.6bp. MMF 300조원 근접, 채권형 펀드 유입 지속. 은행채 순상환 전환 조짐으로 수급상 은행채 매력.",
+   "page_ref": "p.10",
+   "conviction": "중간"
+  }
+ ],
+ "key_risks": [
+  "엔비디아 리더십 공백·AI 순환금융",
+  "12월 FOMC 50bp",
+  "북클로징 유동성 악화"
+ ],
+ "notes": "성격: 주간 종합(28쪽). 미 국채 커브 11/20(p.8, Bloomberg): 2년 4.76·3년 4.80·5년 4.86·7년 4.93·10년 5.04·20년 5.45·30년 5.40%; 주간 2년 −8.4·10년 −9.1bp. 국고 커브 11/19(p.9): 3년 3.71·5년 3.81·10년 3.94·30년 4.03%. 달러화지수 103p 후반(작년 4월 이후 최고). 비트코인 6.2~6.3만달러. 한국 선행 EPS FY1 +330% 등(p.16). 미 10월 소매판매 +0.2%(자동차 제외 +0.6%)."
+}

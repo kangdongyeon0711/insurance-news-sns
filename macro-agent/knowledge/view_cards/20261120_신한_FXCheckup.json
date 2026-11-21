@@ -1,0 +1,38 @@
+{
+ "card_id": "20261120_신한_FXCheckup",
+ "house": "신한투자증권",
+ "report_title": "Shinhan FX Check-up: 빅스텝 논의에 강 달러, 증시 급락에도 버틴 원화",
+ "published": "2026-11-20",
+ "published_estimated": false,
+ "source_file": "processed/reports/20261120_신한_FXCheckup.pdf",
+ "topics": [
+  "fx_krwusd"
+ ],
+ "views": [
+  {
+   "topic_id": "fx_krwusd",
+   "variable": "krw_usd",
+   "direction": "하락",
+   "horizon": "단기",
+   "target": "1,320원대 안착 시도",
+   "rationale": "11월 1~20일 수출 반도체 중심 급증세와 월말 네고로 하방 압력 우세. 금통위 25bp 인상·성장률 전망 상향도 원화 지지. 외국인 주식 순매도·저가 결제 수요가 하락 속도 제한.",
+   "page_ref": "p.1",
+   "conviction": "중간"
+  },
+  {
+   "topic_id": "fx_krwusd",
+   "variable": "dxy",
+   "direction": "상승",
+   "horizon": "단기",
+   "target": null,
+   "rationale": "달러화지수 103p 후반, 작년 4월 이후 최고. 12월 25bp는 선반영 — 핵심 PCE 확대 시 빅스텝 논의로 추가 강세, 예상 수준이면 탄력 둔화. 달러/유로 1.10 하방 압력, 엔/달러 160엔 공방(개입 경계).",
+   "page_ref": "p.1",
+   "conviction": "중간"
+  }
+ ],
+ "key_risks": [
+  "외국인 주식 순매도 지속",
+  "핵심 PCE 상회 시 빅스텝·달러 강세"
+ ],
+ "notes": "성격: 주간 외환(4쪽). 현재(p.2, Bloomberg): 달러화지수 103.86(1M +1.8%), 원/달러 1,333.2(1W −0.2%, YTD 원화 +8.1%), 엔 159.29, 유로 1.0966, 위안 6.6682. 주중 상단 1,340원 초반, 주 후반 1,330원 초반."
+}
