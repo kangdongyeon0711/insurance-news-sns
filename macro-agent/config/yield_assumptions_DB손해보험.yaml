@@ -1,0 +1,218 @@
+# DB손해보험용 사본(2026-11-21) — config/yield_assumptions.yaml 기반. 변경점(가정):
+#  - K-ICS 하한(연결 9월말 추정 212.0%, IR p.11): 보수형 210%·균형형 207%·적극형 203% (회사 관리구간 150~220%, p.3)
+#  - 국공채 ±1.0%p: 자산 롱 듀레이션(+50bp 시 K-ICS −2.2%p, p.11) 추가 확대 제한
+#  - 부동산·PE·주식·인프라 매각 금지, 수익증권(19.2%) −2.0%p까지 회수
+#  - 대출 수익률은 DB 공시 5.79%(p.10) 반영, 주식 신규 편입 없음·PE +0.5%p 상한(보수 운용)
+horizon_years: 2.0
+diversification: 0.7
+hedge_cost:
+  usd_short:
+    series: us_ffr_upper
+    adj_bp: -12.5
+  krw_short:
+    series: kr_cd_91d
+  basis_bp: 30
+classes:
+  현금예금:
+    base: kr_cd_91d
+    spread_bp: 0
+    el_pct: 0.0
+    charge:
+    - 0.0
+    - 0.0
+    duration: 0.0
+    note: CD 91일 수준
+  국공채:
+    base: ktb_30y
+    spread_bp: 0
+    el_pct: 0.0
+    charge:
+    - 0.0
+    - 0.0
+    duration: 17.0
+    note: 초장기 국고(ALM 매칭) — 금리위험은 ALM 제약으로 관리
+  특수채:
+    base: ktb_5y
+    spread_bp: 25
+    el_pct: 0.02
+    charge:
+    - 0.005
+    - 0.02
+    duration: 4.5
+    note: 공사채·은행채 AAA, 국고 5년 + 25bp (가정)
+  회사채:
+    base: kr_corp_aa_3y
+    spread_bp: 0
+    el_pct: 0.05
+    charge:
+    - 0.02
+    - 0.05
+    duration: 2.8
+    note: AA- 3년 민평 수준(수기). AA 이상 우량물
+  대출-기업:
+    base: kr_loan_rate
+    spread_bp: 140
+    el_pct: 0.5
+    charge:
+    - 0.04
+    - 0.1
+    duration: 2.0
+    note: 'DB 대출 누계 수익률 5.79%(IR p.10) 반영: 대출금리 4.4% + 140bp. EL은 NPL 1.73%(p.16)
+      감안 0.5%(가정)'
+  대출-부동산담보:
+    base: kr_loan_rate
+    spread_bp: 140
+    el_pct: 0.4
+    charge:
+    - 0.02
+    - 0.05
+    duration: 4.0
+    note: DB 대출 수익률 5.79%(p.10) 반영. 기업 부동산대출 내 PF 비중 미공시 → EL 0.4%(가정)
+  대체-사모대출:
+    base: kr_cd_91d
+    spread_bp: 300
+    el_pct: 0.6
+    charge:
+    - 0.06
+    - 0.15
+    duration: 1.0
+    region: KR
+    note: 부동산 대출형 사모펀드(선순위 중심, 변동금리) — 기사의 '중위험·중수익'. PF·브릿지 제외 가정
+  대체-인프라:
+    base: ktb_10y
+    spread_bp: 150
+    el_pct: 0.2
+    charge:
+    - 0.05
+    - 0.2
+    duration: 8.0
+    note: 국내 인프라 대출·지분 혼합 펀드 — 장기 ALM 매칭 기여
+  부동산:
+    base: null
+    fixed_pct: 4.5
+    el_pct: 0.0
+    charge:
+    - 0.25
+    - 0.25
+    duration: 0.0
+    note: 코어 오피스·물류 인컴수익률 ≈ 캡레이트 4.5%(assumptions.cap_rate.KR). 시니어하우징 등 개발형은 PF 성격으로
+      별도
+  대체-PE:
+    base: null
+    fixed_pct: 9.0
+    el_pct: 0.0
+    charge:
+    - 0.48
+    - 0.48
+    duration: 0.0
+    note: 기대 IRR 9% (가정), 기타 주식 48% 충격 근사
+  해외채:
+    base: ust_10y
+    spread_series: us_ig_oas
+    el_pct: 0.1
+    charge:
+    - 0.03
+    - 0.06
+    duration: 7.5
+    hedged: true
+    region: US
+    currency: USD
+    note: UST 10년 + IG OAS, 100% 헤지(사용자 가정)
+  주식:
+    base: null
+    fixed_pct: 7.0
+    el_pct: 0.0
+    charge:
+    - 0.35
+    - 0.35
+    duration: 0.0
+    note: KOSPI 기대수익 7%(배당 포함, 가정)
+  수익증권:
+    base: null
+    fixed_pct: 5.0
+    el_pct: 0.2
+    charge:
+    - 0.15
+    - 0.3
+    duration: 0.0
+    note: 기타 혼합형 펀드 (가정)
+class_bounds_pp:
+  국공채:
+  - -1.0
+  - 1.0
+  특수채:
+  - -1.5
+  - 3.0
+  회사채:
+  - -1.0
+  - 3.0
+  대출-기업:
+  - -1.0
+  - 2.0
+  대출-부동산담보:
+  - -1.0
+  - 1.5
+  부동산:
+  - 0.0
+  - 0.5
+  대체-PE:
+  - 0.0
+  - 0.5
+  주식:
+  - 0.0
+  - 0.0
+  대체-사모대출:
+  - 0.0
+  - 2.0
+  대체-인프라:
+  - 0.0
+  - 1.5
+  해외채:
+  - -2.0
+  - 2.0
+  수익증권:
+  - -2.0
+  - 0.5
+  금융채:
+  - -1.0
+  - 2.0
+fixed_classes:
+- 기타
+- 대출-신용/약관
+strategies:
+  보수형:
+    kics_floor: 2.1
+    alt_cap: 0.15
+    bear_extra_bp: 0
+    step_pp: 2.0
+    cash_min: 0.03
+    gap_range:
+    - -0.3
+    - 1.0
+  균형형:
+    kics_floor: 2.07
+    alt_cap: 0.17
+    bear_extra_bp: 30
+    step_pp: 3.0
+    cash_min: 0.03
+    gap_range:
+    - -0.3
+    - 1.0
+  적극형:
+    kics_floor: 2.03
+    alt_cap: 0.2
+    bear_extra_bp: 60
+    step_pp: 4.0
+    cash_min: 0.025
+    gap_range:
+    - -0.5
+    - 1.0
+alt_classes:
+- 부동산
+- 대체-인프라
+- 대체-PE
+- 대체-사모대출
+kics_capital_fallback:
+  available_trn: 15.3
+  required_trn: 7.3
+  source: 현대해상 IR p.10 자본구성(2Q26), 조원 단위 반올림
